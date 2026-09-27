@@ -1798,6 +1798,1724 @@ window.EXAM_DATA.python = {
       options: ["False, apoi True", "True, apoi False", "False, apoi False", "True, apoi True"],
       correct: 0,
       explanation: "lst[:] creează o COPIE nouă a listei (obiect diferit), deci 'is' e False, dar conținutul e identic, deci '==' e True."
+    },
+    {
+      id: "py-500",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "Python distinguishes between integer and floating-point values.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
+    },
+    {
+      id: "py-501",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "A variable data type must always be written explicitly.",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
+    },
+    {
+      id: "py-502",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "The Boolean literals True and False start with capital letters.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
+    },
+    {
+      id: "py-503",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Complete the conversions. Which option belongs in place of the ___ marker in the code below?",
+      code: "serialNumber = ___(55555)\namount = float(44)\nprint(serialNumber, amount)",
+      options: ["int", "str", "float", "bool"],
+      correct: 1,
+      explanation: "str(55555) produces '55555', and float(44) produces 44.0."
+    },
+    {
+      id: "py-504",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Complete the conversions. Which option belongs in place of the ___ marker in the code below?",
+      code: "serialNumber = str(55555)\namount = ___(44)\nprint(serialNumber, amount)",
+      options: ["int", "str", "float", "bool"],
+      correct: 2,
+      explanation: "str(55555) produces '55555', and float(44) produces 44.0."
+    },
+    {
+      id: "py-505",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which slice reverses a string?",
+      options: ["[::1]", "[1::]", "[-1::]", "[::-1]"],
+      correct: 3,
+      explanation: "In slicing, the third element is the step. A step of -1 walks the string backward."
+    },
+    {
+      id: "py-506",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which expression converts 19.95 to the integer 19?",
+      options: ["round(19.95)", "int(19.95)", "math.ceil(19.95)", "float(19.95)"],
+      correct: 1,
+      explanation: "int() drops the decimal part; it does not round."
+    },
+    {
+      id: "py-507",
+      chapter: "input-output",
+      type: "single",
+      question: "What data type does input() return?",
+      code: "age = input(\"Age: \")",
+      options: ["int", "float", "str", "bool"],
+      correct: 2,
+      explanation: "input() always returns a string (str), even if the user types digits."
+    },
+    {
+      id: "py-508",
+      chapter: "input-output",
+      type: "single",
+      question: "Which line correctly reads an integer age?",
+      options: ["age = input(\"Age: \")", "age = int(input(\"Age: \"))", "age = str(input(\"Age: \"))", "int = input(\"Age: \")"],
+      correct: 1,
+      explanation: "input() first reads text, then int() converts it to a whole number."
+    },
+    {
+      id: "py-509",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is the value and type of result?",
+      code: "result = 5 / 2",
+      options: ["2 (int)", "2.5 (float)", "2.0 (float)", "5 (int)"],
+      correct: 1,
+      explanation: "The / operator performs true division and returns a float."
+    },
+    {
+      id: "py-510",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is printed?",
+      code: "print(5 // 2)",
+      options: ["2", "2.5", "3", "0"],
+      correct: 0,
+      explanation: "// is floor division (integer division)."
+    },
+    {
+      id: "py-511",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is printed?",
+      code: "print(10 % 3)",
+      options: ["0", "1", "2", "3"],
+      correct: 1,
+      explanation: "% returns the remainder of the division: 10 divided by 3 leaves a remainder of 1."
+    },
+    {
+      id: "py-512",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is printed?",
+      code: "a = 3\nb = 7\nc = 5\nresult = a + b * c\nprint(result)",
+      options: ["36", "38", "26", "50"],
+      correct: 1,
+      explanation: "Multiplication has priority: 7*5=35, then 3+35=38."
+    },
+    {
+      id: "py-513",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "a == 90",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
+    },
+    {
+      id: "py-514",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "b == 2.5",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
+    },
+    {
+      id: "py-515",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "c == -9",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
+    },
+    {
+      id: "py-516",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which operation is evaluated first?",
+      code: "x = 2 + 3 * 4",
+      options: ["2 + 3", "3 * 4", "2 + 3 * 4 as a whole", "assignment to x"],
+      correct: 1,
+      explanation: "Multiplication has priority over addition."
+    },
+    {
+      id: "py-517",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which keyword checks whether \"nine\" occurs in quote?",
+      code: "quote = \"A stitch in time saves nine\"",
+      options: ["is", "in", "==", "contains"],
+      correct: 1,
+      explanation: "The in operator checks membership: \"nine\" in quote."
+    },
+    {
+      id: "py-518",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which operator means 'not equal' in Python?",
+      options: ["<>", "!=", "=!", "not="],
+      correct: 1,
+      explanation: "In Python, the operator for 'not equal' is !=."
+    },
+    {
+      id: "py-519",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is the result?",
+      code: "numbers = [1, 3, 5, 7]\nresult = 5 in numbers",
+      options: ["True", "False", "SyntaxError", "None"],
+      correct: 0,
+      explanation: "The value 5 is found in the list, so the expression with in is True."
+    },
+    {
+      id: "py-520",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "a is b",
+      code: "a = [1, 2]\nb = a\nc = [1, 2]",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+    },
+    {
+      id: "py-521",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "a == c",
+      code: "a = [1, 2]\nb = a\nc = [1, 2]",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+    },
+    {
+      id: "py-522",
+      chapter: "operatori-tipuri-date",
+      type: "true_false",
+      question: "a is c",
+      code: "a = [1, 2]\nb = a\nc = [1, 2]",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+    },
+    {
+      id: "py-523",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What does this code display?",
+      code: "def is_quarter(num):\n    return num % 4 == 0\n\nassert is_quarter(8) == True",
+      options: ["True", "False", "AssertionError", "Nothing"],
+      correct: 3,
+      explanation: "When assert receives a true condition, it displays nothing. If it were false, it would raise AssertionError."
+    },
+    {
+      id: "py-524",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which index selects the last item in a list?",
+      options: ["0", "1", "-1", "-2"],
+      correct: 2,
+      explanation: "-1 represents the last item; -2 is the second-to-last."
+    },
+    {
+      id: "py-525",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "A list has management in its last five positions. Which TWO slices exclude exactly those five items?",
+      options: ["employees[1:-4]", "employees[:-5]", "employees[1:-5]", "employees[0:-4]", "employees[0:-5]"],
+      correct: [1, 4],
+      explanation: "[:-5] and [0:-5] start from the beginning and stop before the fifth item from the end."
+    },
+    {
+      id: "py-526",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the result of the slice?",
+      code: "text = \"Python\"\nprint(text[1:4])",
+      options: ["\"yth\"", "\"ytho\"", "\"Pyt\"", "\"thon\""],
+      correct: 0,
+      explanation: "The start index is included, and the stop index is not included: positions 1, 2, 3."
+    },
+    {
+      id: "py-527",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "After sorting, which TWO expressions print rook?",
+      code: "pieces = [\"king\",\"queen\",\"rook\",\"bishop\",\"knight\",\"pawn\"]\npieces.sort()",
+      options: ["pieces[6]", "pieces[5]", "pieces[3]", "pieces[-1]"],
+      correct: [1, 3],
+      explanation: "After sorting, the list becomes: bishop, king, knight, pawn, queen, rook. The positive index of rook is 5, and its negative index is -1. Index 6 does not exist, and index 3 points to pawn."
+    },
+    {
+      id: "py-528",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which line avoids a TypeError when joining text with the calculated years?",
+      options: ["print(\"Years: \" + (int(end)-int(start)))", "print(\"Years: \" + str(int(end)-int(start)))", "print(\"Years: \" + int(end-start))", "print(\"Years: \" + str(end-start))"],
+      correct: 1,
+      explanation: "The subtraction requires int, and concatenating with + then requires converting the result to str."
+    },
+    {
+      id: "py-529",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
+      code: "if grade ___ 100:\n    print(\"Outstanding\")\nelif grade >= 90:\n    print(\"Great\")\nelif grade <= 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
+      options: ["==", ">=", "<=", "!="],
+      correct: 0,
+      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
+    },
+    {
+      id: "py-530",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
+      code: "if grade == 100:\n    print(\"Outstanding\")\nelif grade ___ 90:\n    print(\"Great\")\nelif grade <= 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
+      options: [">=", ">", "<=", "=="],
+      correct: 0,
+      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
+    },
+    {
+      id: "py-531",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
+      code: "if grade == 100:\n    print(\"Outstanding\")\nelif grade >= 90:\n    print(\"Great\")\nelif grade ___ 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
+      options: ["<=", "<", ">=", "=="],
+      correct: 0,
+      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
+    },
+    {
+      id: "py-532",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the reward logic correctly. Choose the option with the correct order of code lines.",
+      options: ["    if region == \"North\" and season == \"Winter\":\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")\nif monthlySales > 100000:", "        print(\"Send golf balls\")\n    else:\n        print(\"Send skis\")\n    if region == \"North\" and season == \"Winter\":\nif monthlySales > 100000:", "    if region == \"North\" and season == \"Winter\":\nif monthlySales > 100000:\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")", "if monthlySales > 100000:\n    if region == \"North\" and season == \"Winter\":\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")"],
+      correct: 3,
+      explanation: "This is a nested if. The correct logical operator in Python is and."
+    },
+    {
+      id: "py-533",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which condition is true when age is from 18 through 65 inclusive?",
+      options: ["age > 18 and age < 65", "age >= 18 and age <= 65", "age >= 18 or age <= 65", "18 > age > 65"],
+      correct: 1,
+      explanation: "For inclusive endpoints we use >= and <=, joined with and."
+    },
+    {
+      id: "py-534",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is printed?",
+      code: "score = 85\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")",
+      options: ["A", "B", "C", "Nothing"],
+      correct: 1,
+      explanation: "score is 85: the first condition is false, the second is true."
+    },
+    {
+      id: "py-535",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which keyword is a placeholder that performs no action?",
+      options: ["continue", "pass", "break", "while"],
+      correct: 1,
+      explanation: "pass keeps the block syntactically valid but executes nothing."
+    },
+    {
+      id: "py-536",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which loop iterates through 1, 2, 3, 4, 5?",
+      options: ["for week in range(1,5):", "for week in range(1,6):", "for week in range(0,5):", "for week in range(5,1):"],
+      correct: 1,
+      explanation: "The right-hand end of range is not included."
+    },
+    {
+      id: "py-537",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What does continue do inside a loop?",
+      options: ["Stops the program", "Ends the loop", "Skips the rest of the current iteration", "Restarts Python"],
+      correct: 2,
+      explanation: "continue immediately moves on to the next iteration."
+    },
+    {
+      id: "py-538",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What does break do inside a loop?",
+      options: ["Skips one iteration", "Exits the loop", "Exits only the if statement", "Does nothing"],
+      correct: 1,
+      explanation: "break exits the loop it is in."
+    },
+    {
+      id: "py-539",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What numbers are printed?",
+      code: "for i in range(5):\n    if i == 3:\n        break\n    print(i)",
+      options: ["0 1 2", "0 1 2 3", "1 2 3", "0 1 2 3 4"],
+      correct: 0,
+      explanation: "When i becomes 3, break runs before print."
+    },
+    {
+      id: "py-540",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What numbers are printed?",
+      code: "for i in range(5):\n    if i == 2:\n        continue\n    print(i)",
+      options: ["0 1 2 3 4", "0 1 3 4", "2", "0 1"],
+      correct: 1,
+      explanation: "When i==2, continue skips print only for that iteration."
+    },
+    {
+      id: "py-541",
+      chapter: "structuri-control",
+      type: "single",
+      question: "How many times does the inner print execute?",
+      code: "for day in range(2):\n    for student in range(3):\n        print(day, student)",
+      options: ["3", "4", "6", "9"],
+      correct: 2,
+      explanation: "The outer loop runs 2 times, the inner loop 3 times: 2*3=6."
+    },
+    {
+      id: "py-542",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange a while loop that prints 1 through 3. Choose the option with the correct order of code lines.",
+      options: ["i = 1\nwhile i <= 3:\n    print(i)\n    i += 1", "    i += 1\n    print(i)\nwhile i <= 3:\ni = 1", "while i <= 3:\ni = 1\n    print(i)\n    i += 1", "while i <= 3:\n    print(i)\n    i += 1\ni = 1"],
+      correct: 0,
+      explanation: "We initialize the counter, check the condition, print, then increment."
+    },
+    {
+      id: "py-543",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the final value of total?",
+      code: "total = 0\nfor n in range(1,6):\n    total += n",
+      options: ["6", "10", "15", "5"],
+      correct: 2,
+      explanation: "1+2+3+4+5 adds up to 15."
+    },
+    {
+      id: "py-544",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which method adds an item to the end of a list?",
+      options: ["add()", "append()", "insertEnd()", "push()"],
+      correct: 1,
+      explanation: "list.append(value) adds the value at the end."
+    },
+    {
+      id: "py-545",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the list after the code runs?",
+      code: "items = ['A','B']\nitems.insert(1,'X')",
+      options: ["['A', 'B', 'C']", "['A', 'X', 'B']", "['X', 'A', 'B']", "['A', 'B', 'X']"],
+      correct: 1,
+      explanation: "insert(1,'X') inserts at index 1 and shifts the following elements over."
+    },
+    {
+      id: "py-546",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which method removes the first occurrence of a specific value?",
+      options: ["delete()", "remove()", "discard()", "popvalue()"],
+      correct: 1,
+      explanation: "list.remove(value) searches for the value and removes its first occurrence."
+    },
+    {
+      id: "py-547",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is returned by pop() with no index?",
+      options: ["The first item", "The last item", "The list length", "None"],
+      correct: 1,
+      explanation: "list.pop() removes and returns the last item."
+    },
+    {
+      id: "py-548",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is printed?",
+      code: "for x in range(1,4):\n    pass\nprint(x)",
+      options: ["1", "2", "3", "4"],
+      correct: 2,
+      explanation: "range(1,4) produces 1, 2, 3; after the loop, x remains 3."
+    },
+    {
+      id: "py-549",
+      chapter: "input-output",
+      type: "single",
+      question: "Arrange the lines to open a file for reading, read all contents, and print them. Choose the option with the correct order of code lines.",
+      options: ["shirtFileContents = shirtFile.read()\nshirtFile = open(\"shirts.txt\", \"r\")\nprint(shirtFileContents)", "print(shirtFileContents)\nshirtFileContents = shirtFile.read()\nshirtFile = open(\"shirts.txt\", \"r\")", "shirtFile = open(\"shirts.txt\", \"r\")\nshirtFileContents = shirtFile.read()\nprint(shirtFileContents)", "shirtFileContents = shirtFile.read()\nprint(shirtFileContents)\nshirtFile = open(\"shirts.txt\", \"r\")"],
+      correct: 2,
+      explanation: "First open in mode r, then read(), then print()."
+    },
+    {
+      id: "py-550",
+      chapter: "input-output",
+      type: "multiple",
+      question: "With open('log.txt','w') as file, which TWO statements are true?",
+      options: ["Existing content is overwritten.", "Text is automatically appended.", "file.close() is not required.", "The file must already exist."],
+      correct: [0, 2],
+      explanation: "Mode w overwrites the content, and with automatically closes the file."
+    },
+    {
+      id: "py-551",
+      chapter: "input-output",
+      type: "single",
+      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
+      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"___\")\nelse:\n    writeFile = open(\"results.txt\", \"w\")\nwriteFile.write(\"\\n\" + toResults)",
+      options: ["r", "a", "w"],
+      correct: 1,
+      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
+    },
+    {
+      id: "py-552",
+      chapter: "input-output",
+      type: "single",
+      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
+      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"a\")\nelse:\n    writeFile = open(\"results.txt\", \"___\")\nwriteFile.write(\"\\n\" + toResults)",
+      options: ["r", "a", "w"],
+      correct: 2,
+      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
+    },
+    {
+      id: "py-553",
+      chapter: "input-output",
+      type: "single",
+      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
+      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"a\")\nelse:\n    writeFile = open(\"results.txt\", \"w\")\nwriteFile.write(\"___\" + toResults)",
+      options: ["\\n", "\\t", "\\r"],
+      correct: 0,
+      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
+    },
+    {
+      id: "py-554",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange a validation loop for four allowed locations. Choose the option with the correct order of code lines.",
+      options: ["print(response)\n    response = input(\"Enter a location: \")\n    print(\"Try again.\")\nwhile response not in locations:\nresponse = input(\"Enter a location: \")\nlocations = [\"North\", \"South\", \"West\", \"East\"]", "locations = [\"North\", \"South\", \"West\", \"East\"]\nresponse = input(\"Enter a location: \")\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)", "response = input(\"Enter a location: \")\nlocations = [\"North\", \"South\", \"West\", \"East\"]\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)", "response = input(\"Enter a location: \")\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)\nlocations = [\"North\", \"South\", \"West\", \"East\"]"],
+      correct: 1,
+      explanation: "The first read must happen before the while loop; inside the loop we ask again until the response becomes valid."
+    },
+    {
+      id: "py-555",
+      chapter: "input-output",
+      type: "single",
+      question: "When running 'python testargs.py Hello', what is sys.argv[0]?",
+      options: ["Hello", "testargs.py", "sys.argv", "2"],
+      correct: 1,
+      explanation: "sys.argv[0] is the name of the script being run."
+    },
+    {
+      id: "py-556",
+      chapter: "structura-documentare",
+      type: "single",
+      question: "Which character starts a single-line comment in Python?",
+      options: ["//", "/*", "#", "--"],
+      correct: 2,
+      explanation: "Single-line comments in Python start with #."
+    },
+    {
+      id: "py-557",
+      chapter: "input-output",
+      type: "multiple",
+      question: "Which TWO expressions are used to check that config.txt exists and then read only its first line?",
+      options: ["os.path.isfile(\"config.txt\")", "file.readline()", "file.read()", "os.remove(\"config.txt\")"],
+      correct: [0, 1],
+      explanation: "os.path.isfile(...) checks whether the file exists, and readline() reads a single line. read() reads the entire contents, and os.remove() deletes the file."
+    },
+    {
+      id: "py-558",
+      chapter: "input-output",
+      type: "single",
+      question: "Which expression checks whether results.txt is a file?",
+      options: ["os.path.isfile(\"results.txt\")", "os.file.exists(\"results.txt\")", "io.isfile(\"results.txt\")", "file.exists(\"results.txt\")"],
+      correct: 0,
+      explanation: "os.path.isfile(path) checks whether that path exists and is a file."
+    },
+    {
+      id: "py-559",
+      chapter: "input-output",
+      type: "single",
+      question: "Which function deletes a file?",
+      options: ["os.delete()", "os.remove()", "file.remove()", "io.delete()"],
+      correct: 1,
+      explanation: "os.remove(path) deletes the given file."
+    },
+    {
+      id: "py-560",
+      chapter: "input-output",
+      type: "single",
+      question: "Which file mode appends new content without deleting existing content?",
+      options: ["r", "w", "a", "x"],
+      correct: 2,
+      explanation: "a means append."
+    },
+    {
+      id: "py-561",
+      chapter: "input-output",
+      type: "single",
+      question: "Which file mode is used for reading?",
+      options: ["r", "w", "a", "n"],
+      correct: 0,
+      explanation: "r means read."
+    },
+    {
+      id: "py-562",
+      chapter: "input-output",
+      type: "single",
+      question: "What type does file.read() normally return for a text file?",
+      options: ["list", "tuple", "str", "int"],
+      correct: 2,
+      explanation: "read() returns the text content as str."
+    },
+    {
+      id: "py-563",
+      chapter: "input-output",
+      type: "single",
+      question: "What does file.readlines() return for a text file?",
+      options: ["A single string", "A list of lines", "An integer", "A Boolean"],
+      correct: 1,
+      explanation: "readlines() returns a list of strings, one for each line."
+    },
+    {
+      id: "py-564",
+      chapter: "input-output",
+      type: "single",
+      question: "Which f-string prints the value of items?",
+      options: ["f\"We have {items} items.\"", "\"We have {items} items.\"", "f\"We have (items) items.\"", "\"We have \" + items + \" items.\""],
+      correct: 0,
+      explanation: "In an f-string, expressions are placed inside curly braces."
+    },
+    {
+      id: "py-565",
+      chapter: "input-output",
+      type: "single",
+      question: "Which format specification right-aligns a value in a field 6 characters wide?",
+      options: ["{:6<}", "{:>6}", "{:<6}", "{:^6}"],
+      correct: 1,
+      explanation: "> means right alignment, and 6 is the width of the field."
+    },
+    {
+      id: "py-566",
+      chapter: "input-output",
+      type: "single",
+      question: "Which statement safely closes the file automatically?",
+      options: ["with open(\"data.txt\",\"r\") as f:", "f = open(\"data.txt\",\"r\")", "open(\"data.txt\")", "file(\"data.txt\")"],
+      correct: 0,
+      explanation: "The with block automatically handles closing the file."
+    },
+    {
+      id: "py-567",
+      chapter: "functii",
+      type: "single",
+      question: "Which definition gives height a default value of 12?",
+      options: ["def area(width,height):", "def area(width,height=12):", "def area(width=height,12):", "def area(width;height=12):"],
+      correct: 1,
+      explanation: "The default value is written in the header: parameter=value."
+    },
+    {
+      id: "py-568",
+      chapter: "functii",
+      type: "single",
+      question: "What happens when the function is called?",
+      code: "def f(amount, shipping):\n    if shipping == 0:\n        pass\n    else:\n        subtotal = amount + shipping\n    return subtotal\n\nf(500, 0)",
+      options: ["Returns 500", "Returns 0", "Returns None", "A runtime error is raised"],
+      correct: 3,
+      explanation: "On the shipping==0 branch, pass runs, so subtotal is never created. return subtotal raises UnboundLocalError."
+    },
+    {
+      id: "py-569",
+      chapter: "functii",
+      type: "single",
+      question: "Which function definition matches the call area(5,10)?",
+      options: ["def area(x,y):", "def area(x,y,z):", "def calculate_area(x):", "area def(x,y):"],
+      correct: 0,
+      explanation: "The call passes two arguments, so the function needs two parameters."
+    },
+    {
+      id: "py-570",
+      chapter: "functii",
+      type: "single",
+      question: "Arrange the function that calculates and returns a subtotal. Choose the option with the correct order of code lines.",
+      options: ["    subtotal = amount * (1 + salesTaxRate)\n    return subtotal\ndef calcSubtotal(amount, salesTaxRate):", "    return subtotal\n    subtotal = amount * (1 + salesTaxRate)\ndef calcSubtotal(amount, salesTaxRate):", "    subtotal = amount * (1 + salesTaxRate)\ndef calcSubtotal(amount, salesTaxRate):\n    return subtotal", "def calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal"],
+      correct: 3,
+      explanation: "def defines the function, then the local variable is calculated and returned."
+    },
+    {
+      id: "py-571",
+      chapter: "functii",
+      type: "single",
+      question: "Which line correctly calls subtotal and stores the returned value in order_total?",
+      options: ["order_total(subtotal(500,.07))", "order_total = call subtotal(500,.07)", "order_total = subtotal(500,.07)", "order_total = def subtotal(500,.07)"],
+      correct: 2,
+      explanation: "A function is called with name(arguments), and the result can be assigned to a variable."
+    },
+    {
+      id: "py-572",
+      chapter: "functii",
+      type: "single",
+      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "___ calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal",
+      options: ["def", "function", "func"],
+      correct: 0,
+      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
+    },
+    {
+      id: "py-573",
+      chapter: "functii",
+      type: "single",
+      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "def calcSubtotal___\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal",
+      options: ["(amount, salesTaxRate):", "[amount, salesTaxRate]:", "(amount; salesTaxRate)"],
+      correct: 0,
+      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
+    },
+    {
+      id: "py-574",
+      chapter: "functii",
+      type: "single",
+      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "def calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    ___",
+      options: ["return subtotal", "print subtotal", "return amount"],
+      correct: 0,
+      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
+    },
+    {
+      id: "py-575",
+      chapter: "structura-documentare",
+      type: "single",
+      question: "Which option uses the conventional triple-quoted Python docstring form?",
+      options: ["\"\"\"Calculates area.\"\"\"", "# Calculates area.", "// Calculates area.", "/* Calculates area. */"],
+      correct: 0,
+      explanation: "Docstrings are strings placed at the start of a module, class, or function. The triple-quoted form is the commonly used convention and also allows multi-line text. # is a comment, while // and /* */ are not Python comment syntax."
+    },
+    {
+      id: "py-576",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def double(x):\n    return x * 2\n\nprint(double(5))",
+      options: ["5", "10", "None", "NameError"],
+      correct: 1,
+      explanation: "Parameter x is local to the function and receives 5; the function returns 10."
+    },
+    {
+      id: "py-577",
+      chapter: "functii",
+      type: "single",
+      question: "What does a Python function return if it reaches the end without return?",
+      options: ["0", "False", "None", "An error"],
+      correct: 2,
+      explanation: "Without an explicit return, Python returns None."
+    },
+    {
+      id: "py-578",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def greet():\n    print(\"Hello\")\n\ngreet()",
+      options: ["Hello", "None", "0", "Error"],
+      correct: 0,
+      explanation: "The function runs print even though it has no return."
+    },
+    {
+      id: "py-579",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def f(x):\n    return x\n    return x * 3\n\nprint(f(5))",
+      options: ["5", "10", "15", "Nothing"],
+      correct: 0,
+      explanation: "return exits the function immediately; the line return x*3 is never executed."
+    },
+    {
+      id: "py-580",
+      chapter: "functii",
+      type: "single",
+      question: "Which call uses a keyword argument for height?",
+      options: ["area(5,10)", "area(width=5, height=10)", "area[5,10]", "area(width:5,height:10)"],
+      correct: 1,
+      explanation: "Keyword arguments are written as parameter=value in the call."
+    },
+    {
+      id: "py-581",
+      chapter: "functii",
+      type: "true_false",
+      question: "Parameters are named in the function definition.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
+    },
+    {
+      id: "py-582",
+      chapter: "functii",
+      type: "true_false",
+      question: "Arguments are values supplied when calling the function.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
+    },
+    {
+      id: "py-583",
+      chapter: "functii",
+      type: "true_false",
+      question: "A function can never return a string.",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
+    },
+    {
+      id: "py-584",
+      chapter: "functii",
+      type: "single",
+      question: "What error occurs?",
+      code: "def make_value():\n    local_value = 10\n\nmake_value()\nprint(local_value)",
+      options: ["No error", "NameError", "SyntaxError", "ZeroDivisionError"],
+      correct: 1,
+      explanation: "local_value exists only inside the function, so the name is undefined outside it."
+    },
+    {
+      id: "py-585",
+      chapter: "functii",
+      type: "single",
+      question: "Which statement changes the global variable x from inside a function?",
+      options: ["global x", "public x", "extern x", "nonlocal x"],
+      correct: 0,
+      explanation: "The keyword global declares that the name refers to the global variable."
+    },
+    {
+      id: "py-586",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.frexp(21) returns a mantissa and an exponent.",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
+    },
+    {
+      id: "py-587",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.fabs(-14) == 14.0",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
+    },
+    {
+      id: "py-588",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.fmod(21,-14) == 1.5",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
+    },
+    {
+      id: "py-589",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the value and type of c?",
+      code: "import math\na = -14\nc = math.fabs(a)",
+      options: ["14 (int)", "14.0 (float)", "-14.0 (float)", "True (bool)"],
+      correct: 1,
+      explanation: "math.fabs returns the absolute value as a float."
+    },
+    {
+      id: "py-590",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is d?",
+      code: "import math\nd = math.fmod(21, -14)",
+      options: ["7.0", "-7.0", "1.5", "0"],
+      correct: 0,
+      explanation: "math.fmod(21,-14) keeps the sign of the first operand for the remainder; the result is 7.0."
+    },
+    {
+      id: "py-591",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
+      code: "import math\nx = 77.4\nupper = ___(x)\nlower = math.floor(x)\nwhole = math.trunc(x)",
+      options: ["math.ceil", "math.floor", "math.trunc"],
+      correct: 0,
+      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
+    },
+    {
+      id: "py-592",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
+      code: "import math\nx = 77.4\nupper = math.ceil(x)\nlower = ___(x)\nwhole = math.trunc(x)",
+      options: ["math.ceil", "math.floor", "math.trunc"],
+      correct: 1,
+      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
+    },
+    {
+      id: "py-593",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
+      code: "import math\nx = 77.4\nupper = math.ceil(x)\nlower = math.floor(x)\nwhole = ___(x)",
+      options: ["math.ceil", "math.floor", "math.trunc"],
+      correct: 2,
+      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
+    },
+    {
+      id: "py-594",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression computes 3 to the power of 2 using math?",
+      options: ["math.pow(3,2)", "math.sqrt(3,2)", "math.power(3,2)", "pow.math(3,2)"],
+      correct: 0,
+      explanation: "math.pow(a,b) calculates a raised to the power b."
+    },
+    {
+      id: "py-595",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression computes the square root of 16?",
+      options: ["math.sqrt(16)", "math.sq(16)", "sqrt.math(16)", "math.root(16)"],
+      correct: 0,
+      explanation: "math.sqrt(x) calculates the square root."
+    },
+    {
+      id: "py-596",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which TWO methods return the current local date and time as a datetime object?",
+      options: ["datetime.datetime.now()", "datetime.datetime.today()", "datetime.datetime.strftime()", "datetime.datetime.strptime()"],
+      correct: [0, 1],
+      explanation: "now() and today() can both produce the current local date and time; strftime formats, strptime parses."
+    },
+    {
+      id: "py-597",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function converts a datetime object to formatted text?",
+      options: ["strftime()", "strptime()", "today()", "weekday()"],
+      correct: 0,
+      explanation: "strftime formats a date/time into a string."
+    },
+    {
+      id: "py-598",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What does weekday() return?",
+      options: ["A weekday name", "An integer from 0 to 6", "An integer from 1 to 7", "A formatted date"],
+      correct: 1,
+      explanation: "weekday() uses 0 for Monday and 6 for Sunday."
+    },
+    {
+      id: "py-599",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function chooses one random item from a list?",
+      options: ["random.choice()", "random.sample()", "random.shuffle()", "random.one()"],
+      correct: 0,
+      explanation: "choice(sequence) returns a single randomly chosen element."
+    },
+    {
+      id: "py-600",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function rearranges a list in random order in place?",
+      options: ["random.choice()", "random.shuffle()", "random.sample()", "random.randint()"],
+      correct: 1,
+      explanation: "shuffle(list) modifies the list in place."
+    },
+    {
+      id: "py-601",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression returns two distinct random items from countries?",
+      options: ["random.choice(countries,2)", "random.sample(countries,2)", "random.shuffle(countries,2)", "random.randint(countries,2)"],
+      correct: 1,
+      explanation: "sample(population,k) returns k distinct elements."
+    },
+    {
+      id: "py-602",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What values can randint(1,3) return?",
+      options: ["1 or 2 only", "2 or 3 only", "1, 2, or 3", "0, 1, 2, or 3"],
+      correct: 2,
+      explanation: "randint(a,b) includes both endpoints."
+    },
+    {
+      id: "py-603",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression can generate 3, 6, 9, ... up to 99?",
+      options: ["random.randrange(3,102,3)", "random.randrange(3,99,2)", "random.randint(3,99,3)", "random.random(3,99)"],
+      correct: 0,
+      explanation: "randrange(start,stop,step) does not include stop; 102 allows 99 to be possible."
+    },
+    {
+      id: "py-604",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What range of values does random.random() return?",
+      options: ["0.0 <= x < 1.0", "1 <= x <= 100", "-1 < x < 1", "Only integers 0 and 1"],
+      correct: 0,
+      explanation: "random() returns a float in the range [0.0, 1.0)."
+    },
+    {
+      id: "py-605",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What type of error is this?",
+      code: "trees = ['fir','oak','pine']\nprint(trees[3])",
+      options: ["Syntax error", "Runtime error", "Logic error", "No error"],
+      correct: 1,
+      explanation: "The code is syntactically valid, but accessing a nonexistent index produces an IndexError at run time."
+    },
+    {
+      id: "py-606",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What type of error is this?",
+      code: "x = 5\nif x > 3\n    print(x)",
+      options: ["Syntax error", "Runtime error", "Logic error", "No error"],
+      correct: 0,
+      explanation: "A colon is missing after the if condition, so the parser cannot interpret the code."
+    },
+    {
+      id: "py-607",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "The program runs, but calculates a rectangle area using width + height. What kind of error is this?",
+      options: ["Syntax error", "Runtime error", "Logic error", "Import error"],
+      correct: 2,
+      explanation: "The program runs, but the algorithm produces the wrong result."
+    },
+    {
+      id: "py-608",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.isnan(float('nan')) is True.",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
+    },
+    {
+      id: "py-609",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "float('nan') == float('nan') is True.",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
+    },
+    {
+      id: "py-610",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.isnan(33.0) is True.",
+      code: "import math",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
+    },
+    {
+      id: "py-611",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
+      code: "___:\n    print(a / b)\nexcept:\n    print(\"This did not work.\")\nfinally:\n    print(\"Thank you.\")",
+      options: ["try", "if", "while"],
+      correct: 0,
+      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
+    },
+    {
+      id: "py-612",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
+      code: "try:\n    print(a / b)\n___:\n    print(\"This did not work.\")\nfinally:\n    print(\"Thank you.\")",
+      options: ["except", "else", "finally"],
+      correct: 0,
+      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
+    },
+    {
+      id: "py-613",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
+      code: "try:\n    print(a / b)\nexcept:\n    print(\"This did not work.\")\n___:\n    print(\"Thank you.\")",
+      options: ["finally", "except", "pass"],
+      correct: 0,
+      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
+    },
+    {
+      id: "py-614",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "finally runs whether an exception occurs or not.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "except runs on an exception, else runs on success, and finally runs either way."
+    },
+    {
+      id: "py-615",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "try and except both execute on every successful operation.",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "except runs on an exception, else runs on success, and finally runs either way."
+    },
+    {
+      id: "py-616",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "else runs when the try block completes without an exception.",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "except runs on an exception, else runs on success, and finally runs either way."
+    },
+    {
+      id: "py-617",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which keyword explicitly raises an exception?",
+      options: ["throw", "raise", "except", "error"],
+      correct: 1,
+      explanation: "In Python we use raise to raise an exception."
+    },
+    {
+      id: "py-618",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What happens?",
+      code: "assert 2 + 2 == 5",
+      options: ["Nothing", "True is printed", "AssertionError", "ValueError"],
+      correct: 2,
+      explanation: "2+2==5 is false, so assert raises AssertionError."
+    },
+    {
+      id: "py-619",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether two values are equal?",
+      options: ["assertIn", "assertEqual", "assertIsInstance", "assertTrue"],
+      correct: 1,
+      explanation: "self.assertEqual(a,b) checks that the values are equal."
+    },
+    {
+      id: "py-620",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether an item is in a container?",
+      options: ["assertIn", "assertEqual", "assertIs", "assertIsInstance"],
+      correct: 0,
+      explanation: "self.assertIn(item, container) checks membership."
+    },
+    {
+      id: "py-621",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether two references point to the same object?",
+      options: ["assertEqual", "assertIs", "assertIn", "assertTrue"],
+      correct: 1,
+      explanation: "assertIs(a,b) is conceptually equivalent to checking a is b."
+    },
+    {
+      id: "py-622",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether an object belongs to a class?",
+      options: ["assertIsInstance", "assertEqual", "assertIn", "assertFalse"],
+      correct: 0,
+      explanation: "assertIsInstance(obj, Class) checks the type/instance."
+    },
+    {
+      id: "py-623",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which method name is discovered by unittest's default test loader?",
+      options: ["test_territory", "_test_territory", "territory_test", "testcase_territory"],
+      correct: 0,
+      explanation: "By default, test methods start with the prefix test."
+    },
+    {
+      id: "py-624",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Arrange the minimal unittest program structure. Choose the option with the correct order of code lines.",
+      options: ["class TestMath(unittest.TestCase):\nimport unittest\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()", "    unittest.main()\nif __name__ == \"__main__\":\n        self.assertEqual(2 + 3, 5)\n    def test_add(self):\nclass TestMath(unittest.TestCase):\nimport unittest", "import unittest\nclass TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()", "class TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()\nimport unittest"],
+      correct: 2,
+      explanation: "We import unittest, define a TestCase class and a test_ method, then start unittest.main() when the file is run directly."
+    },
+    {
+      id: "py-625",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
+      code: "age = 2           → ___\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → str",
+      options: ["bool", "float", "int", "str"],
+      correct: 2,
+      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
+    },
+    {
+      id: "py-626",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
+      code: "age = 2           → int\nminor = False      → ___\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → str",
+      options: ["bool", "float", "int", "str"],
+      correct: 0,
+      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
+    },
+    {
+      id: "py-627",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
+      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → ___\nweight = 123.5     → float\nzip_code = \"81000\" → str",
+      options: ["bool", "float", "int", "str"],
+      correct: 3,
+      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
+    },
+    {
+      id: "py-628",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
+      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → ___\nzip_code = \"81000\" → str",
+      options: ["bool", "float", "int", "str"],
+      correct: 1,
+      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
+    },
+    {
+      id: "py-629",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
+      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → ___",
+      options: ["bool", "float", "int", "str"],
+      correct: 3,
+      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
+    },
+    {
+      id: "py-630",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
+      code: "a = 11\nb = 4\n\nResult 2    → ___\nResult 3    → a % b\nResult 2.75 → a / b",
+      options: ["a / b", "a // b", "a % b"],
+      correct: 1,
+      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
+    },
+    {
+      id: "py-631",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
+      code: "a = 11\nb = 4\n\nResult 2    → a // b\nResult 3    → ___\nResult 2.75 → a / b",
+      options: ["a / b", "a // b", "a % b"],
+      correct: 2,
+      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
+    },
+    {
+      id: "py-632",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
+      code: "a = 11\nb = 4\n\nResult 2    → a // b\nResult 3    → a % b\nResult 2.75 → ___",
+      options: ["a / b", "a // b", "a % b"],
+      correct: 0,
+      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
+    },
+    {
+      id: "py-633",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is the result of the expression?",
+      code: "(3 * (1 + 2) ** 2) - ((2 ** 2) * 3)",
+      options: ["3", "13", "15", "69"],
+      correct: 2,
+      explanation: "First: (1+2)=3, then 3**2=9 and 3*9=27. Separately, 2**2=4 and 4*3=12. The result is 27-12=15."
+    },
+    {
+      id: "py-634",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the data types that make the speed calculation as precise as possible. Which option belongs in place of the ___ marker in the code below?",
+      code: "distance = ___(input(\"Enter the distance traveled in feet: \"))\ndistance_miles = distance / 5280\n\ntime = float(input(\"Enter the time elapsed in seconds: \"))\ntime_hours = time / 3600\n\nvelocity = distance_miles / time_hours",
+      options: ["int", "str", "float"],
+      correct: 2,
+      explanation: "Both distance and time may contain fractions. float preserves decimal values and avoids losing precision through conversion to int."
+    },
+    {
+      id: "py-635",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the data types that make the speed calculation as precise as possible. Which option belongs in place of the ___ marker in the code below?",
+      code: "distance = float(input(\"Enter the distance traveled in feet: \"))\ndistance_miles = distance / 5280\n\ntime = ___(input(\"Enter the time elapsed in seconds: \"))\ntime_hours = time / 3600\n\nvelocity = distance_miles / time_hours",
+      options: ["int", "str", "float"],
+      correct: 2,
+      explanation: "Both distance and time may contain fractions. float preserves decimal values and avoids losing precision through conversion to int."
+    },
+    {
+      id: "py-636",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which TWO math functions can be combined to first obtain an absolute value and then round that non-negative value downward?",
+      options: ["math.fmod(x)", "math.frexp(x)", "math.floor(x)", "math.ceil(x)", "math.fabs(x)"],
+      correct: [2, 4],
+      explanation: "math.fabs(x) turns the value into its absolute value, so the result is non-negative. math.floor(...) then rounds it down to the nearest integer. The wording specifies the order to avoid confusing floor with trunc."
+    },
+    {
+      id: "py-637",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which import statement lets the program call sqrt using the name squareRoot?",
+      options: ["import math.sqrt as squareRoot", "import sqrt from math as squareRoot", "from math import sqrt as squareRoot", "from math.sqrt as squareRoot"],
+      correct: 2,
+      explanation: "The correct syntax for importing a function and assigning it an alias is: from module import function as alias."
+    },
+    {
+      id: "py-638",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which TWO expressions can generate a random integer from 5 through 11 inclusive?",
+      options: ["random.randint(5, 12)", "random.randint(5, 11)", "random.randrange(5, 12, 1)", "random.randrange(5, 11, 1)"],
+      correct: [1, 2],
+      explanation: "randint(5,11) includes both limits. randrange(5,12,1) does not include 12, so it can produce 5…11."
+    },
+    {
+      id: "py-639",
+      chapter: "functii",
+      type: "single",
+      question: "Arrange the complete function so it returns the first line when the file exists and None otherwise. Choose the option with the correct order of code lines.",
+      options: ["    if os.path.isfile(filename):\ndef get_first_line(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None", "        return None\n    else:\n            return file.readline()\n        with open(filename, 'r') as file:\n    if os.path.isfile(filename):\ndef get_first_line(filename):", "def get_first_line(filename):\n    if os.path.isfile(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None", "    if os.path.isfile(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None\ndef get_first_line(filename):"],
+      correct: 2,
+      explanation: "The function is defined first. Then the file's existence is checked. If it exists, it is opened in mode r and readline() is returned; otherwise None is returned."
+    },
+    {
+      id: "py-640",
+      chapter: "input-output",
+      type: "single",
+      question: "Complete lines 05 and 06 so blank lines are ignored and end-of-file is detected. Which option belongs in place of the ___ marker in the code below?",
+      code: "inventory = open(\"inventory.txt\", \"r\")\neof = False\nwhile eof == False:\n    line = inventory.readline()\n    ___\n        if line != '':\n            print(line)\n        else:\n            print(\"End of file\")\n            eof = True\n            inventory.close()",
+      options: ["if line != '\\n':", "if line == '\\n':", "if line is None:"],
+      correct: 0,
+      explanation: "readline() returns '\\n' for a blank line and '' at EOF. The first condition ignores blank lines, and the second allows detecting the end of the file."
+    },
+    {
+      id: "py-641",
+      chapter: "input-output",
+      type: "single",
+      question: "Complete lines 05 and 06 so blank lines are ignored and end-of-file is detected. Which option belongs in place of the ___ marker in the code below?",
+      code: "inventory = open(\"inventory.txt\", \"r\")\neof = False\nwhile eof == False:\n    line = inventory.readline()\n    if line != '\\n':\n        ___\n            print(line)\n        else:\n            print(\"End of file\")\n            eof = True\n            inventory.close()",
+      options: ["if line != '':", "if line == '':", "if line is None:"],
+      correct: 0,
+      explanation: "readline() returns '\\n' for a blank line and '' at EOF. The first condition ignores blank lines, and the second allows detecting the end of the file."
+    },
+    {
+      id: "py-642",
+      chapter: "input-output",
+      type: "single",
+      question: "Which code should be written at line 02?",
+      code: "print(\"What is your name?\")\n# line 02\nprint(name)",
+      options: ["name = input", "input(\"name\")", "input(name)", "name = input()"],
+      correct: 3,
+      explanation: "print(name) on line 03 needs a name variable. input() reads the value and the assignment stores it in name."
+    },
+    {
+      id: "py-643",
+      chapter: "input-output",
+      type: "single",
+      question: "Which file mode meets all requirements?",
+      options: ["open(\"local_data\", \"r\")", "open(\"local_data\", \"r+\")", "open(\"local_data\", \"w+\")", "open(\"local_data\", \"w\")"],
+      correct: 2,
+      explanation: "w+ allows both reading and writing, creates the file if it does not exist, and truncates any existing content."
+    },
+    {
+      id: "py-644",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the decision structure for a real b-th root calculation. Choose the option with the correct order of code lines.",
+      options: ["        answer = -((-a) ** (1 / b))\n    else:\n        answer = \"Result is an imaginary number\"\n    if b % 2 == 0:\nelse:\n    answer = a ** (1 / b)\nif a >= 0:", "if a >= 0:\n    answer = a ** (1 / b)\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))", "    answer = a ** (1 / b)\nif a >= 0:\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))", "    answer = a ** (1 / b)\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))\nif a >= 0:"],
+      correct: 1,
+      explanation: "For a >= 0, the formula a**(1/b) can be used directly. If a is negative and the root degree b is even, the root is not real. If b is odd, the real result must be negative: -((-a)**(1/b))."
+    },
+    {
+      id: "py-645",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the conditions so every age receives the required rating. Choose the option with the correct order of code lines.",
+      options: ["    rating = \"C\"\nif age is None:\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"", "    rating = \"A\"\nelse:\n    rating = \"T\"\nelif age < 18:\n    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nif age is None:", "if age is None:\n    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"", "    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"\nif age is None:"],
+      correct: 2,
+      explanation: "None must be checked before the numeric comparisons. In Python, `is None` is the recommended form. Then ages under 13 get C, 13-17 get T, and 18+ fall into else and get A."
+    },
+    {
+      id: "py-646",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the grade conditions in the correct order. Choose the option with the correct order of code lines.",
+      options: ["    letter_grade = \"A\"\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\"\nif grade >= 90:", "    letter_grade = \"F\"\nelse:\n    letter_grade = \"D\"\nelif grade >= 65:\n    letter_grade = \"C\"\nelif grade >= 70:\n    letter_grade = \"B\"\nelif grade >= 80:\n    letter_grade = \"A\"\nif grade >= 90:", "    letter_grade = \"A\"\nif grade >= 90:\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\"", "if grade >= 90:\n    letter_grade = \"A\"\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\""],
+      correct: 3,
+      explanation: "The conditions must be checked from highest to lowest. Once 90+ has been ruled out, >=80 automatically represents 80-89, and so on."
+    },
+    {
+      id: "py-647",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Complete the loop so it stops when product ID 6 is found. Which option belongs in place of the ___ marker in the code below?",
+      code: "productIdList = [0,1,2,3,4,5,6,7,8,9]\nindex = 0\n\n___ index < 10:\n    print(productIdList[index])\n    if productIdList[index] == 6:\n        break\n    else:\n        index += 1",
+      options: ["while", "for", "if", "break"],
+      correct: 0,
+      explanation: "The condition index < 10 calls for a while loop. Once the value 6 is found, break exits the loop immediately."
+    },
+    {
+      id: "py-648",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Complete the loop so it stops when product ID 6 is found. Which option belongs in place of the ___ marker in the code below?",
+      code: "productIdList = [0,1,2,3,4,5,6,7,8,9]\nindex = 0\n\nwhile index < 10:\n    print(productIdList[index])\n    if productIdList[index] == 6:\n        ___\n    else:\n        index += 1",
+      options: ["while", "for", "if", "break"],
+      correct: 3,
+      explanation: "The condition index < 10 calls for a while loop. Once the value 6 is found, break exits the loop immediately."
+    },
+    {
+      id: "py-649",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which statement inserted at Line 1 makes print(len(s2)) display 2?",
+      code: "s = \"Python is easy\"\ns1 = s[6:-4]\n# Line 1\nprint(len(s2))",
+      options: ["s2 = s1.lstrip()", "s2 = s1.rstrip()", "s2 = s1.strip()", "s2 = s1.replace(' ','')"],
+      correct: 2,
+      explanation: "s1 is \" is \" (space + is + space). strip() removes the spaces from both ends, leaving \"is\", with length 2."
+    },
+    {
+      id: "py-650",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is printed by the final print(x)?",
+      code: "x = [13, 4, 17, 10]\nw = x[1:]\nu = x[1:]\ny = x\nu[0] = 50\ny[1] = 40\nprint(x)",
+      options: ["[13, 40, 17, 10]", "[50, 40, 10]", "[13, 4, 17, 10]", "[50, 40, 17, 10]"],
+      correct: 0,
+      explanation: "u = x[1:] creates a separate list, so u[0]=50 does not modify x. y=x creates an alias to the same list, so y[1]=40 does modify x."
+    },
+    {
+      id: "py-651",
+      chapter: "structura-documentare",
+      type: "single",
+      question: "How should a single-line explanatory comment be added to Python code?",
+      options: ["Place the comment after # on the line.", "Place it after the program separated by a blank line.", "Place it before the program without #.", "Place it inside parentheses."],
+      correct: 0,
+      explanation: "# marks the start of the comment through to the end of the line."
+    },
+    {
+      id: "py-652",
+      chapter: "structura-documentare",
+      type: "true_false",
+      question: "Lines 01 through 04 are ignored as comments.",
+      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
+    },
+    {
+      id: "py-653",
+      chapter: "structura-documentare",
+      type: "true_false",
+      question: "The # character is optional on lines 01 through 04.",
+      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
+    },
+    {
+      id: "py-654",
+      chapter: "structura-documentare",
+      type: "true_false",
+      question: "The string assigned to comment on line 06 is itself a Python comment.",
+      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
+    },
+    {
+      id: "py-655",
+      chapter: "structura-documentare",
+      type: "true_false",
+      question: "The text after # on line 07 is ignored by Python.",
+      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
+    },
+    {
+      id: "py-656",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Does the grade-converter code require a change to the if/elif conditions?",
+      code: "if marks >= 90:\n    grade = 'A'\nelif marks >= 80:\n    grade = 'B'\nelif marks >= 70:\n    grade = 'C'\nelif marks >= 65:\n    grade = 'D'\nelse:\n    grade = 'E'",
+      options: ["Line 1 must use marks <= 90.", "Line 2 must also check marks <= 90.", "Line 3 must also check marks <= 80.", "No changes are required."],
+      correct: 3,
+      explanation: "The conditions are checked from highest to lowest. If marks>=90 was false, the next elif marks>=80 automatically covers 80-89; the same principle continues."
+    },
+    {
+      id: "py-657",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is the value of result?",
+      code: "result = 8 // 6 % 5 + 2 ** 3 - 2\nprint(result)",
+      options: ["8", "9", "7", "6"],
+      correct: 2,
+      explanation: "// and % have the same priority and are evaluated left to right: 8//6=1, 1%5=1. ** is calculated first: 2**3=8. Then 1+8-2=7."
+    },
+    {
+      id: "py-658",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is printed?",
+      code: "s = 'AB CD'\nitems = list(s)\nitems.append('EF')\nprint(items)",
+      options: ["['A', 'B', 'C', 'D', 'E', 'F']", "['AB CD', 'EF']", "['A', 'B', ' ', 'C', 'D', 'EF']", "['A', 'B', 'C', 'D', 'EF']"],
+      correct: 2,
+      explanation: "list(s) turns every character of the string into a separate element, including the space. Then append('EF') adds the string 'EF' as ONE single element at the end of the list. That is why print shows ['A', 'B', ' ', 'C', 'D', 'EF']."
+    },
+    {
+      id: "py-659",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which line correctly prints the numeric sum entered by the user?",
+      code: "x = input(\"Enter First Number: \")\ny = input(\"Enter Second Number: \")\n# Line 1",
+      options: ["print('The Result:' + str(int(x + y)))", "print('The Result:' + (int(x) + int(y)))", "print('The Result:' + str(int(x) + int(y)))", "print('The Result:' + int(x + y))"],
+      correct: 2,
+      explanation: "input() produces str. Each value must be converted to int separately before adding them, then the sum must be converted to str to concatenate it with the text."
+    },
+    {
+      id: "py-660",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which statement makes the final value of a equal to 9?",
+      code: "a = 2\na += 1\n# Line 1",
+      options: ["a **= 2", "a *= 2", "a += 2", "a -= 2"],
+      correct: 0,
+      explanation: "After a=2 and a+=1, a becomes 3. a**=2 means a = a**2, so 3**2=9."
+    },
+    {
+      id: "py-661",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What are the data types of c1, c2, and c3?",
+      code: "a1 = '10'\nb1 = 3\nc1 = a1 * b1\n\na2 = 10\nb2 = 3\nc2 = a2 / b2\n\na3 = 2.6\nb3 = 1\nc3 = a3 / b3",
+      options: ["str, int, int", "str, float, float", "str, int, float", "str, str, str"],
+      correct: 1,
+      explanation: "'10' * 3 repeats the string and produces str. The / operator produces float in Python 3 for both int/int and float/int."
+    },
+    {
+      id: "py-662",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is printed?",
+      code: "a = 15\nb = 5\nprint(a / b)",
+      options: ["3", "3.0", "0.0", "0"],
+      correct: 1,
+      explanation: "In Python 3, the / operator returns a float even when the division is exact: 15/5 = 3.0."
+    },
+    {
+      id: "py-663",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "What is the sequence of Boolean results?",
+      code: "n1 = [10,20,30,40,50]\nn2 = [10,20,30,40,50]\nprint(n1 is n2)\nprint(n1 == n2)\nn1 = n2\nprint(n1 is n2)\nprint(n1 == n2)",
+      options: ["False, True, False, True", "False, True, True, True", "False, False, True, True", "True, False, True, False"],
+      correct: 1,
+      explanation: "Initially the lists have equal content but are different objects: is=False, ==True. After n1=n2, both names point to the same object: is=True and ==True."
+    },
+    {
+      id: "py-664",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → ___\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → True",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
+    },
+    {
+      id: "py-665",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → ___\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → True",
+      options: ["True", "False"],
+      correct: 1,
+      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
+    },
+    {
+      id: "py-666",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → ___\nprint(numList == alphaList) → True",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
+    },
+    {
+      id: "py-667",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
+      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → ___",
+      options: ["True", "False"],
+      correct: 0,
+      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
+    },
+    {
+      id: "py-668",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Which expression correctly calculates 'a multiplied by negative one, then raised to the second power'?",
+      options: ["-a ** 2", "(-a) ** 2", "-(a ** 2)", "a * (-1 ** 2)"],
+      correct: 1,
+      explanation: "The parentheses force -a to be computed first, and the result is then raised to the power of 2. Without parentheses, ** has priority over the unary minus."
+    },
+    {
+      id: "py-669",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the code segments to print all prime numbers from 2 through 100. Choose the option with the correct order of code lines.",
+      options: ["    p = p + 1\n        print(p)\n    if is_prime == True:\n            break\n            is_prime = False\n        if p % i == 0:\n    for i in range(2, p):\n    is_prime = True\nwhile p <= 100:\np = 2", "p = 2\nwhile p <= 100:\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1", "while p <= 100:\np = 2\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1", "while p <= 100:\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1\np = 2"],
+      correct: 1,
+      explanation: "For each p, we assume it is prime, look for a divisor between 2 and p-1, stop the search at the first divisor found, and print p only if is_prime remained True."
+    },
+    {
+      id: "py-670",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Arrange the code to identify lower case, upper case, or mixed case input. Choose the option with the correct order of code lines.",
+      options: ["if name.lower() == name:\nname = input(\"Enter your name: \")\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")", "    print(name, \"is mixed case.\")\nelse:\n    print(name, \"is all upper case.\")\nelif name.upper() == name:\n    print(name, \"is all lower case.\")\nif name.lower() == name:\nname = input(\"Enter your name: \")", "name = input(\"Enter your name: \")\nif name.lower() == name:\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")", "if name.lower() == name:\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")\nname = input(\"Enter your name: \")"],
+      correct: 2,
+      explanation: "The name is read, then compared with its lower() version. If it is not entirely lowercase, upper() is checked; otherwise it is mixed case."
+    },
+    {
+      id: "py-671",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
+      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: ___\nSecond operation: addition\nEquivalent expression: (a + (b*c)) - d",
+      options: ["a + b", "b * c", "c - d"],
+      correct: 1,
+      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
+    },
+    {
+      id: "py-672",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
+      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: b * c\nSecond operation: ___\nEquivalent expression: (a + (b*c)) - d",
+      options: ["addition", "subtraction"],
+      correct: 0,
+      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
+    },
+    {
+      id: "py-673",
+      chapter: "operatori-tipuri-date",
+      type: "single",
+      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
+      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: b * c\nSecond operation: addition\nEquivalent expression: ___",
+      options: ["(a+b) * (c-d)", "(a + (b*c)) - d", "a + ((b*c) - d)"],
+      correct: 1,
+      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
+    },
+    {
+      id: "py-674",
+      chapter: "input-output",
+      type: "single",
+      question: "Which input statement guarantees that totalItems is stored as a whole number even if the user enters a decimal value?",
+      options: ["totalItems = input(\"How many items would you like?\")", "totalItems = float(input(\"How many items would you like?\"))", "totalItems = str(input(\"How many items would you like?\"))", "totalItems = int(float(input(\"How many items would you like?\")))"],
+      correct: 3,
+      explanation: "input() produces str. float() also accepts text like \"4.7\", and int() then converts the value to a whole number by dropping the decimal part."
+    },
+    {
+      id: "py-675",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
+      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: ___\nData type of room: string\nReason the membership test fails for input such as 1: Mismatched data type(s)",
+      options: ["bool and string", "float and bool", "int and string", "float and int"],
+      correct: 2,
+      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
+    },
+    {
+      id: "py-676",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
+      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: int and string\nData type of room: ___\nReason the membership test fails for input such as 1: Mismatched data type(s)",
+      options: ["bool", "float", "int", "string"],
+      correct: 3,
+      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
+    },
+    {
+      id: "py-677",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
+      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: int and string\nData type of room: string\nReason the membership test fails for input such as 1: ___",
+      options: ["Invalid syntax", "Mismatched data type(s)", "Misnamed variable(s)"],
+      correct: 1,
+      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
+    },
+    {
+      id: "py-678",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which statement should be used when a divisor is found so the inner search stops immediately?",
+      code: "for i in range(2, p):\n    if p % i == 0:\n        is_prime = False\n        # missing statement",
+      options: ["continue", "pass", "break", "return True"],
+      correct: 2,
+      explanation: "In the primality-checking algorithm, once a divisor is found there is no need to test the remaining divisors; break exits the inner for loop."
+    },
+    {
+      id: "py-679",
+      chapter: "input-output",
+      type: "single",
+      question: "What does readline() return when the end of a text file is reached?",
+      options: ["'\\n'", "''", "None", "False"],
+      correct: 1,
+      explanation: "'\\n' can be read for a blank line in the file. At the end of the file, readline() returns the empty string ''."
     }
   ]
 };
