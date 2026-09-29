@@ -104,6 +104,14 @@ async function enterApp() {
     return;
   }
   allowedExams = data.map(r => r.exam_key);
+
+  // "Bine ai venit, Ion!" — numele = partea dinainte de @
+  const { data: sess } = await sb.auth.getSession();
+  const email = sess.session?.user?.email || "";
+  let name = email.split("@")[0];
+  name = name.charAt(0).toUpperCase() + name.slice(1);
+  $("#welcome-title").textContent = name ? `Bine ai venit, ${name}!` : "Bine ai venit!";
+
   renderDashboard();
   showScreen("screen-dashboard");
 }
