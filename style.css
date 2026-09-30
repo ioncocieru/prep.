@@ -582,3 +582,23 @@ input{ font-family: inherit; }
 .course-item.active{ background:#EEF3FE; color: var(--blue-dark); font-weight:600; box-shadow: inset 3px 0 0 var(--blue); }
 .course-num{ font-family: var(--font-mono); font-size:12px; color: var(--text-faint); }
 .course-empty{ padding:14px 16px; margin:0; font-size:13px; color: var(--text-muted); }
+
+/* ===== Cod în întrebări (blocuri colorate) ===== */
+.q-code code, .opt-code-block{ font-family: inherit; }
+.tok-k{ color:#C792EA; } .tok-s{ color:#C3E88D; } .tok-n{ color:#F78C6C; }
+.tok-c{ color:#7F93AD; font-style:italic; } .tok-b{ color:#82AAFF; }
+.inline-code{
+  font-family: var(--font-mono); font-size:.86em; padding:2px 7px; border-radius:6px;
+  background:#EEF3FE; color:#1B3A8C; font-weight:500;
+}
+.opt-text{ min-width:0; }
+.opt-code{
+  font-family: var(--font-mono); font-size:13.5px; padding:4px 10px; border-radius:7px;
+  background: var(--navy); color:#E4ECF7; white-space:pre-wrap; word-break:break-word; display:inline-block;
+}
+.opt-code-block{
+  margin:0; font-family: var(--font-mono); font-size:13px; line-height:1.55; padding:10px 14px;
+  border-radius:8px; background: var(--navy); color:#E4ECF7; white-space:pre; overflow-x:auto;
+}
+.dnd-chip .opt-code, .dnd-target-label .opt-code{ padding:2px 8px; font-size:12.5px; }
+.dnd-chip .opt-code-block{ font-size:12px; padding:8px 10px; }
