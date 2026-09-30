@@ -74,7 +74,7 @@ function typeLabel(type) {
   return {
     true_false: "Adevărat / Fals",
     single: "1 răspuns corect",
-    multiple: "2 răspunsuri corecte",
+    multiple: "Răspunsuri multiple",
     drag_drop: "Drag & drop"
   }[type] || type;
 }
@@ -480,16 +480,16 @@ function renderQuizQuestion() {
       <span class="q-type-badge">${typeLabel(q.type)}</span>
       <span class="q-chapter-badge">${chapterName}</span>
     </div>
-    <div class="q-text">${q.question}</div>
+    <div class="q-text">${fmt(q.question)}</div>
   `;
-  if (q.code) html += `<pre class="q-code">${escapeHtml(q.code)}</pre>`;
+  if (q.code) html += `<pre class="q-code"><code>${highlightCode(q.code)}</code></pre>`;
 
   if (q.type === "true_false") {
     html += renderTrueFalse(q, locked);
   } else if (q.type === "single") {
     html += renderSingle(q, locked);
   } else if (q.type === "multiple") {
-    html += `<p class="q-hint">Selectează exact 2 răspunsuri corecte.</p>` + renderMultiple(q, locked);
+    html += `<p class="q-hint">Selectează exact ${q.correct.length} răspunsuri corecte.</p>` + renderMultiple(q, locked);
   } else if (q.type === "drag_drop") {
     html += `<p class="q-hint">Atinge / trage fiecare element din lista de sus în caseta corectă.</p>` + renderDragDrop(q, locked);
   }
@@ -512,6 +512,63 @@ function escapeHtml(str) {
   return div.innerHTML;
 }
 
+/* ---------- Formatare text / cod (escape + blocuri de cod + culori) ---------- */
+function fmt(str) {
+  return escapeHtml(String(str ?? ""))
+    .replace(/`([^`]+)`/g, '<code class="inline-code">$1</code>')
+    .replace(/\n/g, "<br>");
+}
+
+function isCodeLike(s) {
+  s = String(s).trim();
+  if (!s || s.includes("`")) return false;
+  if (s.includes("\n") && /[:=()\[\]]/.test(s)) return true;
+  return /[A-Za-z_]\w*\s*\(/.test(s) ||
+    /\w\[[^\]]*\]/.test(s) ||
+    /[A-Za-z_\]\)]\s*(\*\*|\/\/|[+\-*\/%])?=(?!=)\s*\S/.test(s) ||
+    /[=!<>]=/.test(s) ||
+    /\d\s*(\*\*|\/\/|[%*\/+\-])\s*\d/.test(s) ||
+    /^(import|from|for|while|if|elif|else|def|return|print|with|assert|raise|try|except|global|pass|break|continue)\b/.test(s) ||
+    /^\s*[\[\{\(]['"\d].*[\]\}\)]$/.test(s) ||
+    /^["'].*["']$/.test(s);
+}
+
+function optionsAreCode(q) {
+  if (q.optionsCode === true) return true;
+  if (q.optionsCode === false || !q.options || q.options.length < 2) return false;
+  const n = q.options.filter(isCodeLike).length;
+  return n / q.options.length >= 0.75;
+}
+
+function renderCodeText(text) {
+  const t = String(text);
+  return t.includes("\n")
+    ? `<pre class="opt-code-block">${highlightCode(t)}</pre>`
+    : `<code class="opt-code">${highlightCode(t)}</code>`;
+}
+
+function renderOpt(q, opt) {
+  return optionsAreCode(q) ? renderCodeText(opt) : fmt(opt);
+}
+
+function renderChip(text) {
+  return isCodeLike(text) ? renderCodeText(text) : fmt(text);
+}
+
+function highlightCode(code) {
+  const esc = escapeHtml(String(code));
+  if (!state.currentExamKey || state.currentExamKey !== "python") return esc;
+  return esc.replace(
+    /(#.*$)|("(?:\\.|[^"\\\n])*"|'(?:\\.|[^'\\\n])*')|\b(def|return|if|elif|else|for|while|in|not|and|or|is|import|from|as|try|except|finally|with|break|continue|pass|class|lambda|raise|assert|global|None|True|False)\b|\b(\d+(?:\.\d+)?)\b|\b(print|input|int|str|float|bool|len|range|list|dict|set|tuple|open|sum|type|round|eval)\b(?=\()/gm,
+    (m, com, str, kw, num, bi) =>
+      com ? `<span class="tok-c">${com}</span>` :
+      str ? `<span class="tok-s">${str}</span>` :
+      kw  ? `<span class="tok-k">${kw}</span>` :
+      num ? `<span class="tok-n">${num}</span>` :
+            `<span class="tok-b">${bi}</span>`
+  );
+}
+
 /* ---------- Render: True / False ---------- */
 function renderTrueFalse(q, locked) {
   const ans = state.userAnswers[q.id];
@@ -524,7 +581,7 @@ function renderTrueFalse(q, locked) {
       if (idx === q.correct) cls += " correct";
       else if (ans === idx) cls += " incorrect";
     }
-    html += `<button type="button" class="${cls}" data-idx="${idx}" ${locked ? "disabled" : ""}>${opt}</button>`;
+    html += `<button type="button" class="${cls}" data-idx="${idx}" ${locked ? "disabled" : ""}>${fmt(opt)}</button>`;
   });
   html += `</div>`;
   return html;
@@ -545,7 +602,7 @@ function renderSingle(q, locked) {
     html += `
       <div class="${cls}" data-idx="${idx}">
         <span class="opt-mark">${String.fromCharCode(65 + idx)}</span>
-        <span>${opt}</span>
+        <span class="opt-text">${renderOpt(q, opt)}</span>
       </div>`;
   });
   html += `</div>`;
@@ -568,7 +625,7 @@ function renderMultiple(q, locked) {
     html += `
       <div class="${cls}" data-idx="${idx}">
         <span class="opt-mark">${selected ? "✓" : ""}</span>
-        <span>${opt}</span>
+        <span class="opt-text">${renderOpt(q, opt)}</span>
       </div>`;
   });
   html += `</div>`;
@@ -589,7 +646,7 @@ function renderDragDrop(q, locked) {
   html += `<div class="dnd-pool" id="dnd-pool">`;
   q.dragItems.forEach(item => {
     const used = usedItemIds.includes(item.id);
-    html += `<div class="dnd-chip ${used ? "used" : ""}" draggable="${!locked && !used}" data-item="${item.id}">${item.text}</div>`;
+    html += `<div class="dnd-chip ${used ? "used" : ""}" draggable="${!locked && !used}" data-item="${item.id}">${renderChip(item.text)}</div>`;
   });
   html += `</div>`;
 
@@ -603,10 +660,10 @@ function renderDragDrop(q, locked) {
     }
     html += `
       <div class="${zoneCls}" data-zone="${zone.id}">
-        <span class="dnd-target-label">${zone.label}</span>
+        <span class="dnd-target-label">${renderChip(zone.label)}</span>
         <span class="dnd-target-slot">
           ${placedItem
-            ? `<span class="dnd-chip" data-placed="${placedItem.id}">${placedItem.text}</span>`
+            ? `<span class="dnd-chip" data-placed="${placedItem.id}">${renderChip(placedItem.text)}</span>`
             : `<span class="dnd-empty-slot">Așază aici</span>`}
         </span>
       </div>`;
@@ -624,7 +681,7 @@ function renderFeedback(q) {
     <div class="q-feedback ${correct ? "ok" : "bad"}">
       <div>
         <strong>${label}</strong>
-        ${explanation}
+        ${fmt(explanation)}
       </div>
     </div>`;
 }
@@ -862,12 +919,12 @@ function finishQuiz() {
     item.className = "review-item " + (correct ? "right" : "wrong");
     item.innerHTML = `
       <div class="review-item-head ${correct ? "right" : "wrong"}">${correct ? "✓ Corect" : "✗ Greșit"} · Întrebarea ${i + 1}</div>
-      <div class="review-q">${q.question}</div>
+      <div class="review-q">${fmt(q.question)}</div>
       <div class="review-answer">
-        Răspunsul tău: ${userAnswerText || "<em>fără răspuns</em>"}
-        ${!correct ? `<br>Răspuns corect: ${correctAnswerText}` : ""}
+        Răspunsul tău: ${userAnswerText ? fmt(userAnswerText) : "<em>fără răspuns</em>"}
+        ${!correct ? `<br>Răspuns corect: ${fmt(correctAnswerText)}` : ""}
       </div>
-      ${q.explanation ? `<div class="review-explain">${q.explanation}</div>` : ""}
+      ${q.explanation ? `<div class="review-explain">${fmt(q.explanation)}</div>` : ""}
     `;
     reviewEl.appendChild(item);
   });
