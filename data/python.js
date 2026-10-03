@@ -1,42 +1,7 @@
 /* =====================================================================
-   BANCA DE ÎNTREBĂRI — IT SPECIALIST: PYTHON
-   =====================================================================
-   CUM ADAUGI ÎNTREBĂRI (citește o dată, apoi copiază tiparele de mai jos):
-
-   Fiecare întrebare este un obiect JavaScript în lista QUESTIONS.
-   Câmpuri comune tuturor tipurilor:
-     id        -> identificator unic, ex: "py-014" (nu trebuie să se repete)
-     chapter   -> trebuie să fie EXACT unul din id-urile din CHAPTERS mai jos
-     type      -> "true_false" | "single" | "multiple" | "drag_drop"
-     question  -> textul întrebării
-     code      -> (opțional) un fragment de cod Python afișat monospace
-     explanation -> (opțional, dar recomandat) explicație afișată după răspuns
-
-   TIPURI DE ÎNTREBĂRI:
-
-   1) "true_false"  -> Adevărat / Fals
-      options: ["Adevărat", "Fals"]
-      correct: 0  (index-ul răspunsului corect: 0 = Adevărat, 1 = Fals)
-
-   2) "single"  -> un singur răspuns corect din mai multe variante
-      options: ["varianta A", "varianta B", "varianta C", "varianta D"]
-      correct: 2   (index-ul variantei corecte, pornind de la 0)
-
-   3) "multiple"  -> exact 2 răspunsuri corecte
-      options: ["varianta A", "varianta B", "varianta C", "varianta D"]
-      correct: [0, 3]   (indecșii celor 2 variante corecte)
-
-   4) "drag_drop"  -> utilizatorul trage elemente în casetele corecte
-      dragItems: [{ id:"a", text:"list" }, { id:"b", text:"tuple" }, ...]
-      dropZones: [
-        { id:"z1", label:"Structură mutabilă, cu paranteze pătrate", correctItemId:"a" },
-        { id:"z2", label:"Structură imutabilă, cu paranteze rotunde", correctItemId:"b" }
-      ]
-      -> Poți avea oricâte perechi drag-item / drop-zone vrei (recomandat 3-6).
-
-   Nu șterge capitolele din CHAPTERS — poți doar să adaugi întrebări noi
-   cu "chapter" = id-ul capitolului potrivit. Poți adăuga 300+ întrebări,
-   pur și simplu continuă lista din interiorul parantezelor pătrate [ ].
+   BANCA DE ÎNTREBĂRI — IT SPECIALIST: PYTHON  (versiune curățată)
+   Tipuri: "true_false" | "single" | "multiple" (exact 2 corecte) | "drag_drop"
+   Capitolele din CHAPTERS nu se șterg; întrebările noi se adaugă la finalul listei QUESTIONS.
    ===================================================================== */
 
 window.EXAM_DATA = window.EXAM_DATA || {};
@@ -49,14 +14,14 @@ window.EXAM_DATA.python = {
   description: "Scrierea, recunoașterea și depanarea codului Python: variabile, structuri de control, funcții și module.",
 
   CHAPTERS: [
-    { id: "operatori-tipuri",   name: "Operatori și tipuri de date" },
-    { id: "structuri-control",  name: "Structuri de control (if, for, while)" },
-    { id: "structuri-date",     name: "Structuri de date (liste, tupluri, dicționare)" },
-    { id: "input-output",       name: "Input / Output și fișiere" },
-    { id: "functii",            name: "Funcții" },
-    { id: "module-librarii",    name: "Module și librării" },
-    { id: "gestionare-erori",   name: "Gestionarea erorilor" },
-    { id: "structura-cod",      name: "Structura și documentarea codului" }
+    { id: "operatori-tipuri", name: "Operatori și tipuri de date" },
+    { id: "structuri-control", name: "Structuri de control (if, for, while)" },
+    { id: "structuri-date", name: "Structuri de date (liste, tupluri, dicționare)" },
+    { id: "input-output", name: "Input / Output și fișiere" },
+    { id: "functii", name: "Funcții" },
+    { id: "module-librarii", name: "Module și librării" },
+    { id: "gestionare-erori", name: "Gestionarea erorilor" },
+    { id: "structura-cod", name: "Structura și documentarea codului" }
   ],
 
   QUESTIONS: [
@@ -64,3458 +29,3090 @@ window.EXAM_DATA.python = {
       id: "py-001",
       chapter: "operatori-tipuri",
       type: "true_false",
-      question: "În Python, tipul unei variabile poate fi schimbat după ce a fost creată (tipare dinamică).",
-      options: ["Adevărat", "Fals"],
+      question: "In Python, the type of a variable can change after it has been created (dynamic typing).",
+      options: ["Adevărat","Fals"],
       correct: 0,
-      explanation: "Python este un limbaj cu tipare dinamică: o variabilă poate reține la un moment dat un întreg, iar ulterior un șir de caractere, fără o declarare explicită de tip."
+      explanation: "Python are tipare dinamică: aceeași variabilă poate reține întâi un int, apoi un str, fără declarare explicită de tip."
     },
     {
       id: "py-002",
       chapter: "operatori-tipuri",
-      type: "single",
-      question: "Care este rezultatul expresiei de mai jos?",
-      code: "print(17 // 4)",
-      options: ["4.25", "4", "1", "5"],
-      correct: 1,
-      explanation: "Operatorul // reprezintă împărțirea întreagă (floor division): 17 // 4 = 4."
+      type: "true_false",
+      question: "Python distinguishes between integer and floating-point values.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Python are tipuri distincte, int și float. Valorile booleene sunt True și False."
     },
     {
       id: "py-003",
       chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Care dintre următoarele sunt tipuri de date primitive (de bază) în Python? Alege 2 răspunsuri.",
-      options: ["int", "list", "float", "DataFrame"],
-      correct: [0, 2],
-      explanation: "int și float sunt tipuri numerice de bază. list este o structură de date, iar DataFrame nu există în Python standard (aparține librăriei pandas)."
+      type: "true_false",
+      question: "A variable's data type must always be written explicitly.",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "Tipul se stabilește dinamic din valoarea atribuită; nu se declară explicit."
     },
     {
       id: "py-004",
-      chapter: "structuri-control",
-      type: "drag_drop",
-      question: "Asociază fiecare cuvânt cheie cu tipul corect de structură de control.",
-      dragItems: [
-        { id: "a", text: "for" },
-        { id: "b", text: "if / elif / else" },
-        { id: "c", text: "while" }
-      ],
-      dropZones: [
-        { id: "z1", label: "Buclă cu număr cunoscut de iterații / pe o secvență", correctItemId: "a" },
-        { id: "z2", label: "Decizie condițională", correctItemId: "b" },
-        { id: "z3", label: "Buclă ce rulează cât timp o condiție e adevărată", correctItemId: "c" }
-      ],
-      explanation: "for iterează peste o secvență, if/elif/else ia decizii, iar while repetă cât timp condiția rămâne adevărată."
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "The Boolean literals True and False start with capital letters.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Forma corectă este True/False. true/false (litere mici) provoacă NameError."
     },
     {
       id: "py-005",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Care structură de date din Python NU permite modificarea elementelor după creare?",
-      options: ["list", "dict", "tuple", "set"],
-      correct: 2,
-      explanation: "tuple este imutabil: odată creat, conținutul său nu mai poate fi schimbat."
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "Which TWO of the following are basic (primitive) data types in Python? (Choose 2.)",
+      options: ["int","list","float","DataFrame"],
+      correct: [0,2],
+      explanation: "int și float sunt tipuri numerice de bază. list este o structură de date, iar DataFrame aparține librăriei pandas."
     },
     {
       id: "py-006",
-      chapter: "input-output",
-      type: "true_false",
-      question: "Funcția input() returnează întotdeauna o valoare de tip string.",
-      options: ["Adevărat", "Fals"],
-      correct: 0,
-      explanation: "input() citește orice ar introduce utilizatorul ca text (str); conversia la int/float trebuie făcută manual, de exemplu cu int(input())."
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Complete the conversions by choosing the correct function for each blank.",
+      code: "serialNumber = [1](55555)\namount = [2](44)\nprint(serialNumber, amount)",
+      dragItems: [
+        { id: "i1", text: "float" },
+        { id: "i2", text: "bool" },
+        { id: "i3", text: "int" },
+        { id: "i4", text: "str" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" }
+      ],
+      explanation: "str(55555) produce '55555', iar float(44) produce 44.0."
     },
     {
       id: "py-007",
-      chapter: "functii",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Ce se afișează la rularea codului de mai jos?",
-      code: "def saluta(nume=\"lume\"):\n    return \"Salut, \" + nume\n\nprint(saluta())",
-      options: ["Salut, nume", "Salut, lume", "Eroare", "None"],
-      correct: 1,
-      explanation: "Parametrul nume are o valoare implicită \"lume\", folosită atunci când funcția e apelată fără argumente."
+      question: "What are the types of the variables age, minor and name, in this order?",
+      code: "age = 0\nminor = False\nname = 'Durga'",
+      options: ["int, bool, str","bool, bool, str","int, bool, char","float, bool, str"],
+      correct: 0,
+      explanation: "0 este int, False este bool, 'Durga' este str. Python nu are tipul char."
     },
     {
       id: "py-008",
-      chapter: "gestionare-erori",
-      type: "multiple",
-      question: "Care dintre următoarele cuvinte cheie fac parte din blocul de gestionare a excepțiilor în Python? Alege 2 răspunsuri.",
-      options: ["try", "catch", "except", "throw"],
-      correct: [0, 2],
-      explanation: "Python folosește try / except (nu catch/throw, care aparțin altor limbaje precum Java sau C#)."
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What are the types of weight, zip and value, in this order?",
+      code: "weight = 62.4\nzip = '880098'\nvalue = +23E4",
+      options: ["float, str, str","int, str, float","double, str, float","float, str, float"],
+      correct: 3,
+      explanation: "62.4 este float; '880098' este str (are ghilimele); +23E4 este notație științifică, deci float (230000.0). Python nu are tipul double."
     },
     {
       id: "py-009",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "Instrucțiunea `import math` face disponibile toate funcțiile modulului math fără a mai fi nevoie de prefixul `math.`.",
-      options: ["Adevărat", "Fals"],
-      correct: 1,
-      explanation: "Cu `import math`, funcțiile se apelează cu prefix: math.sqrt(9). Pentru a le folosi fără prefix ar trebui `from math import *`."
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Identify the types of a, b and c.",
+      code: "a = 10 + 20\nb = '10' + '20'\nc = '10' * 3",
+      options: ["a is int, b is str, c is str","a is int, b is str, c is int","a, b and c are all int","a is int; b and c are invalid declarations"],
+      correct: 0,
+      explanation: "a=30 (int); b='1020' (concatenare de str); c='101010' (repetare de str)."
     },
     {
       id: "py-010",
-      chapter: "structura-cod",
-      type: "single",
-      question: "În Python, blocurile de cod (corpul unui if, for, funcție etc.) sunt delimitate prin:",
-      options: ["Acolade { }", "Indentare (spații/tab)", "Cuvântul cheie end", "Punct și virgulă"],
-      correct: 1,
-      explanation: "Python folosește indentarea consistentă pentru a delimita blocurile de cod, spre deosebire de limbaje precum C sau Java."
-    },
-
-    /* =================================================================
-       Întrebări importate din banca de teste încărcată de utilizator
-       (verificate cu răspunsurile corecte incluse în sursă)
-       ================================================================= */
-    {
-      id: "py-src-8",
       chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Consider the Variable declarations:\na='5'\nb='2'\nWhich of the following expressions are of type str",
-      options: ["a+b", "a*b", "a-b", "a*2"],
-      correct: [0, 3],
-      explanation: "a+b concatenează două șiruri text (str), iar a*2 repetă șirul '5' de două ori — tot str. a*b și a-b generează TypeError între două șiruri, deci nu produc un rezultat de tip str."
+      type: "drag_drop",
+      question: "Match each variable with its data type.",
+      dragItems: [
+        { id: "i1", text: "str" },
+        { id: "i2", text: "float" },
+        { id: "i3", text: "bool" },
+        { id: "i4", text: "int" }
+      ],
+      dropZones: [
+        { id: "z1", label: "age = 2", correctItemId: "i4" },
+        { id: "z2", label: "minor = False", correctItemId: "i3" },
+        { id: "z3", label: "name = \"Contoso\"", correctItemId: "i1" },
+        { id: "z4", label: "weight = 123.5", correctItemId: "i2" },
+        { id: "z5", label: "zip = \"81000\"", correctItemId: "i1" }
+      ],
+      explanation: "\"81000\" este str, chiar dacă arată ca un număr: este scris între ghilimele."
     },
     {
-      id: "py-src-15",
+      id: "py-011",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Match each expression with the type returned by type().",
+      dragItems: [
+        { id: "i1", text: "bool" },
+        { id: "i2", text: "float" },
+        { id: "i3", text: "int" },
+        { id: "i4", text: "str" }
+      ],
+      dropZones: [
+        { id: "z1", label: "type(+1E10)", correctItemId: "i2" },
+        { id: "z2", label: "type(5.0)", correctItemId: "i2" },
+        { id: "z3", label: "type(\"True\")", correctItemId: "i4" },
+        { id: "z4", label: "type(False)", correctItemId: "i1" }
+      ],
+      explanation: "+1E10 și 5.0 sunt float; \"True\" (cu ghilimele) este str; False este bool."
+    },
+    {
+      id: "py-012",
       chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the python code:\nWhat is the output?",
-      code: "1) result=str(bool(1) + float(10)/float(2))\n2) print(result)",
-      options: ["SyntaxError", "TypeError", "6", "6.0"],
+      question: "For which value of x does type(x) return <class 'int'>?",
+      options: ["x = 47.0","x = '47'","x = 10+20j","x = 2**2**2"],
       correct: 3,
-      explanation: "bool(1) este True (echivalent cu 1); float(10)/float(2) = 5.0; True + 5.0 = 6.0; str(6.0) = '6.0'."
+      explanation: "** se evaluează de la dreapta la stânga: 2**(2**2) = 16, un int. 47.0 e float, '47' e str, 10+20j e complex."
     },
     {
-      id: "py-src-35",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "s='AB CD'\nlist=list(s)\nlist.append('EF')\nprint(list)",
-      options: ["['A', 'B', 'C', 'D', 'E', 'F']", "{'A', 'B', '', 'C', 'D', 'EF'}", "['A', 'B', '', 'C', 'D', 'EF']", "('A', 'B', '', 'C', 'D', 'EF')"],
-      correct: 3,
-      explanation: "list(s) desparte fiecare caracter al șirului într-un element separat (inclusiv spațiul), iar append('EF') adaugă 'EF' ca UN SINGUR element suplimentar, nu caracter cu caracter."
-    },
-    {
-      id: "py-src-36",
+      id: "py-013",
       chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the code:\n1) x='ACROTE'\n2) y='APPLE'\n3) z='TOMATO'\n\nWhich of the following won't print 'CAT' to the console",
-      options: ["print(x[1]+y[0]+z[0])", "print(x[2]+y[1]+z[1])", "print(x[-5]+y[0]+z[0])", "print(x[-5]+y[0]+z[-2])"],
-      correct: 1,
-      explanation: "x[1]+y[0]+z[0] = 'C'+'A'+'T' = 'CAT'; x[-5]+y[0]+z[0] = 'C'+'A'+'T' = 'CAT'; x[-5]+y[0]+z[-2] = 'C'+'A'+'T' = 'CAT'. Doar x[2]+y[1]+z[1] = 'R'+'P'+'O' = 'RPO' nu afișează 'CAT'."
-    },
-    {
-      id: "py-src-39",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code:\nt=([10,20],10,False)\n\nWhich line of the code assigns <class 'list'> to x",
-      options: ["x= type(t)", "x= type(t[0])", "x= type(t[1])", "x= type(t[0:])"],
-      correct: 1,
-      explanation: "t[0] este [10, 20], o listă. type(t[0]) este deci <class 'list'>. type(t) e tuple, type(t[1]) e int, iar type(t[0:]) e tot tuple (slicing pe tuple întoarce tot tuple)."
-    },
-    {
-      id: "py-src-48",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Which of the following are valid statements?",
-      options: ["5+False evaluates to False", "True+1 evaluates to 2", "True and False evaluates to False", "True or False evaluates to False", "type('') is <class 'bool'>"],
-      correct: [1, 2],
-      explanation: "True se comportă ca 1, deci True+1 = 2 (B corect). True and False = False (C corect). 5+False = 5+0 = 5, nu False (A greșit). True or False = True, nu False (D greșit). type('') este str, nu bool (E greșit)."
-    },
-    {
-      id: "py-src-53",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Which of the following expression will generate max value?",
-      options: ["8%3*4", "8-3*4", "8//3*4", "8/3*4"],
-      correct: 3,
-      explanation: "8%3*4 = 2*4 = 8; 8-3*4 = -4; 8//3*4 = 2*4 = 8; 8/3*4 ≈ 2.667*4 ≈ 10.67 — cea mai mare valoare."
-    },
-    {
-      id: "py-src-54",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Which expression would evaluate to 2?",
-      options: ["3**2", "22%5", "13//4", "11/2"],
-      correct: 1,
-      explanation: "3**2 = 9; 22%5 = 2; 13//4 = 3; 11/2 = 5.5. Doar 22%5 este 2."
-    },
-    {
-      id: "py-src-55",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\nWhich line of the code assigns 9 to the output?",
-      code: "a=7\nb=3\nc=5\nd=1",
-      options: ["output=a%c+1", "output=a+c//d", "output=c*d-1", "output=a+d*2"],
-      correct: 3,
-      explanation: "output=a+d*2 = 7 + 1*2 = 9. Celelalte: a%c+1=3, a+c//d=12, c*d-1=4."
-    },
-    {
-      id: "py-src-58",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following expression:\n6//4%5+2**3-2//3\nThis expression results to:",
-      options: ["9", "3", "-1", "25"],
-      correct: 0,
-      explanation: "Ordinea operațiilor: 2**3=8, 6//4=1, 1%5=1, 2//3=0. Rezultă 1+8-0 = 9."
-    },
-    {
-      id: "py-src-68",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\nWhich of the following expression results -4?",
-      code: "1) a=1\n2) b=2\n3) c=4\n4) d=6",
-      options: ["(a+b)//c%d", "(b+c)//a%d", "(a+b)//c*d", "(a+b)//d-c"],
-      correct: 3,
-      explanation: "(a+b)//d-c = (1+2)//6-4 = 0-4 = -4. Celelalte expresii dau 0."
-    },
-    {
-      id: "py-src-70",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "In which cases True will be printed to the console?",
-      code: "1) subjects=['java','python','sap']\n2) more_subjects=['java','python','sap']\n3) extra_subjects=more_subjects",
-      options: ["print(extra_subjects is more_subjects)", "print(subjects is more_subjects)", "print(subjects is extra_subjects)", "print(subjects == extra_subjects)"],
-      correct: [0, 3],
-      explanation: "extra_subjects=more_subjects face ca ambele nume să indice ACELAȘI obiect din memorie, deci 'is' este True (A). subjects și extra_subjects au conținut identic dar sunt obiecte diferite, deci '==' e True (D), dar 'is' între ele ar fi False."
-    },
-    {
-      id: "py-src-84",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\na=float('123.456')\n\nWhich expression evaluates to 2?",
-      options: ["int(a)+False", "bool(a)+True", "str(a)", "bool(a)"],
-      correct: 1,
-      explanation: "bool(a) pentru orice float diferit de 0 este True (adică 1); True+True = 1+1 = 2."
-    },
-    {
-      id: "py-src-85",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following code\nFor which of the following condition True will be printed to the console?",
-      code: "1) x= 'Durga'\n2) y= 'Durga'\n3) result=condition\n4) print(result)",
-      options: ["x is y", "x is not y", "x != y", "x < y"],
-      correct: 0,
-      explanation: "Pentru șiruri scurte, simple, Python le poate 'interna' (reține un singur obiect în memorie pentru valori identice), astfel încât x is y devine True aici."
-    },
-    {
-      id: "py-src-86",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) x= 8\n2) y= 10\n3) result= x//3*3/2+y%2**2\n4) print(result)",
-      options: ["5", "5.0", "6.0", "7.0"],
-      correct: 1,
-      explanation: "Ordinea operațiilor: 2**2=4, y%4=10%4=2; x//3=2, 2*3=6, 6/2=3.0; suma finală 3.0+2=5.0."
-    },
-    {
-      id: "py-src-96",
-      chapter: "structuri-control",
-      type: "single",
-      question: "We are developing loan collection agent application. Consider the code:\nWhat will be the value of commission?",
-      code: "1) collected_amount=3000\n2) commission=0\n3) if collected_amount <= 2000:\n4) commission=50\n5) elif collected_amount> 2500 and collected_amount<3000:\n6) commission=100\n7) elif collected_amount>2500:\n8) commission=150\n9) if collected_amount>=3000:\n10) commission+=200",
-      options: ["350", "200", "150", "100"],
-      correct: 0,
-      explanation: "Se intră pe ramura elif collected_amount>2500 (3000>2500), deci commission=150. Apoi condiția separată if collected_amount>=3000 este True, deci commission+=200 → 150+200=350."
-    },
-    {
-      id: "py-src-97",
-      chapter: "structuri-control",
-      type: "single",
-      question: "You are developing online shopping application.\nConsider the code:\nWhat is the result?",
-      code: "01 order_value = 1500\n02 state = 'ap'\n03 delivery_charge = 0\n\n04 if state in ['up', 'mp', 'ts']:\n05 if order_value <= 1000:\n06 delivery_charge = 50\n07 elif 1000 < order_value < 2000:\n08 delivery_charge = 100\n09 else:\n10 delivery_charge = 150\n11 else:\n12 delivery_charge = 25\n13 if state in ['lp', 'kp', 'ap']:\n14 if order_value > 1000:\n15 delivery_charge += 20\n16 if order_value < 2000 and state in ['kp', 'ap']:\n17 delivery_charge += 30\n18 else:\n19 delivery_charge += 15\n20 print(delivery_charge)",
-      options: ["65", "75", "85", "55"],
-      correct: 1,
-      explanation: "state='ap' nu e în ['up','mp','ts'], deci delivery_charge=25. 'ap' e în ['lp','kp','ap'] și order_value>1000, deci +20 → 45. order_value<2000 și state în ['kp','ap'], deci +30 → 75."
-    },
-    {
-      id: "py-src-101",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the following code:\nWhich grade will be printed to the console?",
-      code: "1) marks=[30,40,50,45,50,100]\n2) average=sum(marks)//len(marks)\n3) grades={1:'A',2:'B',3:'C',4:'D'}\n4) if average>=90 and average<=100:\n5) key=1\n6) elif average>=80 and average<90:\n7) key=2\n8) elif average>=50 and average<80:\n9) key=3\n10) else:\n11) key=4\n12) print(grades[key])",
-      options: ["A", "B", "C", "D"],
+      question: "What is the type of x + y?",
+      code: "x = '10'\ny = '20'",
+      options: ["int","float","str","complex"],
       correct: 2,
-      explanation: "average = sum(marks)//len(marks) = 315//6 = 52, care se încadrează în intervalul 50-79, deci key=3 și se afișează grades[3] = 'C'."
+      explanation: "Ambele sunt str, deci + le concatenează ('1020') și rezultatul e tot str."
     },
     {
-      id: "py-src-108",
-      chapter: "structuri-control",
+      id: "py-014",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "We are developing gold loan application for XYZ company.\n\n1) amount=float(input('Enter Loan Amount:'))\n2) interest_rate=0\n3) if amount > 0 and amount<= 50000:\n4) interest_rate = 10\n5)\n6) elif amount > 50000 and amount<100000:\n7) interest_rate = 12\n8)\n9) elif amount >= 100000 and amount<150000:\n10) interest_rate = 16\n11)\n12) else:\n13) interest_rate = 22\n\nFor which of the following user input interest_rate will be 12.",
-      options: ["50000", "50001", "100000", "100001", "150000"],
+      question: "What are the data types of c1, c2 and c3?",
+      code: "a1 = '10'\nb1 = 3\nc1 = a1 * b1\n\na2 = 10\nb2 = 3\nc2 = a2 / b2\n\na3 = 2.6\nb3 = 1\nc3 = a3 / b3",
+      options: ["str, int, int","str, float, float","str, int, float","str, str, str"],
       correct: 1,
-      explanation: "Pentru amount=50001, condiția amount>0 and amount<=50000 e False, dar amount>50000 and amount<100000 e True, deci interest_rate=12."
+      explanation: "'10'*3 repetă șirul, deci str. Operatorul / întoarce mereu float în Python 3."
     },
     {
-      id: "py-src-114",
-      chapter: "structuri-control",
+      id: "py-015",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Which of the following is True about else block?",
-      options: ["else block will be executed if there is no exception is try bloack", "without writing except block we can't write else block", "for the same try we can write atmost one else block", "All the above"],
-      correct: 3,
-      explanation: "Toate afirmațiile sunt adevărate: blocul else rulează doar dacă try nu are excepții, necesită un bloc except, și poate exista cel mult un else per try."
-    },
-    {
-      id: "py-src-115",
-      chapter: "structuri-control",
-      type: "single",
-      question: "In which of the following cases 'Needs Director Approval' will be printed to the console?",
-      code: "We are developing an application for leave approval in XYZ Company.\n\ndays=int(input('Enter number of days for leave:')) cause=input('Enter the cause:')\nif days==1:\n print('Leave will be approved immediately')\nelif days>1 and days<=3:\n if cause=='Sick':\n print('Leave will be approved immediately')\n else:\n print('Needs Lead Approval')\nelif days>3 and days<5:\n if cause=='Sick':\n print('Needs Manager Approval')\n else:\n print('Needs Director Approval')\nelif days>=5 and days<=10:\n print('Needs Director Approval')",
-      options: ["days = 2 and cause='sick'", "days = 3 and cause='personal'", "days = 4 and cause='sick'", "days = 4 and cause='official'"],
-      correct: 3,
-      explanation: "days=4 și cause='official' (diferit de 'Sick') intră pe ramura elif days>3 and days<5, iar în interior else (cauza nu e Sick) afișează 'Needs Director Approval'."
-    },
-    {
-      id: "py-src-116",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the code\n\na=12\nb=4\ns='He shall not be happy if he does not work'\n\nIn which of the following cases result value will become 9",
-      options: ["result=3 if None else a/b", "result=s.find('not') if s else None", "result=s.rfind('not') if s else None", "result=5 if len(s)>4 else 6"],
-      correct: 1,
-      explanation: "s.find('not') caută prima apariție a 'not' în șir și returnează indexul 9, deci result=9."
-    },
-    {
-      id: "py-src-122",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the following Python Code:\nIf the user provides input 'a' then what is the result?",
-      code: "1) def count_letter(letter,word_list):\n2) count=0\n3) for word in word_list:\n4) if letter in word:\n5) count +=1\n6) return count\n7) word_list=['apple','pears','orange','mango']\n8) letter=input('Enter some alphabet symbol:')\n9) letter_count=count_letter(letter,word_list)\n10) print(letter_count)",
-      options: ["1", "2", "3", "4"],
-      correct: 3,
-      explanation: "Cuvintele care conțin litera 'a' sunt 'apple', 'pears', 'orange', 'mango' — toate cele 4 cuvinte, deci count=4."
-    },
-    {
-      id: "py-src-124",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Which of the following print() statement should be placed at Line-1 to meet requirement?",
-      code: "The XYZ organics company needs a simple program that their call center will use to enter survey data for a new coffee\nvariety. The program must accept input and return the average rating based on a five-star scale.The output must be\nrounded to two decimal places.\nConsider the code:\n\n1) sum=count=done=0\n2) average=0.0\n3) while(done != -1):\n4) rating=float(input('Enter Next Rating(1-5),-1 for done'))\n5) if rating == -1:\n6) break\n7) sum+=rating\n8) count+=1\n9) average=float(sum/count)\n10) #Line-1",
-      options: ["print('The average star rating for the new coffee is:{:.2f}'.format(average))", "print('The average star rating for the new coffee is:{:.2d}'.format(average))", "print('The average star rating for the new coffee is:{:2f}'.format(average))", "print('The average star rating for the new coffee is:{:2.2d}'.format(average))"],
-      correct: 0,
-      explanation: "'{:.2f}' este formatul corect pentru rotunjire la 2 zecimale; celelalte formate (.2d, 2f, 2.2d) nu sunt valide pentru un float rotunjit corect."
-    },
-    {
-      id: "py-src-127",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) t = (2,4,6,8,10,12)\n2) d = {1:'A',2:'B',3:'C',4:'D',5:'E',6:'F'}\n3) result=1\n4) for t1 in t:\n5) if t1 in d:\n6) result+=t1\n7) print(result)",
-      options: ["12", "13", "19", "6"],
-      correct: 1,
-      explanation: "Toate elementele tuplului (2,4,6,8,10,12) sunt chei valide în dicționar (1-6), deci fiecare se adaugă la result: 1+2+4+6+8+10+12=43... însă doar cheile 1-6 există; elementele tuplului 8,10,12 nu sunt chei — se adună doar 2,4,6: 1+2+4+6=13."
-    },
-    {
-      id: "py-src-128",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) t = (2,4,6,8,10,12)\n2) d = {1:'A',2:'B',3:'C',4:'D',5:'E',6:'F'}\n3) result=1\n4) for t1 in t:\n5) if t1 in d:\n6) continue\n7) else:\n8) result+=t1\n9) print(result)",
-      options: ["29", "30", "31", "32"],
+      question: "Which of the variables evaluates to False?",
+      code: "a = bool([False])\nb = bool(3)\nc = bool(\"\")\nd = bool(' ')",
+      options: ["a","b","c","d"],
       correct: 2,
-      explanation: "Elementele care SUNT chei în d (2,4,6) fac 'continue' (sunt sărite). Elementele care NU sunt chei (8,10,12) se adaugă la result: 1+8+10+12=31."
+      explanation: "bool([False]) e True (listă nevidă); bool(3) e True; bool(\"\") e False (șir gol); bool(' ') e True (conține un spațiu)."
     },
     {
-      id: "py-src-129",
-      chapter: "structuri-control",
+      id: "py-016",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) values = [[3, 4, 5, 1], [33, 6, 1, 2]]\n2)\n3) v = values[0][0]\n4) for lst in values:\n5) for element in lst:\n6) if v > element:\n7) v = element\n8)\n9) print(v)",
-      options: ["3", "2", "1", "4"],
-      correct: 2,
-      explanation: "Se caută valoarea minimă din toate elementele listei imbricate: min(3,4,5,1,33,6,1,2) = 1."
-    },
-    {
-      id: "py-src-147",
-      chapter: "input-output",
-      type: "multiple",
-      question: "Consider the following code.\nWhich of the following are valid about this code?",
-      code: "1) import os\n2) def get_data(filename,mode):\n3) if os.path.isfile(filename):\n4) with open(filename,'r') as file:\n5) return file.readline()\n6) else:\n7) return None",
-      options: ["This function returns the first line of the file if it is available", "This function returns None if the file does not exist", "This function returns total data present in the file", "This function returns last line of the file"],
-      correct: [0, 1],
-      explanation: "Funcția verifică dacă fișierul există (os.path.isfile), citește prima linie cu readline() dacă da, sau returnează None dacă fișierul nu există — deci A și B sunt corecte."
-    },
-    {
-      id: "py-src-156",
-      chapter: "input-output",
-      type: "single",
-      question: "Conside the file abc.txt:\n\nabc.txt:\n--------\nDurga:10\nRavi:20\nShiva:30\nPavan:40\n\nConsider the python code which is present in the same location of the file\nWhat is the result?",
-      code: "test.py:\n--------\n1) values=0\n2) try:\n3) f=open('abc.txt','r')\n4) content=f.readlines()\n5) for line in content:\n6) values+=float(line.split(':')[1])\n7) f.close()\n8) except Exception:\n9) print('Unable to open the file')\n10) print(values)",
-      options: ["Unable to open the file", "100", "100.0", "10.0"],
-      correct: 2,
-      explanation: "values este inițializat ca int (0), dar la fiecare pas i se adaugă un float (rezultatul lui float(...)), deci Python convertește automat rezultatul la float: 10.0+20.0+30.0+40.0=100.0."
-    },
-    {
-      id: "py-src-159",
-      chapter: "input-output",
-      type: "single",
-      question: "Which Line should be inserted at Line-1 ?",
-      code: "Assume that we are writing python code for some voting application.\nYou need to open the file voters_list.txt and add new voters info and print total data to the console?\n1) with open('voters_list.txt','a+') as f:\n2) f.write('New voters info')\n3) #Line-1\n4) data=f.read()\n5) print(data)",
-      options: ["f.seek(0)", "f.flush()", "f.begin()", "f.close()"],
-      correct: 0,
-      explanation: "f.seek(0) mută cursorul de citire înapoi la începutul fișierului, necesar înainte de f.read() ca să citească tot conținutul (inclusiv ce tocmai s-a scris)."
-    },
-    {
-      id: "py-src-166",
-      chapter: "input-output",
-      type: "single",
-      question: "You are intern for XYZ Cars Company.You have to create a function that calculates the average velocity of vehicle on a\n2640 foot(1/2 mile)track. Consider the python code:\n\n1) distance=xxx(input('Enter the distance travelled in feet:')) #Line-1\n2) distance_miles=distance/5280\n3) time=yyy(input('Enter the time elapsed in seconds:')) #Line-2\n4) time_hours=time/3600\n5) velocity=distance_miles/time_hours\n6) print('The average Velocity:',velocity,'miles/hour')\nTo generate most precise output, which modifications should be done at Line-1 and atLine-2.",
-      options: ["xxx should be replaced with float and yyy should be replaced with float", "xxx should be replaced with float and yyy should be replaced with int", "xxx should be replaced with int and yyy should be replaced with float", "xxx should be replaced with int and yyy should be replaced with int"],
-      correct: 0,
-      explanation: "Pentru cea mai precisă valoare a vitezei, atât distanța cât și timpul introduse trebuie convertite la float (nu int), pentru a păstra zecimalele în calcul."
-    },
-    {
-      id: "py-src-175",
-      chapter: "structura-cod",
-      type: "single",
-      question: "You develop a application for your company. You want to add notes to your code so other team members will understand\nit. What should you do?",
-      options: ["Place the notes after the last line of code separated by a blank line.", "Place the notes inside of parentheses on any line.", "Place the notes after the # sign on any line.", "Place the notes before the first line of code separated by a blank line."],
-      correct: 2,
-      explanation: "În Python, comentariile încep cu semnul # și pot fi plasate pe orice linie a codului."
-    },
-    {
-      id: "py-src-176",
-      chapter: "structura-cod",
-      type: "single",
-      question: "You are writing an application that uses the sqrt function. The program must reference the function using the name\nsquareRoot. You need to import the function. Which code segment should you use?",
-      options: ["from math import sqrt as squareRoot", "from math.sqrt as squareRoot", "import math.sqrt as squareRoot", "import sqrt from math as squareRoot"],
-      correct: 0,
-      explanation: "'from math import sqrt as squareRoot' importă funcția sqrt din modulul math și îi atribuie un alt nume (squareRoot) local."
-    },
-    {
-      id: "py-src-187",
-      chapter: "functii",
-      type: "single",
-      question: "Consider the following code:\nFor which of the function calls we will get Error?",
-      code: "def get_score(total=0,valid=0):\n result=int(valid)/int(total)\n return result",
-      options: ["score = get_score('40', '4')", "score = get_score(0, 10)", "score = get_score(40, 4)", "score = get_score(40)"],
-      correct: 1,
-      explanation: "get_score(0, 10) înseamnă total=10, valid=0 (parametrii sunt total, apoi valid — dar aici sunt pasați pozițional ca total=0, valid=10, ceea ce duce la o împărțire int(10)/int(0) → ZeroDivisionError."
-    },
-    {
-      id: "py-src-188",
-      chapter: "functii",
-      type: "single",
-      question: "Consider the code\nWhat is the result?",
-      code: "1) def get_names():\n2) names=['Sunny','Bunny','Chinny','Vinny','Pinny']\n3) return names[2:]\n4)\n5) def update_names(elements):\n6) new_names=[]\n7) for name in elements:\n8) new_names.append(name[:3].upper())\n9) return new_names\n10)\n11) print(update_names(get_names()))",
-      options: ["['CHI', 'VIN', 'PIN']", "['VIN', 'PIN']", "['CH', 'VI', 'PI']", "['SU', 'BU']"],
-      correct: 0,
-      explanation: "get_names() întoarce ['Chinny','Vinny','Pinny'] (de la index 2). update_names ia primele 3 litere din fiecare, cu majuscule: ['CHI','VIN','PIN']."
-    },
-    {
-      id: "py-src-189",
-      chapter: "functii",
-      type: "single",
-      question: "Consider the following code\n1) def my_list(x):\n2) lst.append(a)\n3) return lst\n4)\n5) my_list('chicken')\n6) my_list('mutton')\n7) print(my_list('fish'))\n\nto print the following to the console\n['chicken','mutton','fish']\nx should be replaced with",
-      options: ["a,lst=[]", "a,lst=()", "a,lst={}", "a,lst=None"],
-      correct: 0,
-      explanation: "Pentru ca funcția să acumuleze elementele corect la fiecare apel, lst trebuie inițializat o singură dată ca listă goală în afara funcției (a,lst=[]), altfel s-ar reseta la fiecare apel."
-    },
-    {
-      id: "py-src-198",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Consider the code:\nFor the input: 10,20,30,40 what is the result?",
-      code: "1) data=[]\n2) def get_data():\n3) for i in range(1,5):\n4) marks=input('Enter Marks:')\n5) data.append(marks)\n6)\n7) def get_avg():\n8) sum=0\n9) for mark in data:\n10) sum += mark\n11) return sum/len(data)\n12) get_data()\n13) print(get_avg())",
-      options: ["25", "25.0", "NameError is thrown at runtime", "TypeError is thrown at runtime"],
+      question: "Which of the following variables evaluate to True?",
+      code: "a = bool([])\nb = bool(())\nc = bool(range(0))\nd = bool({})\ne = bool(set())",
+      options: ["Only c","a, b, c and d","All of them","None of them"],
       correct: 3,
-      explanation: "input() întoarce întotdeauna un șir (str). La sum += mark se încearcă adunarea unui int (0) cu un str, ceea ce generează TypeError."
+      explanation: "Toate colecțiile goale sunt False."
     },
     {
-      id: "py-src-210",
-      chapter: "gestionare-erori",
+      id: "py-017",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the code:\nWhich of the following is true about this code?",
-      code: "import sys\n\ntry:\n file_in = open('in.txt', 'r')\n file_out = open('out.txt', 'w+')\nexcept IOError:\n print('Cannot open file:', 'in.txt')\nelse:\n i = 1\n for line in file_in:\n print(line.rstrip())\n file_out.write(str(i) + ': ' + line)\n i += 1\n file_in.close()\n file_out.close()\nAssume that in.txt file is available but out.txt file does not exist.",
-      options: ["The code runs, but generates logical error", "This program will copy data from in.txt to out.txt", "The code will generates a runtime error", "The code will generate a syntax error"],
+      question: "Which variables evaluate to True?",
+      code: "a = bool(0)\nb = bool(3)\nc = bool(0.5)\nd = bool(0.0)",
+      options: ["a, b","b, c","c, d","d, a","All variables"],
       correct: 1,
-      explanation: "Deoarece in.txt există, blocul else se execută: se citește fiecare linie din in.txt, se scrie în out.txt (care se creează automat cu modul 'w+'), realizând efectiv o copiere a datelor."
+      explanation: "bool(0) și bool(0.0) sunt False; bool(3) și bool(0.5) sunt True."
     },
     {
-      id: "py-src-211",
-      chapter: "gestionare-erori",
+      id: "py-018",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the file abc.txt has the following content:\n\nLorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna\naliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\nExcepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.\n\nWe have to write python code to read total data and print to the console.\n\ntry:\nWhich code should be inserted at Line-1 to meet the given requirement?",
-      code: "f=open('abc.txt','r')\n //Line-1\nexcept:\n print('Unable to open the file')\n print(data)",
-      options: ["data = f.readlines()", "data = f.readline()", "data = f.read()", "data = f.load()"],
-      correct: 2,
-      explanation: "f.read() citește tot conținutul fișierului dintr-o singură dată, ca un singur șir de caractere — exact ce cere cerința de a afișa 'total data'."
-    },
-    {
-      id: "py-src-213",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "a=10\nb=20\nc='30'\nresult=a+b+c",
-      options: ["102030", "3030", "TypeError", "ArithmeticError"],
-      correct: 2,
-      explanation: "a și b sunt int, dar c este șirul '30'. a+b+c încearcă să adune un int cu un str, ceea ce generează TypeError."
-    },
-    {
-      id: "py-src-217",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "While executing this code we are getting the following error:\nConsider the code:\n Traceback (most recent call last):\n5) print(total) Which of the following code should be used to fix this error?",
-      code: "1) prices=[30.5,'40.5',10.5] File 'test.py', line 4, in <module>\n2) total=0 total += price\n3) for price in prices: TypeError: unsupported operand type(s) for +=: 'float' and 'str'\n4) total += price",
-      options: ["total += str(price)", "total += int(price)", "total += float(price)", "total = total+price\n\n Answer: C"],
-      correct: 2,
-      explanation: "price este un șir ('40.5' printre altele), deci total += price eșuează. Conversia corectă este total += float(price), pentru a păstra și valorile zecimale."
-    },
-    {
-      id: "py-src-218",
-      chapter: "gestionare-erori",
-      type: "multiple",
-      question: "Consider the code: While executing this code we are getting the following error\n Traceback (most recent call last):\n5) print(total) By using which of the following code segments we can fix this problem(Choose 2)?",
-      code: "1) prices=[10,'20',30,'40']\n File 'test.py', line 4, in <module>\n2) total=0\n total +=price\n3) for price in prices:\n TypeError: unsupported operand type(s) for +=: 'int' and 'str'\n4) total +=price",
-      options: ["total += str(price)", "total += int(price)", "total += float(price)", "total = total+price\n Answer: B and C"],
-      correct: [1, 2],
-      explanation: "prices conține și numere întregi și șiruri numerice ('20','40'). Atât int(price) cât și float(price) convertesc corect șirurile la numere, permițând adunarea."
-    },
-    {
-      id: "py-src-221",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which type of exception will be raised if we are trying to call a method on the inappropriate object?",
-      options: ["IndexError", "TypeError", "AttributeError", "None of these"],
-      correct: 2,
-      explanation: "AttributeError apare atunci când se apelează o metodă sau se accesează un atribut care nu există pentru tipul respectiv de obiect."
-    },
-    {
-      id: "py-src-222",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Consider the code:\nf=open('abc.txt')\nf.readall()\n\nWhich exception will be raised?",
-      options: ["AttributeError", "EOFError", "SystemError", "SyntaxError"],
-      correct: 0,
-      explanation: "Obiectele fișier din Python nu au o metodă readall() (aceasta există la alte limbaje/module), deci apelul generează AttributeError."
-    },
-    {
-      id: "py-src-227",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Given the command invocation:\npython tests.py Itvedant\nWhich of the following code prints 'Itvedant' to the console?",
-      options: ["from sys import argv; print(argv[1])", "from sys import argv; print(argv[0])", "from sys import args; print(args[0])", "from sys import args; print(args[1])"],
-      correct: 0,
-      explanation: "sys.argv[0] este numele scriptului, iar argv[1] este primul argument din linia de comandă — aici 'Itvedant'."
-    },
-    {
-      id: "py-src-228",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) from sys import argv\n2) print(argv[0])\nand given the command invocation:\npy test.py DURGASOFT",
-      options: ["DURGASOFT", "test.py", "IndexError will be thrown at runtime", "ImportError will be thrown at runtime"],
+      question: "Which expression evaluates to 2?",
+      code: "a = float('123.456')",
+      options: ["int(a) + False","bool(a) + True","str(a)","bool(a)"],
       correct: 1,
-      explanation: "argv[0] este întotdeauna numele scriptului care rulează, deci se afișează 'test.py'."
+      explanation: "bool(a) e True (adică 1) pentru orice float nenul; True + True = 2. int(a)+False = 123."
     },
     {
-      id: "py-src-229",
-      chapter: "module-librarii",
+      id: "py-019",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) from sys import argv\n2) print(argv[1]+argv[2])\nand given the command invocation:\npy test.py 10 20",
-      options: ["30", "1020", "IndexError will be thrown at runtime", "ImportError will be thrown at runtime"],
-      correct: 1,
-      explanation: "argv[1] și argv[2] sunt șiruri text ('10' și '20'), iar '+' pe două șiruri le concatenează: '10'+'20' = '1020'."
-    },
-    {
-      id: "py-src-230",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Consider the code :\n1) from sys import argv\n2) sum=0\n3) for i in range(2,len(argv)):\n4) sum += float(argv[i])\n5) print(\"The Average for {0} is {1:.2f}\".format(argv[1],sum/(len(argv)-2)))\nWhich of the following command invocations will generate the output:\nThe Average for Durga is 20.00",
-      options: ["py test.py Durga 10 20 30", "py test.py Durga 10 20", "py test.py Durga 10", "py test.py 20"],
-      correct: 0,
-      explanation: "Pentru argumentele Durga, 10, 20, 30: media este (10+20+30)/3 = 20.00, iar argv[1]='Durga' se afișează ca nume."
-    },
-    {
-      id: "py-src-234",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "You are creating a function that manipulates a number. The function has the following requirements:\n A float is passed into the function\n The function must take the absolute value of the float\n Any decimal points after the integer must be removed\nWhich two math functions should you use? Each correct answer is part of the solution. Choose two.",
-      options: ["math.ceil(x)", "math.fmod(x)", "math.floor(x)", "math.frexp(x)", "math.fabs(x)"],
-      correct: [2, 4],
-      explanation: "math.fabs(x) elimină semnul (valoare absolută), iar math.floor(x) elimină zecimalele rotunjind în jos la cel mai apropiat întreg — împreună îndeplinesc cerința."
-    },
-    {
-      id: "py-src-239",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "1) import math\n2) l =[str(round(math.pi)) for i in range (1, 6)]\n3) print(l)",
-      options: ["['3', '3', '3', '3', '3']", "['3', '3', '3', '3', '3','3']", "['1', '2', '3', '4', '5']", "['1', '2', '3', '4', '5','6']"],
-      correct: 0,
-      explanation: "round(math.pi) rotunjește 3.14159... la cel mai apropiat întreg, adică 3, pentru toate cele 5 iterații ale listei."
-    },
-    {
-      id: "py-src-240",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "Consider the code:\nWhich of the following will print some random value from the list?",
-      code: "1) import random\n2) fruits=['Apple','Mango','Orange','Lemon']",
-      options: ["print(random.sample(fruits))", "print(random.sample(fruits,3)[0])", "print(random.choice(fruits))", "print(random.choice(fruits)[0])"],
-      correct: [1, 2],
-      explanation: "random.choice(fruits) alege direct un element aleatoriu din listă (C). random.sample(fruits,3)[0] alege 3 elemente aleatorii unice și ia primul dintre ele, ceea ce e tot un rezultat aleatoriu valid (B)."
-    },
-    {
-      id: "py-src-244",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Consider the python code:\nWhich of the following is true?",
-      code: "1) import random\n2) print(int(random.random()*5))",
-      options: ["It will print a random int value from 0 to 5", "It will print a random int value from 1 to 5", "It will print a random int value from 0 to 5", "It will print a random int value from 0 to 4", "It will print 5"],
+      question: "What is the output?",
+      code: "result = str(bool(1) + float(10) / float(2))\nprint(result)",
+      options: ["SyntaxError","TypeError","6","6.0"],
       correct: 3,
-      explanation: "random.random() întoarce un float între 0.0 și 1.0 (exclusiv 1.0); înmulțit cu 5 și convertit la int, rezultatul poate fi doar 0, 1, 2, 3 sau 4 — niciodată 5."
+      explanation: "bool(1)=True=1; 10.0/2.0=5.0; 1+5.0=6.0; str(6.0)='6.0'."
     },
     {
-      id: "py-src-245",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Consider the code\nWhich of the following is valid?",
-      code: "1) import random\n2) print(random.sample(range(10), 7))",
-      options: ["It will print list of 10 unique random numbers from 0 to 6", "It will print list of 7 unique random numbers from 0 to 9", "It will print list of 7 unique random numbers from 0 to 10", "It will print list of 7 unique random numbers from 1 to 10"],
-      correct: 1,
-      explanation: "random.sample(range(10), 7) alege 7 valori unice, aleatorii, din intervalul 0-9 (10 valori posibile în total)."
-    }
-,
-
-    {
-      id: "py-src-1",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following python code:\nThe types of age,minor and name variables respectively:",
-      code: "1) age=0\n2) minor=False\n3) name='Durga'",
-      options: ["int, bool, str", "bool, bool, str", "int, bool, char", "float, bool, str"],
-      correct: 0,
-      explanation: "age=0 este int, minor=False este bool, name='Durga' este str."
-    },
-    {
-      id: "py-src-2",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following python code:\nThe types of weight, zip and value variables respectively:",
-      code: "weight = 62.4\nzip='880098'\nvalue=+23E4",
-      options: ["float, str, str", "int, str, float", "double, str, float", "float, str, float"],
-      correct: 3,
-      explanation: "weight=62.4 e float; zip='880098' e str (are ghilimele); value=+23E4 e notație științifică, tot float (23E4=230000.0). 'double' nu există ca tip în Python."
-    },
-    {
-      id: "py-src-9",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "You are writing a Python program. You required to handle data types properly.\nConsider the code segment:\nIdentify the types of a,b and c?",
-      code: "1) a=10+20\n2) b='10'+'20'\n3) c='10'*3",
-      options: ["a is of int type,b is of str type and c is of str type", "a is of int type,b is of str type and c is of int type", "a is of int type,b is of int type and c is of int type", "a is of int type ,b and c are invalid declarations\n\n 4"],
-      correct: 0,
-      explanation: "a=10+20=30 (int). b='10'+'20'='1020' (concatenare str). c='10'*3='101010' (repetare str)."
-    },
-    {
-      id: "py-src-11",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "You have the following code:\nWhich of the variables will represent False:",
-      code: "1) a=bool([False])\n2) b=bool(3)\n3) c=bool(\"\")\n4) d=bool(' ')",
-      options: ["a", "b", "c", "d"],
-      correct: 2,
-      explanation: "bool([False]) e True (listă nevidă, chiar dacă conține False). bool(3)=True. bool(\"\")=False (șir gol). bool(' ')=True (are un spațiu, deci nu e gol)."
-    },
-    {
-      id: "py-src-12",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the following variable declarations:\nWhich of the above variables represent True ?",
-      code: "1) a= bool([])\n2) b= bool(())\n3) c= bool(range(0))\n4) d= bool({})\n5) e= bool(set())",
-      options: ["c", "a ,b, c, d", "All Variables represent True", "None of the variables represents True"],
-      correct: 3,
-      explanation: "bool([])=False, bool(())=False, bool(range(0))=False, bool({})=False, bool(set())=False — toate structurile goale sunt False. Niciuna nu e True."
-    },
-    {
-      id: "py-src-13",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Which variables represent True?",
-      code: "1) a=bool(0)\n2) b=bool(3)\n3) c=bool(0.5)\n4) d=bool(0.0)",
-      options: ["a,b", "b,c", "c,d", "d,a", "All Variables"],
-      correct: 1,
-      explanation: "bool(0)=False, bool(3)=True, bool(0.5)=True, bool(0.0)=False. Adevărate sunt b și c."
-    },
-    {
-      id: "py-src-14",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "You are writing a Python program to read two int values from the keyboard and print the sum.\nWhich of the following code we have to write at Line-1 to print sum of given numbers?",
-      code: "1) x=input('Enter First Number:')\n2) y=input('Enter Second Number:')\n3) #Line-1",
-      options: ["print('The Result:'+(int(x)+int(y)))", "print('The Result:'+(int(x+y)))", "print('The Result:'+str(int(x)+int(y)))", "print('The Result:'+str(int(x+y)))\n\n 6"],
-      correct: 2,
-      explanation: "input() întoarce str. Trebuie convertit la int pentru adunare, apoi rezultatul convertit înapoi la str pentru concatenare: str(int(x)+int(y))."
-    },
-    {
-      id: "py-src-17",
-      chapter: "structuri-date",
-      type: "single",
-      question: "You develop an application for your school. A list named colors contains 200 colors. You need to slice the list to display\nevery other color starting with the second color.\nWhich code should you use?",
-      options: ["colors[1:2]", "colors [::2]", "colors[2:2]", "colors [1::2]\n\n\n\n\n 7"],
-      correct: 3,
-      explanation: "colors[1::2] pornește de la al doilea element (index 1) și ia unul din doi, exact 'every other starting with the second'."
-    },
-    {
-      id: "py-src-18",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "You develop an application for your company. A list named employees contains 200 employee names, the last five being\ncompany management. You need to slice the list to display all employees excluding management. Which two code\nsegments should you use? Each correct answer presents a complete solution. Choose two.",
-      options: ["employees[0:-4]", "employees [1:-5]", "employees [:-5]", "employees [0:-5]", "employees [1:-4]"],
-      correct: [2, 3],
-      explanation: "employees[:-5] și employees[0:-5] sunt echivalente și exclud exact ultimele 5 elemente, păstrând totul de la început."
-    },
-    {
-      id: "py-src-19",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "You are developing a python application for your company. A list named employees contains 600 employee names,the\nlast 3 being company management. You need to slice employees to display all employees excluding management. Which\ntwo code segments we should use?",
-      options: ["employees[1:-2]", "employees[:-3]", "employees[1:-3]", "employees[0:-2]", "employees[0:-3]"],
-      correct: [1, 4],
-      explanation: "employees[:-3] și employees[0:-3] exclud ultimele 3 elemente (managementul), păstrând restul de la început."
-    },
-    {
-      id: "py-src-20",
-      chapter: "structuri-date",
-      type: "single",
-      question: "You are developing a python application for your company. A list named employees contains 500 employee names,the\nlast 3 being company management. Which of the following represents only management employees.",
-      options: ["employees[497:]", "employees[-3:]", "employees[497:500]", "All the above"],
-      correct: 3,
-      explanation: "employees[497:], employees[-3:] și employees[497:500] sunt toate echivalente și reprezintă exact ultimele 3 elemente (managementul)."
-    },
-    {
-      id: "py-src-21",
-      chapter: "structuri-date",
-      type: "single",
-      question: "You write the following code:\nWhat is the output value?",
-      code: "list_1 = [1, 2]\nlist_2 = [3, 4]\nlist_3 = list_1 + list_2\nlist_4 = list_3 * 3\nprint(list_4)\nYou run the code.",
-      options: ["[3, 6, 9, 12]", "[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]", "[[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]]", "[[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]"],
-      correct: 1,
-      explanation: "list_3=[1,2,3,4]; list_4=list_3*3 REPETĂ lista de 3 ori (nu înmulțește elementele): [1,2,3,4,1,2,3,4,1,2,3,4]."
-    },
-    {
-      id: "py-src-22",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Woodgrove Bank must generate a report that shows the average balance for all customers each day. The report must\ntruncate the decimal portion of the balance. Which two code segments should you use? Each correct answer presents a\ncomplete solution. Choose two.",
-      options: ["average_balance = total_deposits**number_of_customers", "average_balance = total_deposits//number_of_customers", "average_balance = int(total_deposits/number_of_customers)", "average_balance = float(total_deposits//number_of_customers)\n\n 8"],
-      correct: [1, 2],
-      explanation: "// (floor division) și int() al rezultatului diviziunii ambele elimină partea zecimală, dând un rezultat întreg trunchiat."
-    },
-    {
-      id: "py-src-26",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What is a variable defined outside a function referred to as?",
-      options: ["A static variable", "A global variable", "A local variable", "An automatic variable"],
-      correct: 1,
-      explanation: "O variabilă definită în afara oricărei funcții este o variabilă globală, accesibilă din tot fișierul."
-    },
-    {
-      id: "py-src-27",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What will be the output of the following Python code?\ndef change():\n global b\n a = 45\n b = 56\n\nchange()\nprint(a)\nprint(b)",
-      code: "a = 10\nb = 20",
-      options: ["10,56", "45,56", "10, 20", "Syntax Error"],
-      correct: 0,
-      explanation: "În funcție, 'a=45' creează o variabilă LOCALĂ 'a' (nu afectează global-ul), dar 'global b' face ca 'b=56' să modifice variabila globală. Deci a rămâne 10, b devine 56."
-    },
-    {
-      id: "py-src-28",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What will be the output of the following Python code?\ndef change(i=1, j=2):\n i = i + j\n j = j + 1\n print(i, j)\n\nchange(j=1, i=2)",
-      options: ["An exception is thrown because of conflicting values", "1 2", "3 3", "3 2"],
-      correct: 3,
-      explanation: "Apelul change(j=1, i=2) dă i=2, j=1. i=i+j=2+1=3. j=j+1=1+1=2. Se afișează '3 2'."
-    },
-    {
-      id: "py-src-29",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What will be the output of the following python code?\nnames=['itvedant','Thane','Andheri','Navi Mumbai']\nprint(names[-1][-1])",
-      options: ["Navi Mumbai", "Mumbai", "i", "a\n\n\n\n\n 10"],
-      correct: 2,
-      explanation: "names[-1] este 'Navi Mumbai', iar names[-1][-1] este ultimul caracter al acestui șir, adică 'i'."
-    },
-    {
-      id: "py-src-30",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What is the return type of the function id()?",
-      options: ["int", "float", "bool", "str"],
-      correct: 0,
-      explanation: "id() întoarce un identificator numeric (adresa din memorie), de tip int."
-    },
-    {
-      id: "py-src-31",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What will be the output of the following python code?\nf=lambda x:bool(x%2)\nprint(f(20), f(21))",
-      options: ["False True", "False False", "True True", "True False"],
-      correct: 0,
-      explanation: "f(20): 20%2=0 → bool(0)=False. f(21): 21%2=1 → bool(1)=True. Rezultă 'False True'."
-    },
-    {
-      id: "py-src-32",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the following lists:\nWhat is the output?",
-      code: "n1=[10,20,30,40,50]\nN2=[10,20,30,40,50]\nprint(n1 is n2)\nprint(n1 == n2)",
-      options: ["False, False", "True, True", "True, False", "False, True"],
-      correct: 3,
-      explanation: "n1 și n2 sunt liste diferite (obiecte separate) create cu aceleași valori: 'is' compară identitatea (False), '==' compară conținutul (True)."
-    },
-    {
-      id: "py-src-33",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the following lists:\nWhat is the result?",
-      code: "1) n1=[10,20,30,40,50]\n2) n2=[10,20,30,40,50]\n3) print(n1 is n2)\n4) print(n1 == n2)\n5) n1=n2\n6) print(n1 is n2)\n7) print(n1 == n2)",
-      options: ["False, False, True, True", "False, True, False, True", "False, True, True, True", "True, False, True, False\n\n\n\n\n 11"],
-      correct: 2,
-      explanation: "n1 și n2 sunt inițial obiecte diferite cu conținut egal: is→False, ==→True. După n1=n2, ambele indică același obiect: is→True, ==→True."
-    },
-    {
-      id: "py-src-34",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the lists:\nWhat is the result?",
-      code: "1) numbers=[10,20,30,40,50]\n2) alphabets=['a','b','c','d','e']\n3) print( numbers is alphabets)\n4) print( numbers == alphabets)\n5) numbers=alphabets\n6) print( numbers is alphabets)\n7) print( numbers == alphabets)",
-      options: ["False, False, True, True", "False, True, False, True", "True, False, True, False", "False, True, True, True"],
-      correct: 0,
-      explanation: "numbers și alphabets sunt liste diferite, cu conținut diferit: is→False, ==→False. După numbers=alphabets, ambele indică același obiect: is→True, ==→True."
-    },
-    {
-      id: "py-src-41",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the list:\nlist = ['Apple', 'Banana', 'Carrot', 'Mango']\nWhitch of the following are the valid ways of accessing 'Mango':\nOption A : list[3]\nOption B: list[4]\nOption C: list[-1]\nOption D: list[0]",
-      options: ["A and B", "B and D", "A and C", "All options"],
-      correct: 2,
-      explanation: "list[3] și list[-1] indică ambele ultimul element 'Mango' (index valid). list[4] ar da IndexError, list[0] e 'Apple'."
-    },
-    {
-      id: "py-src-42",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "You are given the following Python code snippet:\nx = 'TEXT'\nWhich line of code will assign the string 'TT' to the variable output?",
-      options: ["output = x[1] + x[1]", "output = x[1] + x[4]", "output = x[0] + x[2]", "output = x[0] + x[-1]"],
-      correct: 3,
-      explanation: "x[0]='T' și x[-1]='T' (ultimul caracter al 'TEXT'), deci x[0]+x[-1]='TT'."
-    },
-    {
-      id: "py-src-43",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the Python code:\nWhat is the result?",
-      code: "a=['a','b','c','d']\nfor i in a:\n a.append(i.upper())\nprint(a)",
-      options: ["['A', 'B', 'C', 'D']", "['a', 'b', 'c', 'd']", "SyntaxError", "MemoryError thrown at runtime"],
-      correct: 3,
-      explanation: "Modificarea unei liste (append) în timp ce o parcurgi cu for extinde iterația la elementele nou adăugate. Cum 'A'.upper()='A' etc. sunt puncte fixe, lista crește la nesfârșit cu fiecare pas, ducând în cele din urmă la MemoryError."
-    },
-    {
-      id: "py-src-45",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code:\nt=([10,20],10,False)\nWhitch line of the code assigns <class 'list'> to x?",
-      options: ["x = type(t)", "x = type(t[0])", "x=type(t[1])", "x = type(t[0:1])"],
-      correct: 1,
-      explanation: "t[0] este [10, 20], o listă — deci type(t[0]) este <class 'list'>."
-    },
-    {
-      id: "py-src-49",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\nWhat is the result ?",
-      code: "1) a=15\n2) b=5\n3) print(a/b)",
-      options: ["3", "3.0", "0", "0.0"],
-      correct: 1,
-      explanation: "În Python 3, împărțirea cu / întoarce întotdeauna float: 15/5 = 3.0."
-    },
-    {
-      id: "py-src-50",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\nWhat is the result?",
-      code: "1) a=21\n2) b=6\n3) print(a/b)\n4) print(a//b)\n5) print(a%b)",
-      options: ["3 3 3", "3.5 3 3", "3.0 3 3", "3.5 3.5 3"],
-      correct: 1,
-      explanation: "a/b=21/6=3.5 (float); a//b=21//6=3 (floor division); a%b=21%6=3 (rest). Rezultat: 3.5 3 3."
-    },
-    {
-      id: "py-src-52",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following expression\nWhat is the result?",
-      code: "1) result=8//6%5+2**3-2\n2) print(result)",
-      options: ["6", "7", "8", "9\n\n 16"],
-      correct: 1,
-      explanation: "Ordinea operațiilor: 2**3=8; 8//6=1; 1%5=1; 1+8-2=7."
-    },
-    {
-      id: "py-src-62",
-      chapter: "structuri-date",
-      type: "single",
-      question: "You evaluate the following code:\nWhat is the output of the print statement?",
-      code: "numList = [0,1,2,3,4]\nprint(5 in numList)",
-      options: ["4", "False", "True", "5"],
-      correct: 1,
-      explanation: "Lista numList=[0,1,2,3,4] nu conține valoarea 5, deci '5 in numList' este False."
-    },
-    {
-      id: "py-src-64",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the expession:\nresult=a-b*c+d\nWhich of the following are valid?",
-      options: ["First b*c will be evaluated followed by subtraction and addition", "First b*c will be evaluated followed by addition and subtraction", "First a-b will be evaluated followed by multiplication and addition", "The above expession is equivalent to a-(b*c)+d\n\n\n 19"],
-      correct: 3,
-      explanation: "Înmulțirea are prioritate mai mare decât adunarea/scăderea, deci expresia a-b*c+d este echivalentă cu a-(b*c)+d."
-    },
-    {
-      id: "py-src-65",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\n1) a=2\n2) a += 1\n3) # Line-1\n\nTo make a value as 9,which expression required to place at Line-1",
-      options: ["a*=2", "a**=2", "a+=2", "a-=2"],
-      correct: 1,
-      explanation: "a=2; a+=1 → a=3. Pentru a ajunge la 9: a**=2 → 3**2=9."
-    },
-    {
-      id: "py-src-66",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Consider the python code\nIn Which of the following cases the result value is 0?",
-      code: "1) a=1\n2) b=3\n3) c=5\n4) d=7",
-      options: ["result = a+b*2", "result = a%b-1", "result = a-b//d", "result = a**d-1"],
-      correct: [1, 3],
-      explanation: "a%b-1 = 1%3-1 = 1-1 = 0. De asemenea a**d-1 = 1**7-1 = 1-1 = 0. Ambele expresii dau 0."
-    },
-    {
-      id: "py-src-76",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "What will be the value of X in the following Python expression?\nX = 2+9*((3*12)-8)/10",
-      options: ["30.0", "30.8", "28.4", "27.2"],
-      correct: 3,
-      explanation: "(3*12)-8=28; 9*28=252; 252/10=25.2; 2+25.2=27.2."
-    },
-    {
-      id: "py-src-77",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Operators with the same precedence are evaluated in which manner?",
-      options: ["Left to Right", "Right to Left", "Can't say", "None of the mentioned"],
-      correct: 0,
-      explanation: "Operatorii cu aceeași prioritate sunt evaluați de la stânga la dreapta (cu excepția puterii, care e de la dreapta la stânga)."
-    },
-    {
-      id: "py-src-78",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "You are writing a python program that evaluates an arithmetic expression.\nThe expression is described as b is equals a multiplied by negative one, then raised to\nthe second power, where a is the value which will be input and b is result.\na=eval(input('Enter a number for the expression:'))\nWhich of the following is valid expression for the given requirement?",
-      options: ["b = (a) ** -2", "b = (-a) ** 2", "b = (a-) ** 2", "b = -(a) ** 2"],
-      correct: 1,
-      explanation: "b este a înmulțit cu -1, apoi ridicat la puterea 2: b=(-a)**2, echivalentă cu (a*-1)**2."
-    },
-    {
-      id: "py-src-79",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Which expression evaluates to 4?",
-      options: ["7//2-3", "7%2+3", "7/2*3", "7-2*3\n\n\n 23\n\n1.4 Select operators to achieve the intended results\n• Assignment (=, +=, -=, /=, %=, //=, **=), comparison (==, >=, <=, !=), logical (and, or, not), logical, arithmetic (+, -, /,\n//, %, **, unary + and -), identity (is), containment (in)"],
-      correct: 1,
-      explanation: "7%2+3 = 1+3 = 4."
-    },
-    {
-      id: "py-src-80",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Evaluate the following arithmetic expression:\n(3*(1+2)**2 - (2**2)*3)\nWhat is the result?",
-      options: ["3", "13", "15", "69"],
-      correct: 2,
-      explanation: "(1+2)**2=9; 3*9=27; 2**2=4; 4*3=12; 27-12=15."
-    },
-    {
-      id: "py-src-82",
+      id: "py-020",
       chapter: "operatori-tipuri",
       type: "single",
       question: "Which of the following expressions results in an error?",
-      options: ["float(\"10')", "int(\"10')", "float('10.8')", "int('10.8'"],
+      options: ["float(\"10\")","int(\"10\")","float(\"10.8\")","int(\"10.8\")"],
       correct: 3,
-      explanation: "int('10.8') generează ValueError — int() nu poate converti direct un șir cu punct zecimal la întreg."
+      explanation: "int() nu poate converti direct un șir cu punct zecimal: int(\"10.8\") dă ValueError. Corect ar fi int(float(\"10.8\"))."
     },
     {
-      id: "py-src-94",
-      chapter: "structuri-control",
-      type: "single",
-      question: "You need to complete the code. Which code should you add on line 03?",
-      code: "You are writing a Python application for a dance studio. The studio wants to encourage youth and seniors to sign up.\nMinors and seniors must receive a 10% discount.\nYou write the following code. Line numbers are included for reference only.\n01 def get_discount(minor, senior):\n02 discount = .1\n03\n04 discount = 0\n05 return discount",
-      options: ["if not (minor and senior):", "if not (minor or senior):", "if (not minor) and senior:", "if (not minor) or senior:"],
-      correct: 1,
-      explanation: "Dacă persoana NU e nici minor, nici senior (adult obișnuit), reducerea trebuie anulată: 'if not (minor or senior): discount=0'. Altfel reducerea de .1 rămâne."
-    },
-    {
-      id: "py-src-107",
-      chapter: "structuri-control",
-      type: "single",
-      question: "If the Book rented on 'Sunday',the number of days Book rented is 5 and Book returned after 9PM then what is the result?",
-      code: "The XYZ Book Company needs a way to determine the cost that a student will pay for renting a Book.\n● The Cost is dependent on the time of the Book is returned.\n● However there are also special rates on Saturday and Sundays.\n● The Fee Structure is shown in the following list:\n● The cost is $3.00 per night.\nIf the Book is returned after 9PM, the student will be charged an extra day. If the Book is rented on a Sunday,the student\nwill get 50% off for as long as they the keep the book.\nIf the Book is rented on a Saturday,the student will get 30% off for as long as they keep the book.\nWe need to write the code to meet this requirements.\n# XYZ Book Rented Amount Calculator\nontime = input(\"Was Book returned before 9 pm? y or n\").lower()\ndays_rented = int(input(\"How many days was video rented? \"))\nday_rented = input(\"What day was the video rented?\").capitalize()\ncost_per_day = 3.00\nif ontime == 'n'\n days_rented = days_rented + 1\nif day_rented == 'Sunday'\n total = (days_rented * cost_per_day) *0.5\nelif day_rented == 'Saturday'\n total = (days_rented * cost_per_day) *0.7\nelse:\n total = days_rented * cost_per_day\nprint(\"The Cost of the Book rental is : $\", total)",
-      options: ["The Cost of Book Rental is: $7.0", "The Cost of Book Rental is: $8.0", "The Cost of Book Rental is: $9.0", "The Cost of Book Rental is: $10.0"],
-      correct: 2,
-      explanation: "Returnat după 9 seara → +1 zi (5+1=6 zile). Ziua e Duminică → 50% reducere: (6*3.00)*0.5 = 9.0."
-    },
-    {
-      id: "py-src-112",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the Python code:\nTo print 'Valid' to the console, whitch condition we have to take for if statement?",
-      code: "a=5\nb=10\nc=2\nd=True\n\nx=a+b*c\ny=a+b/d\n\nif(condition):\n print('Valid')\nelse:\n print('Invalid')",
-      options: ["x > y", "x == y", "x < y", "x <= y"],
-      correct: 0,
-      explanation: "x=a+b*c=5+20=25. y=a+b/d=5+10/True=5+10.0=15.0 (True se comportă ca 1). x>y (25>15) este condiția care afișează 'Valid'."
-    },
-    {
-      id: "py-src-133",
-      chapter: "structuri-control",
-      type: "single",
-      question: "What will be the output of the following Python code?\nTrue = False\nwhile True:\n print(True)\n break",
-      options: ["True", "False", "None", "none of the mentioned"],
-      correct: 3,
-      explanation: "În Python 3, True este un cuvânt cheie rezervat și nu poate fi reatribuit — 'True = False' generează de fapt o eroare de sintaxă, deci niciunul dintre răspunsurile de afișare nu e corect."
-    },
-    {
-      id: "py-src-136",
-      chapter: "structuri-control",
-      type: "single",
-      question: "What will be the output of the following Python code?\nfor i in range(0):\nprint(i)",
-      options: ["0", "no output", "error", "None of the mentioned."],
-      correct: 2,
-      explanation: "Corpul lui 'for' (print(i)) nu este indentat sub linia for, ceea ce generează IndentationError la Python."
-    },
-    {
-      id: "py-src-137",
-      chapter: "structuri-control",
-      type: "single",
-      question: "What will be the output of the following python code.\nfor i not in a:\n print(i)\n i += 1",
-      code: "a = [0, 1, 2, 3]\ni = -2",
-      options: ["-2 -1", "0", "error", "none of the mentioned"],
-      correct: 2,
-      explanation: "'for i not in a:' nu este o sintaxă for validă în Python (for cere 'for var in iterabil:'), deci apare o eroare de sintaxă."
-    },
-    {
-      id: "py-src-139",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Consider the code:\nWhat is the result?",
-      code: "l=[10, (20,), {30}, {}, {}, [48,50]]\ncount=0\nfor i in range(len(1)):\n if type(1[i])==list:\n count+=1\n elif type(1[i])==tuple:\n count+=2\n elif type(1[i])==set:\n count+=3\n elif type(1[i])==dict:\n count+=4\n else:\n count+=5\nprint(count)",
-      options: ["17", "18", "19", "20\n\n\n 45"],
-      correct: 2,
-      explanation: "Cu l=[10,(20,),{30},{},{},[48,50]]: int→+5(=5), tuple→+2(=7), set→+3(=10), dict(gol)→+4(=14), dict(gol)→+4(=18), list→+1(=19). Rezultat final: 19."
-    },
-    {
-      id: "py-src-143",
-      chapter: "input-output",
-      type: "single",
-      question: "You develop a Python application for your school. You need to read and write data to a text file. If the file does not exist it\nmust be created. If the file has content the content must be removed.\nWhich code should you use?",
-      options: ["open(\"local_data\", \"r+\")", "open(\"local_data\", \"w+\")", "open(\"local_data\", \"r\")", "open(\"local_data\", \"w\")"],
-      correct: 1,
-      explanation: "'w+' creează fișierul dacă nu există și golește conținutul existent, permițând și citire și scriere."
-    },
-    {
-      id: "py-src-144",
-      chapter: "input-output",
-      type: "single",
-      question: "You develop a python application for your school. You need to read and write data to a text file. If the file does not exist,\nit must be created. If the file has the content, the content must be removed. Which code we have to use?",
-      options: ["open('abc.txt', 'w+')", "open('abc.txt', 'r')", "open('abc.txt', 'a')", "open('abc.txt', 'r+')"],
-      correct: 0,
-      explanation: "'w+' creează fișierul dacă nu există și îi șterge conținutul, permițând citire și scriere."
-    },
-    {
-      id: "py-src-149",
-      chapter: "input-output",
-      type: "single",
-      question: "Which of the following statements are true?",
-      options: ["When you open a file for reading, if the file does not exist, an error occurs", "When you open a file for writing, if the file does not exist, a new file is created", "When you open a file for writing, if the file exists, the existing file is overwritten with\nthe new file", "All of the mentioned\n\n\n\n\n 49"],
-      correct: 3,
-      explanation: "Toate cele trei afirmații sunt adevărate: citirea unui fișier inexistent dă eroare, scrierea creează fișierul dacă nu există, iar scrierea peste un fișier existent îl suprascrie."
-    },
-    {
-      id: "py-src-150",
-      chapter: "input-output",
-      type: "single",
-      question: "To read the entire remaining contents of the file as a string from a file object infile, we use ____",
-      options: ["infile.read(2)", "infile.read()", "infile.readline()", "infile.readlines()"],
-      correct: 1,
-      explanation: "infile.read() (fără argument) citește tot conținutul rămas al fișierului ca un singur string."
-    },
-    {
-      id: "py-src-151",
-      chapter: "input-output",
-      type: "single",
-      question: "What is the use of tell() method in python?",
-      options: ["tells you the current position within the file", "tells you the end position within the file", "tells you the file is opened or not", "none of the mentioned"],
-      correct: 0,
-      explanation: "tell() întoarce poziția curentă a cursorului de citire/scriere din fișier."
-    },
-    {
-      id: "py-src-160",
-      chapter: "input-output",
-      type: "single",
-      question: "You write the following code:\nWhat is the output?",
-      code: "import datetime\nd = datetime.datetime(2017, 4, 7)\nprint('{:%B-%d-%y}'.format(d))\n\nnum=1234567.890\nprint('{:, .4f}'.format(num))\nYou run the program.",
-      options: ["2017--April--07\n 1,234,567.890\n Press any key to continue...", "Apr--07--2017\n 1,234,567,8900\n Press any key to continue...", "April--07--17\n 1,234,567.8900\n Press any key to continue...", "April--07--17\n 1234567.89\n Press any key to continue..."],
-      correct: 2,
-      explanation: "%B dă numele complet al lunii ('April'), %d ziua ('07'), %y anul pe 2 cifre ('17'). Formatul cu virgulă pentru număr adaugă separator de mii și 4 zecimale: '1,234,567.8900'."
-    },
-    {
-      id: "py-src-161",
-      chapter: "input-output",
-      type: "single",
-      question: "Northwind Traders has hired you as an intern on the coding team that creates e-commerce applications.\nYou must write a script that asks the user for a value. The value must be used as a whole number in a calculation, even if\nthe user enters a decimal value. You need to write the code to meet the requirements.\nWhich code segment should you use?",
-      options: ["totalltems = int(input(\"How many items would you like?\"))", "totalltems = str(input(\"How many items would you like?\"))", "totalltems = float(input(\"How many items would you like?\"))", "totalltems = input(\"How many items would you like?\")"],
-      correct: 0,
-      explanation: "int(input(...)) convertește intrarea într-un număr întreg, folosit pentru calculul cerut ca număr întreg."
-    },
-    {
-      id: "py-src-162",
-      chapter: "input-output",
-      type: "single",
-      question: "Which code should you write at line 02?",
-      code: "You develop a Python application for your company.\nYou need to accept input from the user and print that information to the user screen.\nYou have started with the following code. Line numbers are included for reference only.\n01 print('What is your name?')\n02\n03 print(name)",
-      options: ["name = input", "input(name)", "name = input()", "input(\"name\")\n\n\n\n 53"],
-      correct: 2,
-      explanation: "Pentru a citi și stoca ce a introdus utilizatorul, e nevoie de 'name = input()'."
-    },
-    {
-      id: "py-src-164",
-      chapter: "input-output",
-      type: "single",
-      question: "You are creating a program that shows a congratulation message to employees on their service anniversary.\nYou need to calculate the number of years of service and print a congratulatory message.\nWhich code should you use at line 03?",
-      code: "You have written the following code. Line numbers are included for reference only.\n01 start = input(\"How old were you on your start date?\")\n02 end = input(\"How old are you today?\")\n03\nYou need to complete the program.",
-      options: ["print(\"congratulations on \" + int(end - start) + \" years of service!\")", "print(\"congratulations on \" + (int(end) - int(start)) + \" years of service!\")", "print(\"congratulations on \" + str(end - start) + \" years of service!\")", "print(\"congratulations on \" + str(int(end) - int(start)) + \" years of service!\")"],
-      correct: 3,
-      explanation: "Ambele valori introduse sunt string-uri; trebuie convertite la int pentru scădere, apoi rezultatul convertit înapoi la str pentru concatenare: str(int(end)-int(start))."
-    },
-    {
-      id: "py-src-167",
-      chapter: "input-output",
-      type: "multiple",
-      question: "You are creating an ecommerce script that accepts input from the user and outputs the data in a comma delimited format.\nYou write the following lines of code to accept input:\nThe output must meet the following requirements:\n  Strings must be enclosed inside of double-quotes\n  Numbers must not be enclosed in quotes or other characters\n  Each item must be separated with a comma\nYou need to complete the code to meet the requirements. Which three code segments should you use? Each correct\nanswer presents a complete solution. Choose three.",
-      code: "item = input('Enter the item name: ')\nsales = input('Enter the quantity: ')",
-      options: ["print('\"{0}\",{1}'.format(item, sales))", "print(item + \",' + sales)", "print('\"' + item + \"\",\" + sales)", "print(\"{0},{1}\".format(item, sales))", "print('\"%s\", %s' % (item, sales))"],
-      correct: [0, 2, 4],
-      explanation: "Cele trei abordări Pythonic diferite ating cerința: .format() cu ghilimele explicite (A), concatenare manuală cu ghilimele (C), și formatarea stil %s (E) — toate pun șirurile în ghilimele duble și lasă numerele nequotate."
-    },
-    {
-      id: "py-src-196",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Tailspin Toys uses Python to control its new toy Happy Clown. The program has errors that cause the clown to run around\nin an infinite circle. You have been hired to help debug the following Happy Clown code. Line numbers are included for\nreference only.\n09 else:\n10 turnValue = 0\n11 move = 0",
-      code: "01 import math\n02 #default motion for happy clown\n03 power = True\n04 move = 0\n05 while(power):\n06 if move == 0:\n07 turnValue = math.pi/move\n08 move+=5",
-      options: ["Line 05 has a syntax error because it should read (power == True).", "Line 08 has a syntax error because + = is an invalid statement.", "Line 07 causes a runtime error due to division by zero.", "Line 05 causes a runtime error because the expression is incomplete."],
-      correct: 2,
-      explanation: "La prima iterație move=0, deci turnValue=math.pi/move încearcă o împărțire la zero, generând o eroare de tip runtime (ZeroDivisionError)."
-    },
-    {
-      id: "py-src-202",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "You write the following code:\nfor line in file_in:\n print(line. rstrip())\n file_out.write(\"line \" + str(i) + \": \" + line)\n i = i + 1\n file_in.close()\n file_out.close ()\nThe out.txt file does not exist. You run the code. The code will execute without error. Review the underlined text. If it\nmakes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that\nmakes the statement correct.",
-      code: "import sys\n try:\n file_in = open(\"in.txt\", 'r')\n file_out = open(\"out.txt\", 'w+')\n except IOError:\n print('cannot open', file_name)\n else:\n i = 1",
-      options: ["No change is needed.", "The code runs but generates a logic error.", "The code will generate a runtime error.", "The code will generate a syntax error."],
-      correct: 0,
-      explanation: "Modul 'w+' creează automat out.txt dacă nu există, deci codul rulează fără nicio eroare — afirmația este deja corectă, nu necesită nicio schimbare."
-    },
-    {
-      id: "py-src-205",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "When will the else part of try-except-else be executed?",
-      options: ["always", "when no exception occurs", "when error exception", "when an exception occurs in to except block"],
-      correct: 1,
-      explanation: "Blocul else dintr-un try-except-else rulează doar dacă NU a apărut nicio excepție în blocul try."
-    },
-    {
-      id: "py-src-206",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Is the following Python code valid?\ntry :\n Try block\nexcept:\n Except block\nfinally :\n Finally Block",
-      options: ["no, there is no such thing as finally", "no, finally cannot be used with except", "no, finally must come before except", "yes"],
-      correct: 3,
-      explanation: "Da, try-except-finally este sintaxă validă în Python; finally poate fi folosit împreună cu except."
-    },
-    {
-      id: "py-src-207",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "What will be the output of the following python code?\ndef foo():\n try:\n return 1\n finally:\n return 2\nk = foo()\nprint(k)",
-      options: ["1", "2", "3", "error, there is more than one return statement in a single try-finally block"],
-      correct: 1,
-      explanation: "return din finally suprascrie orice return anterior din try. finally: return 2 face ca funcția să întoarcă 2."
-    },
-    {
-      id: "py-src-208",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Consider the code\nWhat is the result?",
-      code: "def f1():\n try:\n return 1\n finally:\n return 2\n\nx = f1()\nprint(x)",
-      options: ["1", "2", "print both 1 and 2", "Error, because more than one return statement is not allowed\n\n\n 68"],
-      correct: 1,
-      explanation: "La fel ca mai sus: return din finally are prioritate și suprascrie return-ul din try, deci x=2."
-    },
-    {
-      id: "py-src-212",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "The base class for all exceptions in python is:",
-      options: ["Exception", "ExceptioNBase", "BaseException", "ArithmeticError"],
-      correct: 2,
-      explanation: "BaseException este clasa de bază pentru TOATE excepțiile din Python; Exception este doar o subclasă a acesteia."
-    },
-    {
-      id: "py-src-220",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "What will be the output of the following python code?\n\nx =30\ny = 10\nassert x > y ,'x is smaller than y'",
-      options: ["Assertion Error", "10 8", "No output", "108"],
-      correct: 2,
-      explanation: "assert x>y verifică 30>10, care este True, deci assert-ul trece fără eroare și fără niciun output (mesajul apare doar dacă expresia e False)."
-    },
-    {
-      id: "py-src-223",
-      chapter: "module-librarii",
-      type: "single",
-      question: "You write a function that reads a data file and prints each line of the file. You write the following code. Line numbers are\nWhat is causing the error?",
-      code: "included for reference only.\n01 def read_file(file):\n02 line = None\n03 if os.path.isfile(file):\n04 data = open(file, 'r')\n05 for line in data:\n06 print(line)\nWhen you run the program, you receive an error on line 03.",
-      options: ["The path method does not exist in the os object.", "The isfile method does not exist in the path object.", "You need to import the os library.", "The isfile method does not accept one parameter."],
-      correct: 2,
-      explanation: "Codul folosește os.path.isfile, dar nu conține 'import os' — de aceea apare eroarea: trebuie importat modulul os."
-    },
-    {
-      id: "py-src-224",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What is the type of sys.argv?",
-      options: ["set", "list", "tuple", "string"],
-      correct: 1,
-      explanation: "sys.argv este de tip list (o listă de string-uri cu argumentele din linia de comandă)."
-    },
-    {
-      id: "py-src-225",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which of the following isn't true about main modules?",
-      options: ["When a python file is directly executed, it is considered main module of a program", "Main modules may import any number of modules", "Special name given to main modules is: _main_", "Other main modules can import main modules"],
-      correct: 2,
-      explanation: "Numele special al modulului principal este '__main__' (cu underscore dublu), nu '_main_' — deci afirmația C este cea falsă."
-    },
-    {
-      id: "py-src-226",
-      chapter: "module-librarii",
-      type: "single",
-      question: "From sys module, by using which variable we can access command line arguments?",
-      options: ["argv", "argsv", "args", "arguments"],
-      correct: 0,
-      explanation: "Variabila sys.argv oferă acces la argumentele din linia de comandă."
-    },
-    {
-      id: "py-src-231",
-      chapter: "module-librarii",
-      type: "single",
-      question: "You need to write code that generates a random float with a minimum value of 0.0 and a maximum value of 1.0.\nWhich statement should you use?",
-      options: ["random.randrange()", "random.randrange(0.0, 1.0)", "random.random()", "random.randint(0, 1)"],
-      correct: 2,
-      explanation: "random.random() generează un float aleatoriu între 0.0 (inclusiv) și 1.0 (exclusiv)."
-    },
-    {
-      id: "py-src-232",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "You are writing code that generates a random integer with a minimum value of 5 and a maximum value of 11.\nWhich two functions should you use? Each correct answer presents a complete solution. Choose two.",
-      options: ["random.randint(5, 11)", "random.randrange(5, 12, 1)", "random.randint(5, 12)", "random.randrange(5, 11, 1)"],
-      correct: [0, 1],
-      explanation: "random.randint(5,11) include ambele capete (5 și 11). random.randrange(5,12,1) e echivalent, deoarece capătul din randrange e exclusiv."
-    },
-    {
-      id: "py-src-233",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "You work on a team that is developing a game for AdventureWorks. You need to write code that generates a random\nnumber that meets the following requirements:\n  The number is a multiple of 5.\n  The lowest number is 5.\n  The highest number is 100.\nWhich two code segments will meet the requirements? Each correct answer presents a complete solution. Choose two.",
-      options: ["from random import randrange\n print(randrange(5, 100, 5))", "from random import randint\n print(randint(1, 20) * 5)", "from random import randint\n print(randint(0, 20) * 5)", "from random import randrange\n print(randrange(0, 100, 5))"],
-      correct: [0, 1],
-      explanation: "randrange(5,100,5) și randint(1,20)*5 rămân în limitele cerute (minim 5, fără să depășească 100) și produc multipli de 5. Celelalte două pot produce 0, sub limita minimă cerută de 5."
-    },
-    {
-      id: "py-src-235",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What will be the output of the following Python code?\n\nfrom math import factorial\nprint(math.factorial(5))",
-      options: ["120", "Nothing is printed", "Error, method factorial doesn't exist in math module", "Error, the statement should be: print(factorial(5))"],
-      correct: 3,
-      explanation: "'from math import factorial' aduce doar numele 'factorial' în spațiul de nume local, NU și numele 'math' — deci 'math.factorial(5)' generează NameError; ar trebui scris direct 'factorial(5)'."
-    },
-    {
-      id: "py-src-236",
-      chapter: "module-librarii",
-      type: "single",
-      question: "You are writing an application that uses the pow() function. The program must reference the function using the name\npower. You need to import the function.\nWhich code segment should you use?",
-      options: ["import math.pow as power", "import pow from math as power", "from math import pow as power", "from math.pow as power."],
-      correct: 2,
-      explanation: "Sintaxa corectă pentru a importa o funcție sub alt nume este: from math import pow as power."
-    },
-    {
-      id: "py-src-237",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What is returned by the math.ceil(10.4)?",
-      options: ["11", "10", "11.0", "10.0"],
-      correct: 0,
-      explanation: "math.ceil(10.4) rotunjește în sus la 11, iar în Python 3 math.ceil() întoarce un int, nu un float."
-    },
-    {
-      id: "py-src-238",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What will be the output of the following Python code if the system date is 23rd September, 2020?\nt=datetime.date.today()\nprint(t.month())",
-      options: ["September", "Sept", "09", "9"],
-      correct: 3,
-      explanation: "'month' este un atribut, nu o metodă — t.month (fără paranteze) ar da 9. Aici se presupune interpretarea ca număr întreg al lunii, deci 9."
-    },
-    {
-      id: "py-src-37",
+      id: "py-021",
       chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code:\n1) s='Python is easy'\n2) s1=s[-7:]\n3) s2=s[-4:]\n4) print(s1+s2)\nWhat is the result?",
-      options: ["is easyeasy", "easyeasy", "iseasyeasy", "s easyeasy", "is easy easy"],
-      correct: 0,
-      explanation: "s[-7:] ia ultimele 7 caractere ('is easy'), s[-4:] ia ultimele 4 ('easy'). Concatenate: 'is easy'+'easy'='is easyeasy'."
-    },
-    {
-      id: "py-src-38",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code:\n1) s='Python is easy'\n2) s1=s[6:-4]\n3) #Line-1\n4) print(len(s2))\nTo print 2 as output,which code we have to insert at Line-1",
-      options: ["s2 = s1.lstrip()", "s2 = s1.rstrip()", "s2 = s1.lrstrip()", "s2 = s1.strip()"],
-      correct: 3,
-      explanation: "s1=s[6:-4] este ' is ' (cu spații la ambele capete). Doar .strip() elimină spațiile de la AMBELE capete, lăsând 'is' (lungime 2)."
-    },
-    {
-      id: "py-src-40",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "Consider the variable declaration\nb = 'BANANA'\nWhich of the following lines will print 'AA' to the console?",
-      options: ["print(b[1]+b[2])", "print(b[1]+b[3])", "print(b[1]+b[5])", "print(b[3]+b[5])"],
-      correct: [1, 2, 3],
-      explanation: "b[1]='A', b[3]='A', b[5]='A' (BANANA: B-A-N-A-N-A). b[1]+b[3]='AA', b[1]+b[5]='AA', b[3]+b[5]='AA' — toate trei dau 'AA'."
-    },
-    {
-      id: "py-src-46",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code\n\n1) count=input('Enter the number of customers of the bank:')\n2) #Line-1\n3) print(output)\n\nWhich code inserted at Line-1 will print 20 to the console if we pass 15 as count value from the console?",
-      options: ["output=int(count)+5", "output=count+5", "output=str(count)+5", "output=float(count)+5"],
-      correct: 0,
-      explanation: "count este string '15'. output=int(count)+5 = 15+5 = 20."
-    },
-    {
-      id: "py-src-56",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Consider the code\n1) x=3\n2) x +=1\n3) #Line-1\n\nWhich line should be inserted at Line-1 so that x value will become 16?",
-      options: ["x+=2", "x-=2", "x*=2", "x**=2"],
-      correct: 3,
-      explanation: "x=3; x+=1 → x=4. Pentru a ajunge la 16: x**=2 → 4**2=16."
-    },
-    {
-      id: "py-src-57",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Which expression evaluates to 4?",
-      options: ["7/2*3", "7%2+3", "7//2-3", "7-2*3"],
-      correct: 1,
-      explanation: "7%2+3 = 1+3 = 4."
-    },
-    {
-      id: "py-src-59",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\n\n1) x=2\n2) y=6\n3) x+=2**3\n4) x//=y//2//3\n5) print(x)\n\nWhat is the output?",
-      options: ["0", "9", "10", "7"],
-      correct: 2,
-      explanation: "x=2; x+=2**3 → x=10. y=6; y//2=3; 3//3=1. x//=1 → x rămâne 10."
-    },
-    {
-      id: "py-src-60",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the Code\n\n1) x=3/3+3**3-3\n2) print(x)\n\nWhat is the output?",
-      options: ["25", "32", "0.11", "25.0"],
-      correct: 3,
-      explanation: "3/3=1.0 (float, / întoarce mereu float); 1.0+3**3-3 = 1.0+27-3 = 25.0."
-    },
-    {
-      id: "py-src-67",
-      chapter: "operatori-tipuri",
-      type: "multiple",
-      question: "In which of the following cases we will get same result",
-      options: ["23%5", "3**1", "11/3", "13//4"],
-      correct: [0, 1, 3],
-      explanation: "23%5=3, 3**1=3, 13//4=3 — toate dau 3. 11/3=3.666... (float, diferit)."
-    },
-    {
-      id: "py-src-83",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the code\nx='10'\ny='20'\n\nThe type of x+y ?",
-      options: ["int", "float", "str", "complex"],
-      correct: 2,
-      explanation: "x='10' și y='20' sunt ambele string-uri; x+y le concatenează, rezultând tot un string (str)."
-    },
-    {
-      id: "py-src-155",
-      chapter: "input-output",
-      type: "multiple",
-      question: "Which of the following statements are valid?\n Valid Invalid",
-      options: ["s=\"Durga Sir's Python Classes are Good\"\nIt causes error because we cannot use double quotes and single quotes simultaneously 〇 〇", "result=456+456.0\ntype of result is int 〇 〇", "The followng expression evaluates to 12 〇 〇\nb=False+5-True+35//4", "The following line will print result:4.5 〇 〇\nprint('result:',(7/2)+(False or True)+(9%3))"],
-      correct: [2, 3],
-      explanation: "b=False+5-True+35//4 = 0+5-1+8 = 12 (opțiunea C, adevărată). print('result:',(7/2)+(False or True)+(9%3)) = 3.5+1+0 = 4.5 (opțiunea D, adevărată). Opțiunile A și B sunt false: ghilimelele mixte sunt valide în Python, iar 456+456.0 dă float, nu int."
-    },
-    {
-      id: "py-src-190",
-      chapter: "functii",
-      type: "multiple",
-      question: "Consider the following code:\n1) def f1(x=0,y=0):\n2) return x+y\nWhich of the following method calls are valid?",
-      options: ["f1()", "f1('10','20')", "f1(10)", "f1('10')"],
-      correct: [0, 1, 2],
-      explanation: "f1(x=0,y=0): return x+y. f1() → 0+0. f1('10','20') → '10'+'20' (concatenare validă). f1(10) → 10+0. Toate trei rulează fără eroare. f1('10') ar încerca '10'+0, ceea ce dă TypeError (str+int)."
-    },
-    {
-      id: "py-src-191",
-      chapter: "functii",
-      type: "multiple",
-      question: "Consider the following code:\n\n1) def f1(x=0,y=0):\n2) return x*y\n\nWhich of the following method calls are valid?",
-      options: ["f1()", "f1('10','20')", "f1(10)", "f1('10')"],
-      correct: [0, 2, 3],
-      explanation: "f1(x=0,y=0): return x*y. f1() → 0*0=0. f1(10) → 10*0=0. f1('10') → '10'*0='' (string*int e valid, repetă de 0 ori). f1('10','20') ar încerca '10'*'20' (str*str), ceea ce dă TypeError."
-    },
-    {
-      id: "py-src-242",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "Consider the code:\n1) import random\n2) fruits=['Apple','Mango','Orange','Lemon']\n3) random_list=[random.choice(fruits)[:2] for i in range(3)]\n4) print(''.join(random_list))\nWhich of the following are possible outputs?",
-      options: ["ApApAp", "ApMaOr", "LeMaOr", "OrOraM"],
-      correct: [0, 1, 2],
-      explanation: "Fiecare selecție aleatorie ia primele 2 litere dintr-un fruct: Ap(ple), Ma(ngo), Or(ange), Le(mon). 'ApApAp', 'ApMaOr' și 'LeMaOr' sunt toate combinații posibile de 3 selecții; 'OrOraM' nu corespunde niciunei combinații valide de coduri de 2 litere."
-    },
-    {
-      id: "py-src-209",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Vrei să adaugi tratarea erorii FileNotFoundError la codul de mai jos. Care variantă este corectă?",
-      code: "f = open('abc.txt')\nprint(f.read())\nf.close()\n\nCod A:                          Cod B:                          Cod C:\nf = None                        f = None                        f = None\ntry:                            try:                            try:\n  f = open('abc.txt')              f = open('abc.txt')              f = open('abc.txt')\nexcept FileNotFoundError:       except FileNotFoundException:   else:\n  print('File does not exist')    print('File does not exist')    print(f.read())\nelse:                           else:                           except FileNotFoundError:\n  print(f.read())                 print(f.read())                  print('File does not exist')\nfinally:                        finally:                        finally:\n  if f is not None:                if f is not None:                if f is not None:\n    f.close()                        f.close()                        f.close()",
-      options: ["Codul A", "Codul B", "Codul C", "Niciuna dintre variante"],
-      correct: 0,
-      explanation: "Codul A folosește corect excepția reală din Python (FileNotFoundError — Codul B inventează 'FileNotFoundException', care nu există) și pune blocurile try/except/else/finally în ordinea corectă (Codul C inversează else și except)."
-    },
-    {
-      id: "py-src-171",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Verifici următorul cod care trebuie să valideze un număr de angajat cu formatul dd-ddd-dddd (doar cifre și liniuțe). Ce este adevărat despre acest cod?",
-      code: "employee_number = input('Enter Your Employee Number(dd-ddd-dddd): ')\nparts = employee_number.split('-')\nvalid = False\nif len(parts) == 3:\n    if len(parts[0])==2 and len(parts[1])==3 and len(parts[2])==4:\n        if parts[0].isdigit() and parts[1].isdigit() and parts[2].isdigit():\n            valid = True\nprint(valid)",
-      options: ["Va genera o eroare din cauza folosirii greșite a split()", "Va genera o eroare din cauza folosirii greșite a isdigit()", "Nu generează eroare, dar nu îndeplinește cerința", "Nu sunt necesare schimbări, codul îndeplinește cerința"],
-      correct: 3,
-      explanation: "split('-') separă corect cele 3 grupuri, iar verificările de lungime (2,3,4) și isdigit() corespund exact formatului dd-ddd-dddd. Codul funcționează corect fără modificări."
-    },
-    {
-      id: "py-src-172",
-      chapter: "input-output",
-      type: "single",
-      question: "Ce se va afișa la rularea codului?",
-      code: "x = \"ITVEDANT\"\nprint(\"%20s\", x)",
-      options: ["20 de spații goale după \"ITVEDANT\"", "20 de spații goale înainte de \"ITVEDANT\"", "Niciuna dintre variante", "-"],
-      correct: 2,
-      explanation: "Aici lipsește operatorul % care ar aplica formatarea — print primește doi parametri separați ('%20s' ca text literal și x), deci NU se produce nicio aliniere pe 20 de caractere. Se afișează literal: %20s ITVEDANT."
-    },
-    {
-      id: "py-src-173",
-      chapter: "structura-cod",
-      type: "single",
-      question: "Ce se va afișa la rularea acestui program?",
-      code: "d = '{a}{b}{a}'.format(a='hello', b='world')\nprint(d)",
-      options: ["hello world", "hello world hello", "helloworldhello", "hello hello world"],
-      correct: 2,
-      explanation: "Șablonul '{a}{b}{a}' înlocuiește a→'hello', b→'world', a→'hello', fără spații între ele: 'helloworldhello'."
-    },
-    {
-      id: "py-src-174",
-      chapter: "structura-cod",
-      type: "single",
-      question: "Care dintre următoarele afirmații despre formatarea numerelor sunt adevărate?",
-      code: "1. \"V:{:.2f}\".format(123.45678) afișează V:123.46\n2. \"V:{:.2f}\".format(123.4) afișează V:123.40\n3. \"V:{:8.2f}\".format(1.45678) afișează V:1.46\n4. \"V:{:08.2f}\".format(1.45678) afișează V:00001.46",
-      options: ["Doar 1 și 2", "Doar 1 și 3", "Doar 2 și 4", "1, 2, 3 și 4"],
-      correct: 3,
-      explanation: "Toate patru sunt corecte: {:.2f} rotunjește la 2 zecimale (1 și 2); {:8.2f} aliniază valoarea pe o lățime de 8 caractere cu spații (3); {:08.2f} face același lucru dar completează cu zerouri (4)."
-    },
-    {
-      id: "py-src-51",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Ce rezultat va avea codul de mai jos?",
-      code: "a = 3\nb = 5\na += 2**3\na -= b//2//3\nprint(a)",
-      options: ["13", "12", "11", "10"],
-      correct: 2,
-      explanation: "a += 2**3 → a=3+8=11. b//2=2; 2//3=0. a -= 0 → a rămâne 11."
-    },
-    {
-      id: "py-src-81",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "Consider the following expression:\nresult=(2*(3+4)**2-(3**3)*3)\nWhat is result value?",
-      options: ["17", "16", "18", "19"],
-      correct: 0,
-      explanation: "(3+4)**2=49; 2*49=98. (3**3)*3=27*3=81. 98-81=17."
-    },
-    {
-      id: "py-src-179",
-      chapter: "functii",
-      type: "multiple",
-      question: "Adventure Works Cycles creează un program ce trimite mesaje în funcție de câți kilometri a mers un client cu bicicleta. Care linii de cod trebuie folosite la linia 01 și linia 04?",
-      code: "01 ___\n02   name = input('What is your name? ')\n03   return name\n04 ___\n05   calories = miles * calories_per_mile\n06   return calories\n07 distance = int(input('How many miles did you bike this week? '))\n08 burn_rate = 50\n09 biker = get_name()\n10 calories_burned = calc_calories(distance, burn_rate)\n11 print(biker, ', you burned about', calories_burned, 'calories.')",
-      options: ["01: def get_name():", "01: def get_name(biker):", "01: def get_name(name):", "04: def calc_calories():", "04: def calc_calories(miles, burn_rate):", "04: def calc_calories(miles, calories_per_mile)"],
-      correct: [0, 5],
-      explanation: "get_name() este apelată fără argumente (linia09), deci definiția nu trebuie să aibă parametri. calc_calories este apelată cu (distance, burn_rate), dar în interiorul funcției variabila folosită este 'calories_per_mile' — numele parametrului trebuie să corespundă exact cu numele folosit în corpul funcției."
-    },
-    {
-      id: "py-src-3a",
-      chapter: "structuri-date",
-      type: "single",
-      question: "01 rooms = {1: 'Left Conference Room', 2: 'Right conference Room'}\n02 room = input('Enter the room number: ')\n03 if room not in rooms:\n04     print('The room does not exist.')\n05 else:\n06     print('The room name is ' + rooms[room])\n\nCare două tipuri de date sunt stocate în dicționarul rooms la linia 01?",
-      options: ["bool and string", "float and bool", "int and string", "float and int"],
-      correct: 2,
-      explanation: "Cheile dicționarului (1, 2) sunt de tip int, iar valorile ('Left Conference Room', etc.) sunt de tip string."
-    },
-    {
-      id: "py-src-3b",
-      chapter: "input-output",
-      type: "single",
-      question: "Folosind același cod ca mai sus: ce tip de date are variabila 'room' de la linia 02?",
-      options: ["bool", "float", "int", "string"],
-      correct: 3,
-      explanation: "input() întoarce întotdeauna un șir de caractere (string), indiferent ce a tastat utilizatorul."
-    },
-    {
-      id: "py-src-3c",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Folosind același cod: de ce linia 03 ('if room not in rooms') nu găsește camera, deși utilizatorul introduce un număr valid de cameră (ex: '1')?",
-      options: ["Invalid syntax", "Mismatched data type(s)", "Misnamed variable(s)"],
-      correct: 1,
-      explanation: "'room' este un string (ex: '1'), dar cheile din dicționarul rooms sunt int (1, 2) — comparația 'in' nu găsește niciodată o potrivire între tipuri diferite."
-    },
-    {
-      id: "py-src-4a",
-      chapter: "input-output",
-      type: "single",
-      question: "01 age = input('Enter your age: ')\n02 year = input('Enter the four digit year: ')\n03 born = eval(year) - eval(age)\n04 message = 'You were born in ' + str(born)\n05 print(message)\n\nCe tip de date are 'age' la linia 01?",
-      options: ["int", "str", "float", "bool"],
-      correct: 1,
-      explanation: "input() întoarce întotdeauna un string, indiferent ce a introdus utilizatorul."
-    },
-    {
-      id: "py-src-4b",
-      chapter: "input-output",
-      type: "single",
-      question: "Folosind același cod: ce tip de date are 'born' la linia 03?",
-      options: ["int", "str", "float", "bool"],
-      correct: 0,
-      explanation: "eval() interpretează un șir numeric ca o expresie Python — pentru cifre întregi, rezultatul eval(year)-eval(age) este de tip int."
-    },
-    {
-      id: "py-src-4c",
-      chapter: "input-output",
-      type: "single",
-      question: "Folosind același cod: ce tip de date are 'message' la linia 04?",
-      options: ["int", "str", "float", "bool"],
-      correct: 1,
-      explanation: "Concatenarea unui string cu str(born) produce întotdeauna un rezultat de tip string."
-    },
-    {
-      id: "py-src-6",
-      chapter: "operatori-tipuri",
-      type: "drag_drop",
-      question: "Asociază fiecare tip de date cu operația type() corespunzătoare.",
-      dragItems: [{"id": "int", "text": "int"}, {"id": "float", "text": "float"}, {"id": "str", "text": "str"}, {"id": "bool", "text": "bool"}],
-      dropZones: [{"id": "z1", "label": "type(+1E10)", "correctItemId": "float"}, {"id": "z2", "label": "type(5.0)", "correctItemId": "float"}, {"id": "z3", "label": "type(\"True\")", "correctItemId": "str"}, {"id": "z4", "label": "type(False)", "correctItemId": "bool"}],
-      explanation: "+1E10 și 5.0 sunt notații pentru numere float. \"True\" e un string (are ghilimele). False e o valoare bool. Tipul int nu se folosește aici."
-    },
-    {
-      id: "py-src-7",
-      chapter: "operatori-tipuri",
-      type: "drag_drop",
-      question: "Asociază fiecare tip de date cu segmentul de cod corespunzător.",
-      dragItems: [{"id": "bool", "text": "bool"}, {"id": "float", "text": "float"}, {"id": "int", "text": "int"}, {"id": "str", "text": "str"}],
-      dropZones: [{"id": "z1", "label": "age = 2", "correctItemId": "int"}, {"id": "z2", "label": "minor = False", "correctItemId": "bool"}, {"id": "z3", "label": "name = \"Contoso\"", "correctItemId": "str"}, {"id": "z4", "label": "weight = 123.5", "correctItemId": "float"}, {"id": "z5", "label": "zip = \"81000\"", "correctItemId": "str"}],
-      explanation: "zip='81000' este un string, chiar dacă valoarea pare numerică — este scrisă între ghilimele."
-    },
-    {
-      id: "py-src-16a",
-      chapter: "structuri-date",
-      type: "single",
-      question: "a = 'Config1'\nprint(a)\nb = a\na += 'Config2'\nprint(a)\nprint(b)\n\nCe se afișează după primul print(a)?",
-      options: ["Config1", "Config1Config2", "Config2"],
-      correct: 0,
-      explanation: "La acest moment, a are încă valoarea inițială 'Config1'."
-    },
-    {
-      id: "py-src-16b",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Folosind același cod: ce se afișează după al doilea print(a) (după a += 'Config2')?",
-      options: ["Config1", "Config1Config2", "Config2"],
-      correct: 1,
-      explanation: "a += 'Config2' creează un nou string 'Config1Config2' și îl atribuie variabilei a."
-    },
-    {
-      id: "py-src-16c",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Folosind același cod: ce se afișează la print(b)?",
-      options: ["Config1", "Config1Config2", "Config2"],
-      correct: 0,
-      explanation: "String-urile sunt imutabile: a += 'Config2' creează un string NOU pentru a, dar b rămâne legat de string-ul original 'Config1'."
-    },
-    {
-      id: "py-src-23",
-      chapter: "structuri-control",
-      type: "drag_drop",
-      question: "Vrei să verifici dacă un nume introdus e scris cu litere mici, mari sau mixte. Alege și ordonează cele 4 segmente de cod corecte din lista de mai jos.",
-      dragItems: [{"id": "seg_mixed", "text": "else:\\n  print(name, \"is mixed case.\")"}, {"id": "seg_else_lower", "text": "else:\\n  print(name, \"is lower case.\")"}, {"id": "seg_input", "text": "name = input(\"Enter your name: \")"}, {"id": "seg_else_upper", "text": "else:\\n  print(name, \"is upper case.\")"}, {"id": "seg_elif_upper", "text": "elif name.upper() == name:\\n  print(name, \"is all upper case.\")"}, {"id": "seg_if_lower", "text": "if name.lower() == name:\\n  print(name, \"is all lower case.\")"}],
-      dropZones: [{"id": "p1", "label": "Prima linie", "correctItemId": "seg_input"}, {"id": "p2", "label": "A doua linie", "correctItemId": "seg_if_lower"}, {"id": "p3", "label": "A treia linie", "correctItemId": "seg_elif_upper"}, {"id": "p4", "label": "A patra linie", "correctItemId": "seg_mixed"}],
-      explanation: "Se citește numele, apoi se verifică întâi dacă e tot minuscule (if), apoi dacă e tot majuscule (elif), iar else acoperă orice altă combinație (mixt). Cele două segmente 'else' nefolosite sunt distractori."
-    },
-    {
-      id: "py-src-24",
-      chapter: "operatori-tipuri",
-      type: "drag_drop",
-      question: "a = 11\nb = 4\nAsociază fiecare expresie cu rezultatul ei corect.",
-      dragItems: [{"id": "div", "text": "print(a / b)"}, {"id": "floordiv", "text": "print(a // b)"}, {"id": "mod", "text": "print(a % b)"}],
-      dropZones: [{"id": "z1", "label": "2", "correctItemId": "floordiv"}, {"id": "z2", "label": "3", "correctItemId": "mod"}, {"id": "z3", "label": "2.75", "correctItemId": "div"}],
-      explanation: "11/4=2.75 (împărțire exactă); 11//4=2 (împărțire întreagă); 11%4=3 (restul împărțirii)."
-    },
-    {
-      id: "py-src-47",
-      chapter: "operatori-tipuri",
-      type: "single",
-      question: "În care dintre următoarele cazuri vom obține <class 'int'> ca rezultat al type(x)?",
-      code: "A) x=47.0        B) x='47'        C) x=10+20j        D) x=2**2**2",
-      options: ["Cazul A", "Cazul B", "Cazul C", "Cazul D"],
-      correct: 3,
-      explanation: "Exponențierea este asociativă la dreapta: 2**2**2 = 2**(2**2) = 2**4 = 16, un întreg (int). A e float, B e str, C e complex."
-    },
-    {
-      id: "py-src-61",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "În care dintre următoarele cazuri se va afișa True? (alege 2 răspunsuri)",
-      code: "A) a=45; b=45; print(a is not b)\nB) s1='Python'; s2='Python'.upper(); print(s1 is s2)\nC) x=[1,2,3]; y=[1,2,3]; print(x is y)\nD) print('r' in 'durga')\nE) print('is' in 'This IS a Fake News')",
-      options: ["Cazul A", "Cazul B", "Cazul C", "Cazul D", "Cazul E"],
-      correct: [3, 4],
-      explanation: "'r' apare în 'durga' (D=True). 'is' apare ca subșir chiar în cuvântul 'This' (Th-is), deci E=True. A e False (a is b ar fi True pentru întregi mici, deci 'is not' e False). B e False ('Python'!='PYTHON'). C e False (liste diferite ca obiecte)."
-    },
-    {
-      id: "py-src-69",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "numList=[1,2,3,4,5]\nalphaList=['a','b','c','d','e']\nprint(numList is alphaList)   #1\nprint(numList == alphaList)   #2\nnumList = alphaList\nprint(numList is alphaList)   #3\nprint(numList == alphaList)   #4\n\nCare dintre afirmații sunt adevărate? (alege 2)",
-      options: ["#1 afișează True", "#2 afișează False", "#3 afișează True", "#4 afișează False"],
-      correct: [1, 2],
-      explanation: "Inițial numList și alphaList sunt obiecte diferite cu conținut diferit: is→False, ==→False. După numList=alphaList, ambele indică același obiect: is→True, ==→True. Deci #2 (False) și #3 (True) sunt corecte."
-    },
-    {
-      id: "py-src-71",
-      chapter: "structuri-control",
-      type: "multiple",
-      question: "numbers=[10,20,30,40]\nx=0\nÎn care dintre următoarele cazuri se va afișa 10 la consolă? (alege 2 răspunsuri)",
-      code: "A) for i in (30,40,50):        B) for i in (30,40,50):\n     if i in numbers:              if i not in numbers:\n       x=x+5                         x=x+5\n   print(x)                      print(x)\n\nC) for i in (30,40,50):        D) for i in (30,40,50):\n     if i not in numbers:            if i in numbers:\n       x=x+10                         x=x+10\n   print(x)                      print(x)",
-      options: ["Cazul A", "Cazul B", "Cazul C", "Cazul D"],
-      correct: [0, 2],
-      explanation: "A: 30 și 40 sunt în listă (+5 fiecare) = 10. C: doar 50 nu e în listă (+10) = 10. B dă 5, D dă 20."
-    },
-    {
-      id: "py-src-72",
-      chapter: "structuri-control",
-      type: "multiple",
-      question: "l=['Apple','Boy','Cat','Dog']\nÎn care dintre următoarele cazuri se vor afișa exact 'Boy', 'Cat', 'Dog' (fiecare pe rândul lui, fără 'Apple')? Alege 2 răspunsuri.",
-      code: "A) for x in l:                 B) for x in l:\n     if len(x)==3:                  if len(x)!=3:\n       print(x)                        print(x)\n\nC) for x in l:                 D) l1=l[1:]\n     print(x)                   for x in l1:\n                                    print(x)",
-      options: ["Cazul A", "Cazul B", "Cazul C", "Cazul D"],
-      correct: [0, 3],
-      explanation: "A filtrează cuvintele cu exact 3 litere (Boy, Cat, Dog). D elimină 'Apple' prin slicing (l[1:]) și afișează restul. B afișează doar 'Apple', C afișează toate cele 4 cuvinte."
-    },
-    {
-      id: "py-src-73",
-      chapter: "operatori-tipuri",
-      type: "drag_drop",
-      question: "Ordonează categoriile de operatori Python de la CEA MAI MARE prioritate la CEA MAI MICĂ (ordinea de evaluare).",
-      dragItems: [{"id": "paren", "text": "Parenthesis"}, {"id": "exp", "text": "Exponents"}, {"id": "unary", "text": "Unary positive, negative, not"}, {"id": "muldiv", "text": "Multiplication and Division"}, {"id": "addsub", "text": "Addition and Subtraction"}, {"id": "and_", "text": "And"}],
-      dropZones: [{"id": "p1", "label": "1 (cea mai mare prioritate)", "correctItemId": "paren"}, {"id": "p2", "label": "2", "correctItemId": "exp"}, {"id": "p3", "label": "3", "correctItemId": "unary"}, {"id": "p4", "label": "4", "correctItemId": "muldiv"}, {"id": "p5", "label": "5", "correctItemId": "addsub"}, {"id": "p6", "label": "6 (cea mai mică prioritate)", "correctItemId": "and_"}],
-      explanation: "Ordinea standard de evaluare în Python: parantezele întâi, apoi exponențierea, operatorii unari (+,-,not), înmulțire/împărțire, adunare/scădere, iar operatorii logici precum 'and' au prioritatea cea mai mică."
-    },
-    {
-      id: "py-src-87",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "l1=['sunny','bunny','chinny','vinny']\nl2=['sunny','bunny','chinny','vinny']\nprint(l1 is not l2)   #1\nprint(l1==l2)         #2\nl1=l2\nprint(l1 is not l2)   #3\nprint(l1!=l2)         #4\n\nCare afirmații despre rezultat sunt corecte? (alege 2)",
-      options: ["#1 afișează True", "#2 afișează False", "#3 afișează False", "#4 afișează True"],
-      correct: [0, 2],
-      explanation: "Inițial l1 și l2 sunt obiecte diferite cu conținut egal: 'is not'→True (#1), '=='→True. După l1=l2, ambele indică același obiect: 'is not'→False (#3), '!='→False."
-    },
-    {
-      id: "py-src-89",
-      chapter: "structuri-control",
-      type: "single",
-      question: "print(10==10 and 20!=20)\nprint(10==10 or 20!=20)\nprint(not 10==10)\n\nCare este rezultatul, în ordine?",
-      options: ["True / True / False", "False / True / True", "False / True / False", "True / False / True"],
-      correct: 2,
-      explanation: "10==10 e True, 20!=20 e False. True and False=False. True or False=True. not True=False. Rezultat: False, True, False."
-    },
-    {
-      id: "py-src-90",
-      chapter: "structuri-control",
-      type: "single",
-      question: "print(not 0)\nprint(not 10)\nprint(not '')\nprint(not 'durga')\nprint(not None)\n\nCare este rezultatul, în ordine?",
-      options: ["True/False/True/False/True", "False/True/False/True/False", "True/True/True/True/True", "False/False/False/False/False"],
-      correct: 0,
-      explanation: "0, '' și None sunt 'falsy' — not le transformă în True. 10 și 'durga' sunt 'truthy' — not le transformă în False."
-    },
-    {
-      id: "py-src-91",
-      chapter: "structuri-date",
-      type: "single",
-      question: "lst=[7,8,9]\nb=lst[:]\nprint(b is lst)\nprint(b==lst)\n\nCare este rezultatul?",
-      options: ["False, apoi True", "True, apoi False", "False, apoi False", "True, apoi True"],
-      correct: 0,
-      explanation: "lst[:] creează o COPIE nouă a listei (obiect diferit), deci 'is' e False, dar conținutul e identic, deci '==' e True."
-    },
-    {
-      id: "py-500",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "Python distinguishes between integer and floating-point values.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
-    },
-    {
-      id: "py-501",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "A variable data type must always be written explicitly.",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
-    },
-    {
-      id: "py-502",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "The Boolean literals True and False start with capital letters.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Python has distinct int and float types. Variable types are determined dynamically, and the Boolean values are True and False."
-    },
-    {
-      id: "py-503",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Complete the conversions. Which option belongs in place of the ___ marker in the code below?",
-      code: "serialNumber = ___(55555)\namount = float(44)\nprint(serialNumber, amount)",
-      options: ["int", "str", "float", "bool"],
-      correct: 1,
-      explanation: "str(55555) produces '55555', and float(44) produces 44.0."
-    },
-    {
-      id: "py-504",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Complete the conversions. Which option belongs in place of the ___ marker in the code below?",
-      code: "serialNumber = str(55555)\namount = ___(44)\nprint(serialNumber, amount)",
-      options: ["int", "str", "float", "bool"],
-      correct: 2,
-      explanation: "str(55555) produces '55555', and float(44) produces 44.0."
-    },
-    {
-      id: "py-505",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Which slice reverses a string?",
-      options: ["[::1]", "[1::]", "[-1::]", "[::-1]"],
-      correct: 3,
-      explanation: "In slicing, the third element is the step. A step of -1 walks the string backward."
-    },
-    {
-      id: "py-506",
-      chapter: "operatori-tipuri-date",
       type: "single",
       question: "Which expression converts 19.95 to the integer 19?",
-      options: ["round(19.95)", "int(19.95)", "math.ceil(19.95)", "float(19.95)"],
+      options: ["round(19.95)","int(19.95)","math.ceil(19.95)","float(19.95)"],
       correct: 1,
-      explanation: "int() drops the decimal part; it does not round."
+      explanation: "int() elimină partea zecimală, nu rotunjește (round(19.95) dă 20)."
     },
     {
-      id: "py-507",
-      chapter: "input-output",
-      type: "single",
-      question: "What data type does input() return?",
-      code: "age = input(\"Age: \")",
-      options: ["int", "float", "str", "bool"],
-      correct: 2,
-      explanation: "input() always returns a string (str), even if the user types digits."
+      id: "py-022",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "A bank must show the average customer balance each day, truncating the decimal portion. Which TWO code segments should you use? (Choose 2.)",
+      options: ["average_balance = total_deposits ** number_of_customers","average_balance = total_deposits // number_of_customers","average_balance = int(total_deposits / number_of_customers)","average_balance = float(total_deposits // number_of_customers)"],
+      correct: [1,2],
+      explanation: "// (împărțire întreagă) și int(.../...) elimină partea zecimală. ** este ridicare la putere."
     },
     {
-      id: "py-508",
-      chapter: "input-output",
+      id: "py-023",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Which line correctly reads an integer age?",
-      options: ["age = input(\"Age: \")", "age = int(input(\"Age: \"))", "age = str(input(\"Age: \"))", "int = input(\"Age: \")"],
+      question: "What is the return type of the function id()?",
+      options: ["int","float","bool","str"],
+      correct: 0,
+      explanation: "id() întoarce un număr întreg care identifică obiectul în memorie."
+    },
+    {
+      id: "py-024",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "print(17 // 4)",
+      options: ["4.25","4","1","5"],
       correct: 1,
-      explanation: "input() first reads text, then int() converts it to a whole number."
+      explanation: "// este împărțirea întreagă: 17 // 4 = 4."
     },
     {
-      id: "py-509",
-      chapter: "operatori-tipuri-date",
+      id: "py-025",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "What is the value and type of result?",
+      question: "What are the value and type of result?",
       code: "result = 5 / 2",
-      options: ["2 (int)", "2.5 (float)", "2.0 (float)", "5 (int)"],
+      options: ["2 (int)","2.5 (float)","2.0 (float)","5 (int)"],
       correct: 1,
-      explanation: "The / operator performs true division and returns a float."
+      explanation: "Operatorul / face împărțire exactă și întoarce float."
     },
     {
-      id: "py-510",
-      chapter: "operatori-tipuri-date",
+      id: "py-026",
+      chapter: "operatori-tipuri",
       type: "single",
       question: "What is printed?",
       code: "print(5 // 2)",
-      options: ["2", "2.5", "3", "0"],
+      options: ["2","2.5","3","0"],
       correct: 0,
-      explanation: "// is floor division (integer division)."
+      explanation: "// este împărțirea întreagă (floor division)."
     },
     {
-      id: "py-511",
-      chapter: "operatori-tipuri-date",
+      id: "py-027",
+      chapter: "operatori-tipuri",
       type: "single",
       question: "What is printed?",
       code: "print(10 % 3)",
-      options: ["0", "1", "2", "3"],
+      options: ["0","1","2","3"],
       correct: 1,
-      explanation: "% returns the remainder of the division: 10 divided by 3 leaves a remainder of 1."
+      explanation: "% întoarce restul împărțirii: 10 = 3*3 + 1."
     },
     {
-      id: "py-512",
-      chapter: "operatori-tipuri-date",
+      id: "py-028",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "a = 15\nb = 5\nprint(a / b)",
+      options: ["3","3.0","0","0.0"],
+      correct: 1,
+      explanation: "În Python 3, / întoarce mereu float: 15/5 = 3.0."
+    },
+    {
+      id: "py-029",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "a = 21\nb = 6\nprint(a / b)\nprint(a // b)\nprint(a % b)",
+      options: ["3 3 3","3.5 3 3","3.0 3 3","3.5 3.5 3"],
+      correct: 1,
+      explanation: "21/6=3.5; 21//6=3; 21%6=3."
+    },
+    {
+      id: "py-030",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Given a = 11 and b = 4, match each expression with its result.",
+      dragItems: [
+        { id: "i1", text: "print(a // b)" },
+        { id: "i2", text: "print(a % b)" },
+        { id: "i3", text: "print(a / b)" }
+      ],
+      dropZones: [
+        { id: "z1", label: "2", correctItemId: "i1" },
+        { id: "z2", label: "3", correctItemId: "i2" },
+        { id: "z3", label: "2.75", correctItemId: "i3" }
+      ],
+      explanation: "11/4=2.75; 11//4=2; 11%4=3."
+    },
+    {
+      id: "py-031",
+      chapter: "operatori-tipuri",
       type: "single",
       question: "What is printed?",
       code: "a = 3\nb = 7\nc = 5\nresult = a + b * c\nprint(result)",
-      options: ["36", "38", "26", "50"],
+      options: ["36","38","26","50"],
       correct: 1,
-      explanation: "Multiplication has priority: 7*5=35, then 3+35=38."
+      explanation: "Înmulțirea are prioritate: 7*5=35, apoi 3+35=38."
     },
     {
-      id: "py-513",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "a == 90",
-      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
-    },
-    {
-      id: "py-514",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "b == 2.5",
-      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
-    },
-    {
-      id: "py-515",
-      chapter: "operatori-tipuri-date",
-      type: "true_false",
-      question: "c == -9",
-      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "a=90.0 and 90.0==90 is True. b=2. For c, ** has priority over the unary minus: -(3**2)=-9."
-    },
-    {
-      id: "py-516",
-      chapter: "operatori-tipuri-date",
+      id: "py-032",
+      chapter: "operatori-tipuri",
       type: "single",
       question: "Which operation is evaluated first?",
       code: "x = 2 + 3 * 4",
-      options: ["2 + 3", "3 * 4", "2 + 3 * 4 as a whole", "assignment to x"],
+      options: ["2 + 3","3 * 4","the whole expression at once","the assignment to x"],
       correct: 1,
-      explanation: "Multiplication has priority over addition."
+      explanation: "Înmulțirea are prioritate față de adunare."
     },
     {
-      id: "py-517",
-      chapter: "operatori-tipuri-date",
+      id: "py-033",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a == 90",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "a = 100 - 10.0 = 90.0, iar 90.0 == 90 este True."
+    },
+    {
+      id: "py-034",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "b == 2.5",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "b = 5 // 2 = 2 (împărțire întreagă), deci b nu este 2.5."
+    },
+    {
+      id: "py-035",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "c == -9",
+      code: "a = 100 - 70 / 7\nb = (35 % 15) // 2\nc = -3 ** 2",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "** are prioritate față de minusul unar: -(3**2) = -9."
+    },
+    {
+      id: "py-036",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Which keyword checks whether \"nine\" occurs in quote?",
-      code: "quote = \"A stitch in time saves nine\"",
-      options: ["is", "in", "==", "contains"],
-      correct: 1,
-      explanation: "The in operator checks membership: \"nine\" in quote."
+      question: "Which expression generates the maximum value?",
+      options: ["8 % 3 * 4","8 - 3 * 4","8 // 3 * 4","8 / 3 * 4"],
+      correct: 3,
+      explanation: "Valorile sunt 8, -4, 8 și ≈10.67, deci maximul este 8 / 3 * 4."
     },
     {
-      id: "py-518",
-      chapter: "operatori-tipuri-date",
+      id: "py-037",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Which operator means 'not equal' in Python?",
-      options: ["<>", "!=", "=!", "not="],
+      question: "Which expression evaluates to 2?",
+      options: ["3 ** 2","22 % 5","13 // 4","11 / 2"],
       correct: 1,
-      explanation: "In Python, the operator for 'not equal' is !=."
+      explanation: "3**2=9; 22%5=2; 13//4=3; 11/2=5.5."
     },
     {
-      id: "py-519",
-      chapter: "operatori-tipuri-date",
+      id: "py-038",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which expression evaluates to 4?",
+      options: ["7 / 2 * 3","7 % 2 + 3","7 // 2 - 3","7 - 2 * 3"],
+      correct: 1,
+      explanation: "7%2+3 = 1+3 = 4. Celelalte: 10.5, 0, 1."
+    },
+    {
+      id: "py-039",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which line assigns 9 to output?",
+      code: "a = 7\nb = 3\nc = 5\nd = 1",
+      options: ["output = a % c + 1","output = a + c // d","output = c * d - 1","output = a + d * 2"],
+      correct: 3,
+      explanation: "a + d*2 = 7 + 2 = 9. Celelalte dau 3, 12 și 4."
+    },
+    {
+      id: "py-040",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What does the following expression evaluate to?",
+      code: "6 // 4 % 5 + 2 ** 3 - 2 // 3",
+      options: ["9","3","-1","25"],
+      correct: 0,
+      explanation: "6//4=1; 1%5=1; 2**3=8; 2//3=0 → 1 + 8 - 0 = 9."
+    },
+    {
+      id: "py-041",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output?",
+      code: "x = 3 / 3 + 3 ** 3 - 3\nprint(x)",
+      options: ["25","32","0.11","25.0"],
+      correct: 3,
+      explanation: "3/3=1.0 (float), deci rezultatul este 1.0 + 27 - 3 = 25.0."
+    },
+    {
+      id: "py-042",
+      chapter: "operatori-tipuri",
       type: "single",
       question: "What is the result?",
-      code: "numbers = [1, 3, 5, 7]\nresult = 5 in numbers",
-      options: ["True", "False", "SyntaxError", "None"],
-      correct: 0,
-      explanation: "The value 5 is found in the list, so the expression with in is True."
+      code: "result = 8 // 6 % 5 + 2 ** 3 - 2\nprint(result)",
+      options: ["6","7","8","9"],
+      correct: 1,
+      explanation: "2**3=8; 8//6=1; 1%5=1; 1 + 8 - 2 = 7."
     },
     {
-      id: "py-520",
-      chapter: "operatori-tipuri-date",
+      id: "py-043",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output?",
+      code: "x = 2\ny = 6\nx += 2 ** 3\nx //= y // 2 // 3\nprint(x)",
+      options: ["0","9","10","7"],
+      correct: 2,
+      explanation: "x = 2 + 8 = 10; y//2 = 3; 3//3 = 1; x //= 1 lasă x = 10."
+    },
+    {
+      id: "py-044",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "a = 3\nb = 5\na += 2 ** 3\na -= b // 2 // 3\nprint(a)",
+      options: ["13","12","11","10"],
+      correct: 2,
+      explanation: "a = 3 + 8 = 11; b//2 = 2; 2//3 = 0; a -= 0 lasă a = 11."
+    },
+    {
+      id: "py-045",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which expression results in -4?",
+      code: "a = 1\nb = 2\nc = 4\nd = 6",
+      options: ["(a + b) // c % d","(b + c) // a % d","(a + b) // c * d","(a + b) // d - c"],
+      correct: 3,
+      explanation: "(1+2)//6 - 4 = 0 - 4 = -4. Celelalte trei dau 0."
+    },
+    {
+      id: "py-046",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the value of X?",
+      code: "X = 2 + 9 * ((3 * 12) - 8) / 10",
+      options: ["30.0","30.8","28.4","27.2"],
+      correct: 3,
+      explanation: "(3*12)-8 = 28; 9*28 = 252; 252/10 = 25.2; 2 + 25.2 = 27.2."
+    },
+    {
+      id: "py-047",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "(3 * (1 + 2) ** 2) - ((2 ** 2) * 3)",
+      options: ["3","13","15","69"],
+      correct: 2,
+      explanation: "(1+2)**2 = 9; 3*9 = 27; (2**2)*3 = 12; 27 - 12 = 15."
+    },
+    {
+      id: "py-048",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the value of result?",
+      code: "result = (2 * (3 + 4) ** 2 - (3 ** 3) * 3)",
+      options: ["17","16","18","19"],
+      correct: 0,
+      explanation: "2*49 = 98; 27*3 = 81; 98 - 81 = 17."
+    },
+    {
+      id: "py-049",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the result?",
+      code: "x = 8\ny = 10\nresult = x // 3 * 3 / 2 + y % 2 ** 2\nprint(result)",
+      options: ["5","5.0","6.0","7.0"],
+      correct: 1,
+      explanation: "2**2=4; y%4=2; 8//3=2; 2*3=6; 6/2=3.0; 3.0 + 2 = 5.0."
+    },
+    {
+      id: "py-050",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Operators with the same precedence are evaluated in which manner?",
+      options: ["Left to right","Right to left","Can't say","None of the mentioned"],
+      correct: 0,
+      explanation: "Operatorii cu aceeași prioritate se evaluează de la stânga la dreapta (excepție: **, de la dreapta la stânga)."
+    },
+    {
+      id: "py-051",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "Consider the expression result = a - b * c + d. Which TWO statements are valid? (Choose 2.)",
+      options: ["b * c is evaluated first, then the subtraction, then the addition","b * c is evaluated first, then the addition, then the subtraction","a - b is evaluated first, then the multiplication and the addition","The expression is equivalent to a - (b * c) + d"],
+      correct: [0,3],
+      explanation: "* are prioritate; apoi - și + se evaluează de la stânga la dreapta, deci expresia este (a - (b*c)) + d."
+    },
+    {
+      id: "py-052",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "A program must compute b as \"a multiplied by negative one, then raised to the second power\", where a is read from the user. Which expression is valid?",
+      code: "a = eval(input('Enter a number: '))",
+      options: ["b = (a) ** -2","b = (-a) ** 2","b = (a-) ** 2","b = -(a) ** 2"],
+      correct: 1,
+      explanation: "(-a) ** 2 forțează întâi negarea, apoi ridicarea la pătrat. Fără paranteze, ** are prioritate față de minusul unar."
+    },
+    {
+      id: "py-053",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which line should be placed at Line-1 so that a becomes 9?",
+      code: "a = 2\na += 1\n# Line-1",
+      options: ["a *= 2","a **= 2","a += 2","a -= 2"],
+      correct: 1,
+      explanation: "După a += 1, a = 3; a **= 2 înseamnă 3**2 = 9."
+    },
+    {
+      id: "py-054",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which line should be placed at Line-1 so that x becomes 16?",
+      code: "x = 3\nx += 1\n# Line-1",
+      options: ["x += 2","x -= 2","x *= 2","x **= 2"],
+      correct: 3,
+      explanation: "După x += 1, x = 4; x **= 2 dă 16 (x *= 2 ar da 8)."
+    },
+    {
+      id: "py-055",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "In which TWO cases is result equal to 0? (Choose 2.)",
+      code: "a = 1\nb = 3\nc = 5\nd = 7",
+      options: ["result = a + b * 2","result = a % b - 1","result = a - b // d","result = a ** d - 1"],
+      correct: [1,3],
+      explanation: "a%b-1 = 1-1 = 0 și a**d-1 = 1-1 = 0. a+b*2 = 7, iar a - b//d = 1."
+    },
+    {
+      id: "py-056",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "Which TWO expressions evaluate to 3? (Choose 2.)",
+      options: ["23 % 5","3 ** 2","11 / 3","13 // 4"],
+      correct: [0,3],
+      explanation: "23%5=3 și 13//4=3. 3**2=9, iar 11/3≈3.67."
+    },
+    {
+      id: "py-057",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Analyze the order of evaluation of the expression in the function.",
+      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value",
+      dragItems: [
+        { id: "i1", text: "subtraction" },
+        { id: "i2", text: "addition" },
+        { id: "i3", text: "(a + (b*c)) - d" },
+        { id: "i4", text: "(a+b) * (c-d)" },
+        { id: "i5", text: "b * c" },
+        { id: "i6", text: "a + b" }
+      ],
+      dropZones: [
+        { id: "z1", label: "First expression evaluated", correctItemId: "i5" },
+        { id: "z2", label: "Second operation performed", correctItemId: "i2" },
+        { id: "z3", label: "Equivalent fully parenthesized expression", correctItemId: "i3" }
+      ],
+      explanation: "* are prioritate; apoi + și - se aplică de la stânga la dreapta: (a + (b*c)) - d."
+    },
+    {
+      id: "py-058",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Arrange the operator categories from the HIGHEST to the LOWEST precedence.",
+      dragItems: [
+        { id: "i1", text: "Multiplication and Division" },
+        { id: "i2", text: "Exponents" },
+        { id: "i3", text: "Parentheses" },
+        { id: "i4", text: "Addition and Subtraction" },
+        { id: "i5", text: "Unary positive, negative, not" },
+        { id: "i6", text: "And" }
+      ],
+      dropZones: [
+        { id: "z1", label: "1 (highest)", correctItemId: "i3" },
+        { id: "z2", label: "2", correctItemId: "i2" },
+        { id: "z3", label: "3", correctItemId: "i5" },
+        { id: "z4", label: "4", correctItemId: "i1" },
+        { id: "z5", label: "5", correctItemId: "i4" },
+        { id: "z6", label: "6 (lowest)", correctItemId: "i6" }
+      ],
+      explanation: "Ordinea: paranteze, exponențiere, operatori unari, * și /, + și -, apoi operatorii logici (and)."
+    },
+    {
+      id: "py-059",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output, in order?",
+      code: "print(10 == 10 and 20 != 20)\nprint(10 == 10 or 20 != 20)\nprint(not 10 == 10)",
+      options: ["True / True / False","False / True / True","False / True / False","True / False / True"],
+      correct: 2,
+      explanation: "True and False = False; True or False = True; not True = False."
+    },
+    {
+      id: "py-060",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output, in order?",
+      code: "print(not 0)\nprint(not 10)\nprint(not '')\nprint(not 'durga')\nprint(not None)",
+      options: ["True / False / True / False / True","False / True / False / True / False","True / True / True / True / True","False / False / False / False / False"],
+      correct: 0,
+      explanation: "0, '' și None sunt \"falsy\" (not → True); 10 și 'durga' sunt \"truthy\" (not → False)."
+    },
+    {
+      id: "py-061",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output?",
+      code: "True = False\nwhile True:\n    print(True)\n    break",
+      options: ["True","False","None","SyntaxError"],
+      correct: 3,
+      explanation: "În Python 3, True este cuvânt rezervat și nu poate fi reatribuit: \"True = False\" dă SyntaxError."
+    },
+    {
+      id: "py-062",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which operator means \"not equal\" in Python?",
+      options: ["<>","!=","=!","not="],
+      correct: 1,
+      explanation: "Operatorul \"diferit\" este !=."
+    },
+    {
+      id: "py-063",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "Which operator checks whether \"nine\" occurs in quote?",
+      code: "quote = \"A stitch in time saves nine\"",
+      options: ["is","in","==","contains"],
+      correct: 1,
+      explanation: "Operatorul in testează apartenența: \"nine\" in quote."
+    },
+    {
+      id: "py-064",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output of the print statement?",
+      code: "numList = [0, 1, 2, 3, 4]\nprint(5 in numList)",
+      options: ["4","False","True","5"],
+      correct: 1,
+      explanation: "Lista nu conține valoarea 5, deci 5 in numList este False."
+    },
+    {
+      id: "py-065",
+      chapter: "operatori-tipuri",
       type: "true_false",
       question: "a is b",
       code: "a = [1, 2]\nb = a\nc = [1, 2]",
-      options: ["True", "False"],
+      options: ["Adevărat","Fals"],
       correct: 0,
-      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+      explanation: "b este un alt nume pentru exact același obiect ca a."
     },
     {
-      id: "py-521",
-      chapter: "operatori-tipuri-date",
+      id: "py-066",
+      chapter: "operatori-tipuri",
       type: "true_false",
       question: "a == c",
       code: "a = [1, 2]\nb = a\nc = [1, 2]",
-      options: ["True", "False"],
+      options: ["Adevărat","Fals"],
       correct: 0,
-      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+      explanation: "a și c au același conținut, deci == este True."
     },
     {
-      id: "py-522",
-      chapter: "operatori-tipuri-date",
+      id: "py-067",
+      chapter: "operatori-tipuri",
       type: "true_false",
       question: "a is c",
       code: "a = [1, 2]\nb = a\nc = [1, 2]",
-      options: ["True", "False"],
+      options: ["Adevărat","Fals"],
       correct: 1,
-      explanation: "b refers to the exact same object as a. c has the same content but is a separate list object."
+      explanation: "c este o listă separată (alt obiect) chiar dacă are același conținut."
     },
     {
-      id: "py-523",
-      chapter: "gestionare-erori",
+      id: "py-068",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "What does this code display?",
-      code: "def is_quarter(num):\n    return num % 4 == 0\n\nassert is_quarter(8) == True",
-      options: ["True", "False", "AssertionError", "Nothing"],
-      correct: 3,
-      explanation: "When assert receives a true condition, it displays nothing. If it were false, it would raise AssertionError."
-    },
-    {
-      id: "py-524",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Which index selects the last item in a list?",
-      options: ["0", "1", "-1", "-2"],
+      question: "What is the result (the four printed values, in order)?",
+      code: "n1 = [10, 20, 30, 40, 50]\nn2 = [10, 20, 30, 40, 50]\nprint(n1 is n2)\nprint(n1 == n2)\nn1 = n2\nprint(n1 is n2)\nprint(n1 == n2)",
+      options: ["False, False, True, True","False, True, False, True","False, True, True, True","True, False, True, False"],
       correct: 2,
-      explanation: "-1 represents the last item; -2 is the second-to-last."
+      explanation: "Inițial: obiecte diferite, conținut egal (is=False, ==True). După n1 = n2 ambele indică același obiect (is=True, ==True)."
     },
     {
-      id: "py-525",
-      chapter: "structuri-date",
-      type: "multiple",
-      question: "A list has management in its last five positions. Which TWO slices exclude exactly those five items?",
-      options: ["employees[1:-4]", "employees[:-5]", "employees[1:-5]", "employees[0:-4]", "employees[0:-5]"],
-      correct: [1, 4],
-      explanation: "[:-5] and [0:-5] start from the beginning and stop before the fifth item from the end."
-    },
-    {
-      id: "py-526",
-      chapter: "structuri-date",
+      id: "py-069",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "What is the result of the slice?",
-      code: "text = \"Python\"\nprint(text[1:4])",
-      options: ["\"yth\"", "\"ytho\"", "\"Pyt\"", "\"thon\""],
+      question: "What is the result (the four printed values, in order)?",
+      code: "numbers = [10, 20, 30, 40, 50]\nalphabets = ['a', 'b', 'c', 'd', 'e']\nprint(numbers is alphabets)\nprint(numbers == alphabets)\nnumbers = alphabets\nprint(numbers is alphabets)\nprint(numbers == alphabets)",
+      options: ["False, False, True, True","False, True, False, True","True, False, True, False","False, True, True, True"],
       correct: 0,
-      explanation: "The start index is included, and the stop index is not included: positions 1, 2, 3."
+      explanation: "Inițial obiecte și conținut diferite (False, False). După numbers = alphabets, ambele sunt același obiect (True, True)."
     },
     {
-      id: "py-527",
-      chapter: "structuri-date",
+      id: "py-070",
+      chapter: "operatori-tipuri",
       type: "multiple",
-      question: "After sorting, which TWO expressions print rook?",
-      code: "pieces = [\"king\",\"queen\",\"rook\",\"bishop\",\"knight\",\"pawn\"]\npieces.sort()",
-      options: ["pieces[6]", "pieces[5]", "pieces[3]", "pieces[-1]"],
-      correct: [1, 3],
-      explanation: "After sorting, the list becomes: bishop, king, knight, pawn, queen, rook. The positive index of rook is 5, and its negative index is -1. Index 6 does not exist, and index 3 points to pawn."
+      question: "Which TWO statements about the output are correct? (Choose 2.)",
+      code: "l1 = ['sunny', 'bunny', 'chinny', 'vinny']\nl2 = ['sunny', 'bunny', 'chinny', 'vinny']\nprint(l1 is not l2)   # (1)\nprint(l1 == l2)       # (2)\nl1 = l2\nprint(l1 is not l2)   # (3)\nprint(l1 != l2)       # (4)",
+      options: ["(1) prints True","(2) prints False","(3) prints False","(4) prints True"],
+      correct: [0,2],
+      explanation: "Inițial obiecte diferite: is not → True, == → True. După l1 = l2 același obiect: is not → False, != → False."
     },
     {
-      id: "py-528",
-      chapter: "operatori-tipuri-date",
+      id: "py-071",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "In which TWO cases is True printed? (Choose 2.)",
+      options: ["a = 45; b = 45; print(a is not b)","s1 = 'Python'; s2 = 'Python'.upper(); print(s1 is s2)","x = [1, 2, 3]; y = [1, 2, 3]; print(x is y)","print('r' in 'durga')","print('is' in 'This IS a Fake News')"],
+      correct: [3,4],
+      explanation: "'r' apare în 'durga'; 'is' apare ca subșir în 'This'. În celelalte cazuri rezultatul este False."
+    },
+    {
+      id: "py-072",
+      chapter: "operatori-tipuri",
+      type: "multiple",
+      question: "In which TWO cases is True printed? (Choose 2.)",
+      code: "subjects = ['java', 'python', 'sap']\nmore_subjects = ['java', 'python', 'sap']\nextra_subjects = more_subjects",
+      options: ["print(extra_subjects is more_subjects)","print(subjects is more_subjects)","print(subjects is extra_subjects)","print(subjects == extra_subjects)"],
+      correct: [0,3],
+      explanation: "extra_subjects și more_subjects sunt același obiect (is → True). subjects este alt obiect cu conținut egal: == → True, dar is → False."
+    },
+    {
+      id: "py-073",
+      chapter: "operatori-tipuri",
       type: "single",
-      question: "Which line avoids a TypeError when joining text with the calculated years?",
-      options: ["print(\"Years: \" + (int(end)-int(start)))", "print(\"Years: \" + str(int(end)-int(start)))", "print(\"Years: \" + int(end-start))", "print(\"Years: \" + str(end-start))"],
+      question: "For which condition will True be printed?",
+      code: "x = 'Durga'\ny = 'Durga'\nresult = <condition>\nprint(result)",
+      options: ["x is y","x is not y","x != y","x < y"],
+      correct: 0,
+      explanation: "Șirurile identice scurte sunt \"internate\" de Python (același obiect), deci x is y este True. Celelalte sunt False."
+    },
+    {
+      id: "py-074",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "What is the output?",
+      code: "lst = [7, 8, 9]\nb = lst[:]\nprint(b is lst)\nprint(b == lst)",
+      options: ["False, then True","True, then False","False, then False","True, then True"],
+      correct: 0,
+      explanation: "lst[:] creează o copie (alt obiect): is → False, dar conținutul e egal: == → True."
+    },
+    {
+      id: "py-075",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Match each keyword with the correct type of control structure.",
+      dragItems: [
+        { id: "i1", text: "if / elif / else" },
+        { id: "i2", text: "for" },
+        { id: "i3", text: "while" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Loop over a sequence / known number of iterations", correctItemId: "i2" },
+        { id: "z2", label: "Conditional decision", correctItemId: "i1" },
+        { id: "z3", label: "Loop that runs as long as a condition is true", correctItemId: "i3" }
+      ],
+      explanation: "for iterează peste o secvență; if/elif/else decide; while repetă cât timp condiția e adevărată."
+    },
+    {
+      id: "py-076",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the final value of commission?",
+      code: "collected_amount = 3000\ncommission = 0\nif collected_amount <= 2000:\n    commission = 50\nelif collected_amount > 2500 and collected_amount < 3000:\n    commission = 100\nelif collected_amount > 2500:\n    commission = 150\nif collected_amount >= 3000:\n    commission += 200",
+      options: ["350","200","150","100"],
+      correct: 0,
+      explanation: "Se execută ramura elif collected_amount > 2500 (commission = 150). Al doilea if este separat și e True, deci commission += 200 → 350."
+    },
+    {
+      id: "py-077",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the result?",
+      code: "order_value = 1500\nstate = 'ap'\ndelivery_charge = 0\nif state in ['up', 'mp', 'ts']:\n    if order_value <= 1000:\n        delivery_charge = 50\n    elif 1000 < order_value < 2000:\n        delivery_charge = 100\n    else:\n        delivery_charge = 150\nelse:\n    delivery_charge = 25\nif state in ['lp', 'kp', 'ap']:\n    if order_value > 1000:\n        delivery_charge += 20\n        if order_value < 2000 and state in ['kp', 'ap']:\n            delivery_charge += 30\n    else:\n        delivery_charge += 15\nprint(delivery_charge)",
+      options: ["65","75","85","55"],
       correct: 1,
-      explanation: "The subtraction requires int, and concatenating with + then requires converting the result to str."
+      explanation: "'ap' nu e în prima listă → 25. Apoi order_value > 1000: +20 → 45; order_value < 2000 și state în ['kp','ap']: +30 → 75."
     },
     {
-      id: "py-529",
+      id: "py-078",
       chapter: "structuri-control",
       type: "single",
-      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
-      code: "if grade ___ 100:\n    print(\"Outstanding\")\nelif grade >= 90:\n    print(\"Great\")\nelif grade <= 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
-      options: ["==", ">=", "<=", "!="],
-      correct: 0,
-      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
+      question: "Which grade is printed to the console?",
+      code: "marks = [30, 40, 50, 45, 50, 100]\naverage = sum(marks) // len(marks)\ngrades = {1: 'A', 2: 'B', 3: 'C', 4: 'D'}\nif average >= 90 and average <= 100:\n    key = 1\nelif average >= 80 and average < 90:\n    key = 2\nelif average >= 50 and average < 80:\n    key = 3\nelse:\n    key = 4\nprint(grades[key])",
+      options: ["A","B","C","D"],
+      correct: 2,
+      explanation: "sum = 315; 315 // 6 = 52, deci intervalul 50–79: key = 3 → 'C'."
     },
     {
-      id: "py-530",
+      id: "py-079",
       chapter: "structuri-control",
       type: "single",
-      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
-      code: "if grade == 100:\n    print(\"Outstanding\")\nelif grade ___ 90:\n    print(\"Great\")\nelif grade <= 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
-      options: [">=", ">", "<=", "=="],
-      correct: 0,
-      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
+      question: "For which user input will interest_rate be 12?",
+      code: "amount = float(input('Enter Loan Amount:'))\ninterest_rate = 0\nif amount > 0 and amount <= 50000:\n    interest_rate = 10\nelif amount > 50000 and amount < 100000:\n    interest_rate = 12\nelif amount >= 100000 and amount < 150000:\n    interest_rate = 16\nelse:\n    interest_rate = 22",
+      options: ["50000","50001","100000","100001","150000"],
+      correct: 1,
+      explanation: "50001 nu respectă prima condiție (<= 50000), dar respectă a doua (> 50000 și < 100000) → 12."
     },
     {
-      id: "py-531",
+      id: "py-080",
       chapter: "structuri-control",
       type: "single",
-      question: "Complete the grade conditions. Which option belongs in place of the ___ marker in the code below?",
-      code: "if grade == 100:\n    print(\"Outstanding\")\nelif grade >= 90:\n    print(\"Great\")\nelif grade ___ 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
-      options: ["<=", "<", ">=", "=="],
-      correct: 0,
-      explanation: "100 is an exact case; 90 must be included with >=; 70 must be included with <=."
-    },
-    {
-      id: "py-532",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the reward logic correctly. Choose the option with the correct order of code lines.",
-      options: ["    if region == \"North\" and season == \"Winter\":\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")\nif monthlySales > 100000:", "        print(\"Send golf balls\")\n    else:\n        print(\"Send skis\")\n    if region == \"North\" and season == \"Winter\":\nif monthlySales > 100000:", "    if region == \"North\" and season == \"Winter\":\nif monthlySales > 100000:\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")", "if monthlySales > 100000:\n    if region == \"North\" and season == \"Winter\":\n        print(\"Send skis\")\n    else:\n        print(\"Send golf balls\")"],
+      question: "In which of the following cases is 'Needs Director Approval' printed?",
+      code: "days = int(input('Enter number of days for leave: '))\ncause = input('Enter the cause: ')\nif days == 1:\n    print('Leave will be approved immediately')\nelif days > 1 and days <= 3:\n    if cause == 'Sick':\n        print('Leave will be approved immediately')\n    else:\n        print('Needs Lead Approval')\nelif days > 3 and days < 5:\n    if cause == 'Sick':\n        print('Needs Manager Approval')\n    else:\n        print('Needs Director Approval')\nelif days >= 5 and days <= 10:\n    print('Needs Director Approval')",
+      options: ["days = 2 and cause = 'Sick'","days = 3 and cause = 'personal'","days = 4 and cause = 'Sick'","days = 4 and cause = 'official'"],
       correct: 3,
-      explanation: "This is a nested if. The correct logical operator in Python is and."
+      explanation: "days = 4 intră pe ramura days > 3 and days < 5; cu cauza 'official' (diferită de 'Sick') se execută else → 'Needs Director Approval'."
     },
     {
-      id: "py-533",
+      id: "py-081",
       chapter: "structuri-control",
       type: "single",
-      question: "Which condition is true when age is from 18 through 65 inclusive?",
-      options: ["age > 18 and age < 65", "age >= 18 and age <= 65", "age >= 18 or age <= 65", "18 > age > 65"],
-      correct: 1,
-      explanation: "For inclusive endpoints we use >= and <=, joined with and."
+      question: "A company rents books at $3.00 per day. If the book is returned after 9 PM, one extra day is charged. Rented on Sunday: 50% off; rented on Saturday: 30% off. The book is rented on Sunday for 5 days and returned after 9 PM. What is the result?",
+      code: "ontime = input(\"Was the book returned before 9 pm? y or n \").lower()\ndays_rented = int(input(\"How many days was the book rented? \"))\nday_rented = input(\"What day was the book rented? \").capitalize()\ncost_per_day = 3.00\nif ontime == 'n':\n    days_rented = days_rented + 1\nif day_rented == 'Sunday':\n    total = (days_rented * cost_per_day) * 0.5\nelif day_rented == 'Saturday':\n    total = (days_rented * cost_per_day) * 0.7\nelse:\n    total = days_rented * cost_per_day\nprint(\"The cost of the book rental is: $\", total)",
+      options: ["The cost of the book rental is: $ 7.0","The cost of the book rental is: $ 8.0","The cost of the book rental is: $ 9.0","The cost of the book rental is: $ 10.0"],
+      correct: 2,
+      explanation: "După 9 PM: 5 + 1 = 6 zile; duminică: (6 * 3.00) * 0.5 = 9.0."
     },
     {
-      id: "py-534",
+      id: "py-082",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Minors and seniors must receive a 10% discount. Which code should you add on line 03?",
+      code: "def get_discount(minor, senior):\n    discount = .1\n    [Line 03]\n        discount = 0\n    return discount",
+      options: ["if not (minor and senior):","if not (minor or senior):","if (not minor) and senior:","if (not minor) or senior:"],
+      correct: 1,
+      explanation: "Reducerea se anulează doar dacă persoana nu este nici minor, nici senior: not (minor or senior)."
+    },
+    {
+      id: "py-083",
+      chapter: "structuri-control",
+      type: "single",
+      question: "To print 'Valid' to the console, which condition should the if statement use?",
+      code: "a = 5\nb = 10\nc = 2\nd = True\n\nx = a + b * c\ny = a + b / d\n\nif <condition>:\n    print('Valid')\nelse:\n    print('Invalid')",
+      options: ["x > y","x == y","x < y","x <= y"],
+      correct: 0,
+      explanation: "x = 5 + 20 = 25; y = 5 + 10/True = 15.0 (True se comportă ca 1). Doar x > y este adevărată."
+    },
+    {
+      id: "py-084",
+      chapter: "structuri-control",
+      type: "single",
+      question: "In which of the following cases does result become 9?",
+      code: "a = 12\nb = 4\ns = 'He shall not be happy if he does not work'",
+      options: ["result = 3 if None else a/b","result = s.find('not') if s else None","result = s.rfind('not') if s else None","result = 5 if len(s) > 4 else 6"],
+      correct: 1,
+      explanation: "s.find('not') întoarce indexul primei apariții a lui 'not', adică 9."
+    },
+    {
+      id: "py-085",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which condition is true when age is from 18 through 65, inclusive?",
+      options: ["age > 18 and age < 65","age >= 18 and age <= 65","age >= 18 or age <= 65","18 > age > 65"],
+      correct: 1,
+      explanation: "Pentru capete incluse se folosesc >= și <=, legate prin and."
+    },
+    {
+      id: "py-086",
       chapter: "structuri-control",
       type: "single",
       question: "What is printed?",
       code: "score = 85\nif score >= 90:\n    print(\"A\")\nelif score >= 80:\n    print(\"B\")\nelse:\n    print(\"C\")",
-      options: ["A", "B", "C", "Nothing"],
+      options: ["A","B","C","Nothing"],
       correct: 1,
-      explanation: "score is 85: the first condition is false, the second is true."
+      explanation: "Prima condiție e falsă, a doua e adevărată → \"B\"."
     },
     {
-      id: "py-535",
+      id: "py-087",
       chapter: "structuri-control",
       type: "single",
       question: "Which keyword is a placeholder that performs no action?",
-      options: ["continue", "pass", "break", "while"],
+      options: ["continue","pass","break","while"],
       correct: 1,
-      explanation: "pass keeps the block syntactically valid but executes nothing."
+      explanation: "pass menține blocul valid sintactic fără să execute nimic."
     },
     {
-      id: "py-536",
+      id: "py-088",
       chapter: "structuri-control",
       type: "single",
       question: "Which loop iterates through 1, 2, 3, 4, 5?",
-      options: ["for week in range(1,5):", "for week in range(1,6):", "for week in range(0,5):", "for week in range(5,1):"],
+      options: ["for week in range(1, 5):","for week in range(1, 6):","for week in range(0, 5):","for week in range(5, 1):"],
       correct: 1,
-      explanation: "The right-hand end of range is not included."
+      explanation: "Capătul din dreapta al lui range nu este inclus."
     },
     {
-      id: "py-537",
+      id: "py-089",
       chapter: "structuri-control",
       type: "single",
       question: "What does continue do inside a loop?",
-      options: ["Stops the program", "Ends the loop", "Skips the rest of the current iteration", "Restarts Python"],
+      options: ["Stops the program","Ends the loop","Skips the rest of the current iteration","Restarts Python"],
       correct: 2,
-      explanation: "continue immediately moves on to the next iteration."
+      explanation: "continue trece imediat la următoarea iterație."
     },
     {
-      id: "py-538",
+      id: "py-090",
       chapter: "structuri-control",
       type: "single",
       question: "What does break do inside a loop?",
-      options: ["Skips one iteration", "Exits the loop", "Exits only the if statement", "Does nothing"],
+      options: ["Skips one iteration","Exits the loop","Exits only the if statement","Does nothing"],
       correct: 1,
-      explanation: "break exits the loop it is in."
+      explanation: "break iese din bucla în care se află."
     },
     {
-      id: "py-539",
+      id: "py-091",
       chapter: "structuri-control",
       type: "single",
       question: "What numbers are printed?",
       code: "for i in range(5):\n    if i == 3:\n        break\n    print(i)",
-      options: ["0 1 2", "0 1 2 3", "1 2 3", "0 1 2 3 4"],
+      options: ["0 1 2","0 1 2 3","1 2 3","0 1 2 3 4"],
       correct: 0,
-      explanation: "When i becomes 3, break runs before print."
+      explanation: "Când i devine 3, break se execută înainte de print."
     },
     {
-      id: "py-540",
+      id: "py-092",
       chapter: "structuri-control",
       type: "single",
       question: "What numbers are printed?",
       code: "for i in range(5):\n    if i == 2:\n        continue\n    print(i)",
-      options: ["0 1 2 3 4", "0 1 3 4", "2", "0 1"],
+      options: ["0 1 2 3 4","0 1 3 4","2","0 1"],
       correct: 1,
-      explanation: "When i==2, continue skips print only for that iteration."
+      explanation: "Pentru i == 2, continue sare peste print doar la acea iterație."
     },
     {
-      id: "py-541",
+      id: "py-093",
       chapter: "structuri-control",
       type: "single",
-      question: "How many times does the inner print execute?",
+      question: "How many times is the print statement executed?",
       code: "for day in range(2):\n    for student in range(3):\n        print(day, student)",
-      options: ["3", "4", "6", "9"],
+      options: ["3","4","6","9"],
       correct: 2,
-      explanation: "The outer loop runs 2 times, the inner loop 3 times: 2*3=6."
+      explanation: "Bucla exterioară rulează de 2 ori, cea interioară de 3 ori: 2 * 3 = 6."
     },
     {
-      id: "py-542",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange a while loop that prints 1 through 3. Choose the option with the correct order of code lines.",
-      options: ["i = 1\nwhile i <= 3:\n    print(i)\n    i += 1", "    i += 1\n    print(i)\nwhile i <= 3:\ni = 1", "while i <= 3:\ni = 1\n    print(i)\n    i += 1", "while i <= 3:\n    print(i)\n    i += 1\ni = 1"],
-      correct: 0,
-      explanation: "We initialize the counter, check the condition, print, then increment."
-    },
-    {
-      id: "py-543",
+      id: "py-094",
       chapter: "structuri-control",
       type: "single",
       question: "What is the final value of total?",
-      code: "total = 0\nfor n in range(1,6):\n    total += n",
-      options: ["6", "10", "15", "5"],
+      code: "total = 0\nfor n in range(1, 6):\n    total += n",
+      options: ["6","10","15","5"],
       correct: 2,
-      explanation: "1+2+3+4+5 adds up to 15."
+      explanation: "1 + 2 + 3 + 4 + 5 = 15."
     },
     {
-      id: "py-544",
+      id: "py-095",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is printed?",
+      code: "for x in range(1, 4):\n    pass\nprint(x)",
+      options: ["1","2","3","4"],
+      correct: 2,
+      explanation: "range(1, 4) produce 1, 2, 3; după buclă x rămâne 3."
+    },
+    {
+      id: "py-096",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the result?",
+      code: "t = (2, 4, 6, 8, 10, 12)\nd = {1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E', 6: 'F'}\nresult = 1\nfor t1 in t:\n    if t1 in d:\n        result += t1\nprint(result)",
+      options: ["12","13","19","6"],
+      correct: 1,
+      explanation: "Doar 2, 4 și 6 sunt chei în d: 1 + 2 + 4 + 6 = 13."
+    },
+    {
+      id: "py-097",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the result?",
+      code: "t = (2, 4, 6, 8, 10, 12)\nd = {1: 'A', 2: 'B', 3: 'C', 4: 'D', 5: 'E', 6: 'F'}\nresult = 1\nfor t1 in t:\n    if t1 in d:\n        continue\n    else:\n        result += t1\nprint(result)",
+      options: ["29","30","31","32"],
+      correct: 2,
+      explanation: "2, 4, 6 sunt chei (se sare peste ele). Se adună 8, 10, 12: 1 + 8 + 10 + 12 = 31."
+    },
+    {
+      id: "py-098",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the result?",
+      code: "values = [[3, 4, 5, 1], [33, 6, 1, 2]]\n\nv = values[0][0]\nfor lst in values:\n    for element in lst:\n        if v > element:\n            v = element\n\nprint(v)",
+      options: ["3","2","1","4"],
+      correct: 2,
+      explanation: "Codul găsește minimul tuturor elementelor: 1."
+    },
+    {
+      id: "py-099",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the output?",
+      code: "for i in range(0):\n    print(i)",
+      options: ["0","No output","IndentationError","None"],
+      correct: 1,
+      explanation: "range(0) este gol, deci corpul buclei nu se execută niciodată."
+    },
+    {
+      id: "py-100",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the output?",
+      code: "a = [0, 1, 2, 3]\ni = -2\nwhile i not in a:\n    print(i)\n    i += 1",
+      options: ["-2 -1","0","Error","Nothing is printed"],
+      correct: 0,
+      explanation: "Se afișează -2 și -1; când i devine 0, 0 este în a și bucla se oprește."
+    },
+    {
+      id: "py-101",
+      chapter: "structuri-control",
+      type: "single",
+      question: "What is the result?",
+      code: "l = [10, (20,), {30}, {}, {}, [48, 50]]\ncount = 0\nfor i in range(len(l)):\n    if type(l[i]) == list:\n        count += 1\n    elif type(l[i]) == tuple:\n        count += 2\n    elif type(l[i]) == set:\n        count += 3\n    elif type(l[i]) == dict:\n        count += 4\n    else:\n        count += 5\nprint(count)",
+      options: ["17","18","19","20"],
+      correct: 2,
+      explanation: "int +5, tuple +2, set +3, {} (dict) +4, {} (dict) +4, list +1 = 19."
+    },
+    {
+      id: "py-102",
+      chapter: "structuri-control",
+      type: "multiple",
+      question: "With numbers = [10, 20, 30, 40] and x = 0, in which TWO cases is 10 printed? (Choose 2.)",
+      options: ["for i in (30, 40, 50):\n    if i in numbers:\n        x = x + 5\nprint(x)","for i in (30, 40, 50):\n    if i not in numbers:\n        x = x + 5\nprint(x)","for i in (30, 40, 50):\n    if i not in numbers:\n        x = x + 10\nprint(x)","for i in (30, 40, 50):\n    if i in numbers:\n        x = x + 10\nprint(x)"],
+      correct: [0,2],
+      explanation: "Cazul 1: 30 și 40 sunt în listă → 5 + 5 = 10. Cazul 3: doar 50 nu e în listă → +10. Cazul 2 dă 5, cazul 4 dă 20."
+    },
+    {
+      id: "py-103",
+      chapter: "structuri-control",
+      type: "multiple",
+      question: "With l = ['Apple', 'Boy', 'Cat', 'Dog'], in which TWO cases are exactly Boy, Cat and Dog printed (one per line)? (Choose 2.)",
+      options: ["for x in l:\n    if len(x) == 3:\n        print(x)","for x in l:\n    if len(x) != 3:\n        print(x)","for x in l:\n    print(x)","l1 = l[1:]\nfor x in l1:\n    print(x)"],
+      correct: [0,3],
+      explanation: "Primul filtrează cuvintele de 3 litere; al patrulea elimină 'Apple' prin slicing. Al doilea afișează doar 'Apple', al treilea afișează toate cuvintele."
+    },
+    {
+      id: "py-104",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Complete the grade conditions by choosing the correct operator for each blank.",
+      code: "if grade [1] 100:\n    print(\"Outstanding\")\nelif grade [2] 90:\n    print(\"Great\")\nelif grade [3] 70:\n    print(\"Study hard\")\nelse:\n    print(\"Doing well\")",
+      dragItems: [
+        { id: "i1", text: ">=" },
+        { id: "i2", text: "!=" },
+        { id: "i3", text: "<=" },
+        { id: "i4", text: "<" },
+        { id: "i5", text: ">" },
+        { id: "i6", text: "==" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i6" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i3" }
+      ],
+      explanation: "100 este un caz exact (==); 90 se include cu >=; 70 se include cu <=."
+    },
+    {
+      id: "py-105",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Complete the loop so that it stops when product ID 6 is found.",
+      code: "productIdList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]\nindex = 0\n\n[1] index < 10:\n    print(productIdList[index])\n    if productIdList[index] == 6:\n        [2]\n    else:\n        index += 1",
+      dragItems: [
+        { id: "i1", text: "for" },
+        { id: "i2", text: "if" },
+        { id: "i3", text: "while" },
+        { id: "i4", text: "break" },
+        { id: "i5", text: "continue" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" }
+      ],
+      explanation: "Condiția index < 10 cere o buclă while; break oprește bucla când valoarea 6 este găsită."
+    },
+    {
+      id: "py-106",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "A program must report whether a name is entered in lower case, upper case or mixed case. Drag the 4 correct code segments into the right order.",
+      dragItems: [
+        { id: "i1", text: "if name.lower() == name:\n    print(name, \"is all lower case.\")" },
+        { id: "i2", text: "else:\n    print(name, \"is lower case.\")" },
+        { id: "i3", text: "name = input(\"Enter your name: \")" },
+        { id: "i4", text: "elif name.upper() == name:\n    print(name, \"is all upper case.\")" },
+        { id: "i5", text: "else:\n    print(name, \"is upper case.\")" },
+        { id: "i6", text: "else:\n    print(name, \"is mixed case.\")" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i3" },
+        { id: "z2", label: "Linia 2", correctItemId: "i1" },
+        { id: "z3", label: "Linia 3", correctItemId: "i4" },
+        { id: "z4", label: "Linia 4", correctItemId: "i6" }
+      ],
+      explanation: "Se citește numele, se testează întâi dacă e doar cu minuscule (if), apoi doar cu majuscule (elif); else acoperă cazul mixt. Cele două segmente else rămase sunt distractori."
+    },
+    {
+      id: "py-107",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange the reward logic in the correct order (indentation matters).",
+      dragItems: [
+        { id: "i1", text: "        print(\"Send golf balls\")" },
+        { id: "i2", text: "if monthlySales > 100000:" },
+        { id: "i3", text: "    if region == \"North\" and season == \"Winter\":" },
+        { id: "i4", text: "        print(\"Send skis\")" },
+        { id: "i5", text: "    else:" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i2" },
+        { id: "z2", label: "Linia 2", correctItemId: "i3" },
+        { id: "z3", label: "Linia 3", correctItemId: "i4" },
+        { id: "z4", label: "Linia 4", correctItemId: "i5" },
+        { id: "z5", label: "Linia 5", correctItemId: "i1" }
+      ],
+      explanation: "Este un if imbricat: întâi condiția pe vânzări, apoi (în interior) condiția pe regiune și sezon; operatorul logic corect este and."
+    },
+    {
+      id: "py-108",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange the lines of a while loop that prints the numbers 1 through 3.",
+      dragItems: [
+        { id: "i1", text: "i = 1" },
+        { id: "i2", text: "    print(i)" },
+        { id: "i3", text: "    i += 1" },
+        { id: "i4", text: "while i <= 3:" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i1" },
+        { id: "z2", label: "Linia 2", correctItemId: "i4" },
+        { id: "z3", label: "Linia 3", correctItemId: "i2" },
+        { id: "z4", label: "Linia 4", correctItemId: "i3" }
+      ],
+      explanation: "Se inițializează contorul, se verifică condiția, se afișează valoarea, apoi se incrementează."
+    },
+    {
+      id: "py-109",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange a validation loop that asks for a location until one of the four allowed locations is entered.",
+      dragItems: [
+        { id: "i1", text: "while response not in locations:" },
+        { id: "i2", text: "print(response)" },
+        { id: "i3", text: "locations = [\"North\", \"South\", \"West\", \"East\"]" },
+        { id: "i4", text: "    print(\"Try again.\")" },
+        { id: "i5", text: "    response = input(\"Enter a location: \")" },
+        { id: "i6", text: "response = input(\"Enter a location: \")" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i3" },
+        { id: "z2", label: "Linia 2", correctItemId: "i6" },
+        { id: "z3", label: "Linia 3", correctItemId: "i1" },
+        { id: "z4", label: "Linia 4", correctItemId: "i4" },
+        { id: "z5", label: "Linia 5", correctItemId: "i5" },
+        { id: "z6", label: "Linia 6", correctItemId: "i2" }
+      ],
+      explanation: "Prima citire se face înainte de while; în interiorul buclei se cere din nou valoarea până devine validă."
+    },
+    {
+      id: "py-110",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange the grade conditions in the correct order.",
+      dragItems: [
+        { id: "i1", text: "    letter_grade = \"B\"" },
+        { id: "i2", text: "elif grade >= 70:" },
+        { id: "i3", text: "    letter_grade = \"A\"" },
+        { id: "i4", text: "else:" },
+        { id: "i5", text: "if grade >= 90:" },
+        { id: "i6", text: "elif grade >= 65:" },
+        { id: "i7", text: "    letter_grade = \"C\"" },
+        { id: "i8", text: "elif grade >= 80:" },
+        { id: "i9", text: "    letter_grade = \"D\"" },
+        { id: "i10", text: "    letter_grade = \"F\"" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i5" },
+        { id: "z2", label: "Linia 2", correctItemId: "i3" },
+        { id: "z3", label: "Linia 3", correctItemId: "i8" },
+        { id: "z4", label: "Linia 4", correctItemId: "i1" },
+        { id: "z5", label: "Linia 5", correctItemId: "i2" },
+        { id: "z6", label: "Linia 6", correctItemId: "i7" },
+        { id: "z7", label: "Linia 7", correctItemId: "i6" },
+        { id: "z8", label: "Linia 8", correctItemId: "i9" },
+        { id: "z9", label: "Linia 9", correctItemId: "i4" },
+        { id: "z10", label: "Linia 10", correctItemId: "i10" }
+      ],
+      explanation: "Condițiile se verifică de la cea mai mare la cea mai mică; după ce 90+ e exclus, elif grade >= 80 acoperă automat 80–89 etc."
+    },
+    {
+      id: "py-111",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange the code segments so that it prints all prime numbers from 2 through 100.",
+      dragItems: [
+        { id: "i1", text: "p = 2" },
+        { id: "i2", text: "        print(p)" },
+        { id: "i3", text: "    p = p + 1" },
+        { id: "i4", text: "            is_prime = False" },
+        { id: "i5", text: "        if p % i == 0:" },
+        { id: "i6", text: "    for i in range(2, p):" },
+        { id: "i7", text: "while p <= 100:" },
+        { id: "i8", text: "    if is_prime == True:" },
+        { id: "i9", text: "            break" },
+        { id: "i10", text: "    is_prime = True" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i1" },
+        { id: "z2", label: "Linia 2", correctItemId: "i7" },
+        { id: "z3", label: "Linia 3", correctItemId: "i10" },
+        { id: "z4", label: "Linia 4", correctItemId: "i6" },
+        { id: "z5", label: "Linia 5", correctItemId: "i5" },
+        { id: "z6", label: "Linia 6", correctItemId: "i4" },
+        { id: "z7", label: "Linia 7", correctItemId: "i9" },
+        { id: "z8", label: "Linia 8", correctItemId: "i8" },
+        { id: "z9", label: "Linia 9", correctItemId: "i2" },
+        { id: "z10", label: "Linia 10", correctItemId: "i3" }
+      ],
+      explanation: "Pentru fiecare p presupunem că e prim, căutăm un divizor între 2 și p-1, ne oprim la primul găsit și afișăm p doar dacă is_prime a rămas True."
+    },
+    {
+      id: "py-112",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "Arrange the decision structure that computes a real b-th root of a.",
+      dragItems: [
+        { id: "i1", text: "    answer = a ** (1 / b)" },
+        { id: "i2", text: "    else:" },
+        { id: "i3", text: "        answer = \"Result is an imaginary number\"" },
+        { id: "i4", text: "    if b % 2 == 0:" },
+        { id: "i5", text: "        answer = -((-a) ** (1 / b))" },
+        { id: "i6", text: "else:" },
+        { id: "i7", text: "if a >= 0:" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i7" },
+        { id: "z2", label: "Linia 2", correctItemId: "i1" },
+        { id: "z3", label: "Linia 3", correctItemId: "i6" },
+        { id: "z4", label: "Linia 4", correctItemId: "i4" },
+        { id: "z5", label: "Linia 5", correctItemId: "i3" },
+        { id: "z6", label: "Linia 6", correctItemId: "i2" },
+        { id: "z7", label: "Linia 7", correctItemId: "i5" }
+      ],
+      explanation: "Pentru a >= 0 se aplică direct formula. Pentru a negativ și b par rădăcina nu e reală; pentru b impar rezultatul real este negativ: -((-a)**(1/b))."
+    },
+    {
+      id: "py-113",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which code block correctly assigns a rating for every age, including an unknown (None) age?",
+      options: ["if age is None:\n    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"","if age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelif age is None:\n    rating = \"C\"\nelse:\n    rating = \"A\"","if age is None:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelif age < 13:\n    rating = \"C\"\nelse:\n    rating = \"A\"","if age is None:\n    rating = \"A\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"C\""],
+      correct: 0,
+      explanation: "None trebuie verificat primul (altfel comparația cu < dă TypeError). Apoi: sub 13 → C, 13–17 → T, restul → A. În varianta 3, condiția age < 18 ascunde age < 13."
+    },
+    {
+      id: "py-114",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Does the grade-converter code require a change to its if/elif conditions?",
+      code: "if marks >= 90:\n    grade = 'A'\nelif marks >= 80:\n    grade = 'B'\nelif marks >= 70:\n    grade = 'C'\nelif marks >= 65:\n    grade = 'D'\nelse:\n    grade = 'E'",
+      options: ["Line 1 must use marks <= 90.","Line 2 must also check marks <= 90.","Line 3 must also check marks <= 80.","No changes are required."],
+      correct: 3,
+      explanation: "Condițiile sunt verificate de sus în jos: dacă marks >= 90 e fals, elif marks >= 80 acoperă automat 80–89 etc."
+    },
+    {
+      id: "py-115",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Which statement should be used when a divisor is found, so that the inner search stops immediately?",
+      code: "for i in range(2, p):\n    if p % i == 0:\n        is_prime = False\n        # missing statement",
+      options: ["continue","pass","break","return True"],
+      correct: 2,
+      explanation: "După ce s-a găsit un divizor nu mai trebuie testați ceilalți; break iese din bucla for interioară."
+    },
+    {
+      id: "py-116",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which Python data structure does NOT allow its elements to be changed after creation?",
+      options: ["list","dict","tuple","set"],
+      correct: 2,
+      explanation: "tuple este imutabil: odată creat, conținutul său nu mai poate fi modificat."
+    },
+    {
+      id: "py-117",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which line of code assigns <class 'list'> to x?",
+      code: "t = ([10, 20], 10, False)",
+      options: ["x = type(t)","x = type(t[0])","x = type(t[1])","x = type(t[0:])"],
+      correct: 1,
+      explanation: "t[0] este [10, 20], o listă. type(t) și type(t[0:]) sunt tuple, iar type(t[1]) este int."
+    },
+    {
+      id: "py-118",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "Which TWO expressions access 'Mango'? (Choose 2.)",
+      code: "items = ['Apple', 'Banana', 'Carrot', 'Mango']",
+      options: ["items[3]","items[4]","items[-1]","items[0]"],
+      correct: [0,2],
+      explanation: "items[3] și items[-1] indică ultimul element. items[4] dă IndexError, iar items[0] este 'Apple'."
+    },
+    {
+      id: "py-119",
+      chapter: "structuri-date",
+      type: "single",
+      question: "A list named colors contains 200 colors. You need to slice the list to display every other color, starting with the second color. Which code should you use?",
+      options: ["colors[1:2]","colors[::2]","colors[2:2]","colors[1::2]"],
+      correct: 3,
+      explanation: "colors[1::2] pornește de la indexul 1 (al doilea element) și ia din 2 în 2."
+    },
+    {
+      id: "py-120",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "A list named employees contains 200 employee names, the last five being company management. Which TWO slices display all employees excluding management? (Choose 2.)",
+      options: ["employees[0:-4]","employees[1:-5]","employees[:-5]","employees[0:-5]","employees[1:-4]"],
+      correct: [2,3],
+      explanation: "employees[:-5] și employees[0:-5] sunt echivalente și exclud exact ultimele 5 elemente."
+    },
+    {
+      id: "py-121",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "A list named employees contains 600 employee names, the last 3 being company management. Which TWO slices display all employees excluding management? (Choose 2.)",
+      options: ["employees[1:-2]","employees[:-3]","employees[1:-3]","employees[0:-2]","employees[0:-3]"],
+      correct: [1,4],
+      explanation: "employees[:-3] și employees[0:-3] exclud ultimele 3 elemente."
+    },
+    {
+      id: "py-122",
+      chapter: "structuri-date",
+      type: "single",
+      question: "A list named employees contains 500 names, the last 3 being company management. Which expression represents only the management employees?",
+      options: ["employees[497:]","employees[-3:]","employees[497:500]","All of the above"],
+      correct: 3,
+      explanation: "Toate trei selectează ultimele 3 elemente (indecșii 497, 498, 499)."
+    },
+    {
+      id: "py-123",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the output value?",
+      code: "list_1 = [1, 2]\nlist_2 = [3, 4]\nlist_3 = list_1 + list_2\nlist_4 = list_3 * 3\nprint(list_4)",
+      options: ["[3, 6, 9, 12]","[1, 2, 3, 4, 1, 2, 3, 4, 1, 2, 3, 4]","[[1, 2], [3, 4], [1, 2], [3, 4], [1, 2], [3, 4]]","[[1, 2, 3, 4], [1, 2, 3, 4], [1, 2, 3, 4]]"],
+      correct: 1,
+      explanation: "list_3 = [1,2,3,4]; * 3 repetă lista de 3 ori (nu înmulțește elementele)."
+    },
+    {
+      id: "py-124",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the output?",
+      code: "names = ['itvedant', 'Thane', 'Andheri', 'Navi Mumbai']\nprint(names[-1][-1])",
+      options: ["Navi Mumbai","Mumbai","i","a"],
+      correct: 2,
+      explanation: "names[-1] este 'Navi Mumbai', iar [-1] al acestui șir este ultimul caracter: 'i'."
+    },
+    {
+      id: "py-125",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which of the following does NOT print 'CAT' to the console?",
+      code: "x = 'ACROTE'\ny = 'APPLE'\nz = 'TOMATO'",
+      options: ["print(x[1] + y[0] + z[0])","print(x[2] + y[1] + z[1])","print(x[-5] + y[0] + z[0])","print(x[-5] + y[0] + z[-2])"],
+      correct: 1,
+      explanation: "x[2]+y[1]+z[1] = 'R'+'P'+'O' = 'RPO'. Celelalte trei dau 'CAT'."
+    },
+    {
+      id: "py-126",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the result?",
+      code: "s = 'Python is easy'\ns1 = s[-7:]\ns2 = s[-4:]\nprint(s1 + s2)",
+      options: ["is easyeasy","easyeasy","iseasyeasy","s easyeasy","is easy easy"],
+      correct: 0,
+      explanation: "s[-7:] = 'is easy', s[-4:] = 'easy' → 'is easyeasy'."
+    },
+    {
+      id: "py-127",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which statement inserted at Line-1 makes the program print 2?",
+      code: "s = 'Python is easy'\ns1 = s[6:-4]\n# Line-1\nprint(len(s2))",
+      options: ["s2 = s1.lstrip()","s2 = s1.rstrip()","s2 = s1.lrstrip()","s2 = s1.strip()"],
+      correct: 3,
+      explanation: "s1 = ' is ' (spații la ambele capete). Doar strip() le elimină pe ambele, rămâne 'is' (lungime 2). lrstrip() nu există."
+    },
+    {
+      id: "py-128",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "Which TWO lines print 'AA' to the console? (Choose 2.)",
+      code: "b = 'BANANA'",
+      options: ["print(b[1] + b[2])","print(b[1] + b[3])","print(b[2] + b[4])","print(b[3] + b[5])"],
+      correct: [1,3],
+      explanation: "În 'BANANA' literele A sunt la indecșii 1, 3 și 5. b[1]+b[3] și b[3]+b[5] dau 'AA'; b[1]+b[2] dă 'AN', iar b[2]+b[4] dă 'NN'."
+    },
+    {
+      id: "py-129",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which line of code assigns the string 'TT' to output?",
+      code: "x = 'TEXT'",
+      options: ["output = x[1] + x[1]","output = x[1] + x[4]","output = x[0] + x[2]","output = x[0] + x[-1]"],
+      correct: 3,
+      explanation: "x[0] = 'T' și x[-1] = 'T' (ultimul caracter)."
+    },
+    {
+      id: "py-130",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which slice reverses a string?",
+      options: ["[::1]","[1::]","[-1::]","[::-1]"],
+      correct: 3,
+      explanation: "Al treilea element din slice este pasul; pasul -1 parcurge șirul invers."
+    },
+    {
+      id: "py-131",
+      chapter: "structuri-date",
+      type: "single",
+      question: "Which index selects the last item in a list?",
+      options: ["0","1","-1","-2"],
+      correct: 2,
+      explanation: "-1 este ultimul element; -2 este penultimul."
+    },
+    {
+      id: "py-132",
+      chapter: "structuri-date",
+      type: "single",
+      question: "What is the result of the slice?",
+      code: "text = \"Python\"\nprint(text[1:4])",
+      options: ["\"yth\"","\"ytho\"","\"Pyt\"","\"thon\""],
+      correct: 0,
+      explanation: "Începutul este inclus, sfârșitul nu: pozițiile 1, 2, 3 → \"yth\"."
+    },
+    {
+      id: "py-133",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "After sorting, which TWO expressions print rook? (Choose 2.)",
+      code: "pieces = [\"king\", \"queen\", \"rook\", \"bishop\", \"knight\", \"pawn\"]\npieces.sort()",
+      options: ["pieces[6]","pieces[5]","pieces[3]","pieces[-1]"],
+      correct: [1,3],
+      explanation: "După sortare: bishop, king, knight, pawn, queen, rook. rook are indexul 5 sau -1. Indexul 6 nu există, iar 3 este pawn."
+    },
+    {
+      id: "py-134",
       chapter: "structuri-date",
       type: "single",
       question: "Which method adds an item to the end of a list?",
-      options: ["add()", "append()", "insertEnd()", "push()"],
+      options: ["add()","append()","insertEnd()","push()"],
       correct: 1,
-      explanation: "list.append(value) adds the value at the end."
+      explanation: "list.append(valoare) adaugă la sfârșit."
     },
     {
-      id: "py-545",
+      id: "py-135",
       chapter: "structuri-date",
       type: "single",
       question: "What is the list after the code runs?",
-      code: "items = ['A','B']\nitems.insert(1,'X')",
-      options: ["['A', 'B', 'C']", "['A', 'X', 'B']", "['X', 'A', 'B']", "['A', 'B', 'X']"],
+      code: "items = ['A', 'B']\nitems.insert(1, 'X')",
+      options: ["['A', 'B', 'X']","['A', 'X', 'B']","['X', 'A', 'B']","['A', 'B']"],
       correct: 1,
-      explanation: "insert(1,'X') inserts at index 1 and shifts the following elements over."
+      explanation: "insert(1, 'X') inserează la indexul 1 și mută restul elementelor."
     },
     {
-      id: "py-546",
+      id: "py-136",
       chapter: "structuri-date",
       type: "single",
-      question: "Which method removes the first occurrence of a specific value?",
-      options: ["delete()", "remove()", "discard()", "popvalue()"],
+      question: "Which method removes the first occurrence of a specific value from a list?",
+      options: ["delete()","remove()","discard()","popvalue()"],
       correct: 1,
-      explanation: "list.remove(value) searches for the value and removes its first occurrence."
+      explanation: "list.remove(valoare) caută valoarea și o șterge prima dată când apare."
     },
     {
-      id: "py-547",
+      id: "py-137",
       chapter: "structuri-date",
       type: "single",
-      question: "What is returned by pop() with no index?",
-      options: ["The first item", "The last item", "The list length", "None"],
+      question: "What does pop() with no index return?",
+      options: ["The first item","The last item","The list length","None"],
       correct: 1,
-      explanation: "list.pop() removes and returns the last item."
+      explanation: "list.pop() șterge și întoarce ultimul element."
     },
     {
-      id: "py-548",
-      chapter: "structuri-control",
-      type: "single",
-      question: "What is printed?",
-      code: "for x in range(1,4):\n    pass\nprint(x)",
-      options: ["1", "2", "3", "4"],
-      correct: 2,
-      explanation: "range(1,4) produces 1, 2, 3; after the loop, x remains 3."
-    },
-    {
-      id: "py-549",
-      chapter: "input-output",
-      type: "single",
-      question: "Arrange the lines to open a file for reading, read all contents, and print them. Choose the option with the correct order of code lines.",
-      options: ["shirtFileContents = shirtFile.read()\nshirtFile = open(\"shirts.txt\", \"r\")\nprint(shirtFileContents)", "print(shirtFileContents)\nshirtFileContents = shirtFile.read()\nshirtFile = open(\"shirts.txt\", \"r\")", "shirtFile = open(\"shirts.txt\", \"r\")\nshirtFileContents = shirtFile.read()\nprint(shirtFileContents)", "shirtFileContents = shirtFile.read()\nprint(shirtFileContents)\nshirtFile = open(\"shirts.txt\", \"r\")"],
-      correct: 2,
-      explanation: "First open in mode r, then read(), then print()."
-    },
-    {
-      id: "py-550",
-      chapter: "input-output",
-      type: "multiple",
-      question: "With open('log.txt','w') as file, which TWO statements are true?",
-      options: ["Existing content is overwritten.", "Text is automatically appended.", "file.close() is not required.", "The file must already exist."],
-      correct: [0, 2],
-      explanation: "Mode w overwrites the content, and with automatically closes the file."
-    },
-    {
-      id: "py-551",
-      chapter: "input-output",
-      type: "single",
-      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
-      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"___\")\nelse:\n    writeFile = open(\"results.txt\", \"w\")\nwriteFile.write(\"\\n\" + toResults)",
-      options: ["r", "a", "w"],
-      correct: 1,
-      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
-    },
-    {
-      id: "py-552",
-      chapter: "input-output",
-      type: "single",
-      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
-      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"a\")\nelse:\n    writeFile = open(\"results.txt\", \"___\")\nwriteFile.write(\"\\n\" + toResults)",
-      options: ["r", "a", "w"],
-      correct: 2,
-      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
-    },
-    {
-      id: "py-553",
-      chapter: "input-output",
-      type: "single",
-      question: "Complete the file modes and newline escape. Which option belongs in place of the ___ marker in the code below?",
-      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"a\")\nelse:\n    writeFile = open(\"results.txt\", \"w\")\nwriteFile.write(\"___\" + toResults)",
-      options: ["\\n", "\\t", "\\r"],
-      correct: 0,
-      explanation: "a appends at the end, w creates/overwrites, and \\n starts a new line."
-    },
-    {
-      id: "py-554",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange a validation loop for four allowed locations. Choose the option with the correct order of code lines.",
-      options: ["print(response)\n    response = input(\"Enter a location: \")\n    print(\"Try again.\")\nwhile response not in locations:\nresponse = input(\"Enter a location: \")\nlocations = [\"North\", \"South\", \"West\", \"East\"]", "locations = [\"North\", \"South\", \"West\", \"East\"]\nresponse = input(\"Enter a location: \")\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)", "response = input(\"Enter a location: \")\nlocations = [\"North\", \"South\", \"West\", \"East\"]\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)", "response = input(\"Enter a location: \")\nwhile response not in locations:\n    print(\"Try again.\")\n    response = input(\"Enter a location: \")\nprint(response)\nlocations = [\"North\", \"South\", \"West\", \"East\"]"],
-      correct: 1,
-      explanation: "The first read must happen before the while loop; inside the loop we ask again until the response becomes valid."
-    },
-    {
-      id: "py-555",
-      chapter: "input-output",
-      type: "single",
-      question: "When running 'python testargs.py Hello', what is sys.argv[0]?",
-      options: ["Hello", "testargs.py", "sys.argv", "2"],
-      correct: 1,
-      explanation: "sys.argv[0] is the name of the script being run."
-    },
-    {
-      id: "py-556",
-      chapter: "structura-documentare",
-      type: "single",
-      question: "Which character starts a single-line comment in Python?",
-      options: ["//", "/*", "#", "--"],
-      correct: 2,
-      explanation: "Single-line comments in Python start with #."
-    },
-    {
-      id: "py-557",
-      chapter: "input-output",
-      type: "multiple",
-      question: "Which TWO expressions are used to check that config.txt exists and then read only its first line?",
-      options: ["os.path.isfile(\"config.txt\")", "file.readline()", "file.read()", "os.remove(\"config.txt\")"],
-      correct: [0, 1],
-      explanation: "os.path.isfile(...) checks whether the file exists, and readline() reads a single line. read() reads the entire contents, and os.remove() deletes the file."
-    },
-    {
-      id: "py-558",
-      chapter: "input-output",
-      type: "single",
-      question: "Which expression checks whether results.txt is a file?",
-      options: ["os.path.isfile(\"results.txt\")", "os.file.exists(\"results.txt\")", "io.isfile(\"results.txt\")", "file.exists(\"results.txt\")"],
-      correct: 0,
-      explanation: "os.path.isfile(path) checks whether that path exists and is a file."
-    },
-    {
-      id: "py-559",
-      chapter: "input-output",
-      type: "single",
-      question: "Which function deletes a file?",
-      options: ["os.delete()", "os.remove()", "file.remove()", "io.delete()"],
-      correct: 1,
-      explanation: "os.remove(path) deletes the given file."
-    },
-    {
-      id: "py-560",
-      chapter: "input-output",
-      type: "single",
-      question: "Which file mode appends new content without deleting existing content?",
-      options: ["r", "w", "a", "x"],
-      correct: 2,
-      explanation: "a means append."
-    },
-    {
-      id: "py-561",
-      chapter: "input-output",
-      type: "single",
-      question: "Which file mode is used for reading?",
-      options: ["r", "w", "a", "n"],
-      correct: 0,
-      explanation: "r means read."
-    },
-    {
-      id: "py-562",
-      chapter: "input-output",
-      type: "single",
-      question: "What type does file.read() normally return for a text file?",
-      options: ["list", "tuple", "str", "int"],
-      correct: 2,
-      explanation: "read() returns the text content as str."
-    },
-    {
-      id: "py-563",
-      chapter: "input-output",
-      type: "single",
-      question: "What does file.readlines() return for a text file?",
-      options: ["A single string", "A list of lines", "An integer", "A Boolean"],
-      correct: 1,
-      explanation: "readlines() returns a list of strings, one for each line."
-    },
-    {
-      id: "py-564",
-      chapter: "input-output",
-      type: "single",
-      question: "Which f-string prints the value of items?",
-      options: ["f\"We have {items} items.\"", "\"We have {items} items.\"", "f\"We have (items) items.\"", "\"We have \" + items + \" items.\""],
-      correct: 0,
-      explanation: "In an f-string, expressions are placed inside curly braces."
-    },
-    {
-      id: "py-565",
-      chapter: "input-output",
-      type: "single",
-      question: "Which format specification right-aligns a value in a field 6 characters wide?",
-      options: ["{:6<}", "{:>6}", "{:<6}", "{:^6}"],
-      correct: 1,
-      explanation: "> means right alignment, and 6 is the width of the field."
-    },
-    {
-      id: "py-566",
-      chapter: "input-output",
-      type: "single",
-      question: "Which statement safely closes the file automatically?",
-      options: ["with open(\"data.txt\",\"r\") as f:", "f = open(\"data.txt\",\"r\")", "open(\"data.txt\")", "file(\"data.txt\")"],
-      correct: 0,
-      explanation: "The with block automatically handles closing the file."
-    },
-    {
-      id: "py-567",
-      chapter: "functii",
-      type: "single",
-      question: "Which definition gives height a default value of 12?",
-      options: ["def area(width,height):", "def area(width,height=12):", "def area(width=height,12):", "def area(width;height=12):"],
-      correct: 1,
-      explanation: "The default value is written in the header: parameter=value."
-    },
-    {
-      id: "py-568",
-      chapter: "functii",
-      type: "single",
-      question: "What happens when the function is called?",
-      code: "def f(amount, shipping):\n    if shipping == 0:\n        pass\n    else:\n        subtotal = amount + shipping\n    return subtotal\n\nf(500, 0)",
-      options: ["Returns 500", "Returns 0", "Returns None", "A runtime error is raised"],
-      correct: 3,
-      explanation: "On the shipping==0 branch, pass runs, so subtotal is never created. return subtotal raises UnboundLocalError."
-    },
-    {
-      id: "py-569",
-      chapter: "functii",
-      type: "single",
-      question: "Which function definition matches the call area(5,10)?",
-      options: ["def area(x,y):", "def area(x,y,z):", "def calculate_area(x):", "area def(x,y):"],
-      correct: 0,
-      explanation: "The call passes two arguments, so the function needs two parameters."
-    },
-    {
-      id: "py-570",
-      chapter: "functii",
-      type: "single",
-      question: "Arrange the function that calculates and returns a subtotal. Choose the option with the correct order of code lines.",
-      options: ["    subtotal = amount * (1 + salesTaxRate)\n    return subtotal\ndef calcSubtotal(amount, salesTaxRate):", "    return subtotal\n    subtotal = amount * (1 + salesTaxRate)\ndef calcSubtotal(amount, salesTaxRate):", "    subtotal = amount * (1 + salesTaxRate)\ndef calcSubtotal(amount, salesTaxRate):\n    return subtotal", "def calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal"],
-      correct: 3,
-      explanation: "def defines the function, then the local variable is calculated and returned."
-    },
-    {
-      id: "py-571",
-      chapter: "functii",
-      type: "single",
-      question: "Which line correctly calls subtotal and stores the returned value in order_total?",
-      options: ["order_total(subtotal(500,.07))", "order_total = call subtotal(500,.07)", "order_total = subtotal(500,.07)", "order_total = def subtotal(500,.07)"],
-      correct: 2,
-      explanation: "A function is called with name(arguments), and the result can be assigned to a variable."
-    },
-    {
-      id: "py-572",
-      chapter: "functii",
-      type: "single",
-      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "___ calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal",
-      options: ["def", "function", "func"],
-      correct: 0,
-      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
-    },
-    {
-      id: "py-573",
-      chapter: "functii",
-      type: "single",
-      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "def calcSubtotal___\n    subtotal = amount * (1 + salesTaxRate)\n    return subtotal",
-      options: ["(amount, salesTaxRate):", "[amount, salesTaxRate]:", "(amount; salesTaxRate)"],
-      correct: 0,
-      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
-    },
-    {
-      id: "py-574",
-      chapter: "functii",
-      type: "single",
-      question: "Complete the function definition and return statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "def calcSubtotal(amount, salesTaxRate):\n    subtotal = amount * (1 + salesTaxRate)\n    ___",
-      options: ["return subtotal", "print subtotal", "return amount"],
-      correct: 0,
-      explanation: "In Python we use def, the parameters go in parentheses, followed by :, and return sends the value back."
-    },
-    {
-      id: "py-575",
-      chapter: "structura-documentare",
-      type: "single",
-      question: "Which option uses the conventional triple-quoted Python docstring form?",
-      options: ["\"\"\"Calculates area.\"\"\"", "# Calculates area.", "// Calculates area.", "/* Calculates area. */"],
-      correct: 0,
-      explanation: "Docstrings are strings placed at the start of a module, class, or function. The triple-quoted form is the commonly used convention and also allows multi-line text. # is a comment, while // and /* */ are not Python comment syntax."
-    },
-    {
-      id: "py-576",
-      chapter: "functii",
-      type: "single",
-      question: "What is printed?",
-      code: "def double(x):\n    return x * 2\n\nprint(double(5))",
-      options: ["5", "10", "None", "NameError"],
-      correct: 1,
-      explanation: "Parameter x is local to the function and receives 5; the function returns 10."
-    },
-    {
-      id: "py-577",
-      chapter: "functii",
-      type: "single",
-      question: "What does a Python function return if it reaches the end without return?",
-      options: ["0", "False", "None", "An error"],
-      correct: 2,
-      explanation: "Without an explicit return, Python returns None."
-    },
-    {
-      id: "py-578",
-      chapter: "functii",
-      type: "single",
-      question: "What is printed?",
-      code: "def greet():\n    print(\"Hello\")\n\ngreet()",
-      options: ["Hello", "None", "0", "Error"],
-      correct: 0,
-      explanation: "The function runs print even though it has no return."
-    },
-    {
-      id: "py-579",
-      chapter: "functii",
-      type: "single",
-      question: "What is printed?",
-      code: "def f(x):\n    return x\n    return x * 3\n\nprint(f(5))",
-      options: ["5", "10", "15", "Nothing"],
-      correct: 0,
-      explanation: "return exits the function immediately; the line return x*3 is never executed."
-    },
-    {
-      id: "py-580",
-      chapter: "functii",
-      type: "single",
-      question: "Which call uses a keyword argument for height?",
-      options: ["area(5,10)", "area(width=5, height=10)", "area[5,10]", "area(width:5,height:10)"],
-      correct: 1,
-      explanation: "Keyword arguments are written as parameter=value in the call."
-    },
-    {
-      id: "py-581",
-      chapter: "functii",
-      type: "true_false",
-      question: "Parameters are named in the function definition.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
-    },
-    {
-      id: "py-582",
-      chapter: "functii",
-      type: "true_false",
-      question: "Arguments are values supplied when calling the function.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
-    },
-    {
-      id: "py-583",
-      chapter: "functii",
-      type: "true_false",
-      question: "A function can never return a string.",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Parameters appear in the definition, arguments appear at the call, and return can send back values of different types."
-    },
-    {
-      id: "py-584",
-      chapter: "functii",
-      type: "single",
-      question: "What error occurs?",
-      code: "def make_value():\n    local_value = 10\n\nmake_value()\nprint(local_value)",
-      options: ["No error", "NameError", "SyntaxError", "ZeroDivisionError"],
-      correct: 1,
-      explanation: "local_value exists only inside the function, so the name is undefined outside it."
-    },
-    {
-      id: "py-585",
-      chapter: "functii",
-      type: "single",
-      question: "Which statement changes the global variable x from inside a function?",
-      options: ["global x", "public x", "extern x", "nonlocal x"],
-      correct: 0,
-      explanation: "The keyword global declares that the name refers to the global variable."
-    },
-    {
-      id: "py-586",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "math.frexp(21) returns a mantissa and an exponent.",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
-    },
-    {
-      id: "py-587",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "math.fabs(-14) == 14.0",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
-    },
-    {
-      id: "py-588",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "math.fmod(21,-14) == 1.5",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "frexp returns a pair (mantissa, exponent), fabs returns a float, and fmod(21,-14) is 7.0."
-    },
-    {
-      id: "py-589",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What is the value and type of c?",
-      code: "import math\na = -14\nc = math.fabs(a)",
-      options: ["14 (int)", "14.0 (float)", "-14.0 (float)", "True (bool)"],
-      correct: 1,
-      explanation: "math.fabs returns the absolute value as a float."
-    },
-    {
-      id: "py-590",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What is d?",
-      code: "import math\nd = math.fmod(21, -14)",
-      options: ["7.0", "-7.0", "1.5", "0"],
-      correct: 0,
-      explanation: "math.fmod(21,-14) keeps the sign of the first operand for the remainder; the result is 7.0."
-    },
-    {
-      id: "py-591",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
-      code: "import math\nx = 77.4\nupper = ___(x)\nlower = math.floor(x)\nwhole = math.trunc(x)",
-      options: ["math.ceil", "math.floor", "math.trunc"],
-      correct: 0,
-      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
-    },
-    {
-      id: "py-592",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
-      code: "import math\nx = 77.4\nupper = math.ceil(x)\nlower = ___(x)\nwhole = math.trunc(x)",
-      options: ["math.ceil", "math.floor", "math.trunc"],
-      correct: 1,
-      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
-    },
-    {
-      id: "py-593",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Complete the rounding functions. Which option belongs in place of the ___ marker in the code below?",
-      code: "import math\nx = 77.4\nupper = math.ceil(x)\nlower = math.floor(x)\nwhole = ___(x)",
-      options: ["math.ceil", "math.floor", "math.trunc"],
-      correct: 2,
-      explanation: "ceil rounds up, floor rounds down, trunc drops the fractional part toward zero."
-    },
-    {
-      id: "py-594",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which expression computes 3 to the power of 2 using math?",
-      options: ["math.pow(3,2)", "math.sqrt(3,2)", "math.power(3,2)", "pow.math(3,2)"],
-      correct: 0,
-      explanation: "math.pow(a,b) calculates a raised to the power b."
-    },
-    {
-      id: "py-595",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which expression computes the square root of 16?",
-      options: ["math.sqrt(16)", "math.sq(16)", "sqrt.math(16)", "math.root(16)"],
-      correct: 0,
-      explanation: "math.sqrt(x) calculates the square root."
-    },
-    {
-      id: "py-596",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "Which TWO methods return the current local date and time as a datetime object?",
-      options: ["datetime.datetime.now()", "datetime.datetime.today()", "datetime.datetime.strftime()", "datetime.datetime.strptime()"],
-      correct: [0, 1],
-      explanation: "now() and today() can both produce the current local date and time; strftime formats, strptime parses."
-    },
-    {
-      id: "py-597",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which function converts a datetime object to formatted text?",
-      options: ["strftime()", "strptime()", "today()", "weekday()"],
-      correct: 0,
-      explanation: "strftime formats a date/time into a string."
-    },
-    {
-      id: "py-598",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What does weekday() return?",
-      options: ["A weekday name", "An integer from 0 to 6", "An integer from 1 to 7", "A formatted date"],
-      correct: 1,
-      explanation: "weekday() uses 0 for Monday and 6 for Sunday."
-    },
-    {
-      id: "py-599",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which function chooses one random item from a list?",
-      options: ["random.choice()", "random.sample()", "random.shuffle()", "random.one()"],
-      correct: 0,
-      explanation: "choice(sequence) returns a single randomly chosen element."
-    },
-    {
-      id: "py-600",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which function rearranges a list in random order in place?",
-      options: ["random.choice()", "random.shuffle()", "random.sample()", "random.randint()"],
-      correct: 1,
-      explanation: "shuffle(list) modifies the list in place."
-    },
-    {
-      id: "py-601",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which expression returns two distinct random items from countries?",
-      options: ["random.choice(countries,2)", "random.sample(countries,2)", "random.shuffle(countries,2)", "random.randint(countries,2)"],
-      correct: 1,
-      explanation: "sample(population,k) returns k distinct elements."
-    },
-    {
-      id: "py-602",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What values can randint(1,3) return?",
-      options: ["1 or 2 only", "2 or 3 only", "1, 2, or 3", "0, 1, 2, or 3"],
-      correct: 2,
-      explanation: "randint(a,b) includes both endpoints."
-    },
-    {
-      id: "py-603",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which expression can generate 3, 6, 9, ... up to 99?",
-      options: ["random.randrange(3,102,3)", "random.randrange(3,99,2)", "random.randint(3,99,3)", "random.random(3,99)"],
-      correct: 0,
-      explanation: "randrange(start,stop,step) does not include stop; 102 allows 99 to be possible."
-    },
-    {
-      id: "py-604",
-      chapter: "module-librarii",
-      type: "single",
-      question: "What range of values does random.random() return?",
-      options: ["0.0 <= x < 1.0", "1 <= x <= 100", "-1 < x < 1", "Only integers 0 and 1"],
-      correct: 0,
-      explanation: "random() returns a float in the range [0.0, 1.0)."
-    },
-    {
-      id: "py-605",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "What type of error is this?",
-      code: "trees = ['fir','oak','pine']\nprint(trees[3])",
-      options: ["Syntax error", "Runtime error", "Logic error", "No error"],
-      correct: 1,
-      explanation: "The code is syntactically valid, but accessing a nonexistent index produces an IndexError at run time."
-    },
-    {
-      id: "py-606",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "What type of error is this?",
-      code: "x = 5\nif x > 3\n    print(x)",
-      options: ["Syntax error", "Runtime error", "Logic error", "No error"],
-      correct: 0,
-      explanation: "A colon is missing after the if condition, so the parser cannot interpret the code."
-    },
-    {
-      id: "py-607",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "The program runs, but calculates a rectangle area using width + height. What kind of error is this?",
-      options: ["Syntax error", "Runtime error", "Logic error", "Import error"],
-      correct: 2,
-      explanation: "The program runs, but the algorithm produces the wrong result."
-    },
-    {
-      id: "py-608",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "math.isnan(float('nan')) is True.",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
-    },
-    {
-      id: "py-609",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "float('nan') == float('nan') is True.",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
-    },
-    {
-      id: "py-610",
-      chapter: "module-librarii",
-      type: "true_false",
-      question: "math.isnan(33.0) is True.",
-      code: "import math",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "NaN is checked with math.isnan(). NaN is not even equal to itself."
-    },
-    {
-      id: "py-611",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
-      code: "___:\n    print(a / b)\nexcept:\n    print(\"This did not work.\")\nfinally:\n    print(\"Thank you.\")",
-      options: ["try", "if", "while"],
-      correct: 0,
-      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
-    },
-    {
-      id: "py-612",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
-      code: "try:\n    print(a / b)\n___:\n    print(\"This did not work.\")\nfinally:\n    print(\"Thank you.\")",
-      options: ["except", "else", "finally"],
-      correct: 0,
-      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
-    },
-    {
-      id: "py-613",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Complete the exception-handling structure. Which option belongs in place of the ___ marker in the code below?",
-      code: "try:\n    print(a / b)\nexcept:\n    print(\"This did not work.\")\n___:\n    print(\"Thank you.\")",
-      options: ["finally", "except", "pass"],
-      correct: 0,
-      explanation: "try holds the risky code, except handles the error, and finally always runs regardless of the outcome."
-    },
-    {
-      id: "py-614",
-      chapter: "gestionare-erori",
-      type: "true_false",
-      question: "finally runs whether an exception occurs or not.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "except runs on an exception, else runs on success, and finally runs either way."
-    },
-    {
-      id: "py-615",
-      chapter: "gestionare-erori",
-      type: "true_false",
-      question: "try and except both execute on every successful operation.",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "except runs on an exception, else runs on success, and finally runs either way."
-    },
-    {
-      id: "py-616",
-      chapter: "gestionare-erori",
-      type: "true_false",
-      question: "else runs when the try block completes without an exception.",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "except runs on an exception, else runs on success, and finally runs either way."
-    },
-    {
-      id: "py-617",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which keyword explicitly raises an exception?",
-      options: ["throw", "raise", "except", "error"],
-      correct: 1,
-      explanation: "In Python we use raise to raise an exception."
-    },
-    {
-      id: "py-618",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "What happens?",
-      code: "assert 2 + 2 == 5",
-      options: ["Nothing", "True is printed", "AssertionError", "ValueError"],
-      correct: 2,
-      explanation: "2+2==5 is false, so assert raises AssertionError."
-    },
-    {
-      id: "py-619",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which unittest method checks whether two values are equal?",
-      options: ["assertIn", "assertEqual", "assertIsInstance", "assertTrue"],
-      correct: 1,
-      explanation: "self.assertEqual(a,b) checks that the values are equal."
-    },
-    {
-      id: "py-620",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which unittest method checks whether an item is in a container?",
-      options: ["assertIn", "assertEqual", "assertIs", "assertIsInstance"],
-      correct: 0,
-      explanation: "self.assertIn(item, container) checks membership."
-    },
-    {
-      id: "py-621",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which unittest method checks whether two references point to the same object?",
-      options: ["assertEqual", "assertIs", "assertIn", "assertTrue"],
-      correct: 1,
-      explanation: "assertIs(a,b) is conceptually equivalent to checking a is b."
-    },
-    {
-      id: "py-622",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which unittest method checks whether an object belongs to a class?",
-      options: ["assertIsInstance", "assertEqual", "assertIn", "assertFalse"],
-      correct: 0,
-      explanation: "assertIsInstance(obj, Class) checks the type/instance."
-    },
-    {
-      id: "py-623",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Which method name is discovered by unittest's default test loader?",
-      options: ["test_territory", "_test_territory", "territory_test", "testcase_territory"],
-      correct: 0,
-      explanation: "By default, test methods start with the prefix test."
-    },
-    {
-      id: "py-624",
-      chapter: "gestionare-erori",
-      type: "single",
-      question: "Arrange the minimal unittest program structure. Choose the option with the correct order of code lines.",
-      options: ["class TestMath(unittest.TestCase):\nimport unittest\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()", "    unittest.main()\nif __name__ == \"__main__\":\n        self.assertEqual(2 + 3, 5)\n    def test_add(self):\nclass TestMath(unittest.TestCase):\nimport unittest", "import unittest\nclass TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()", "class TestMath(unittest.TestCase):\n    def test_add(self):\n        self.assertEqual(2 + 3, 5)\nif __name__ == \"__main__\":\n    unittest.main()\nimport unittest"],
-      correct: 2,
-      explanation: "We import unittest, define a TestCase class and a test_ method, then start unittest.main() when the file is run directly."
-    },
-    {
-      id: "py-625",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
-      code: "age = 2           → ___\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → str",
-      options: ["bool", "float", "int", "str"],
-      correct: 2,
-      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
-    },
-    {
-      id: "py-626",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
-      code: "age = 2           → int\nminor = False      → ___\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → str",
-      options: ["bool", "float", "int", "str"],
-      correct: 0,
-      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
-    },
-    {
-      id: "py-627",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
-      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → ___\nweight = 123.5     → float\nzip_code = \"81000\" → str",
-      options: ["bool", "float", "int", "str"],
-      correct: 3,
-      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
-    },
-    {
-      id: "py-628",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
-      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → ___\nzip_code = \"81000\" → str",
-      options: ["bool", "float", "int", "str"],
-      correct: 1,
-      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
-    },
-    {
-      id: "py-629",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each value with its Python data type. Which option belongs in place of the ___ marker in the code below?",
-      code: "age = 2           → int\nminor = False      → bool\nname = \"Contoso\"   → str\nweight = 123.5     → float\nzip_code = \"81000\" → ___",
-      options: ["bool", "float", "int", "str"],
-      correct: 3,
-      explanation: "2 is int; False is bool; text in quotes is str; 123.5 is float; \"81000\" stays str because it is written in quotes."
-    },
-    {
-      id: "py-630",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
-      code: "a = 11\nb = 4\n\nResult 2    → ___\nResult 3    → a % b\nResult 2.75 → a / b",
-      options: ["a / b", "a // b", "a % b"],
-      correct: 1,
-      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
-    },
-    {
-      id: "py-631",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
-      code: "a = 11\nb = 4\n\nResult 2    → a // b\nResult 3    → ___\nResult 2.75 → a / b",
-      options: ["a / b", "a // b", "a % b"],
-      correct: 2,
-      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
-    },
-    {
-      id: "py-632",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Match each arithmetic result with the expression that produces it. Which option belongs in place of the ___ marker in the code below?",
-      code: "a = 11\nb = 4\n\nResult 2    → a // b\nResult 3    → a % b\nResult 2.75 → ___",
-      options: ["a / b", "a // b", "a % b"],
-      correct: 0,
-      explanation: "11 // 4 = 2, 11 % 4 = 3, and 11 / 4 = 2.75."
-    },
-    {
-      id: "py-633",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "What is the result of the expression?",
-      code: "(3 * (1 + 2) ** 2) - ((2 ** 2) * 3)",
-      options: ["3", "13", "15", "69"],
-      correct: 2,
-      explanation: "First: (1+2)=3, then 3**2=9 and 3*9=27. Separately, 2**2=4 and 4*3=12. The result is 27-12=15."
-    },
-    {
-      id: "py-634",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the data types that make the speed calculation as precise as possible. Which option belongs in place of the ___ marker in the code below?",
-      code: "distance = ___(input(\"Enter the distance traveled in feet: \"))\ndistance_miles = distance / 5280\n\ntime = float(input(\"Enter the time elapsed in seconds: \"))\ntime_hours = time / 3600\n\nvelocity = distance_miles / time_hours",
-      options: ["int", "str", "float"],
-      correct: 2,
-      explanation: "Both distance and time may contain fractions. float preserves decimal values and avoids losing precision through conversion to int."
-    },
-    {
-      id: "py-635",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the data types that make the speed calculation as precise as possible. Which option belongs in place of the ___ marker in the code below?",
-      code: "distance = float(input(\"Enter the distance traveled in feet: \"))\ndistance_miles = distance / 5280\n\ntime = ___(input(\"Enter the time elapsed in seconds: \"))\ntime_hours = time / 3600\n\nvelocity = distance_miles / time_hours",
-      options: ["int", "str", "float"],
-      correct: 2,
-      explanation: "Both distance and time may contain fractions. float preserves decimal values and avoids losing precision through conversion to int."
-    },
-    {
-      id: "py-636",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "Which TWO math functions can be combined to first obtain an absolute value and then round that non-negative value downward?",
-      options: ["math.fmod(x)", "math.frexp(x)", "math.floor(x)", "math.ceil(x)", "math.fabs(x)"],
-      correct: [2, 4],
-      explanation: "math.fabs(x) turns the value into its absolute value, so the result is non-negative. math.floor(...) then rounds it down to the nearest integer. The wording specifies the order to avoid confusing floor with trunc."
-    },
-    {
-      id: "py-637",
-      chapter: "module-librarii",
-      type: "single",
-      question: "Which import statement lets the program call sqrt using the name squareRoot?",
-      options: ["import math.sqrt as squareRoot", "import sqrt from math as squareRoot", "from math import sqrt as squareRoot", "from math.sqrt as squareRoot"],
-      correct: 2,
-      explanation: "The correct syntax for importing a function and assigning it an alias is: from module import function as alias."
-    },
-    {
-      id: "py-638",
-      chapter: "module-librarii",
-      type: "multiple",
-      question: "Which TWO expressions can generate a random integer from 5 through 11 inclusive?",
-      options: ["random.randint(5, 12)", "random.randint(5, 11)", "random.randrange(5, 12, 1)", "random.randrange(5, 11, 1)"],
-      correct: [1, 2],
-      explanation: "randint(5,11) includes both limits. randrange(5,12,1) does not include 12, so it can produce 5…11."
-    },
-    {
-      id: "py-639",
-      chapter: "functii",
-      type: "single",
-      question: "Arrange the complete function so it returns the first line when the file exists and None otherwise. Choose the option with the correct order of code lines.",
-      options: ["    if os.path.isfile(filename):\ndef get_first_line(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None", "        return None\n    else:\n            return file.readline()\n        with open(filename, 'r') as file:\n    if os.path.isfile(filename):\ndef get_first_line(filename):", "def get_first_line(filename):\n    if os.path.isfile(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None", "    if os.path.isfile(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None\ndef get_first_line(filename):"],
-      correct: 2,
-      explanation: "The function is defined first. Then the file's existence is checked. If it exists, it is opened in mode r and readline() is returned; otherwise None is returned."
-    },
-    {
-      id: "py-640",
-      chapter: "input-output",
-      type: "single",
-      question: "Complete lines 05 and 06 so blank lines are ignored and end-of-file is detected. Which option belongs in place of the ___ marker in the code below?",
-      code: "inventory = open(\"inventory.txt\", \"r\")\neof = False\nwhile eof == False:\n    line = inventory.readline()\n    ___\n        if line != '':\n            print(line)\n        else:\n            print(\"End of file\")\n            eof = True\n            inventory.close()",
-      options: ["if line != '\\n':", "if line == '\\n':", "if line is None:"],
-      correct: 0,
-      explanation: "readline() returns '\\n' for a blank line and '' at EOF. The first condition ignores blank lines, and the second allows detecting the end of the file."
-    },
-    {
-      id: "py-641",
-      chapter: "input-output",
-      type: "single",
-      question: "Complete lines 05 and 06 so blank lines are ignored and end-of-file is detected. Which option belongs in place of the ___ marker in the code below?",
-      code: "inventory = open(\"inventory.txt\", \"r\")\neof = False\nwhile eof == False:\n    line = inventory.readline()\n    if line != '\\n':\n        ___\n            print(line)\n        else:\n            print(\"End of file\")\n            eof = True\n            inventory.close()",
-      options: ["if line != '':", "if line == '':", "if line is None:"],
-      correct: 0,
-      explanation: "readline() returns '\\n' for a blank line and '' at EOF. The first condition ignores blank lines, and the second allows detecting the end of the file."
-    },
-    {
-      id: "py-642",
-      chapter: "input-output",
-      type: "single",
-      question: "Which code should be written at line 02?",
-      code: "print(\"What is your name?\")\n# line 02\nprint(name)",
-      options: ["name = input", "input(\"name\")", "input(name)", "name = input()"],
-      correct: 3,
-      explanation: "print(name) on line 03 needs a name variable. input() reads the value and the assignment stores it in name."
-    },
-    {
-      id: "py-643",
-      chapter: "input-output",
-      type: "single",
-      question: "Which file mode meets all requirements?",
-      options: ["open(\"local_data\", \"r\")", "open(\"local_data\", \"r+\")", "open(\"local_data\", \"w+\")", "open(\"local_data\", \"w\")"],
-      correct: 2,
-      explanation: "w+ allows both reading and writing, creates the file if it does not exist, and truncates any existing content."
-    },
-    {
-      id: "py-644",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the decision structure for a real b-th root calculation. Choose the option with the correct order of code lines.",
-      options: ["        answer = -((-a) ** (1 / b))\n    else:\n        answer = \"Result is an imaginary number\"\n    if b % 2 == 0:\nelse:\n    answer = a ** (1 / b)\nif a >= 0:", "if a >= 0:\n    answer = a ** (1 / b)\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))", "    answer = a ** (1 / b)\nif a >= 0:\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))", "    answer = a ** (1 / b)\nelse:\n    if b % 2 == 0:\n        answer = \"Result is an imaginary number\"\n    else:\n        answer = -((-a) ** (1 / b))\nif a >= 0:"],
-      correct: 1,
-      explanation: "For a >= 0, the formula a**(1/b) can be used directly. If a is negative and the root degree b is even, the root is not real. If b is odd, the real result must be negative: -((-a)**(1/b))."
-    },
-    {
-      id: "py-645",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the conditions so every age receives the required rating. Choose the option with the correct order of code lines.",
-      options: ["    rating = \"C\"\nif age is None:\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"", "    rating = \"A\"\nelse:\n    rating = \"T\"\nelif age < 18:\n    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nif age is None:", "if age is None:\n    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"", "    rating = \"C\"\nelif age < 13:\n    rating = \"C\"\nelif age < 18:\n    rating = \"T\"\nelse:\n    rating = \"A\"\nif age is None:"],
-      correct: 2,
-      explanation: "None must be checked before the numeric comparisons. In Python, `is None` is the recommended form. Then ages under 13 get C, 13-17 get T, and 18+ fall into else and get A."
-    },
-    {
-      id: "py-646",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the grade conditions in the correct order. Choose the option with the correct order of code lines.",
-      options: ["    letter_grade = \"A\"\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\"\nif grade >= 90:", "    letter_grade = \"F\"\nelse:\n    letter_grade = \"D\"\nelif grade >= 65:\n    letter_grade = \"C\"\nelif grade >= 70:\n    letter_grade = \"B\"\nelif grade >= 80:\n    letter_grade = \"A\"\nif grade >= 90:", "    letter_grade = \"A\"\nif grade >= 90:\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\"", "if grade >= 90:\n    letter_grade = \"A\"\nelif grade >= 80:\n    letter_grade = \"B\"\nelif grade >= 70:\n    letter_grade = \"C\"\nelif grade >= 65:\n    letter_grade = \"D\"\nelse:\n    letter_grade = \"F\""],
-      correct: 3,
-      explanation: "The conditions must be checked from highest to lowest. Once 90+ has been ruled out, >=80 automatically represents 80-89, and so on."
-    },
-    {
-      id: "py-647",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Complete the loop so it stops when product ID 6 is found. Which option belongs in place of the ___ marker in the code below?",
-      code: "productIdList = [0,1,2,3,4,5,6,7,8,9]\nindex = 0\n\n___ index < 10:\n    print(productIdList[index])\n    if productIdList[index] == 6:\n        break\n    else:\n        index += 1",
-      options: ["while", "for", "if", "break"],
-      correct: 0,
-      explanation: "The condition index < 10 calls for a while loop. Once the value 6 is found, break exits the loop immediately."
-    },
-    {
-      id: "py-648",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Complete the loop so it stops when product ID 6 is found. Which option belongs in place of the ___ marker in the code below?",
-      code: "productIdList = [0,1,2,3,4,5,6,7,8,9]\nindex = 0\n\nwhile index < 10:\n    print(productIdList[index])\n    if productIdList[index] == 6:\n        ___\n    else:\n        index += 1",
-      options: ["while", "for", "if", "break"],
-      correct: 3,
-      explanation: "The condition index < 10 calls for a while loop. Once the value 6 is found, break exits the loop immediately."
-    },
-    {
-      id: "py-649",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Which statement inserted at Line 1 makes print(len(s2)) display 2?",
-      code: "s = \"Python is easy\"\ns1 = s[6:-4]\n# Line 1\nprint(len(s2))",
-      options: ["s2 = s1.lstrip()", "s2 = s1.rstrip()", "s2 = s1.strip()", "s2 = s1.replace(' ','')"],
-      correct: 2,
-      explanation: "s1 is \" is \" (space + is + space). strip() removes the spaces from both ends, leaving \"is\", with length 2."
-    },
-    {
-      id: "py-650",
+      id: "py-138",
       chapter: "structuri-date",
       type: "single",
       question: "What is printed by the final print(x)?",
       code: "x = [13, 4, 17, 10]\nw = x[1:]\nu = x[1:]\ny = x\nu[0] = 50\ny[1] = 40\nprint(x)",
-      options: ["[13, 40, 17, 10]", "[50, 40, 10]", "[13, 4, 17, 10]", "[50, 40, 17, 10]"],
+      options: ["[13, 40, 17, 10]","[50, 40, 10]","[13, 4, 17, 10]","[50, 40, 17, 10]"],
       correct: 0,
-      explanation: "u = x[1:] creates a separate list, so u[0]=50 does not modify x. y=x creates an alias to the same list, so y[1]=40 does modify x."
+      explanation: "u = x[1:] este o copie separată, deci u[0] = 50 nu modifică x. y = x este același obiect, deci y[1] = 40 modifică x."
     },
     {
-      id: "py-651",
-      chapter: "structura-documentare",
-      type: "single",
-      question: "How should a single-line explanatory comment be added to Python code?",
-      options: ["Place the comment after # on the line.", "Place it after the program separated by a blank line.", "Place it before the program without #.", "Place it inside parentheses."],
-      correct: 0,
-      explanation: "# marks the start of the comment through to the end of the line."
-    },
-    {
-      id: "py-652",
-      chapter: "structura-documentare",
-      type: "true_false",
-      question: "Lines 01 through 04 are ignored as comments.",
-      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
-    },
-    {
-      id: "py-653",
-      chapter: "structura-documentare",
-      type: "true_false",
-      question: "The # character is optional on lines 01 through 04.",
-      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
-    },
-    {
-      id: "py-654",
-      chapter: "structura-documentare",
-      type: "true_false",
-      question: "The string assigned to comment on line 06 is itself a Python comment.",
-      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
-    },
-    {
-      id: "py-655",
-      chapter: "structura-documentare",
-      type: "true_false",
-      question: "The text after # on line 07 is ignored by Python.",
-      code: "# The calc_power function calculates exponents\n# x is the base\n# y is the exponent\n# The value of x raised to the y power is returned\ndef calc_power(x, y):\n    comment = \"#Return the value\"\n    return x ** y  # raise x to the power y",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Only text preceded by # outside of a string is a comment. Line 06 assigns a string to a variable; it is not a comment."
-    },
-    {
-      id: "py-656",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Does the grade-converter code require a change to the if/elif conditions?",
-      code: "if marks >= 90:\n    grade = 'A'\nelif marks >= 80:\n    grade = 'B'\nelif marks >= 70:\n    grade = 'C'\nelif marks >= 65:\n    grade = 'D'\nelse:\n    grade = 'E'",
-      options: ["Line 1 must use marks <= 90.", "Line 2 must also check marks <= 90.", "Line 3 must also check marks <= 80.", "No changes are required."],
-      correct: 3,
-      explanation: "The conditions are checked from highest to lowest. If marks>=90 was false, the next elif marks>=80 automatically covers 80-89; the same principle continues."
-    },
-    {
-      id: "py-657",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "What is the value of result?",
-      code: "result = 8 // 6 % 5 + 2 ** 3 - 2\nprint(result)",
-      options: ["8", "9", "7", "6"],
-      correct: 2,
-      explanation: "// and % have the same priority and are evaluated left to right: 8//6=1, 1%5=1. ** is calculated first: 2**3=8. Then 1+8-2=7."
-    },
-    {
-      id: "py-658",
+      id: "py-139",
       chapter: "structuri-date",
       type: "single",
       question: "What is printed?",
       code: "s = 'AB CD'\nitems = list(s)\nitems.append('EF')\nprint(items)",
-      options: ["['A', 'B', 'C', 'D', 'E', 'F']", "['AB CD', 'EF']", "['A', 'B', ' ', 'C', 'D', 'EF']", "['A', 'B', 'C', 'D', 'EF']"],
+      options: ["['A', 'B', 'C', 'D', 'E', 'F']","['AB CD', 'EF']","['A', 'B', ' ', 'C', 'D', 'EF']","['A', 'B', 'C', 'D', 'EF']"],
       correct: 2,
-      explanation: "list(s) turns every character of the string into a separate element, including the space. Then append('EF') adds the string 'EF' as ONE single element at the end of the list. That is why print shows ['A', 'B', ' ', 'C', 'D', 'EF']."
+      explanation: "list(s) separă fiecare caracter (inclusiv spațiul); append('EF') adaugă 'EF' ca UN singur element la final."
     },
     {
-      id: "py-659",
-      chapter: "operatori-tipuri-date",
+      id: "py-140",
+      chapter: "structuri-date",
       type: "single",
-      question: "Which line correctly prints the numeric sum entered by the user?",
-      code: "x = input(\"Enter First Number: \")\ny = input(\"Enter Second Number: \")\n# Line 1",
-      options: ["print('The Result:' + str(int(x + y)))", "print('The Result:' + (int(x) + int(y)))", "print('The Result:' + str(int(x) + int(y)))", "print('The Result:' + int(x + y))"],
-      correct: 2,
-      explanation: "input() produces str. Each value must be converted to int separately before adding them, then the sum must be converted to str to concatenate it with the text."
+      question: "What is the result of this code?",
+      code: "a = ['a', 'b', 'c', 'd']\nfor i in a:\n    a.append(i.upper())\nprint(a)",
+      options: ["['A', 'B', 'C', 'D']","['a', 'b', 'c', 'd']","SyntaxError","MemoryError at runtime"],
+      correct: 3,
+      explanation: "Lista este modificată în timpul parcurgerii: elementele adăugate sunt la rândul lor parcurse și generează alte elemente, deci bucla nu se termină până la epuizarea memoriei."
     },
     {
-      id: "py-660",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Which statement makes the final value of a equal to 9?",
-      code: "a = 2\na += 1\n# Line 1",
-      options: ["a **= 2", "a *= 2", "a += 2", "a -= 2"],
-      correct: 0,
-      explanation: "After a=2 and a+=1, a becomes 3. a**=2 means a = a**2, so 3**2=9."
+      id: "py-141",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "Troubleshoot the room lookup program: choose the correct answer for each item.",
+      code: "rooms = {1: 'Left Conference Room', 2: 'Right Conference Room'}\nroom = input('Enter the room number: ')\nif room not in rooms:\n    print('The room does not exist.')\nelse:\n    print('The room name is ' + rooms[room])",
+      dragItems: [
+        { id: "i1", text: "int" },
+        { id: "i2", text: "Mismatched data type(s)" },
+        { id: "i3", text: "int and string" },
+        { id: "i4", text: "Misnamed variable(s)" },
+        { id: "i5", text: "float and int" },
+        { id: "i6", text: "Invalid syntax" },
+        { id: "i7", text: "bool and string" },
+        { id: "i8", text: "string" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Data types stored in the rooms dictionary (keys and values)", correctItemId: "i3" },
+        { id: "z2", label: "Data type of the variable room", correctItemId: "i8" },
+        { id: "z3", label: "Why a valid room number such as 1 is not found on line 03", correctItemId: "i2" }
+      ],
+      explanation: "Cheile sunt int, valorile str. input() întoarce str, iar '1' nu este același lucru cu 1, deci testul \"in\" nu găsește cheia: tipuri de date nepotrivite."
     },
     {
-      id: "py-661",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "What are the data types of c1, c2, and c3?",
-      code: "a1 = '10'\nb1 = 3\nc1 = a1 * b1\n\na2 = 10\nb2 = 3\nc2 = a2 / b2\n\na3 = 2.6\nb3 = 1\nc3 = a3 / b3",
-      options: ["str, int, int", "str, float, float", "str, int, float", "str, str, str"],
-      correct: 1,
-      explanation: "'10' * 3 repeats the string and produces str. The / operator produces float in Python 3 for both int/int and float/int."
+      id: "py-142",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "Select the output of each print statement.",
+      code: "a = 'Config1'\nprint(a)        # (1)\nb = a\na += 'Config2'\nprint(a)        # (2)\nprint(b)        # (3)",
+      dragItems: [
+        { id: "i1", text: "Config1" },
+        { id: "i2", text: "Config2" },
+        { id: "i3", text: "Config1Config2" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Output of print (1)", correctItemId: "i1" },
+        { id: "z2", label: "Output of print (2)", correctItemId: "i3" },
+        { id: "z3", label: "Output of print (3)", correctItemId: "i1" }
+      ],
+      explanation: "Șirurile sunt imutabile: a += 'Config2' creează un șir nou pentru a, iar b rămâne legat de 'Config1'."
     },
     {
-      id: "py-662",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "What is printed?",
-      code: "a = 15\nb = 5\nprint(a / b)",
-      options: ["3", "3.0", "0.0", "0"],
-      correct: 1,
-      explanation: "In Python 3, the / operator returns a float even when the division is exact: 15/5 = 3.0."
-    },
-    {
-      id: "py-663",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "What is the sequence of Boolean results?",
-      code: "n1 = [10,20,30,40,50]\nn2 = [10,20,30,40,50]\nprint(n1 is n2)\nprint(n1 == n2)\nn1 = n2\nprint(n1 is n2)\nprint(n1 == n2)",
-      options: ["False, True, False, True", "False, True, True, True", "False, False, True, True", "True, False, True, False"],
-      correct: 1,
-      explanation: "Initially the lists have equal content but are different objects: is=False, ==True. After n1=n2, both names point to the same object: is=True and ==True."
-    },
-    {
-      id: "py-664",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → ___\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → True",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
-    },
-    {
-      id: "py-665",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → ___\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → True",
-      options: ["True", "False"],
-      correct: 1,
-      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
-    },
-    {
-      id: "py-666",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → ___\nprint(numList == alphaList) → True",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
-    },
-    {
-      id: "py-667",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Select the result displayed after each print statement. Which option belongs in place of the ___ marker in the code below?",
-      code: "numList = [1,2,3,4,5]\nalphaList = [\"a\",\"b\",\"c\",\"d\",\"e\"]\n\nprint(numList is alphaList) → False\nprint(numList == alphaList) → False\n\nnumList = alphaList\n\nprint(numList is alphaList) → True\nprint(numList == alphaList) → ___",
-      options: ["True", "False"],
-      correct: 0,
-      explanation: "Before the assignment, they are different objects with different content. After numList=alphaList, both names point to exactly the same list."
-    },
-    {
-      id: "py-668",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Which expression correctly calculates 'a multiplied by negative one, then raised to the second power'?",
-      options: ["-a ** 2", "(-a) ** 2", "-(a ** 2)", "a * (-1 ** 2)"],
-      correct: 1,
-      explanation: "The parentheses force -a to be computed first, and the result is then raised to the power of 2. Without parentheses, ** has priority over the unary minus."
-    },
-    {
-      id: "py-669",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the code segments to print all prime numbers from 2 through 100. Choose the option with the correct order of code lines.",
-      options: ["    p = p + 1\n        print(p)\n    if is_prime == True:\n            break\n            is_prime = False\n        if p % i == 0:\n    for i in range(2, p):\n    is_prime = True\nwhile p <= 100:\np = 2", "p = 2\nwhile p <= 100:\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1", "while p <= 100:\np = 2\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1", "while p <= 100:\n    is_prime = True\n    for i in range(2, p):\n        if p % i == 0:\n            is_prime = False\n            break\n    if is_prime == True:\n        print(p)\n    p = p + 1\np = 2"],
-      correct: 1,
-      explanation: "For each p, we assume it is prime, look for a divisor between 2 and p-1, stop the search at the first divisor found, and print p only if is_prime remained True."
-    },
-    {
-      id: "py-670",
-      chapter: "structuri-control",
-      type: "single",
-      question: "Arrange the code to identify lower case, upper case, or mixed case input. Choose the option with the correct order of code lines.",
-      options: ["if name.lower() == name:\nname = input(\"Enter your name: \")\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")", "    print(name, \"is mixed case.\")\nelse:\n    print(name, \"is all upper case.\")\nelif name.upper() == name:\n    print(name, \"is all lower case.\")\nif name.lower() == name:\nname = input(\"Enter your name: \")", "name = input(\"Enter your name: \")\nif name.lower() == name:\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")", "if name.lower() == name:\n    print(name, \"is all lower case.\")\nelif name.upper() == name:\n    print(name, \"is all upper case.\")\nelse:\n    print(name, \"is mixed case.\")\nname = input(\"Enter your name: \")"],
-      correct: 2,
-      explanation: "The name is read, then compared with its lower() version. If it is not entirely lowercase, upper() is checked; otherwise it is mixed case."
-    },
-    {
-      id: "py-671",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
-      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: ___\nSecond operation: addition\nEquivalent expression: (a + (b*c)) - d",
-      options: ["a + b", "b * c", "c - d"],
-      correct: 1,
-      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
-    },
-    {
-      id: "py-672",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
-      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: b * c\nSecond operation: ___\nEquivalent expression: (a + (b*c)) - d",
-      options: ["addition", "subtraction"],
-      correct: 0,
-      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
-    },
-    {
-      id: "py-673",
-      chapter: "operatori-tipuri-date",
-      type: "single",
-      question: "Analyze the order of evaluation in the function. Which option belongs in place of the ___ marker in the code below?",
-      code: "def main(a, b, c, d):\n    value = a + b * c - d\n    return value\n\nFirst expression evaluated: b * c\nSecond operation: addition\nEquivalent expression: ___",
-      options: ["(a+b) * (c-d)", "(a + (b*c)) - d", "a + ((b*c) - d)"],
-      correct: 1,
-      explanation: "* has priority over + and -. After b*c, the addition a+(b*c) runs, then the subtraction of d. The equivalent form is (a + (b*c)) - d."
-    },
-    {
-      id: "py-674",
+      id: "py-143",
       chapter: "input-output",
       type: "single",
-      question: "Which input statement guarantees that totalItems is stored as a whole number even if the user enters a decimal value?",
-      options: ["totalItems = input(\"How many items would you like?\")", "totalItems = float(input(\"How many items would you like?\"))", "totalItems = str(input(\"How many items would you like?\"))", "totalItems = int(float(input(\"How many items would you like?\")))"],
-      correct: 3,
-      explanation: "input() produces str. float() also accepts text like \"4.7\", and int() then converts the value to a whole number by dropping the decimal part."
-    },
-    {
-      id: "py-675",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
-      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: ___\nData type of room: string\nReason the membership test fails for input such as 1: Mismatched data type(s)",
-      options: ["bool and string", "float and bool", "int and string", "float and int"],
+      question: "What data type does input() return?",
+      code: "age = input(\"Age: \")",
+      options: ["int","float","str","bool"],
       correct: 2,
-      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
+      explanation: "input() întoarce mereu un șir (str), chiar dacă utilizatorul tastează cifre."
     },
     {
-      id: "py-676",
-      chapter: "structuri-date",
+      id: "py-144",
+      chapter: "input-output",
       type: "single",
-      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
-      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: int and string\nData type of room: ___\nReason the membership test fails for input such as 1: Mismatched data type(s)",
-      options: ["bool", "float", "int", "string"],
-      correct: 3,
-      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
-    },
-    {
-      id: "py-677",
-      chapter: "structuri-date",
-      type: "single",
-      question: "Troubleshoot the room lookup program. Which option belongs in place of the ___ marker in the code below?",
-      code: "rooms = {1: \"Foyer\", 2: \"Conference Room\"}\nroom = input(\"Enter the room number: \")\n\nData types stored as keys/values in rooms: int and string\nData type of room: string\nReason the membership test fails for input such as 1: ___",
-      options: ["Invalid syntax", "Mismatched data type(s)", "Misnamed variable(s)"],
+      question: "Which line correctly reads an integer age?",
+      options: ["age = input(\"Age: \")","age = int(input(\"Age: \"))","age = str(input(\"Age: \"))","int = input(\"Age: \")"],
       correct: 1,
-      explanation: "The dictionary's keys are int, and the values are str. input() produces str, so '1' is not the same key as 1; the in test looks for a str key in a dictionary that has int keys."
+      explanation: "input() citește text, iar int() îl convertește într-un număr întreg."
     },
     {
-      id: "py-678",
-      chapter: "structuri-control",
+      id: "py-145",
+      chapter: "input-output",
       type: "single",
-      question: "Which statement should be used when a divisor is found so the inner search stops immediately?",
-      code: "for i in range(2, p):\n    if p % i == 0:\n        is_prime = False\n        # missing statement",
-      options: ["continue", "pass", "break", "return True"],
-      correct: 2,
-      explanation: "In the primality-checking algorithm, once a divisor is found there is no need to test the remaining divisors; break exits the inner for loop."
+      question: "A script asks the user for a value that must be used as a whole number in a calculation, even if the user enters a decimal value (for example 4.7). Which statement should you use?",
+      options: ["totalItems = input(\"How many items would you like?\")","totalItems = float(input(\"How many items would you like?\"))","totalItems = int(input(\"How many items would you like?\"))","totalItems = int(float(input(\"How many items would you like?\")))"],
+      correct: 3,
+      explanation: "int(\"4.7\") dă ValueError. float() acceptă și text zecimal, iar int() apoi elimină partea zecimală: int(float(input(...)))."
     },
     {
-      id: "py-679",
+      id: "py-146",
+      chapter: "input-output",
+      type: "single",
+      question: "Which code should be written at Line-1 to print the sum of the two numbers entered by the user?",
+      code: "x = input('Enter First Number:')\ny = input('Enter Second Number:')\n# Line-1",
+      options: ["print('The Result:' + (int(x) + int(y)))","print('The Result:' + (int(x + y)))","print('The Result:' + str(int(x) + int(y)))","print('The Result:' + str(int(x + y)))"],
+      correct: 2,
+      explanation: "input() întoarce str. Fiecare valoare se convertește la int pentru adunare, iar suma se convertește la str pentru concatenare cu textul."
+    },
+    {
+      id: "py-147",
+      chapter: "input-output",
+      type: "single",
+      question: "Which code inserted at Line-1 prints 20 to the console if the user enters 15?",
+      code: "count = input('Enter the number of customers of the bank:')\n# Line-1\nprint(output)",
+      options: ["output = int(count) + 5","output = count + 5","output = str(count) + 5","output = float(count) + 5"],
+      correct: 0,
+      explanation: "count este un str ('15'); int(count) + 5 = 20. float(count) + 5 ar da 20.0."
+    },
+    {
+      id: "py-148",
+      chapter: "input-output",
+      type: "single",
+      question: "Which code should you write at line 02?",
+      code: "print('What is your name?')\n# line 02\nprint(name)",
+      options: ["name = input","input(name)","name = input()","input(\"name\")"],
+      correct: 2,
+      explanation: "name = input() citește valoarea și o memorează în variabila name, folosită apoi de print."
+    },
+    {
+      id: "py-149",
+      chapter: "input-output",
+      type: "single",
+      question: "The program must calculate and print the number of years of service. Which code should you use at line 03?",
+      code: "start = input(\"How old were you on your start date?\")\nend = input(\"How old are you today?\")\n# line 03",
+      options: ["print(\"congratulations on \" + int(end - start) + \" years of service!\")","print(\"congratulations on \" + (int(end) - int(start)) + \" years of service!\")","print(\"congratulations on \" + str(end - start) + \" years of service!\")","print(\"congratulations on \" + str(int(end) - int(start)) + \" years of service!\")"],
+      correct: 3,
+      explanation: "Valorile sunt str: se convertesc la int pentru scădere, apoi rezultatul la str pentru concatenare."
+    },
+    {
+      id: "py-150",
+      chapter: "input-output",
+      type: "multiple",
+      question: "A script reads an item name and a quantity and must print them in a comma-delimited format: strings enclosed in double quotes, numbers not enclosed in quotes, items separated by a comma. Which TWO code segments meet the requirements? (Choose 2.)",
+      code: "item = input('Enter the item name: ')\nsales = input('Enter the quantity: ')",
+      options: ["print('\"{0}\",{1}'.format(item, sales))","print(item + ',' + sales)","print('\"' + item + '\",' + sales)","print(\"{0},{1}\".format(item, sales))"],
+      correct: [0,2],
+      explanation: "Variantele 1 și 3 pun numele între ghilimele duble și lasă cantitatea fără ghilimele. Variantele 2 și 4 nu pun ghilimele în jurul șirului."
+    },
+    {
+      id: "py-151",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Select the data type of each variable.",
+      code: "age = input('Enter your age: ')\nyear = input('Enter the four digit year: ')\nborn = eval(year) - eval(age)\nmessage = 'You were born in ' + str(born)\nprint(message)",
+      dragItems: [
+        { id: "i1", text: "bool" },
+        { id: "i2", text: "str" },
+        { id: "i3", text: "float" },
+        { id: "i4", text: "int" }
+      ],
+      dropZones: [
+        { id: "z1", label: "age", correctItemId: "i2" },
+        { id: "z2", label: "born", correctItemId: "i4" },
+        { id: "z3", label: "message", correctItemId: "i2" }
+      ],
+      explanation: "input() întoarce str; eval() transformă șirurile numerice în numere, deci born este int; concatenarea cu str(born) produce str."
+    },
+    {
+      id: "py-152",
+      chapter: "input-output",
+      type: "single",
+      question: "Which print() statement should be placed at Line-1 to display the average rating rounded to two decimal places?",
+      code: "sum = count = done = 0\naverage = 0.0\nwhile done != -1:\n    rating = float(input('Enter Next Rating(1-5), -1 for done'))\n    if rating == -1:\n        break\n    sum += rating\n    count += 1\n    average = float(sum / count)\n# Line-1",
+      options: ["print('The average star rating for the new coffee is: {:.2f}'.format(average))","print('The average star rating for the new coffee is: {:.2d}'.format(average))","print('The average star rating for the new coffee is: {:2f}'.format(average))","print('The average star rating for the new coffee is: {:2.2d}'.format(average))"],
+      correct: 0,
+      explanation: "{:.2f} rotunjește la 2 zecimale. {:.2d} și {:2.2d} sunt invalide pentru float (d = întreg), iar {:2f} setează doar lățimea."
+    },
+    {
+      id: "py-153",
+      chapter: "input-output",
+      type: "single",
+      question: "What is the output?",
+      code: "import datetime\nd = datetime.datetime(2017, 4, 7)\nprint('{:%B-%d-%y}'.format(d))\n\nnum = 1234567.890\nprint('{:,.4f}'.format(num))",
+      options: ["2017-April-07\n1,234,567.890","Apr-07-2017\n1,234,567,8900","April-07-17\n1,234,567.8900","April-07-17\n1234567.89"],
+      correct: 2,
+      explanation: "%B = numele complet al lunii, %d = ziua, %y = anul pe 2 cifre → April-07-17. {:,.4f} pune separator de mii și 4 zecimale → 1,234,567.8900."
+    },
+    {
+      id: "py-154",
+      chapter: "input-output",
+      type: "single",
+      question: "What is the output?",
+      code: "x = \"ITVEDANT\"\nprint(\"%20s\", x)",
+      options: ["ITVEDANT, preceded by 12 spaces","ITVEDANT, followed by 12 spaces","%20s ITVEDANT","SyntaxError"],
+      correct: 2,
+      explanation: "Lipsește operatorul %: print primește două argumente separate, deci afișează literal \"%20s\" urmat de ITVEDANT. Pentru aliniere ar fi fost print(\"%20s\" % x)."
+    },
+    {
+      id: "py-155",
+      chapter: "input-output",
+      type: "single",
+      question: "What is the output?",
+      code: "d = '{a}{b}{a}'.format(a='hello', b='world')\nprint(d)",
+      options: ["hello world","hello world hello","helloworldhello","hello hello world"],
+      correct: 2,
+      explanation: "Șablonul înlocuiește {a}→hello, {b}→world, {a}→hello, fără spații între ele."
+    },
+    {
+      id: "py-156",
+      chapter: "input-output",
+      type: "single",
+      question: "Which of the following statements about number formatting are true?",
+      code: "1. \"V:{:.2f}\".format(123.45678)   prints V:123.46\n2. \"V:{:.2f}\".format(123.4)       prints V:123.40\n3. \"V:{:8.2f}\".format(1.45678)    prints V:    1.46\n4. \"V:{:08.2f}\".format(1.45678)   prints V:00001.46",
+      options: ["Only 1 and 2","Only 1 and 3","Only 2 and 4","1, 2, 3 and 4"],
+      correct: 3,
+      explanation: "Toate sunt corecte: .2f rotunjește la 2 zecimale; 8.2f aliniază pe 8 caractere cu spații; 08.2f completează cu zerouri."
+    },
+    {
+      id: "py-157",
+      chapter: "input-output",
+      type: "single",
+      question: "Which f-string prints the value of items?",
+      options: ["f\"We have {items} items.\"","\"We have {items} items.\"","f\"We have (items) items.\"","\"We have \" + items + \" items.\""],
+      correct: 0,
+      explanation: "Într-un f-string, expresiile se pun între acolade."
+    },
+    {
+      id: "py-158",
+      chapter: "input-output",
+      type: "single",
+      question: "Which format specification right-aligns a value in a field 6 characters wide?",
+      options: ["{:6<}","{:>6}","{:<6}","{:^6}"],
+      correct: 1,
+      explanation: "> înseamnă aliniere la dreapta, iar 6 este lățimea câmpului."
+    },
+    {
+      id: "py-159",
+      chapter: "input-output",
+      type: "single",
+      question: "To generate the most precise result, which functions should replace xxx and yyy?",
+      code: "distance = xxx(input('Enter the distance travelled in feet:'))   # Line-1\ndistance_miles = distance / 5280\ntime = yyy(input('Enter the time elapsed in seconds:'))         # Line-2\ntime_hours = time / 3600\nvelocity = distance_miles / time_hours\nprint('The average velocity:', velocity, 'miles/hour')",
+      options: ["xxx = float and yyy = float","xxx = float and yyy = int","xxx = int and yyy = float","xxx = int and yyy = int"],
+      correct: 0,
+      explanation: "Distanța și timpul pot avea zecimale; float păstrează precizia, int ar pierde partea zecimală."
+    },
+    {
+      id: "py-160",
+      chapter: "input-output",
+      type: "single",
+      question: "You need to read and write data to a text file. If the file does not exist it must be created. If the file has content, the content must be removed. Which code should you use?",
+      options: ["open(\"local_data\", \"r+\")","open(\"local_data\", \"w+\")","open(\"local_data\", \"r\")","open(\"local_data\", \"w\")"],
+      correct: 1,
+      explanation: "\"w+\" creează fișierul dacă nu există, îi golește conținutul și permite citire și scriere. \"w\" nu permite citirea."
+    },
+    {
+      id: "py-161",
+      chapter: "input-output",
+      type: "single",
+      question: "Which of the following statements are true?",
+      options: ["When you open a file for reading, if the file does not exist, an error occurs","When you open a file for writing, if the file does not exist, a new file is created","When you open a file for writing, if the file exists, the existing file is overwritten","All of the above"],
+      correct: 3,
+      explanation: "Toate afirmațiile sunt adevărate."
+    },
+    {
+      id: "py-162",
+      chapter: "input-output",
+      type: "single",
+      question: "To read the entire remaining contents of the file as a string from a file object infile, we use:",
+      options: ["infile.read(2)","infile.read()","infile.readline()","infile.readlines()"],
+      correct: 1,
+      explanation: "read() fără argument întoarce tot conținutul rămas, ca un singur șir."
+    },
+    {
+      id: "py-163",
+      chapter: "input-output",
+      type: "single",
+      question: "What is the use of the tell() method of a file object?",
+      options: ["It tells you the current position within the file","It tells you the end position within the file","It tells you whether the file is open or not","None of the above"],
+      correct: 0,
+      explanation: "tell() întoarce poziția curentă a cursorului în fișier."
+    },
+    {
+      id: "py-164",
+      chapter: "input-output",
+      type: "single",
+      question: "What is the result? The file abc.txt contains these four lines:\nDurga:10\nRavi:20\nShiva:30\nPavan:40",
+      code: "values = 0\ntry:\n    f = open('abc.txt', 'r')\n    content = f.readlines()\n    for line in content:\n        values += float(line.split(':')[1])\n    f.close()\nexcept Exception:\n    print('Unable to open the file')\nprint(values)",
+      options: ["Unable to open the file","100","100.0","10.0"],
+      correct: 2,
+      explanation: "Fișierul există. La fiecare pas se adaugă un float (float('10\\n') = 10.0), deci suma este 100.0."
+    },
+    {
+      id: "py-165",
+      chapter: "input-output",
+      type: "single",
+      question: "The program must open voters_list.txt, add new voter information and print all the data to the console. Which line should be inserted at Line-1?",
+      code: "with open('voters_list.txt', 'a+') as f:\n    f.write('New voters info')\n    # Line-1\n    data = f.read()\n    print(data)",
+      options: ["f.seek(0)","f.flush()","f.begin()","f.close()"],
+      correct: 0,
+      explanation: "După scriere cursorul este la finalul fișierului; f.seek(0) îl mută la început, ca read() să citească tot conținutul."
+    },
+    {
+      id: "py-166",
+      chapter: "input-output",
+      type: "multiple",
+      question: "Which TWO statements are valid about this code? (Choose 2.)",
+      code: "import os\ndef get_data(filename, mode):\n    if os.path.isfile(filename):\n        with open(filename, 'r') as file:\n            return file.readline()\n    else:\n        return None",
+      options: ["The function returns the first line of the file if it is available","The function returns None if the file does not exist","The function returns all the data present in the file","The function returns the last line of the file"],
+      correct: [0,1],
+      explanation: "Funcția verifică existența fișierului, întoarce prima linie cu readline() sau None dacă fișierul nu există."
+    },
+    {
+      id: "py-167",
+      chapter: "input-output",
+      type: "single",
+      question: "The code must read the entire contents of abc.txt and print it to the console. Which code should be inserted at Line-1?",
+      code: "try:\n    f = open('abc.txt', 'r')\n    # Line-1\nexcept:\n    print('Unable to open the file')\nprint(data)",
+      options: ["data = f.readlines()","data = f.readline()","data = f.read()","data = f.load()"],
+      correct: 2,
+      explanation: "read() citește tot conținutul ca un singur șir. readlines() întoarce o listă, readline() o singură linie, iar load() nu există."
+    },
+    {
+      id: "py-168",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Arrange the lines to open a file for reading, read all of its contents and print them.",
+      dragItems: [
+        { id: "i1", text: "shirtFile = open(\"shirts.txt\", \"r\")" },
+        { id: "i2", text: "print(shirtFileContents)" },
+        { id: "i3", text: "shirtFileContents = shirtFile.read()" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i1" },
+        { id: "z2", label: "Linia 2", correctItemId: "i3" },
+        { id: "z3", label: "Linia 3", correctItemId: "i2" }
+      ],
+      explanation: "Întâi se deschide fișierul (mod r), apoi se citește cu read(), apoi se afișează."
+    },
+    {
+      id: "py-169",
+      chapter: "input-output",
+      type: "multiple",
+      question: "With open('log.txt', 'w') as file, which TWO statements are true? (Choose 2.)",
+      options: ["Existing content is overwritten.","Text is automatically appended.","file.close() is not required.","The file must already exist."],
+      correct: [0,2],
+      explanation: "Modul w suprascrie conținutul, iar blocul with închide automat fișierul."
+    },
+    {
+      id: "py-170",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Complete the file modes and the newline escape sequence.",
+      code: "if os.path.isfile(\"results.txt\"):\n    writeFile = open(\"results.txt\", \"[1]\")\nelse:\n    writeFile = open(\"results.txt\", \"[2]\")\nwriteFile.write(\"[3]\" + toResults)",
+      dragItems: [
+        { id: "i1", text: "w" },
+        { id: "i2", text: "\\n" },
+        { id: "i3", text: "\\t" },
+        { id: "i4", text: "r" },
+        { id: "i5", text: "a" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i5" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i2" }
+      ],
+      explanation: "a adaugă la sfârșit (fișier existent), w creează fișierul, iar \\n începe o linie nouă."
+    },
+    {
+      id: "py-171",
+      chapter: "input-output",
+      type: "multiple",
+      question: "Which TWO expressions are used to check that config.txt exists and then read only its first line? (Choose 2.)",
+      options: ["os.path.isfile(\"config.txt\")","file.readline()","file.read()","os.remove(\"config.txt\")"],
+      correct: [0,1],
+      explanation: "os.path.isfile verifică existența fișierului, iar readline() citește o singură linie. read() citește tot, iar os.remove() șterge fișierul."
+    },
+    {
+      id: "py-172",
+      chapter: "input-output",
+      type: "single",
+      question: "Which expression checks whether results.txt is a file?",
+      options: ["os.path.isfile(\"results.txt\")","os.file.exists(\"results.txt\")","io.isfile(\"results.txt\")","file.exists(\"results.txt\")"],
+      correct: 0,
+      explanation: "os.path.isfile(cale) verifică dacă există și este fișier."
+    },
+    {
+      id: "py-173",
+      chapter: "input-output",
+      type: "single",
+      question: "Which function deletes a file?",
+      options: ["os.delete()","os.remove()","file.remove()","io.delete()"],
+      correct: 1,
+      explanation: "os.remove(cale) șterge fișierul indicat."
+    },
+    {
+      id: "py-174",
+      chapter: "input-output",
+      type: "single",
+      question: "Which file mode appends new content without deleting the existing content?",
+      options: ["r","w","a","x"],
+      correct: 2,
+      explanation: "a = append."
+    },
+    {
+      id: "py-175",
+      chapter: "input-output",
+      type: "single",
+      question: "Which file mode is used for reading?",
+      options: ["r","w","a","n"],
+      correct: 0,
+      explanation: "r = read."
+    },
+    {
+      id: "py-176",
+      chapter: "input-output",
+      type: "single",
+      question: "What type does file.read() normally return for a text file?",
+      options: ["list","tuple","str","int"],
+      correct: 2,
+      explanation: "read() întoarce conținutul ca str."
+    },
+    {
+      id: "py-177",
+      chapter: "input-output",
+      type: "single",
+      question: "What does file.readlines() return for a text file?",
+      options: ["A single string","A list of lines","An integer","A Boolean"],
+      correct: 1,
+      explanation: "readlines() întoarce o listă de șiruri, câte unul pentru fiecare linie."
+    },
+    {
+      id: "py-178",
+      chapter: "input-output",
+      type: "single",
+      question: "Which statement closes the file automatically when the block ends?",
+      options: ["with open(\"data.txt\", \"r\") as f:","f = open(\"data.txt\", \"r\")","open(\"data.txt\")","file(\"data.txt\")"],
+      correct: 0,
+      explanation: "Blocul with se ocupă automat de închiderea fișierului."
+    },
+    {
+      id: "py-179",
       chapter: "input-output",
       type: "single",
       question: "What does readline() return when the end of a text file is reached?",
-      options: ["'\\n'", "''", "None", "False"],
+      options: ["'\\n'","''","None","False"],
       correct: 1,
-      explanation: "'\\n' can be read for a blank line in the file. At the end of the file, readline() returns the empty string ''."
+      explanation: "Pentru o linie goală din fișier se citește '\\n'; la sfârșitul fișierului readline() întoarce șirul gol ''."
+    },
+    {
+      id: "py-180",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Complete the code so that blank lines are ignored and the end of the file is detected.",
+      code: "inventory = open(\"inventory.txt\", \"r\")\neof = False\nwhile eof == False:\n    line = inventory.readline()\n    [1]\n        if [2]\n            print(line)\n        else:\n            print(\"End of file\")\n            eof = True\n            inventory.close()",
+      dragItems: [
+        { id: "i1", text: "line is None:" },
+        { id: "i2", text: "if line != '\\n':" },
+        { id: "i3", text: "line != '':" },
+        { id: "i4", text: "if line == '\\n':" },
+        { id: "i5", text: "line == '':" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i3" }
+      ],
+      explanation: "readline() întoarce '\\n' pentru o linie goală și '' la sfârșitul fișierului. Prima condiție ignoră liniile goale, a doua distinge o linie reală de sfârșitul fișierului."
+    },
+    {
+      id: "py-181",
+      chapter: "functii",
+      type: "single",
+      question: "What is displayed when the code below runs?",
+      code: "def saluta(nume=\"lume\"):\n    return \"Salut, \" + nume\n\nprint(saluta())",
+      options: ["Salut, nume","Salut, lume","Error","None"],
+      correct: 1,
+      explanation: "Parametrul nume are valoarea implicită \"lume\", folosită când funcția este apelată fără argumente."
+    },
+    {
+      id: "py-182",
+      chapter: "functii",
+      type: "single",
+      question: "For which of the following function calls will we get an error?",
+      code: "def get_score(total=0, valid=0):\n    result = int(valid) / int(total)\n    return result",
+      options: ["score = get_score('40', '4')","score = get_score(0, 10)","score = get_score(40, 4)","score = get_score(40)"],
+      correct: 1,
+      explanation: "get_score(0, 10) înseamnă total=0, valid=10 → împărțire la 0 (ZeroDivisionError). get_score(40) are valid=0 → 0/40 = 0.0."
+    },
+    {
+      id: "py-183",
+      chapter: "functii",
+      type: "single",
+      question: "What is the result?",
+      code: "def get_names():\n    names = ['Sunny', 'Bunny', 'Chinny', 'Vinny', 'Pinny']\n    return names[2:]\n\ndef update_names(elements):\n    new_names = []\n    for name in elements:\n        new_names.append(name[:3].upper())\n    return new_names\n\nprint(update_names(get_names()))",
+      options: ["['CHI', 'VIN', 'PIN']","['VIN', 'PIN']","['CH', 'VI', 'PI']","['SU', 'BU']"],
+      correct: 0,
+      explanation: "get_names() întoarce ['Chinny', 'Vinny', 'Pinny']; se iau primele 3 litere cu majuscule: ['CHI', 'VIN', 'PIN']."
+    },
+    {
+      id: "py-184",
+      chapter: "functii",
+      type: "single",
+      question: "The code must print ['chicken', 'mutton', 'fish']. With what should the parameter list x of my_list be replaced?",
+      code: "def my_list(x):\n    lst.append(a)\n    return lst\n\nmy_list('chicken')\nmy_list('mutton')\nprint(my_list('fish'))",
+      options: ["a, lst=[]","a, lst=()","a, lst={}","a, lst=None"],
+      correct: 0,
+      explanation: "Valoarea implicită lst=[] se creează o singură dată, la definirea funcției, deci lista păstrează elementele între apeluri. Un tuple, un dict sau None nu au metoda append."
+    },
+    {
+      id: "py-185",
+      chapter: "functii",
+      type: "multiple",
+      question: "Which TWO of the following calls are valid (run without an error)? (Choose 2.)",
+      code: "def f1(x=0, y=0):\n    return x + y",
+      options: ["f1()","f1('10', '20')","f1(10, '20')","f1('10')"],
+      correct: [0,1],
+      explanation: "f1() → 0+0; f1('10','20') → '1020'. f1(10,'20') și f1('10') adună int cu str → TypeError."
+    },
+    {
+      id: "py-186",
+      chapter: "functii",
+      type: "multiple",
+      question: "Which TWO of the following calls are valid (run without an error)? (Choose 2.)",
+      code: "def f1(x=0, y=0):\n    return x * y",
+      options: ["f1()","f1('10', '20')","f1(10)","f1('10', '5')"],
+      correct: [0,2],
+      explanation: "f1() → 0; f1(10) → 10*0 = 0. Înmulțirea str * str ('10' * '20', '10' * '5') provoacă TypeError."
+    },
+    {
+      id: "py-187",
+      chapter: "functii",
+      type: "single",
+      question: "If the user enters 'a', what is the result?",
+      code: "def count_letter(letter, word_list):\n    count = 0\n    for word in word_list:\n        if letter in word:\n            count += 1\n    return count\n\nword_list = ['apple', 'pears', 'orange', 'mango']\nletter = input('Enter some alphabet symbol:')\nletter_count = count_letter(letter, word_list)\nprint(letter_count)",
+      options: ["1","2","3","4"],
+      correct: 3,
+      explanation: "Toate cele 4 cuvinte conțin litera 'a', deci count = 4."
+    },
+    {
+      id: "py-188",
+      chapter: "functii",
+      type: "drag_drop",
+      question: "Select the function definitions for line 01 and line 04.",
+      code: "01 [Line 01]\n02     name = input('What is your name? ')\n03     return name\n04 [Line 04]\n05     calories = miles * calories_per_mile\n06     return calories\n07 distance = int(input('How many miles did you bike this week? '))\n08 burn_rate = 50\n09 biker = get_name()\n10 calories_burned = calc_calories(distance, burn_rate)\n11 print(biker, ', you burned about', calories_burned, 'calories.')",
+      dragItems: [
+        { id: "i1", text: "def calc_calories(miles, calories_per_mile):" },
+        { id: "i2", text: "def get_name():" },
+        { id: "i3", text: "def calc_calories():" },
+        { id: "i4", text: "def get_name(name):" },
+        { id: "i5", text: "def get_name(biker):" },
+        { id: "i6", text: "def calc_calories(miles, burn_rate):" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Line 01", correctItemId: "i2" },
+        { id: "z2", label: "Line 04", correctItemId: "i1" }
+      ],
+      explanation: "get_name() se apelează fără argumente. calc_calories primește două argumente, iar parametrii trebuie să se numească exact ca variabilele folosite în corp (miles, calories_per_mile)."
+    },
+    {
+      id: "py-189",
+      chapter: "functii",
+      type: "single",
+      question: "Which definition gives height a default value of 12?",
+      options: ["def area(width, height):","def area(width, height=12):","def area(width=height, 12):","def area(width; height=12):"],
+      correct: 1,
+      explanation: "Valoarea implicită se scrie în antet: parametru=valoare."
+    },
+    {
+      id: "py-190",
+      chapter: "functii",
+      type: "single",
+      question: "What happens when the function is called?",
+      code: "def f(amount, shipping):\n    if shipping == 0:\n        pass\n    else:\n        subtotal = amount + shipping\n    return subtotal\n\nf(500, 0)",
+      options: ["Returns 500","Returns 0","Returns None","A runtime error is raised"],
+      correct: 3,
+      explanation: "Pe ramura shipping == 0 se execută pass, deci subtotal nu este creat; return subtotal produce UnboundLocalError."
+    },
+    {
+      id: "py-191",
+      chapter: "functii",
+      type: "single",
+      question: "Which function definition matches the call area(5, 10)?",
+      options: ["def area(x, y):","def area(x, y, z):","def calculate_area(x):","area def(x, y):"],
+      correct: 0,
+      explanation: "Apelul transmite două argumente, deci funcția are nevoie de doi parametri."
+    },
+    {
+      id: "py-192",
+      chapter: "functii",
+      type: "drag_drop",
+      question: "Arrange the function that calculates and returns a subtotal.",
+      dragItems: [
+        { id: "i1", text: "    subtotal = amount * (1 + salesTaxRate)" },
+        { id: "i2", text: "    return subtotal" },
+        { id: "i3", text: "def calcSubtotal(amount, salesTaxRate):" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i3" },
+        { id: "z2", label: "Linia 2", correctItemId: "i1" },
+        { id: "z3", label: "Linia 3", correctItemId: "i2" }
+      ],
+      explanation: "def definește funcția, apoi se calculează variabila locală și se returnează."
+    },
+    {
+      id: "py-193",
+      chapter: "functii",
+      type: "single",
+      question: "Which line correctly calls subtotal and stores the returned value in order_total?",
+      options: ["order_total(subtotal(500, .07))","order_total = call subtotal(500, .07)","order_total = subtotal(500, .07)","order_total = def subtotal(500, .07)"],
+      correct: 2,
+      explanation: "O funcție se apelează cu nume(argumente), iar rezultatul poate fi atribuit unei variabile."
+    },
+    {
+      id: "py-194",
+      chapter: "functii",
+      type: "drag_drop",
+      question: "Complete the function definition and the return statement.",
+      code: "[1] calcSubtotal[2]\n    subtotal = amount * (1 + salesTaxRate)\n    [3]",
+      dragItems: [
+        { id: "i1", text: "def" },
+        { id: "i2", text: "(amount, salesTaxRate):" },
+        { id: "i3", text: "return subtotal" },
+        { id: "i4", text: "print subtotal" },
+        { id: "i5", text: "[amount, salesTaxRate]:" },
+        { id: "i6", text: "function" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i1" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i3" }
+      ],
+      explanation: "Se folosește def, parametrii se scriu între paranteze rotunde urmați de :, iar return trimite valoarea înapoi."
+    },
+    {
+      id: "py-195",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def double(x):\n    return x * 2\n\nprint(double(5))",
+      options: ["5","10","None","NameError"],
+      correct: 1,
+      explanation: "Parametrul x primește 5, iar funcția returnează 10."
+    },
+    {
+      id: "py-196",
+      chapter: "functii",
+      type: "single",
+      question: "What does a Python function return if it reaches its end without a return statement?",
+      options: ["0","False","None","An error"],
+      correct: 2,
+      explanation: "Fără return explicit, funcția întoarce None."
+    },
+    {
+      id: "py-197",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def greet():\n    print(\"Hello\")\n\ngreet()",
+      options: ["Hello","None","0","Error"],
+      correct: 0,
+      explanation: "Funcția execută print chiar dacă nu are return."
+    },
+    {
+      id: "py-198",
+      chapter: "functii",
+      type: "single",
+      question: "What is printed?",
+      code: "def f(x):\n    return x\n    return x * 3\n\nprint(f(5))",
+      options: ["5","10","15","Nothing"],
+      correct: 0,
+      explanation: "return încheie imediat funcția; linia return x*3 nu se mai execută."
+    },
+    {
+      id: "py-199",
+      chapter: "functii",
+      type: "single",
+      question: "Which call uses keyword arguments?",
+      options: ["area(5, 10)","area(width=5, height=10)","area[5, 10]","area(width:5, height:10)"],
+      correct: 1,
+      explanation: "Argumentele cu nume se scriu parametru=valoare."
+    },
+    {
+      id: "py-200",
+      chapter: "functii",
+      type: "true_false",
+      question: "Parameters are named in the function definition.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Parametrii apar în definiție, iar argumentele la apel."
+    },
+    {
+      id: "py-201",
+      chapter: "functii",
+      type: "true_false",
+      question: "Arguments are values supplied when calling the function.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Argumentele sunt valorile transmise la apel."
+    },
+    {
+      id: "py-202",
+      chapter: "functii",
+      type: "true_false",
+      question: "A function can never return a string.",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "O funcție poate returna orice tip de valoare, inclusiv str."
+    },
+    {
+      id: "py-203",
+      chapter: "functii",
+      type: "single",
+      question: "What error occurs?",
+      code: "def make_value():\n    local_value = 10\n\nmake_value()\nprint(local_value)",
+      options: ["No error","NameError","SyntaxError","ZeroDivisionError"],
+      correct: 1,
+      explanation: "local_value există doar în interiorul funcției; în afara ei numele nu este definit."
+    },
+    {
+      id: "py-204",
+      chapter: "functii",
+      type: "single",
+      question: "Which statement allows a function to change the global variable x?",
+      options: ["global x","public x","extern x","nonlocal x"],
+      correct: 0,
+      explanation: "Cuvântul cheie global declară că numele se referă la variabila globală."
+    },
+    {
+      id: "py-205",
+      chapter: "functii",
+      type: "single",
+      question: "What is a variable defined outside of any function referred to as?",
+      options: ["A static variable","A global variable","A local variable","An automatic variable"],
+      correct: 1,
+      explanation: "O variabilă definită în afara funcțiilor este globală."
+    },
+    {
+      id: "py-206",
+      chapter: "functii",
+      type: "single",
+      question: "What is the output?",
+      code: "a = 10\nb = 20\n\ndef change():\n    global b\n    a = 45\n    b = 56\n\nchange()\nprint(a)\nprint(b)",
+      options: ["10, 56","45, 56","10, 20","SyntaxError"],
+      correct: 0,
+      explanation: "a = 45 creează o variabilă locală (a global rămâne 10); global b face ca b = 56 să modifice variabila globală."
+    },
+    {
+      id: "py-207",
+      chapter: "functii",
+      type: "single",
+      question: "What is the output?",
+      code: "def change(i=1, j=2):\n    i = i + j\n    j = j + 1\n    print(i, j)\n\nchange(j=1, i=2)",
+      options: ["An exception is thrown because of conflicting values","1 2","3 3","3 2"],
+      correct: 3,
+      explanation: "Apel: i = 2, j = 1. i = 2 + 1 = 3; j = 1 + 1 = 2 → se afișează \"3 2\"."
+    },
+    {
+      id: "py-208",
+      chapter: "functii",
+      type: "single",
+      question: "What is the output?",
+      code: "f = lambda x: bool(x % 2)\nprint(f(20), f(21))",
+      options: ["False True","False False","True True","True False"],
+      correct: 0,
+      explanation: "f(20): 20%2 = 0 → False; f(21): 21%2 = 1 → True."
+    },
+    {
+      id: "py-209",
+      chapter: "functii",
+      type: "drag_drop",
+      question: "Arrange the complete function so that it returns the first line of a file if the file exists and None otherwise.",
+      dragItems: [
+        { id: "i1", text: "        return None" },
+        { id: "i2", text: "def get_first_line(filename):" },
+        { id: "i3", text: "    else:" },
+        { id: "i4", text: "        with open(filename, 'r') as file:" },
+        { id: "i5", text: "            return file.readline()" },
+        { id: "i6", text: "    if os.path.isfile(filename):" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i2" },
+        { id: "z2", label: "Linia 2", correctItemId: "i6" },
+        { id: "z3", label: "Linia 3", correctItemId: "i4" },
+        { id: "z4", label: "Linia 4", correctItemId: "i5" },
+        { id: "z5", label: "Linia 5", correctItemId: "i3" },
+        { id: "z6", label: "Linia 6", correctItemId: "i1" }
+      ],
+      explanation: "Se definește funcția, se verifică existența fișierului, se deschide în modul r și se returnează readline(); altfel se returnează None."
+    },
+    {
+      id: "py-210",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "The statement \"import math\" makes all the functions of the math module available without the \"math.\" prefix.",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "După \"import math\" funcțiile se apelează cu prefix: math.sqrt(9). Fără prefix ar trebui \"from math import *\"."
+    },
+    {
+      id: "py-211",
+      chapter: "module-librarii",
+      type: "single",
+      question: "You are writing an application that uses the sqrt function. The program must reference the function using the name squareRoot. Which code segment should you use?",
+      options: ["from math import sqrt as squareRoot","from math.sqrt as squareRoot","import math.sqrt as squareRoot","import sqrt from math as squareRoot"],
+      correct: 0,
+      explanation: "Sintaxa corectă este: from modul import funcție as alias."
+    },
+    {
+      id: "py-212",
+      chapter: "module-librarii",
+      type: "single",
+      question: "You are writing an application that uses the pow() function. The program must reference the function using the name power. Which code segment should you use?",
+      options: ["import math.pow as power","import pow from math as power","from math import pow as power","from math.pow as power"],
+      correct: 2,
+      explanation: "from math import pow as power importă funcția sub un alt nume."
+    },
+    {
+      id: "py-213",
+      chapter: "module-librarii",
+      type: "single",
+      question: "A function that reads a data file raises an error on line 03 when it runs. What is causing the error?",
+      code: "01 def read_file(file):\n02     line = None\n03     if os.path.isfile(file):\n04         data = open(file, 'r')\n05         for line in data:\n06             print(line)",
+      options: ["The path method does not exist in the os object.","The isfile method does not exist in the path object.","You need to import the os library.","The isfile method does not accept one parameter."],
+      correct: 2,
+      explanation: "Codul folosește os.path.isfile, dar lipsește \"import os\" (NameError)."
+    },
+    {
+      id: "py-214",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the type of sys.argv?",
+      options: ["set","list","tuple","string"],
+      correct: 1,
+      explanation: "sys.argv este o listă de șiruri cu argumentele din linia de comandă."
+    },
+    {
+      id: "py-215",
+      chapter: "module-librarii",
+      type: "single",
+      question: "From the sys module, which variable gives access to the command line arguments?",
+      options: ["argv","argsv","args","arguments"],
+      correct: 0,
+      explanation: "sys.argv conține argumentele din linia de comandă."
+    },
+    {
+      id: "py-216",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the value of __name__ when a Python file is run directly?",
+      options: ["\"__main__\"","\"main\"","\"__file__\"","None"],
+      correct: 0,
+      explanation: "Când un fișier este rulat direct, __name__ este \"__main__\"; când este importat, __name__ este numele modulului."
+    },
+    {
+      id: "py-217",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Given the command invocation \"python tests.py Itvedant\", which code prints 'Itvedant' to the console?",
+      options: ["from sys import argv; print(argv[1])","from sys import argv; print(argv[0])","from sys import args; print(args[0])","from sys import args; print(args[1])"],
+      correct: 0,
+      explanation: "argv[0] este numele scriptului, argv[1] este primul argument: 'Itvedant'. Variabila args nu există în sys."
+    },
+    {
+      id: "py-218",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the result? (Command: py test.py DURGASOFT)",
+      code: "from sys import argv\nprint(argv[0])",
+      options: ["DURGASOFT","test.py","IndexError is thrown at runtime","ImportError is thrown at runtime"],
+      correct: 1,
+      explanation: "argv[0] este întotdeauna numele scriptului: test.py."
+    },
+    {
+      id: "py-219",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the result? (Command: py test.py 10 20)",
+      code: "from sys import argv\nprint(argv[1] + argv[2])",
+      options: ["30","1020","IndexError is thrown at runtime","ImportError is thrown at runtime"],
+      correct: 1,
+      explanation: "argv[1] și argv[2] sunt șiruri ('10' și '20'); + le concatenează: '1020'."
+    },
+    {
+      id: "py-220",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which command invocation generates the output \"The Average for Durga is 20.00\"?",
+      code: "from sys import argv\nsum = 0\nfor i in range(2, len(argv)):\n    sum += float(argv[i])\nprint(\"The Average for {0} is {1:.2f}\".format(argv[1], sum / (len(argv) - 2)))",
+      options: ["py test.py Durga 10 20 30","py test.py Durga 10 20","py test.py Durga 10","py test.py 20"],
+      correct: 0,
+      explanation: "Pentru Durga 10 20 30: (10+20+30)/3 = 20.00."
+    },
+    {
+      id: "py-221",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "A function receives a float. It must take the absolute value of the float and remove any decimal points after the integer. Which TWO math functions should you use? (Choose 2.)",
+      options: ["math.ceil(x)","math.fmod(x)","math.floor(x)","math.frexp(x)","math.fabs(x)"],
+      correct: [2,4],
+      explanation: "math.fabs(x) dă valoarea absolută, iar math.floor(...) elimină zecimalele rotunjind în jos."
+    },
+    {
+      id: "py-222",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is returned by math.ceil(10.4)?",
+      options: ["11","10","11.0","10.0"],
+      correct: 0,
+      explanation: "ceil rotunjește în sus la 11; în Python 3 întoarce un int."
+    },
+    {
+      id: "py-223",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the result?",
+      code: "import math\nl = [str(round(math.pi)) for i in range(1, 6)]\nprint(l)",
+      options: ["['3', '3', '3', '3', '3']","['3', '3', '3', '3', '3', '3']","['1', '2', '3', '4', '5']","['1', '2', '3', '4', '5', '6']"],
+      correct: 0,
+      explanation: "round(math.pi) = 3 la fiecare dintre cele 5 iterații."
+    },
+    {
+      id: "py-224",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which TWO statements print a random value from the list? (Choose 2.)",
+      code: "import random\nfruits = ['Apple', 'Mango', 'Orange', 'Lemon']",
+      options: ["print(random.sample(fruits))","print(random.sample(fruits, 3)[0])","print(random.choice(fruits))","print(random.choice(fruits)[0])"],
+      correct: [1,2],
+      explanation: "random.choice(fruits) alege un element; random.sample(fruits, 3)[0] ia primul din 3 elemente alese aleatoriu. sample(fruits) fără k dă eroare, iar choice(fruits)[0] dă doar prima literă."
+    },
+    {
+      id: "py-225",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which of the following is true?",
+      code: "import random\nprint(int(random.random() * 5))",
+      options: ["It prints a random int value from 0 to 5, inclusive","It prints a random int value from 1 to 5","It prints a random int value from 1 to 4","It prints a random int value from 0 to 4"],
+      correct: 3,
+      explanation: "random.random() dă un float în [0.0, 1.0); înmulțit cu 5 și convertit la int dă 0, 1, 2, 3 sau 4."
+    },
+    {
+      id: "py-226",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which of the following is valid?",
+      code: "import random\nprint(random.sample(range(10), 7))",
+      options: ["It prints a list of 10 unique random numbers from 0 to 6","It prints a list of 7 unique random numbers from 0 to 9","It prints a list of 7 unique random numbers from 0 to 10","It prints a list of 7 unique random numbers from 1 to 10"],
+      correct: 1,
+      explanation: "sample(range(10), 7) alege 7 valori unice din 0–9."
+    },
+    {
+      id: "py-227",
+      chapter: "module-librarii",
+      type: "single",
+      question: "You need to generate a random float with a minimum value of 0.0 and a maximum value of 1.0. Which statement should you use?",
+      options: ["random.randrange()","random.randrange(0.0, 1.0)","random.random()","random.randint(0, 1)"],
+      correct: 2,
+      explanation: "random.random() întoarce un float aleatoriu în intervalul [0.0, 1.0)."
+    },
+    {
+      id: "py-228",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "You need to generate a random integer with a minimum value of 5 and a maximum value of 11. Which TWO functions should you use? (Choose 2.)",
+      options: ["random.randint(5, 11)","random.randrange(5, 12, 1)","random.randint(5, 12)","random.randrange(5, 11, 1)"],
+      correct: [0,1],
+      explanation: "randint include ambele capete; randrange exclude capătul din dreapta, deci randrange(5, 12, 1) produce 5–11."
+    },
+    {
+      id: "py-229",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "You need to generate a random number that is a multiple of 5, with the lowest number 5 and the highest number 100. Which TWO code segments meet the requirements? (Choose 2.)",
+      options: ["from random import randrange\nprint(randrange(5, 105, 5))","from random import randint\nprint(randint(1, 20) * 5)","from random import randrange\nprint(randrange(5, 100, 5))","from random import randint\nprint(randint(0, 20) * 5)"],
+      correct: [0,1],
+      explanation: "randrange(5, 105, 5) și randint(1, 20)*5 produc 5, 10, ..., 100. randrange(5, 100, 5) nu poate produce 100, iar randint(0, 20)*5 poate produce 0."
+    },
+    {
+      id: "py-230",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the output of the following code?",
+      code: "from math import factorial\nprint(math.factorial(5))",
+      options: ["120","Nothing is printed","Error, method factorial doesn't exist in the math module","Error, the statement should be: print(factorial(5))"],
+      correct: 3,
+      explanation: "\"from math import factorial\" aduce doar numele factorial, nu și math; math.factorial(5) dă NameError. Corect: print(factorial(5))."
+    },
+    {
+      id: "py-231",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.frexp(21) returns a mantissa and an exponent.",
+      code: "import math",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "frexp întoarce o pereche (mantisă, exponent)."
+    },
+    {
+      id: "py-232",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the value and type of c?",
+      code: "import math\na = -14\nc = math.fabs(a)",
+      options: ["14 (int)","14.0 (float)","-14.0 (float)","True (bool)"],
+      correct: 1,
+      explanation: "math.fabs întoarce valoarea absolută ca float."
+    },
+    {
+      id: "py-233",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is d?",
+      code: "import math\nd = math.fmod(21, -14)",
+      options: ["7.0","-7.0","1.5","0"],
+      correct: 0,
+      explanation: "fmod păstrează semnul primului operand: 21 - (-14 * -1) = 7.0."
+    },
+    {
+      id: "py-234",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "Complete the rounding functions.",
+      code: "import math\nx = 77.4\nupper = [1](x)\nlower = [2](x)\nwhole = [3](x)",
+      dragItems: [
+        { id: "i1", text: "math.ceil" },
+        { id: "i2", text: "math.trunc" },
+        { id: "i3", text: "math.floor" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i1" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i3" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i2" }
+      ],
+      explanation: "ceil rotunjește în sus, floor rotunjește în jos, trunc elimină partea zecimală (spre zero)."
+    },
+    {
+      id: "py-235",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression computes 3 to the power of 2 using the math module?",
+      options: ["math.pow(3, 2)","math.sqrt(3, 2)","math.power(3, 2)","pow.math(3, 2)"],
+      correct: 0,
+      explanation: "math.pow(a, b) calculează a la puterea b."
+    },
+    {
+      id: "py-236",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression computes the square root of 16?",
+      options: ["math.sqrt(16)","math.sq(16)","sqrt.math(16)","math.root(16)"],
+      correct: 0,
+      explanation: "math.sqrt(x) calculează rădăcina pătrată."
+    },
+    {
+      id: "py-237",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which TWO methods return the current local date and time as a datetime object? (Choose 2.)",
+      options: ["datetime.datetime.now()","datetime.datetime.today()","datetime.datetime.strftime()","datetime.datetime.strptime()"],
+      correct: [0,1],
+      explanation: "now() și today() dau data și ora curentă; strftime formatează, strptime interpretează un text."
+    },
+    {
+      id: "py-238",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function converts a datetime object to formatted text?",
+      options: ["strftime()","strptime()","today()","weekday()"],
+      correct: 0,
+      explanation: "strftime formatează data/ora într-un șir."
+    },
+    {
+      id: "py-239",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What does weekday() return?",
+      options: ["A weekday name","An integer from 0 to 6","An integer from 1 to 7","A formatted date"],
+      correct: 1,
+      explanation: "weekday() întoarce 0 pentru luni și 6 pentru duminică."
+    },
+    {
+      id: "py-240",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What is the output if the system date is 23 September 2020?",
+      code: "import datetime\nt = datetime.date.today()\nprint(t.month)",
+      options: ["September","Sept","09","9"],
+      correct: 3,
+      explanation: "month este un atribut întreg: 9. (Cu paranteze, t.month() ar da TypeError.)"
+    },
+    {
+      id: "py-241",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function chooses one random item from a list?",
+      options: ["random.choice()","random.sample()","random.shuffle()","random.one()"],
+      correct: 0,
+      explanation: "choice(secvență) întoarce un singur element ales aleatoriu."
+    },
+    {
+      id: "py-242",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which function rearranges a list in random order, in place?",
+      options: ["random.choice()","random.shuffle()","random.sample()","random.randint()"],
+      correct: 1,
+      explanation: "shuffle(listă) modifică lista pe loc."
+    },
+    {
+      id: "py-243",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression returns two distinct random items from countries?",
+      options: ["random.choice(countries, 2)","random.sample(countries, 2)","random.shuffle(countries, 2)","random.randint(countries, 2)"],
+      correct: 1,
+      explanation: "sample(populație, k) întoarce k elemente distincte."
+    },
+    {
+      id: "py-244",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which values can randint(1, 3) return?",
+      options: ["1 or 2 only","2 or 3 only","1, 2, or 3","0, 1, 2, or 3"],
+      correct: 2,
+      explanation: "randint(a, b) include ambele capete."
+    },
+    {
+      id: "py-245",
+      chapter: "module-librarii",
+      type: "single",
+      question: "Which expression can generate 3, 6, 9, ... up to 99?",
+      options: ["random.randrange(3, 102, 3)","random.randrange(3, 99, 2)","random.randint(3, 99, 3)","random.random(3, 99)"],
+      correct: 0,
+      explanation: "randrange(start, stop, pas) nu include stop; cu 102, valoarea 99 este posibilă."
+    },
+    {
+      id: "py-246",
+      chapter: "module-librarii",
+      type: "single",
+      question: "What range of values does random.random() return?",
+      options: ["0.0 <= x < 1.0","1 <= x <= 100","-1 < x < 1","Only the integers 0 and 1"],
+      correct: 0,
+      explanation: "random() întoarce un float în intervalul [0.0, 1.0)."
+    },
+    {
+      id: "py-247",
+      chapter: "module-librarii",
+      type: "multiple",
+      question: "Which of the following are possible outputs of this code? Pick the TWO that can occur. (Choose 2.)",
+      code: "import random\nfruits = ['Apple', 'Mango', 'Orange', 'Lemon']\nrandom_list = [random.choice(fruits)[:2] for i in range(3)]\nprint(''.join(random_list))",
+      options: ["ApApAp","ApMgOr","LeMaOr","OrOraM"],
+      correct: [0,2],
+      explanation: "Fiecare element este primele 2 litere ale unui fruct (Ap, Ma, Or, Le). ApApAp și LeMaOr sunt combinații posibile; \"Mg\" nu există, iar OrOraM nu se descompune în coduri de 2 litere valide."
+    },
+    {
+      id: "py-248",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "math.isnan(float('nan')) is True.",
+      code: "import math",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "NaN se verifică cu math.isnan()."
+    },
+    {
+      id: "py-249",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "float('nan') == float('nan') is True.",
+      code: "import math",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "NaN nu este egal nici măcar cu el însuși."
+    },
+    {
+      id: "py-250",
+      chapter: "gestionare-erori",
+      type: "multiple",
+      question: "Which TWO keywords are part of exception handling in Python? (Choose 2.)",
+      options: ["try","catch","except","throw"],
+      correct: [0,2],
+      explanation: "Python folosește try / except (catch și throw aparțin altor limbaje, de exemplu Java sau C#)."
+    },
+    {
+      id: "py-251",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which of the following is true about the else block of a try statement?",
+      options: ["The else block is executed if there is no exception in the try block","Without writing an except block we can't write an else block","For the same try we can write at most one else block","All of the above"],
+      correct: 3,
+      explanation: "Toate afirmațiile sunt adevărate."
+    },
+    {
+      id: "py-252",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "When will the else part of try-except-else be executed?",
+      options: ["Always","When no exception occurs","When an error exception occurs","When an exception occurs in the except block"],
+      correct: 1,
+      explanation: "Blocul else rulează doar dacă în try nu a apărut nicio excepție."
+    },
+    {
+      id: "py-253",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Is the following Python code valid?",
+      code: "try:\n    print('try block')\nexcept:\n    print('except block')\nfinally:\n    print('finally block')",
+      options: ["No, there is no such thing as finally","No, finally cannot be used together with except","No, finally must come before except","Yes"],
+      correct: 3,
+      explanation: "try-except-finally este o sintaxă validă; finally rulează indiferent dacă a apărut o excepție."
+    },
+    {
+      id: "py-254",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What is the output?",
+      code: "def foo():\n    try:\n        return 1\n    finally:\n        return 2\n\nk = foo()\nprint(k)",
+      options: ["1","2","3","Error, there is more than one return statement in a single try-finally block"],
+      correct: 1,
+      explanation: "return din finally suprascrie return-ul din try, deci funcția întoarce 2."
+    },
+    {
+      id: "py-255",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "The base class for all exceptions in Python is:",
+      options: ["Exception","ExceptionBase","BaseException","ArithmeticError"],
+      correct: 2,
+      explanation: "BaseException este clasa de bază pentru toate excepțiile; Exception este doar o subclasă a ei."
+    },
+    {
+      id: "py-256",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which type of exception is raised if we try to call a method that does not exist for the object?",
+      options: ["IndexError","TypeError","AttributeError","None of these"],
+      correct: 2,
+      explanation: "AttributeError apare când se accesează un atribut sau o metodă inexistentă pentru acel obiect."
+    },
+    {
+      id: "py-257",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which exception is raised?",
+      code: "f = open('abc.txt')\nf.readall()",
+      options: ["AttributeError","EOFError","SystemError","SyntaxError"],
+      correct: 0,
+      explanation: "Obiectele fișier nu au metoda readall() (există read(), readline(), readlines()), deci apare AttributeError."
+    },
+    {
+      id: "py-258",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What is the result?",
+      code: "a = 10\nb = 20\nc = '30'\nresult = a + b + c",
+      options: ["102030","3030","TypeError","ArithmeticError"],
+      correct: 2,
+      explanation: "a + b = 30 (int), dar 30 + '30' adună un int cu un str → TypeError."
+    },
+    {
+      id: "py-259",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "For the inputs 10, 20, 30, 40, what is the result?",
+      code: "data = []\ndef get_data():\n    for i in range(1, 5):\n        marks = input('Enter Marks:')\n        data.append(marks)\n\ndef get_avg():\n    sum = 0\n    for mark in data:\n        sum += mark\n    return sum / len(data)\n\nget_data()\nprint(get_avg())",
+      options: ["25","25.0","NameError is thrown at runtime","TypeError is thrown at runtime"],
+      correct: 3,
+      explanation: "input() întoarce str; sum += mark încearcă să adune un int (0) cu un str → TypeError."
+    },
+    {
+      id: "py-260",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Running this code raises: TypeError: unsupported operand type(s) for +=: 'float' and 'str'. Which change fixes the error?",
+      code: "prices = [30.5, '40.5', 10.5]\ntotal = 0\nfor price in prices:\n    total += price\nprint(total)",
+      options: ["total += str(price)","total += int(price)","total += float(price)","total = total + price"],
+      correct: 2,
+      explanation: "'40.5' este un șir. float(price) îl convertește corect și păstrează zecimalele; int('40.5') ar da ValueError."
+    },
+    {
+      id: "py-261",
+      chapter: "gestionare-erori",
+      type: "multiple",
+      question: "Running this code raises: TypeError: unsupported operand type(s) for +=: 'int' and 'str'. Which TWO changes fix the error? (Choose 2.)",
+      code: "prices = [10, '20', 30, '40']\ntotal = 0\nfor price in prices:\n    total += price\nprint(total)",
+      options: ["total += str(price)","total += int(price)","total += float(price)","total = total + price"],
+      correct: [1,2],
+      explanation: "int(price) și float(price) convertesc șirurile numerice la numere, permițând adunarea."
+    },
+    {
+      id: "py-262",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "The code below is run. in.txt exists, out.txt does not exist. Which statement is true?",
+      code: "import sys\n\ntry:\n    file_in = open('in.txt', 'r')\n    file_out = open('out.txt', 'w+')\nexcept IOError:\n    print('Cannot open file:', 'in.txt')\nelse:\n    i = 1\n    for line in file_in:\n        print(line.rstrip())\n        file_out.write(str(i) + ': ' + line)\n        i += 1\n    file_in.close()\n    file_out.close()",
+      options: ["The code runs, but generates a logic error","The program copies the data from in.txt to out.txt (numbering the lines)","The code generates a runtime error","The code generates a syntax error"],
+      correct: 1,
+      explanation: "Modul \"w+\" creează out.txt dacă nu există. Fiind fără excepții, se execută blocul else: liniile din in.txt sunt afișate și scrise numerotat în out.txt."
+    },
+    {
+      id: "py-263",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "The Happy Clown program runs around in an infinite circle. Which statement identifies an error in the code?",
+      code: "01 import math\n02 # default motion for happy clown\n03 power = True\n04 move = 0\n05 while power:\n06     if move == 0:\n07         turnValue = math.pi / move\n08         move += 5\n09     else:\n10         turnValue = 0\n11         move = 0",
+      options: ["Line 05 has a syntax error because it should read (power == True).","Line 08 has a syntax error because += is an invalid statement.","Line 07 causes a runtime error due to division by zero.","Line 05 causes a runtime error because the expression is incomplete."],
+      correct: 2,
+      explanation: "La prima iterație move = 0, deci math.pi / move produce ZeroDivisionError (eroare la rulare)."
+    },
+    {
+      id: "py-264",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "You want to handle the case where abc.txt does not exist. Which code correctly handles FileNotFoundError?",
+      code: "f = open('abc.txt')\nprint(f.read())\nf.close()",
+      options: ["f = None\ntry:\n    f = open('abc.txt')\nexcept FileNotFoundError:\n    print('File does not exist')\nelse:\n    print(f.read())\nfinally:\n    if f is not None:\n        f.close()","f = None\ntry:\n    f = open('abc.txt')\nexcept FileNotFoundException:\n    print('File does not exist')\nelse:\n    print(f.read())\nfinally:\n    if f is not None:\n        f.close()","f = None\ntry:\n    f = open('abc.txt')\nelse:\n    print(f.read())\nexcept FileNotFoundError:\n    print('File does not exist')\nfinally:\n    if f is not None:\n        f.close()","None of the above"],
+      correct: 0,
+      explanation: "Varianta 1 folosește excepția reală FileNotFoundError și ordinea corectă try / except / else / finally. Varianta 2 folosește un nume inexistent (FileNotFoundException), iar în varianta 3 else apare înaintea lui except (SyntaxError)."
+    },
+    {
+      id: "py-265",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What type of error is this?",
+      code: "trees = ['fir', 'oak', 'pine']\nprint(trees[3])",
+      options: ["Syntax error","Runtime error","Logic error","No error"],
+      correct: 1,
+      explanation: "Codul este corect sintactic, dar un index inexistent produce IndexError la rulare."
+    },
+    {
+      id: "py-266",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What type of error is this?",
+      code: "x = 5\nif x > 3\n    print(x)",
+      options: ["Syntax error","Runtime error","Logic error","No error"],
+      correct: 0,
+      explanation: "Lipsește două puncte (:) după condiția if, deci interpretorul nu poate citi codul."
+    },
+    {
+      id: "py-267",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "A program runs, but calculates the area of a rectangle as width + height. What kind of error is this?",
+      options: ["Syntax error","Runtime error","Logic error","Import error"],
+      correct: 2,
+      explanation: "Programul rulează, dar algoritmul dă un rezultat greșit: eroare de logică."
+    },
+    {
+      id: "py-268",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "Complete the exception-handling structure.",
+      code: "[1]:\n    print(a / b)\n[2]:\n    print(\"This did not work.\")\n[3]:\n    print(\"Thank you.\")",
+      dragItems: [
+        { id: "i1", text: "except" },
+        { id: "i2", text: "finally" },
+        { id: "i3", text: "try" },
+        { id: "i4", text: "if" },
+        { id: "i5", text: "while" },
+        { id: "i6", text: "else" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i2" }
+      ],
+      explanation: "try conține codul riscant, except tratează eroarea, iar finally rulează întotdeauna."
+    },
+    {
+      id: "py-269",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "finally runs whether an exception occurs or not.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "except rulează la excepție, else la succes, iar finally în ambele cazuri."
+    },
+    {
+      id: "py-270",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "try and except both execute on every successful operation.",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "La succes se execută try (și else); except rulează doar când apare o excepție."
+    },
+    {
+      id: "py-271",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "else runs when the try block completes without an exception.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "else rulează doar dacă try s-a terminat fără excepții."
+    },
+    {
+      id: "py-272",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which keyword explicitly raises an exception?",
+      options: ["throw","raise","except","error"],
+      correct: 1,
+      explanation: "În Python excepțiile se ridică cu raise."
+    },
+    {
+      id: "py-273",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What does this code display?",
+      code: "x = 30\ny = 10\nassert x > y, 'x is smaller than y'",
+      options: ["AssertionError","10 8","No output","108"],
+      correct: 2,
+      explanation: "30 > 10 este True, deci assert trece fără eroare și fără output (mesajul apare doar când condiția este falsă)."
+    },
+    {
+      id: "py-274",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What does this code display?",
+      code: "def is_quarter(num):\n    return num % 4 == 0\n\nassert is_quarter(8) == True",
+      options: ["True","False","AssertionError","Nothing"],
+      correct: 3,
+      explanation: "Dacă assert primește o condiție adevărată, nu afișează nimic; altfel ridică AssertionError."
+    },
+    {
+      id: "py-275",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "What happens?",
+      code: "assert 2 + 2 == 5",
+      options: ["Nothing","True is printed","AssertionError","ValueError"],
+      correct: 2,
+      explanation: "2 + 2 == 5 este fals, deci assert ridică AssertionError."
+    },
+    {
+      id: "py-276",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether two values are equal?",
+      options: ["assertIn","assertEqual","assertIsInstance","assertTrue"],
+      correct: 1,
+      explanation: "self.assertEqual(a, b) verifică egalitatea valorilor."
+    },
+    {
+      id: "py-277",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether an item is in a container?",
+      options: ["assertIn","assertEqual","assertIs","assertIsInstance"],
+      correct: 0,
+      explanation: "self.assertIn(element, container) verifică apartenența."
+    },
+    {
+      id: "py-278",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether two references point to the same object?",
+      options: ["assertEqual","assertIs","assertIn","assertTrue"],
+      correct: 1,
+      explanation: "assertIs(a, b) echivalează conceptual cu verificarea a is b."
+    },
+    {
+      id: "py-279",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which unittest method checks whether an object belongs to a class?",
+      options: ["assertIsInstance","assertEqual","assertIn","assertFalse"],
+      correct: 0,
+      explanation: "assertIsInstance(obj, Clasă) verifică tipul/instanța."
+    },
+    {
+      id: "py-280",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which method name is discovered by the default unittest test loader?",
+      options: ["test_territory","_test_territory","territory_test","testcase_territory"],
+      correct: 0,
+      explanation: "Implicit, metodele de test încep cu prefixul test."
+    },
+    {
+      id: "py-281",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "Arrange the minimal unittest program.",
+      dragItems: [
+        { id: "i1", text: "if __name__ == \"__main__\":" },
+        { id: "i2", text: "class TestMath(unittest.TestCase):" },
+        { id: "i3", text: "    def test_add(self):" },
+        { id: "i4", text: "import unittest" },
+        { id: "i5", text: "    unittest.main()" },
+        { id: "i6", text: "        self.assertEqual(2 + 3, 5)" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Linia 1", correctItemId: "i4" },
+        { id: "z2", label: "Linia 2", correctItemId: "i2" },
+        { id: "z3", label: "Linia 3", correctItemId: "i3" },
+        { id: "z4", label: "Linia 4", correctItemId: "i6" },
+        { id: "z5", label: "Linia 5", correctItemId: "i1" },
+        { id: "z6", label: "Linia 6", correctItemId: "i5" }
+      ],
+      explanation: "Se importă unittest, se definește o clasă TestCase cu o metodă test_..., apoi se pornește unittest.main() când fișierul este rulat direct."
+    },
+    {
+      id: "py-282",
+      chapter: "structura-cod",
+      type: "single",
+      question: "In Python, code blocks (the body of an if, for, a function, etc.) are delimited by:",
+      options: ["Curly braces { }","Indentation (spaces/tab)","The keyword end","Semicolons"],
+      correct: 1,
+      explanation: "Python folosește indentarea consecventă pentru a delimita blocurile de cod."
+    },
+    {
+      id: "py-283",
+      chapter: "structura-cod",
+      type: "single",
+      question: "You want to add notes to your code so other team members will understand it. What should you do?",
+      options: ["Place the notes after the last line of code, separated by a blank line.","Place the notes inside parentheses on any line.","Place the notes after the # sign on any line.","Place the notes before the first line of code, separated by a blank line."],
+      correct: 2,
+      explanation: "Comentariile din Python încep cu # și pot apărea pe orice linie."
+    },
+    {
+      id: "py-284",
+      chapter: "structura-cod",
+      type: "single",
+      question: "Which character starts a single-line comment in Python?",
+      options: ["//","/*","#","--"],
+      correct: 2,
+      explanation: "Comentariile pe o singură linie încep cu #."
+    },
+    {
+      id: "py-285",
+      chapter: "structura-cod",
+      type: "single",
+      question: "Which option uses the conventional triple-quoted Python docstring form?",
+      options: ["\"\"\"Calculates area.\"\"\"","# Calculates area.","// Calculates area.","/* Calculates area. */"],
+      correct: 0,
+      explanation: "Docstring-urile sunt șiruri plasate la începutul unui modul, clase sau funcții; forma cu ghilimele triple permite și text pe mai multe rânduri."
+    },
+    {
+      id: "py-286",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "Lines 01 through 04 are ignored as comments.",
+      code: "01 # The calc_power function calculates exponents\n02 # x is the base\n03 # y is the exponent\n04 # The value of x raised to the y power is returned\n05 def calc_power(x, y):\n06     comment = \"#Return the value\"\n07     return x ** y  # raise x to the power y",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Liniile care încep cu # sunt comentarii și sunt ignorate de Python."
+    },
+    {
+      id: "py-287",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "The string assigned to comment on line 06 is itself a Python comment.",
+      code: "01 # The calc_power function calculates exponents\n02 # x is the base\n03 # y is the exponent\n04 # The value of x raised to the y power is returned\n05 def calc_power(x, y):\n06     comment = \"#Return the value\"\n07     return x ** y  # raise x to the power y",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "# din interiorul unui șir nu începe un comentariu; linia 06 atribuie un șir variabilei comment."
+    },
+    {
+      id: "py-288",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "The text after # on line 07 is ignored by Python.",
+      code: "01 # The calc_power function calculates exponents\n02 # x is the base\n03 # y is the exponent\n04 # The value of x raised to the y power is returned\n05 def calc_power(x, y):\n06     comment = \"#Return the value\"\n07     return x ** y  # raise x to the power y",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Textul de după # (în afara unui șir) este comentariu și este ignorat."
     }
   ]
 };
