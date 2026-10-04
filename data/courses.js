@@ -120,10 +120,106 @@
       { title: "TESTE Python (PDF)",                     file: "https://drive.google.com/file/d/1T9a7_hAFr4NkxnNs0HMQreKf21b05HvJ/view?usp=drive_link" }
     ],
     chapters: [
-      { title: "Video Online", videos: [
-        { title: "Lecția EN", youtube: "https://youtu.be/s3IvdkCq2_c" },
-        { title: "Lecția RU", youtube: "https://youtu.be/34Rp6KVGIEM" }
-      ]}
+      { title: "Domain 1 — Operations Using Data Types and Operators", videos: [
+          { title: "Course Opener — Video 1", drive: "https://drive.google.com/file/d/1QatxInYhhJ24j40yo6AdMu1BiiqjqYhu/view?usp=drive_link" },
+          { title: "Course Opener — Video 2", drive: "https://drive.google.com/file/d/1TEBTpjxMLBi4a6Ou_VQ6fw0IWToecea0/view?usp=drive_link" },
+          { title: "Evaluate Data Types — Video 1", drive: "https://drive.google.com/file/d/1hTIB9o_pPwEygJTJd5DPxX2NL6nvEkC6/view?usp=drive_link" },
+          { title: "Evaluate Data Types — Video 2", drive: "https://drive.google.com/file/d/1lNc78WvMq3FMkdp9-U1x5K5r9qxTQ5tu/view?usp=drive_link" },
+          { title: "Evaluate Data Types — Video 3", drive: "https://drive.google.com/file/d/1n6lgHB0UDBzCLlVD8rsfhGIoWJo3t7Vz/view?usp=drive_link" },
+          { title: "Evaluate Data Types — Video 4", drive: "https://drive.google.com/file/d/1tNC3Dd_c4mE9NF8aHI4-hjYO2_ZdJxi0/view?usp=drive_link" },
+          { title: "Evaluate Data Types — Video 5", drive: "https://drive.google.com/file/d/1xndkfe1U5z-2bROW8NcKt0U8mXZoLdpR/view?usp=drive_link" },
+          { title: "Convert and Work With Data Types — Video 1", drive: "https://drive.google.com/file/d/1UZ5vvo86FM8ZjF2-VZk4LGjMb_rtgKy8/view?usp=drive_link" },
+          { title: "Convert and Work With Data Types — Video 2", drive: "https://drive.google.com/file/d/1346Ql0WdqCsPmX_GMS5FM8NFW6dY5pc-/view?usp=drive_link" },
+          { title: "Convert and Work With Data Types — Video 3", drive: "https://drive.google.com/file/d/1vOyu_WSO5k90jhingwJmmmjdRWV-2YaU/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 1", drive: "https://drive.google.com/file/d/194bmieNr6Itf6VrEOjYmBFar0ddkd7B-/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 2", drive: "https://drive.google.com/file/d/1Ixe0FxzGEENTtvshKspJ3wiZ36bNPNJL/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 3", drive: "https://drive.google.com/file/d/1Fozr72rKWNSU51faB47lvUSdFunLR1o-/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 4", drive: "https://drive.google.com/file/d/1qvRkgENfVocZOUGflsNI_zW-1Kdl-YzH/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 5", drive: "https://drive.google.com/file/d/1WpcuqR3exicmCE1y8nzNn67ODCPD60E2/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 6", drive: "https://drive.google.com/file/d/1bQbtLYFQwA_x-JNIf2Hn9GQuDZj74j1d/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 7", drive: "https://drive.google.com/file/d/1O6ypd8nvtqmC652M4Awg0IefptAEklT9/view?usp=drive_link" },
+          { title: "Operator Sequence and Selection — Video 8", drive: "https://drive.google.com/file/d/1W_YTBNIwaY4FZq4FJ2u8c_hPcArVUeD1/view?usp=drive_link" },
+          { title: "Domain 1 — Additional Video — Video 1", drive: "https://drive.google.com/file/d/1pTI_xsR__QwHPf83sLm0YbvzM29mXWAx/view?usp=drive_link" }
+      ] },
+
+      { title: "Domain 2 — Flow Control with Decisions and Loops", videos: [
+          { title: "Branching Statements — Video 1", drive: "https://drive.google.com/file/d/1UY8ye49ezOCREBqRRCTJOSszJ8DEfT2j/view?usp=drive_link" },
+          { title: "Branching Statements — Video 2", drive: "https://drive.google.com/file/d/1ZoVSA8BEfh0_AmKWRH8h_dKGOzAQ0dYq/view?usp=drive_link" },
+          { title: "Branching Statements — Video 3", drive: "https://drive.google.com/file/d/1yRqwbjIOBUePdV7SmeFJhR9zC9y6w8tY/view?usp=drive_link" },
+          { title: "Branching Statements — Video 4", drive: "https://drive.google.com/file/d/19b1kJh_p2US66_uiUV1l7g6AEW0y_cvE/view?usp=drive_link" },
+          { title: "Branching Statements — Video 5", drive: "https://drive.google.com/file/d/1noS-D9NI4Xh7h7xIhyq4yhAMo78cD9ds/view?usp=drive_link" },
+          { title: "Branching Statements — Video 6", drive: "https://drive.google.com/file/d/1PWQJihjOz4hKt4IBX5gZUXCn9f82fuHt/view?usp=drive_link" },
+          { title: "Branching Statements — Video 7", drive: "https://drive.google.com/file/d/1NPfOSfqsTNgYrSCfN3z5mRAsAIroMrUa/view?usp=drive_link" },
+          { title: "Iterations — Video 1", drive: "https://drive.google.com/file/d/1TpvuTxFa5MWC8OmyKioZBK91gBGjoZwu/view?usp=drive_link" },
+          { title: "Iterations — Video 2", drive: "https://drive.google.com/file/d/16lSLuaBp_6LJRnXDEUN2gTqGo1cFJ4Vu/view?usp=drive_link" },
+          { title: "Iterations — Video 3", drive: "https://drive.google.com/file/d/1Si-hb5txEWKMxiPBaI4s6Wu3Pqfjf3uF/view?usp=drive_link" },
+          { title: "Iterations — Video 4", drive: "https://drive.google.com/file/d/1xEqHzXW0njydjWEWditJCudw4EOhWHHs/view?usp=drive_link" },
+          { title: "Iterations — Video 5", drive: "https://drive.google.com/file/d/19G2xO-ZNqYMvQGHB6XnGTaPEdmgQOIxy/view?usp=drive_link" },
+          { title: "Iterations — Video 6", drive: "https://drive.google.com/file/d/1VN4BIfmUW9ak-y5G_K9spnDZMBbbsel3/view?usp=drive_link" },
+          { title: "Iterations — Video 7", drive: "https://drive.google.com/file/d/1VZGNFtUyjp0e-rUAZ0o6NMYSqqbJxzD7/view?usp=drive_link" },
+          { title: "Iterations — Video 8", drive: "https://drive.google.com/file/d/189Di7PUGKJrb1KpLhBAKjNvC78PtxA7s/view?usp=drive_link" }
+      ] },
+
+      { title: "Domain 3 — Input and Output Operations", videos: [
+          { title: "File Input and Output Operations — Video 1", drive: "https://drive.google.com/file/d/1uD2FIzjq-siPjhWZ-IJQqKn2FC-1OfCp/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 2", drive: "https://drive.google.com/file/d/1ZEnIjwXDLXjAZsoc8lCxnV4FquS5E_oW/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 3", drive: "https://drive.google.com/file/d/1FkjR4iG2VHg2rVNgmxSTuf2riTySNsCb/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 4", drive: "https://drive.google.com/file/d/1m8_-3ku800IvdNmtAzNvtbDn9gYkAFR6/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 5", drive: "https://drive.google.com/file/d/18S3YJzQdVX4aDVeUkjKMhZwa32b4tLjW/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 6", drive: "https://drive.google.com/file/d/1Rq37ERj-wSYVtMecfqCJW3aUY9eJgofl/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 7", drive: "https://drive.google.com/file/d/1C_UqzpuMnTOADr32k4wrAbO0SG4OasXf/view?usp=drive_link" },
+          { title: "File Input and Output Operations — Video 8", drive: "https://drive.google.com/file/d/1x86Y5Gs5mqp9j6J-JyhNScf_i9mrz2xk/view?usp=drive_link" },
+          { title: "Console Input and Output Operations — Video 1", drive: "https://drive.google.com/file/d/1zrZkG-ZWjYs2ZGibrZTx0FSAaqzgqWk_/view?usp=drive_link" },
+          { title: "Console Input and Output Operations — Video 2", drive: "https://drive.google.com/file/d/1s46aU01Ijfr6o6NkfpuEZ5Twys6Ca6PK/view?usp=drive_link" },
+          { title: "Console Input and Output Operations — Video 3", drive: "https://drive.google.com/file/d/1EYPM-Rs1fWG0k-QLO7EBWdNt_ouXv7N8/view?usp=drive_link" },
+          { title: "Console Input and Output Operations — Video 4", drive: "https://drive.google.com/file/d/1_mxITy9jULuoeOvlRG5UIkN0SkPW5Js-/view?usp=drive_link" },
+          { title: "Console Input and Output Operations — Video 5", drive: "https://drive.google.com/file/d/116YXWMm6pAtoVoUZU1SF0G6g2zukijzq/view?usp=drive_link" }
+      ] },
+
+      { title: "Domain 4 — Code Documentation and Structure", videos: [
+          { title: "Document Code Segments — Video 1", drive: "https://drive.google.com/file/d/1C6poEyj_0C-gvXz2B1EbCysBBOuP57nS/view?usp=drive_link" },
+          { title: "Document Code Segments — Video 2", drive: "https://drive.google.com/file/d/1j9syeZ7XbbOPAhunoWgOP41BrQpqZaFg/view?usp=drive_link" },
+          { title: "Document Code Segments — Video 3", drive: "https://drive.google.com/file/d/1D0EGffmw0t-8UmjAqHlkpsiciA0G1FmV/view?usp=drive_link" },
+          { title: "Document Code Segments — Video 4", drive: "https://drive.google.com/file/d/1K5wQHs2GZkXJp3OdxwAUTIoZSGwVF15s/view?usp=drive_link" },
+          { title: "Document Code Segments — Video 5", drive: "https://drive.google.com/file/d/1RRONVtQZIoEIeZNl9K4ZIOrVU4kgP4fn/view?usp=drive_link" },
+          { title: "Functions — Video 1", drive: "https://drive.google.com/file/d/1jBHvFU23prbWZ4EwFVVcVSIfY9-1SPdA/view?usp=drive_link" },
+          { title: "Functions — Video 2", drive: "https://drive.google.com/file/d/1Kn3m-WK9igEjpU13QlpCJamfYHWgJvQG/view?usp=drive_link" },
+          { title: "Functions — Video 3", drive: "https://drive.google.com/file/d/1477LHWziKXpsuXRDKacydoqTvl4U6CUi/view?usp=drive_link" },
+          { title: "Functions — Video 4", drive: "https://drive.google.com/file/d/1fcyNsaaMwC6k-T8hFzzUCoCLt9BOZzRx/view?usp=drive_link" },
+          { title: "Functions — Video 5", drive: "https://drive.google.com/file/d/1Aui1hjC9iUcGPRTVgpxjsBvgi-gLrZF3/view?usp=drive_link" },
+          { title: "Functions — Video 6", drive: "https://drive.google.com/file/d/1MJT-H9OfROCvJqbcv6-Zgyyp8Soo1w2u/view?usp=drive_link" },
+          { title: "Functions — Video 7", drive: "https://drive.google.com/file/d/1ra74Ur8B6TunWgVBrd3a5t5I-kFabAD-/view?usp=drive_link" }
+      ] },
+
+      { title: "Domain 5 — Troubleshooting and Error Handling", videos: [
+          { title: "Analyze, Detect, and Fix Errors — Video 1", drive: "https://drive.google.com/file/d/1_Pg3qTk4t3fhOOjqk7BUlaGY-pNkdJrb/view?usp=drive_link" },
+          { title: "Analyze, Detect, and Fix Errors — Video 2", drive: "https://drive.google.com/file/d/1c2Ei5GR3XZ8O9ysGRLw_Q3HE2vPiMPTA/view?usp=drive_link" },
+          { title: "Analyze, Detect, and Fix Errors — Video 3", drive: "https://drive.google.com/file/d/1EdZ45NXC-9Pj-vy8gDZta_NFJs-aFOvJ/view?usp=drive_link" },
+          { title: "Analyze, Detect, and Fix Errors — Video 4", drive: "https://drive.google.com/file/d/1qBdDX06sZabi6eeF_PuKkCy2qJ_UTW81/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 1", drive: "https://drive.google.com/file/d/1bBBIX0es9hpDjWuPPqDMwWBAeoxrmK1B/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 2", drive: "https://drive.google.com/file/d/1Egp-pV5yO78EHMxKHZNXwe-vzFoRf-JV/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 3", drive: "https://drive.google.com/file/d/1Q10QgfhreEtGYKPl1RtTFrWuvlnsIQvX/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 4", drive: "https://drive.google.com/file/d/1OpXZqmctS_J1iiDu88dVdXMlW7uxFwB-/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 5", drive: "https://drive.google.com/file/d/1ELiYC0Pw6HH2aPqk0UXr0AVnoJFI1XsG/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 6", drive: "https://drive.google.com/file/d/1FZh4MzqFLWzFcWjdjtrSGDI_V4chMKUz/view?usp=drive_link" },
+          { title: "Exception Handlers — Video 7", drive: "https://drive.google.com/file/d/1pTD3Pc8g5B9UgjZ8n12cOoT0qOu6aYIM/view?usp=drive_link" }
+      ] },
+
+      { title: "Domain 6 — Operations Using Modules and Tools", videos: [
+          { title: "Built-in Modules for Operations — Video 1", drive: "https://drive.google.com/file/d/1OuJCTAN9YavQBWe1xBqYhmeXl9giuRAI/view?usp=drive_link" },
+          { title: "Built-in Modules for Operations — Video 2", drive: "https://drive.google.com/file/d/1mSSMk613r1ep5UH8Vf9kcT2NFpti0XX7/view?usp=drive_link" },
+          { title: "Built-in Modules for Operations — Video 3", drive: "https://drive.google.com/file/d/12ZdufOHSGkN67tXGzq9pj5j8qeRQ2Wku/view?usp=drive_link" },
+          { title: "Built-in Modules for Operations — Video 4", drive: "https://drive.google.com/file/d/1ZhuTDYMycswo6Od0X1NqduX1yT_mrOxY/view?usp=drive_link" },
+          { title: "Built-in Modules for Operations — Video 5", drive: "https://drive.google.com/file/d/1akqMmedTMmOm70xrc1USzMBhFOdu_Fyi/view?usp=drive_link" },
+          { title: "Solve Problems with Built-in Modules — Video 1", drive: "https://drive.google.com/file/d/1Q-lS2M-dN1Rknml46qpqezrVhSSrL1No/view?usp=drive_link" },
+          { title: "Solve Problems with Built-in Modules — Video 2", drive: "https://drive.google.com/file/d/197NjYF3vvHXuMwnbNDreJf3pjKFie_9W/view?usp=drive_link" },
+          { title: "Solve Problems with Built-in Modules — Video 3", drive: "https://drive.google.com/file/d/1EmszPSSi6mE72kNDRzVaKh8efw3pJQIS/view?usp=drive_link" },
+          { title: "Solve Problems with Built-in Modules — Video 4", drive: "https://drive.google.com/file/d/10Io_C5MZ7_RQ7-xHmsHhuie4QBtiPtPZ/view?usp=drive_link" },
+          { title: "Solve Problems with Built-in Modules — Video 5", drive: "https://drive.google.com/file/d/17GwHiGvAhAXQb6z4G2MWJ6Qw4k1JevJS/view?usp=drive_link" },
+          { title: "Session 6 and Final Recaps — Video 1", drive: "https://drive.google.com/file/d/1tWljCU5ng3hYJOoswpvHM_qUsuUdJXbM/view?usp=drive_link" },
+          { title: "Session 6 and Final Recaps — Video 2", drive: "https://drive.google.com/file/d/1mW6LIEtJbn3KhCezx2BzsJI8StwWIsPz/view?usp=drive_link" },
+          { title: "Session 6 and Final Recaps — Video 3", drive: "https://drive.google.com/file/d/1QxzJFeWnAt5Ynk2R2pd3VlI_yZ1j47lG/view?usp=drive_link" }
+      ] }
     ]
   },
   
