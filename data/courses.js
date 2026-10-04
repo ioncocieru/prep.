@@ -153,38 +153,79 @@
       { title: "TESTE (PDF)",                     file: "https://drive.google.com/file/d/1nQ5hsBDeiJyOoXjZ7rhzOsyDRl51y8Na/view?usp=drive_link" }
     ],
     chapters: [
-      { title: "1. Proiectarea bazelor de date", videos: [
-        { title: "Database Design Course (curs complet, engleză)", youtube: "https://youtu.be/ztHopE5Wnpc" },
-        { title: "Tables & Keys (Mike Dane)",              youtube: "https://youtu.be/HXV3zeQKqGY", start: 1390 },
-        { title: "ER Diagrams — introducere",              youtube: "https://youtu.be/HXV3zeQKqGY", start: 13332 },
-        { title: "Cum proiectezi o diagramă ER",           youtube: "https://youtu.be/HXV3zeQKqGY", start: 14153 },
-        { title: "Din diagrama ER în schemă (tabele)",     youtube: "https://youtu.be/HXV3zeQKqGY", start: 14914 }
+      { title: "Domain 1 — Database Design", videos: [
+        { title: "Introduction", drive: "https://drive.google.com/file/d/1vmjJFZfqYfhIy1sIBCzje4WXcf9VoptF/view?usp=drive_link" },
+        { title: "Entities, Rows, and Columns", drive: "https://drive.google.com/file/d/1ZRDVGG6xUnRjNM1LjXoJdG-b8M82U9b_/view?usp=drive_link" },
+        { title: "Primary Key", drive: "https://drive.google.com/file/d/10fgOoOnnujuQfJixWaUBij-pluUUqRUl/view?usp=drive_link" },
+        { title: "Composite/Compound Key 1", drive: "https://drive.google.com/file/d/1P8Nyg3GD88tyqmV5Yox4wFfQGkpA6N7e/view?usp=drive_link" },
+        { title: "Composite/Compound Key 2", drive: "https://drive.google.com/file/d/18nuJyn2izLvz73mWVRk31GqKBPbgwiup/view?usp=drive_link" },
+        { title: "Importance of Data Types", drive: "https://drive.google.com/file/d/1te99vyjinTBaaNzm4L2NNpGeaFS2PIhf/view?usp=drive_link" },
+        { title: "Storage Requirements", drive: "https://drive.google.com/file/d/1vpy_lD10hzIF0AxT99mSE2h1FYeDyG-v/view?usp=drive_link" },
+        { title: "Data Types for Storing Text", drive: "https://drive.google.com/file/d/1E3yeH3VzxHKHi1Bw7xfjWlxJMwDBrDfF/view?usp=drive_link" },
+        { title: "Establishing Relationships", drive: "https://drive.google.com/file/d/1-8efRn7yy1dLwM9g9t2uHPQef5w-KYed/view?usp=drive_link" },
+        { title: "Entity-Relationship Diagrams", drive: "https://drive.google.com/file/d/1-_q3OvLQtNjZV8ok6Lx-7RQKpRXy0YG3/view?usp=drive_link" },
+        { title: "Referential Integrity", drive: "https://drive.google.com/file/d/1GVUMKs9MLQTwnSmJpvoXR2ufWkCfzsjR/view?usp=drive_link" },
+        { title: "Reasons for Normalization", drive: "https://drive.google.com/file/d/16PGap_HlcWz0iGFGYYjDaKJXf7uQert5/view?usp=drive_link" },
+        { title: "Third Normal Form", drive: "https://drive.google.com/file/d/1LlAtSIOHhVJHr9iK4TGwpLzIGAfiR7bN/view?usp=drive_link" },
+        { title: "Backups", drive: "https://drive.google.com/file/d/1wqlzY7Z5CS77VO1R4ksYbV_VeiywXdn9/view?usp=drive_link" },
+        { title: "Restore", drive: "https://drive.google.com/file/d/14e8NTy7IQvuKeBVxWAPxqTalUuqnDKIG/view?usp=drive_link" },
+        { title: "Principle of Least Privilege", drive: "https://drive.google.com/file/d/18PCwcN2B2GHceXs-DixRo7-T2xEJCCai/view?usp=drive_link" },
+        { title: "Permission Grants", drive: "https://drive.google.com/file/d/14FMHpukjIjoVw-XzVFWqpqUl5-8HzD6r/view?usp=drive_link" },
+        { title: "Permission Revokes", drive: "https://drive.google.com/file/d/1_EK2i08t-n4_s3KJitdlOFf_iAGhSOLf/view?usp=drive_link" },
+        { title: "Permission of Roles", drive: "https://drive.google.com/file/d/1XD_--4hStFh2HRlXSlZfSHCMHA0oXd1B/view?usp=drive_link" },
+    
+        { title: "Database Design Course (curs recomandabil de Prep. pentrui întărire)", youtube: "https://youtu.be/ztHopE5Wnpc" }
       ]},
-      { title: "2. Administrarea obiectelor (DDL)", videos: [
-        { title: "SQL Basics",                    youtube: "https://youtu.be/HXV3zeQKqGY", start: 2611 },
-        { title: "Creating Tables",               youtube: "https://youtu.be/HXV3zeQKqGY", start: 4549 },
-        { title: "Constraints",                   youtube: "https://youtu.be/HXV3zeQKqGY", start: 5897 },
-        { title: "On Delete (chei străine)",      youtube: "https://youtu.be/HXV3zeQKqGY", start: 12112 },
-        { title: "Triggers",                      youtube: "https://youtu.be/HXV3zeQKqGY", start: 12605 }
+    
+      { title: "Domain 2 — Create, Alter, and Drop Tables", videos: [
+        { title: "Work with Tables", drive: "https://drive.google.com/file/d/1rXtSFraeLT7BrSzdllHrVegXfSpV_iUp/view?usp=drive_link" },
+        { title: "NULL and NOT NULL", drive: "https://drive.google.com/file/d/1rZuoPRPLQNFStSIt9IxgW8cyXMNaA_WB/view?usp=drive_link" },
+        { title: "Create, Alter, and Drop Views", drive: "https://drive.google.com/file/d/1luym7MmHlCOEGLbF8_62V6owvJMqsrol/view?usp=drive_link" },
+        { title: "Input and Output Parameters", drive: "https://drive.google.com/file/d/15NCnpGP2rhnL1LvMHUfQ8bARcfBX94vN/view?usp=drive_link" },
+        { title: "Return Values", drive: "https://drive.google.com/file/d/14QKZ8atQWxlrvxGY4uLDIAhv16UQeVMk/view?usp=drive_link" },
+        { title: "Clustered Indexes", drive: "https://drive.google.com/file/d/1d1R3DauUN1QEIwoxqEQ6GSE3t2C5SWM-/view?usp=drive_link" },
+        { title: "Nonclustered Indexes", drive: "https://drive.google.com/file/d/1EEg623WxoGhfQJOe0V0gknR5GIsT8XLz/view?usp=drive_link" }
       ]},
-      { title: "3. Extragerea datelor (SELECT, JOIN)", videos: [
-        { title: "Basic Queries",                 youtube: "https://youtu.be/HXV3zeQKqGY", start: 6971 },
-        { title: "Functions",                     youtube: "https://youtu.be/HXV3zeQKqGY", start: 8784 },
-        { title: "Wildcards (LIKE)",              youtube: "https://youtu.be/HXV3zeQKqGY", start: 9913 },
-        { title: "Union",                         youtube: "https://youtu.be/HXV3zeQKqGY", start: 10433 },
-        { title: "Joins",                         youtube: "https://youtu.be/HXV3zeQKqGY", start: 10896 },
-        { title: "Nested Queries (subinterogări)", youtube: "https://youtu.be/HXV3zeQKqGY", start: 11509 }
+    
+      { title: "Domain 3 — Queries That Select Data", videos: [
+        { title: "Join Types", drive: "https://drive.google.com/file/d/12xfPO4P0sznIAY7BYuUnJiMCH_X9bs0a/view?usp=drive_link" },
+        { title: "Cartesian Product", drive: "https://drive.google.com/file/d/1speeBwJnFEU11ERLfFuT6aZ694cUAE8z/view?usp=drive_link" },
+        { title: "Self Joins", drive: "https://drive.google.com/file/d/12AkkH5xHQS6Ti2mCRv7Yse6t4XqBZkEk/view?usp=drive_link" },
+        { title: "UNIONS and INTERSECTS", drive: "https://drive.google.com/file/d/1WhNSkNBmo6wpQATwsiQUy0Esuf_24GSl/view?usp=drive_link" },
+        { title: "DISTINCT", drive: "https://drive.google.com/file/d/1EEWaKHAqx1B4wrH27afSkoXXKHE85DDJ/view?usp=drive_link" },
+        { title: "Column Alias", drive: "https://drive.google.com/file/d/18NVUNZdubw1oxTwwpJ8hBeCirYswfj8x/view?usp=drive_link" },
+        { title: "Computed Columns", drive: "https://drive.google.com/file/d/1srDmE1OeiNXU6FMOvmklQp7i0GXGaAMd/view?usp=drive_link" },
+        { title: "ORDER BY", drive: "https://drive.google.com/file/d/1srDmE1OeiNXU6FMOvmklQp7i0GXGaAMd/view?usp=drive_link" },
+        { title: "WHERE", drive: "https://drive.google.com/file/d/1rVS2QgSCkvIjlrHKja0iZeUqcgc752NR/view?usp=drive_link" },
+        { title: "LIKE", drive: "https://drive.google.com/file/d/1RK1Y2FDFo-W0DufiGDwqZJXPCjjO4xSo/view?usp=drive_link" },
+        { title: "BETWEEN", drive: "https://drive.google.com/file/d/13n83DBIv-Y6xz0lCY-XKzbIXr-wsepFa/view?usp=drive_link" },
+        { title: "AND", drive: "https://drive.google.com/file/d/1S9ANswPnx7fcxvsvgH1ihzBkPP6niAmh/view?usp=drive_link" },
+        { title: "OR", drive: "https://drive.google.com/file/d/1MQEJDr-_lY8tdrtSaupG8mCL5OqD3mxC/view?usp=drive_link" },
+        { title: "NOT", drive: "https://drive.google.com/file/d/12iUJAjiUYktIibqgDJNbhzpFRFlMIP2-/view?usp=drive_link" },
+        { title: "TOP", drive: "https://drive.google.com/file/d/13vZWhmyrJEN2P4CUkelmtnHYQvvOkE5M/view?usp=drive_link" },
+        { title: "IN and NOT IN", drive: "https://drive.google.com/file/d/12kiw6X8ug1QJEiTo3KWGHRfpImkewFs4/view?usp=drive_link" },
+        { title: "ANY", drive: "https://drive.google.com/file/d/103qkt8Ttjabwp2o3Fsa5NasdvxaETg3c/view?usp=drive_link" },
+        { title: "ALL", drive: "https://drive.google.com/file/d/1Bo6tVd4qLXVtBT-vXivyHbIoY9KxAO-Y/view?usp=drive_link" },
+        { title: "NULL and NOT NULL Values", drive: "https://drive.google.com/file/d/1yhX1yCOlOzVuNlf95C_BPlTQreRiIQMd/view?usp=drive_link" },
+        { title: "Comparison Operators", drive: "https://drive.google.com/file/d/19ya_yZbx18gMfjkasNR0SVfMwE_wGa7O/view?usp=drive_link" },
+        { title: "GROUP BY and SUM", drive: "https://drive.google.com/file/d/1bjix4DTg0yiya4H3sNCjH_a9x-VHzjC9/view?usp=drive_link" },
+        { title: "HAVING", drive: "https://drive.google.com/file/d/1nQ9TRd_fFBceSuPwJUtgImnyw408uJpw/view?usp=drive_link" },
+        { title: "MIN and MAX", drive: "https://drive.google.com/file/d/1LvSV4LiLbqEe6ncSPDum_TezVry-QxGI/view?usp=drive_link" },
+        { title: "COUNT and AVG", drive: "https://drive.google.com/file/d/1HGSHaDxGZDcMPjnwp1Y8cVFdGW7m9KqS/view?usp=drive_link" }
       ]},
-      { title: "4. Manipularea datelor (INSERT, UPDATE, DELETE)", videos: [
-        { title: "Inserting Data",                youtube: "https://youtu.be/HXV3zeQKqGY", start: 5465 },
-        { title: "Update & Delete",               youtube: "https://youtu.be/HXV3zeQKqGY", start: 6491 }
+    
+      { title: "Domain 4 — INSERT, UPDATE, and DELETE Statements", videos: [
+        { title: "INSERT INTO...SELECT", drive: "https://drive.google.com/file/d/1ZtV8Rrtgse63lcz_64bHjfFkT8qrfWcs/view?usp=drive_link" },
+        { title: "INSERT INTO...VALUES", drive: "https://drive.google.com/file/d/1hPU_gRqlYhqFJFjR0gUUZ2PlGGh-bJew/view?usp=drive_link" },
+        { title: "Update Data in a Single Table", drive: "https://drive.google.com/file/d/1vDZ20lG7hx0y1Jjz-8XWseleKfXbCjJX/view?usp=drive_link" },
+        { title: "Delete Data from a Single Table", drive: "https://drive.google.com/file/d/1Hh91KHQvYES4qSRaBqLl1ExxmIWflDmw/view?usp=drive_link" },
+        { title: "Truncate Table", drive: "https://drive.google.com/file/d/1WZSHOM3N6wRHLiCgEXd1bosxwMojI2hx/view?usp=drive_link" }
       ]},
-      { title: "5. Depanare și optimizare", videos: [
-        { title: "Harvard CS50 SQL — curs complet (views, indexuri, optimizare)", youtube: "https://youtu.be/WXk7yDqsKxs" }
-      ]},
-      { title: "Video suplimentare", videos: [
-        { title: "SQL Course for Beginners [Full Course]",        youtube: "https://youtu.be/7S_tz1z_5bA" },
-        { title: "SQL Tutorial — Full Database Course (integral)", youtube: "https://youtu.be/HXV3zeQKqGY" }
+    
+      { title: "Domain 5 — Query Failures", videos: [
+        { title: "Object Management Errors", drive: "https://drive.google.com/file/d/1c3QbvBcnLZRuHLLuI9upEtts8zNKqy6O/view?usp=drive_link" },
+        { title: "Select Errors", drive: "https://drive.google.com/file/d/1QeQYIVu6bKfxYQrEEeifCRkKp-TG0jau/view?usp=drive_link" },
+        { title: "Data Manipulation Errors", drive: "https://drive.google.com/file/d/1Zbz6H_2Q16F4v05mlwl3vnxDNAQYw1g-/view?usp=drive_link" }
       ]}
     ]
   },
