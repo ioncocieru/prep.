@@ -3113,6 +3113,1245 @@ window.EXAM_DATA.python = {
       options: ["Adevărat","Fals"],
       correct: 0,
       explanation: "Textul de după # (în afara unui șir) este comentariu și este ignorat."
+    },
+    {
+      id: "py-289",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "A developer wants to make sure a serial number cannot be used in a calculation, and that a dollar amount entered as a whole number can have decimals. A message must be displayed exactly as follows: \"The serial number of the product is 55555 and it will cost 44.0.\" Fill in the code with the proper functions and operators.",
+      code: "serialnumber = [1](55555)\namount = [2](44)\nprint(\"The serial number of the product is \" [3] \".\")",
+      dragItems: [
+        { id: "i1", text: "double" },
+        { id: "i2", text: "decimal" },
+        { id: "i3", text: "& serialnumber & \" and it will cost \" & str(amount) &" },
+        { id: "i4", text: "string" },
+        { id: "i5", text: "text" },
+        { id: "i6", text: "float" },
+        { id: "i7", text: "fl" },
+        { id: "i8", text: "+ serialnumber + \" and it will cost \" + str(amount) +" },
+        { id: "i9", text: "; serialnumber ; \" and it will cost \" ; str(amount) ;" },
+        { id: "i10", text: "str" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i10" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i6" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" }
+      ],
+      explanation: "str(55555) turns the serial number into text, so it cannot be used in calculations. float(44) gives 44.0. In Python, strings are joined with +, not & or ;."
+    },
+    {
+      id: "py-290",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "A warehouse manager needs the count of kits to be presented as a whole number of complete sets. Drag the appropriate function to the missing code area so that inventoryCount is converted to 19.",
+      code: "inventoryCount = 19.95\nprint(\"We have \" + str([1](inventoryCount)) + \" complete units in stock.\")",
+      dragItems: [
+        { id: "i1", text: "floor" },
+        { id: "i2", text: "ceil" },
+        { id: "i3", text: "round" },
+        { id: "i4", text: "int" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" }
+      ],
+      explanation: "int() drops the decimal part: int(19.95) = 19. round(19.95) and ceil(19.95) give 20, and floor is not a built-in function (it needs math.floor)."
+    },
+    {
+      id: "py-291",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "For the following code, which comparison expression is evaluated last before the value is assigned to z?",
+      code: "x = 5\ny = 3\nz = x + y > 7 and x * y < 15 or x - y > 2",
+      options: ["x + y > 7 and x * y < 15","z =","x - y > 2","x * y < 15 or x - y > 2"],
+      correct: 2,
+      explanation: "The expression is (x + y > 7 and x * y < 15) or (x - y > 2). The \"and\" part is False (8 > 7 is True, but 15 < 15 is False), so Python must still evaluate x - y > 2 last, and the result of \"or\" is then assigned to z."
+    },
+    {
+      id: "py-292",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Use the dropdown-style choices to match the correct operator to the result of each calculation, using a = 10 and b = 3.",
+      code: "a = 10\nb = 3",
+      dragItems: [
+        { id: "i1", text: "-" },
+        { id: "i2", text: "+" },
+        { id: "i3", text: "%" },
+        { id: "i4", text: "*" },
+        { id: "i5", text: "//" },
+        { id: "i6", text: "/" }
+      ],
+      dropZones: [
+        { id: "z1", label: "a ? b = 13", correctItemId: "i2" },
+        { id: "z2", label: "a ? b = 7", correctItemId: "i1" },
+        { id: "z3", label: "a ? b = 3.33", correctItemId: "i6" },
+        { id: "z4", label: "a ? b = 3", correctItemId: "i5" },
+        { id: "z5", label: "a ? 3 = 1", correctItemId: "i3" }
+      ],
+      explanation: "10 + 3 = 13; 10 - 3 = 7; 10 / 3 = 3.33 (true division); 10 // 3 = 3 (floor division); 10 % 3 = 1 (remainder)."
+    },
+    {
+      id: "py-293",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a == b",
+      code: "a = 5\nb = 3\n\nc = b\nb = a",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "After the assignments a = 5 and b = 5, so a == b is True."
+    },
+    {
+      id: "py-294",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a is b",
+      code: "a = 5\nb = 3\n\nc = b\nb = a",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "Both names now refer to the same integer object 5, so \"a is b\" is True."
+    },
+    {
+      id: "py-295",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "b == 3",
+      code: "a = 5\nb = 3\n\nc = b\nb = a",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "b was reassigned to the value of a, so b is 5, not 3."
+    },
+    {
+      id: "py-296",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "c is b",
+      code: "a = 5\nb = 3\n\nc = b\nb = a",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "c still refers to 3 and b refers to 5, so they are not the same object."
+    },
+    {
+      id: "py-297",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Based on the following code, drag the parts of the expression into the order in which they are evaluated.",
+      code: "x = 7\ny = 4\nprint(x > y and x - y >= 2 or x + y == 11 and not x * y > 25)",
+      dragItems: [
+        { id: "i1", text: "not x * y > 25" },
+        { id: "i2", text: "x > y and x - y >= 2" },
+        { id: "i3", text: "x > y and x - y >= 2 or x + y == 11 and not x * y > 25" },
+        { id: "i4", text: "x + y == 11 and not x * y > 25" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i1" },
+        { id: "z2", label: "Step 2", correctItemId: "i2" },
+        { id: "z3", label: "Step 3", correctItemId: "i4" },
+        { id: "z4", label: "Step 4", correctItemId: "i3" }
+      ],
+      explanation: "By precedence: \"not\" first, then the \"and\" operations from left to right, and \"or\" last (it combines the two \"and\" results and is the whole expression)."
+    },
+    {
+      id: "py-298",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "c == 3",
+      code: "a = 5\nb = 2\nc = 3\na **= b\nb *= c\na //= b",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "c is never changed, so c == 3."
+    },
+    {
+      id: "py-299",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "b == 6",
+      code: "a = 5\nb = 2\nc = 3\na **= b\nb *= c\na //= b",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "b *= c gives b = 2 * 3 = 6."
+    },
+    {
+      id: "py-300",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a == 1",
+      code: "a = 5\nb = 2\nc = 3\na **= b\nb *= c\na //= b",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "a **= b gives 25; then a //= b gives 25 // 6 = 4, so a is 4, not 1."
+    },
+    {
+      id: "py-301",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a > b and b > c",
+      code: "a = 10\nb = 7\nc = 5",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "10 > 7 is True and 7 > 5 is True, so the result is True."
+    },
+    {
+      id: "py-302",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a >= c and not (b + c > a)",
+      code: "a = 10\nb = 7\nc = 5",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "a >= c is True, but b + c = 12 > 10 is True, so not (...) is False. True and False is False."
+    },
+    {
+      id: "py-303",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a + b * c == 85 or a - b * c == 15",
+      code: "a = 10\nb = 7\nc = 5",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "10 + 7*5 = 45 (not 85) and 10 - 7*5 = -25 (not 15), so both comparisons are False."
+    },
+    {
+      id: "py-304",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Match each expression with its proper default data type.",
+      dragItems: [
+        { id: "i1", text: "Integer" },
+        { id: "i2", text: "Float" },
+        { id: "i3", text: "Boolean" },
+        { id: "i4", text: "String" }
+      ],
+      dropZones: [
+        { id: "z1", label: "False", correctItemId: "i3" },
+        { id: "z2", label: "\"False\"", correctItemId: "i4" },
+        { id: "z3", label: "1", correctItemId: "i1" },
+        { id: "z4", label: "1.0", correctItemId: "i2" }
+      ],
+      explanation: "False is a Boolean; \"False\" (in quotes) is a string; 1 is an integer; 1.0 is a float."
+    },
+    {
+      id: "py-305",
+      chapter: "operatori-tipuri",
+      type: "single",
+      question: "You are building a quiz app. The code is missing an operator to indicate that a variable is not equal to a desired result. Choose the correct operator to finish the code.",
+      code: "a = 3\nb = 7\nresult = int(input(\"What is a + b?\"))\nif result [operator] 10:\n    print(\"You are incorrect. Try again\")\nelse:\n    print(\"You are correct.\")",
+      options: ["!=","=!","!>"],
+      correct: 0,
+      explanation: "The \"not equal\" operator in Python is !=."
+    },
+    {
+      id: "py-306",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "c = -9",
+      code: "a = 3\nb = 2\nc = -(a**b)\nd = +(c*b)",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "a**b = 9, so c = -9."
+    },
+    {
+      id: "py-307",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "b**a = 8",
+      code: "a = 3\nb = 2\nc = -(a**b)\nd = +(c*b)",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "b**a = 2**3 = 8."
+    },
+    {
+      id: "py-308",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "d = 18",
+      code: "a = 3\nb = 2\nc = -(a**b)\nd = +(c*b)",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "d = +(c*b) = +(-9 * 2) = -18, not 18."
+    },
+    {
+      id: "py-309",
+      chapter: "operatori-tipuri",
+      type: "drag_drop",
+      question: "Using drag and drop, arrange the operator groups in descending precedence (highest to lowest).",
+      dragItems: [
+        { id: "i1", text: "Assignments" },
+        { id: "i2", text: "Logical" },
+        { id: "i3", text: "Comparison / Membership / Identity" },
+        { id: "i4", text: "Arithmetic" }
+      ],
+      dropZones: [
+        { id: "z1", label: "1 (highest)", correctItemId: "i4" },
+        { id: "z2", label: "2", correctItemId: "i3" },
+        { id: "z3", label: "3", correctItemId: "i2" },
+        { id: "z4", label: "4 (lowest)", correctItemId: "i1" }
+      ],
+      explanation: "Arithmetic operators are evaluated first, then comparison/membership/identity operators, then logical operators (not, and, or). Assignment happens last."
+    },
+    {
+      id: "py-310",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "a == 115",
+      code: "a = 100\nb = 15\nc = 10\na += b\nb -= c\na %= b",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "a becomes 115 after a += b, but then a %= b gives 115 % 5 = 0, so the final value of a is 0."
+    },
+    {
+      id: "py-311",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "b == 5",
+      code: "a = 100\nb = 15\nc = 10\na += b\nb -= c\na %= b",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "b -= c gives 15 - 10 = 5."
+    },
+    {
+      id: "py-312",
+      chapter: "operatori-tipuri",
+      type: "true_false",
+      question: "c == 10",
+      code: "a = 100\nb = 15\nc = 10\na += b\nb -= c\na %= b",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "c is never changed."
+    },
+    {
+      id: "py-313",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "The messages \"Great month\" and \"Keep it going\" must be printed for month sales of over 10000. Drag the lines of code into the correct order. Not all lines will be used.",
+      dragItems: [
+        { id: "i1", text: "    print(\"Great month\")" },
+        { id: "i2", text: "if month_sales >= 10000" },
+        { id: "i3", text: "if month_sales > 10000:" },
+        { id: "i4", text: "    print(\"Keep it going\")" },
+        { id: "i5", text: "else" },
+        { id: "i6", text: "elif month_sales <= 10000" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i3" },
+        { id: "z2", label: "Step 2", correctItemId: "i1" },
+        { id: "z3", label: "Step 3", correctItemId: "i4" }
+      ],
+      explanation: "The condition must be \"> 10000\" (over 10000) and end with a colon; the two print statements are indented inside the if block. The other lines are missing the colon or use the wrong comparison."
+    },
+    {
+      id: "py-314",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "A function must return a letter grade: 90 or higher gets an A, 80 to 89 gets a B, 70 to 79 gets a C, and everyone else gets an F. Choose the correct line for each blank.",
+      code: "def grade(score):\n    if [1]\n        grade = \"A\"\n    elif [2]\n        grade = \"B\"\n    elif [3]\n        grade = \"C\"\n    else:\n        [4]\n    return grade",
+      dragItems: [
+        { id: "i1", text: "score < 70: grade = \"F\"" },
+        { id: "i2", text: "score >= 90:" },
+        { id: "i3", text: "grade = \"F\"" },
+        { id: "i4", text: "score >= 80:" },
+        { id: "i5", text: "score >= 70:" },
+        { id: "i6", text: "score > 90:" },
+        { id: "i7", text: "score <= 79:" },
+        { id: "i8", text: "score < 90:" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i5" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i3" }
+      ],
+      explanation: "Conditions are checked in order, so >= 90, >= 80 and >= 70 are enough. \">\" 90 would skip a score of exactly 90. After else:, only the statement grade = \"F\" is valid."
+    },
+    {
+      id: "py-315",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "You loop through a list of events and must stop printing when the value \"End of Day\" is found. Select the missing code.",
+      code: "schedule = [\"Opening Comments\", \"Breakfast\", \"Breakout Session 1\", \"Lunch\", \"Breakout Session 2\", \"End of Day\", \"Opening Comments\", \"Breakfast\"]\n\nscheduledEvent = 0\n\n[1] (scheduledEvent < len(schedule)):\n    print(schedule[scheduledEvent])\n    if schedule[scheduledEvent] == \"End of Day\":\n        [2]\n    else:\n        [3]",
+      dragItems: [
+        { id: "i1", text: "scheduledEvent += 1" },
+        { id: "i2", text: "if" },
+        { id: "i3", text: "for" },
+        { id: "i4", text: "while" },
+        { id: "i5", text: "scheduledEvent" },
+        { id: "i6", text: "continue" },
+        { id: "i7", text: "break" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i7" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i1" }
+      ],
+      explanation: "A while loop repeats while the index is within the list; break leaves the loop at \"End of Day\"; scheduledEvent += 1 moves to the next item."
+    },
+    {
+      id: "py-316",
+      chapter: "structuri-control",
+      type: "single",
+      question: "The code needs to print the number of minutes to walk per day, starting with 10 minutes in week 1 and 50 minutes by week 5. Select the correct line of code for the iteration.",
+      code: "[loop line]\n    print(f\"You should walk for {week * 10} minutes in {week}\")",
+      options: ["for minutes in range(1,50):","for week in range(6,1):","for week in range(1,6):","while week in range(6,1):","while week in range(1,6):"],
+      correct: 2,
+      explanation: "range(1,6) produces 1, 2, 3, 4, 5 (the end value is excluded), giving 10 to 50 minutes. range(6,1) is empty, and the while versions use week before it exists."
+    },
+    {
+      id: "py-317",
+      chapter: "structuri-control",
+      type: "single",
+      question: "Numerically, how many cities from the list will print?",
+      code: "cities = ['Anchorage','Juneau','Fairbanks','Ketchikan','Sitka','Wasilla']\nfor city in cities:\n    print(f'{city} is a famous Alaskan city.')\n    if city == 'Ketchikan':\n        break",
+      options: ["3","4","5","6"],
+      correct: 1,
+      explanation: "Anchorage, Juneau, Fairbanks and Ketchikan are printed. The print runs before the if, so Ketchikan is printed, then break stops the loop."
+    },
+    {
+      id: "py-318",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "You need activity for every day in a 30-day program, with no activity on day 15. Fill in the missing pieces.",
+      code: "[1] dailyProgram in range(1, [2]):\n    if dailyProgram == 15:\n        print(\"No activity on day 15\")\n        [3]\n    print(f\"This is day {dailyProgram}\")",
+      dragItems: [
+        { id: "i1", text: "31" },
+        { id: "i2", text: "skip" },
+        { id: "i3", text: "while" },
+        { id: "i4", text: "30" },
+        { id: "i5", text: "do" },
+        { id: "i6", text: "for" },
+        { id: "i7", text: "break" },
+        { id: "i8", text: "continue" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i6" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" }
+      ],
+      explanation: "for iterates over range(1, 31) to include day 30. continue skips the rest of the iteration for day 15 only; break would end the whole loop."
+    },
+    {
+      id: "py-319",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "A developer is iterating to print cities and states. Complete the code to generate the expected output (each city with each state, and \"Capital\" after Springfield Illinois).",
+      code: "cities = [\"Orange\", \"Springfield\", \"Auburn\"]\nstates = [\"Florida\", \"Ohio\", \"Illinois\"]\n\n[1] x in cities:\n    [2] y in states:\n        print(x, y)\n        [3] x == \"Springfield\" and y == \"Illinois\":\n            print(\"Capital\")",
+      dragItems: [
+        { id: "i1", text: "if" },
+        { id: "i2", text: "for" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i1" }
+      ],
+      explanation: "Two nested for loops produce every city/state pair, and an if statement checks for the Springfield/Illinois combination."
+    },
+    {
+      id: "py-320",
+      chapter: "structuri-control",
+      type: "drag_drop",
+      question: "You are building a sign-in sheet for a seven-day class with 10 students each day. Drag the correct statements into the correct order. Not all statements will be used.",
+      dragItems: [
+        { id: "i1", text: "        print(f\"Student{student} _____________\")" },
+        { id: "i2", text: "    print(f\"Day: {classDay}\")" },
+        { id: "i3", text: "    for student in range(1,11):" },
+        { id: "i4", text: "for classDay in range(1,8):" },
+        { id: "i5", text: "    for student in range(1,10):" },
+        { id: "i6", text: "for classDay in range(1,7):" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i4" },
+        { id: "z2", label: "Step 2", correctItemId: "i2" },
+        { id: "z3", label: "Step 3", correctItemId: "i3" },
+        { id: "z4", label: "Step 4", correctItemId: "i1" }
+      ],
+      explanation: "range(1,8) gives 7 days and range(1,11) gives 10 students (the end value is excluded). The day is printed once, then the inner loop prints every student."
+    },
+    {
+      id: "py-321",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "A developer needs to build a data structure with animals and then sort the structure. Drag the lines of code into the correct order to produce this output: Bears, Jaguars, Lions, Panthers (one per line).",
+      dragItems: [
+        { id: "i1", text: "animals.sort()" },
+        { id: "i2", text: "    print(animal)" },
+        { id: "i3", text: "animals.append(\"Jaguars\")" },
+        { id: "i4", text: "    print (animal)}" },
+        { id: "i5", text: "animals.add(\"Jaguars\")" },
+        { id: "i6", text: "for animal in animals:" },
+        { id: "i7", text: "for animal in animals {" },
+        { id: "i8", text: "animals = [\"Bears\", \"Panthers\", \"Lions\"]" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i8" },
+        { id: "z2", label: "Step 2", correctItemId: "i3" },
+        { id: "z3", label: "Step 3", correctItemId: "i1" },
+        { id: "z4", label: "Step 4", correctItemId: "i6" },
+        { id: "z5", label: "Step 5", correctItemId: "i2" }
+      ],
+      explanation: "Create the list, add \"Jaguars\" with append() (lists have no add() method), sort it alphabetically, then loop and print. Braces { } are not valid Python loop syntax."
+    },
+    {
+      id: "py-322",
+      chapter: "structuri-date",
+      type: "multiple",
+      question: "The code is attempting to loop through and print a tuple of products by serial number, but it generates errors. Which fixes are needed? (Choose 2.)",
+      code: "products = (\"1111\",\"2222\",\"3333\",\"4444\",\"5555\",\"6666\",\"7777\",\"8888\",\"9999\")\n\nfor product in products:\n\nprint(products[product])",
+      options: ["Indent the for statement.","Remove the colon from the for statement.","Indent the print statement.","Change the print statement to print(product)."],
+      correct: [2,3],
+      explanation: "The print statement must be indented inside the loop, and product already holds each serial number (products[product] would use a string as an index, which fails)."
+    },
+    {
+      id: "py-323",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "You are writing code to list cities and then delete from the list any city that has more than five letters in the name. Fill in the missing code.",
+      code: "cities = ['Anchorage','Juneau','Fairbanks','Ketchikan','Sitka','Wasilla']\nfor city in cities:\n    if [1](city) > 5:\n        cities.[2](city)",
+      dragItems: [
+        { id: "i1", text: "len" },
+        { id: "i2", text: "remove" },
+        { id: "i3", text: "length" },
+        { id: "i4", text: "delete" },
+        { id: "i5", text: "append" },
+        { id: "i6", text: "slice" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i1" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" }
+      ],
+      explanation: "len() returns the length of a string and list.remove(value) deletes an item by value."
+    },
+    {
+      id: "py-324",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "Two softball divisions are merging into one. The completed list should be ['Angels', 'Dodgers', 'Padres', 'Sox', 'Wheelers']. Complete the code.",
+      code: "league1 = ['Angels','Dodgers','Padres']\nleague2 = ['Wheelers','Blasters']\n\nleague0 = league1 [1] league2\nleague0.[2]([3], 'Sox')\nleague0.[4]('Blasters')\nprint(league0)",
+      dragItems: [
+        { id: "i1", text: "insert" },
+        { id: "i2", text: "pop" },
+        { id: "i3", text: "&" },
+        { id: "i4", text: "+" },
+        { id: "i5", text: "remove" },
+        { id: "i6", text: "2" },
+        { id: "i7", text: "add" },
+        { id: "i8", text: "3" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i5" }
+      ],
+      explanation: "Lists are joined with +. insert(3, 'Sox') puts Sox after Padres (index 3), and remove('Blasters') deletes it by value. pop() expects an index, not a value."
+    },
+    {
+      id: "py-325",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "You have daily attendance figures and want the highest and lowest counts. Fill in the missing code.",
+      code: "attendance = [300,250,200,400,150,225,325]\n\nprint([1](attendance))\nprint([2](attendance))",
+      dragItems: [
+        { id: "i1", text: "minimum" },
+        { id: "i2", text: "min" },
+        { id: "i3", text: "max" },
+        { id: "i4", text: "most" },
+        { id: "i5", text: "maximum" },
+        { id: "i6", text: "least" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" }
+      ],
+      explanation: "max() returns the largest value and min() returns the smallest."
+    },
+    {
+      id: "py-326",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "A tester wants to select every fifth item in the products tuple for testing, starting with the second item. The result must be in the print statement. Fill in the missing code.",
+      code: "products = ('1111','2222','3333','4444','5555','6666','7777','8888','9999')\n\n[1]\nprint([2])",
+      dragItems: [
+        { id: "i1", text: "tester = products.slice(1,8,5)" },
+        { id: "i2", text: "products[tester]" },
+        { id: "i3", text: "tester = slice(2,9,5)" },
+        { id: "i4", text: "products(tester)" },
+        { id: "i5", text: "for tester in products:" },
+        { id: "i6", text: "tester = slice(1,8,5)" },
+        { id: "i7", text: "append" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i6" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" }
+      ],
+      explanation: "slice(start, stop, step) is a built-in function; the second item has index 1, so slice(1,8,5) selects '2222' and '7777'. The slice object is applied with products[tester]."
+    },
+    {
+      id: "py-327",
+      chapter: "structuri-date",
+      type: "drag_drop",
+      question: "Match each code example with its characteristic.",
+      dragItems: [
+        { id: "i1", text: "background_colors = ['yellow','slate','lightblue']" },
+        { id: "i2", text: "offices = {'location': 'East', 'size': '4500'}" },
+        { id: "i3", text: "locations = {'HQ','West','Remote1'}" },
+        { id: "i4", text: "departments = ('Sales','Marketing','Operations','IT')" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Values are editable.", correctItemId: "i1" },
+        { id: "z2", label: "Values can be added or removed, but not edited.", correctItemId: "i3" },
+        { id: "z3", label: "An immutable list.", correctItemId: "i4" },
+        { id: "z4", label: "Represents a dictionary.", correctItemId: "i2" }
+      ],
+      explanation: "A list is mutable (editable); a set can have items added or removed but its items cannot be edited in place; a tuple is an immutable sequence; key: value pairs in braces form a dictionary."
+    },
+    {
+      id: "py-328",
+      chapter: "input-output",
+      type: "single",
+      question: "Select the symbol needed for the print statement to output the sales representative on a single line.",
+      code: "import string\n\nannualSales = 500000\n\nif annualSales >= 700000:\n    print(\"Great year\")\nelif annualSales >= 300000:\n    print(\"Decent year\")\nelse:\n    print(\"Better luck next year\")\nprint(\"Thank you for your efforts\")\n\nprint(f\"Your sales representative is Nicole, you are in the East region, \" [symbol]\n      \"and you are based in the Potomac office.\")",
+      options: ["\\","\\n","\\t","/"],
+      correct: 0,
+      explanation: "A backslash at the end of a line is the line-continuation character: the statement continues on the next line and the output stays on a single line. \\n would start a new line and \\t inserts a tab."
+    },
+    {
+      id: "py-329",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "A junior programmer wants the user to input North, South, East, or West and display the entry. The user must try again if the entry does not match one of the options. Drag the code lines into the correct order. Location should be the first variable declared.",
+      dragItems: [
+        { id: "i1", text: "    response = input(\"Enter North, South, West, or East for a location.\")" },
+        { id: "i2", text: "while response not in location:" },
+        { id: "i3", text: "print(response)" },
+        { id: "i4", text: "response = input(\"Enter North, South, West, or East for a location.\")" },
+        { id: "i5", text: "location = [\"North\", \"South\", \"West\", \"East\"]" },
+        { id: "i6", text: "    print(\"Try again.\")" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i5" },
+        { id: "z2", label: "Step 2", correctItemId: "i4" },
+        { id: "z3", label: "Step 3", correctItemId: "i2" },
+        { id: "z4", label: "Step 4", correctItemId: "i6" },
+        { id: "z5", label: "Step 5", correctItemId: "i1" },
+        { id: "z6", label: "Step 6", correctItemId: "i3" }
+      ],
+      explanation: "The first input is read before the loop; inside the while loop the program prints \"Try again.\" and asks again until the response is in the list; finally the valid response is printed."
+    },
+    {
+      id: "py-330",
+      chapter: "input-output",
+      type: "single",
+      question: "Add the symbol needed so the number of items is printed instead of {items}.",
+      code: "price = 9.95\nitems = 15\nprint([symbol]\"We have {items} items in stock.\")",
+      options: ["f","format","%","\\"],
+      correct: 0,
+      explanation: "An f prefix turns the string into an f-string, so {items} is replaced by its value: print(f\"We have {items} items in stock.\")."
+    },
+    {
+      id: "py-331",
+      chapter: "input-output",
+      type: "multiple",
+      question: "Which statements about the code, which writes a message to an existing log file at the start of each day, are true? (Choose 2.)",
+      code: "with open('log.txt', 'w') as file:\n    file.write('Daily Log')\n    file.close()",
+      options: ["A file.open() statement needs to be added at the beginning of the with statement.","The log file is overwritten each time it is opened.","The close function is not needed.","The text in the write function adds itself to the end of the log file."],
+      correct: [1,2],
+      explanation: "Mode 'w' overwrites the file every time. The with statement closes the file automatically, so file.close() is not needed. Appending would require mode 'a'."
+    },
+    {
+      id: "py-332",
+      chapter: "input-output",
+      type: "multiple",
+      question: "A developer wants to print the first line of a configuration file. Which code snippets are needed to replace the comments and finish this code example? (Choose 2.)",
+      code: "# import module\nif os.path.isfile('config.txt'):\n    with open('config.txt', 'r') as file:\n        print(file. # read the first line)",
+      options: ["import io","read()","import os.path","readline()"],
+      correct: [2,3],
+      explanation: "os.path.isfile requires the os module (import os.path), and readline() reads only the first line (read() would read the whole file)."
+    },
+    {
+      id: "py-333",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Use the code to calculate the area of a rectangle from a width and a height input by the user. The values must be integers, and the area must be right-aligned in a field no more than six characters long. Complete the code.",
+      code: "width = [1]([2](\"Enter a width: \"))\nheight = [3]([4](\"Enter a height: \"))\narea = \"We have [5] square feet for the area.\"\nprint([6])",
+      dragItems: [
+        { id: "i1", text: "{:>6}" },
+        { id: "i2", text: "{ralign(6)}" },
+        { id: "i3", text: "{align.right(6)}" },
+        { id: "i4", text: "rightalign(area)" },
+        { id: "i5", text: "area.format(width * height)" },
+        { id: "i6", text: "input" },
+        { id: "i7", text: "int" },
+        { id: "i8", text: "float" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i7" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i6" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i7" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i6" },
+        { id: "z5", label: "Blank [5]", correctItemId: "i1" },
+        { id: "z6", label: "Blank [6]", correctItemId: "i5" }
+      ],
+      explanation: "int(input(...)) reads whole numbers. {:>6} right-aligns a value in a field of width 6, and area.format(width * height) inserts the calculated area into the placeholder."
+    },
+    {
+      id: "py-334",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "You are writing to a text file called results that does not exist before the write. Complete the code, making sure the file does not keep using memory after the write is complete.",
+      code: "writeFile = [1]('results.txt', '[2]')\ntoResults = input(\"What do you want to write to the results? \")\nwriteFile.[3](toResults)\nwriteFile.[4]",
+      dragItems: [
+        { id: "i1", text: "drop()" },
+        { id: "i2", text: "writeln" },
+        { id: "i3", text: "close()" },
+        { id: "i4", text: "write" },
+        { id: "i5", text: "a" },
+        { id: "i6", text: "w" },
+        { id: "i7", text: "r" },
+        { id: "i8", text: "fetch" },
+        { id: "i9", text: "open" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i9" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i6" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i4" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i3" }
+      ],
+      explanation: "open() with mode 'w' creates the file, write() writes the text, and close() releases the file."
+    },
+    {
+      id: "py-335",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "You are writing code to delete a file if it exists, or just display a message if there is no file to remove. Select the proper code pieces.",
+      code: "import [1]\n\nif os.path.[2]('results.txt'):\n    os.[3]('results.txt')\n    print(\"The results file has been removed.\")\nelse:\n    print(\"There was no results file to remove.\")",
+      dragItems: [
+        { id: "i1", text: "isfile" },
+        { id: "i2", text: "os.file" },
+        { id: "i3", text: "file_exists" },
+        { id: "i4", text: "sys" },
+        { id: "i5", text: "delete" },
+        { id: "i6", text: "present" },
+        { id: "i7", text: "close" },
+        { id: "i8", text: "remove" },
+        { id: "i9", text: "os" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i9" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" }
+      ],
+      explanation: "The os module provides os.path.isfile() to test for a file and os.remove() to delete it."
+    },
+    {
+      id: "py-336",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "An app reads a configuration file named config.txt and possibly adds to it if the file is present. If the file does not exist, it must be opened for writing. Fill in the code.",
+      code: "import [1]\n\nif [2]('config.txt'):\n    writeFile = open('config.txt', '[3]')\nelse:\n    writeFile = open('config.txt', '[4]')",
+      dragItems: [
+        { id: "i1", text: "io" },
+        { id: "i2", text: "os" },
+        { id: "i3", text: "r" },
+        { id: "i4", text: "os.isfile" },
+        { id: "i5", text: "w+" },
+        { id: "i6", text: "os.path" },
+        { id: "i7", text: "w" },
+        { id: "i8", text: "os.path.isfile" },
+        { id: "i9", text: "a" },
+        { id: "i10", text: "r+" },
+        { id: "i11", text: "sys" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i8" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i10" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i7" }
+      ],
+      explanation: "import os gives access to os.path.isfile(). 'r+' opens an existing file for reading and writing; 'w' opens a (new) file for writing."
+    },
+    {
+      id: "py-337",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Select the code to read the text file if it already exists. If it does not exist, print a message indicating so.",
+      code: "import os.path\n\nif os.path.[1]('work.txt') == True:\n    workFile = open('work.txt', 'r')\n    workFileFirstLine = [2]\nelse:\n    print(\"The work file is not in this folder.\")",
+      dragItems: [
+        { id: "i1", text: "file_exists" },
+        { id: "i2", text: "workFile.readfirstline()" },
+        { id: "i3", text: "exists" },
+        { id: "i4", text: "file" },
+        { id: "i5", text: "workFile.readfirst()" },
+        { id: "i6", text: "workFile.seek()" },
+        { id: "i7", text: "workFile.read()" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i7" }
+      ],
+      explanation: "os.path.exists() tests for the path; read() is the file method that reads the contents (readfirstline() and readfirst() do not exist, and seek() only moves the cursor)."
+    },
+    {
+      id: "py-338",
+      chapter: "input-output",
+      type: "single",
+      question: "The code calculates the total cost for renting storage space for a day. The cost is not printed as a dollar amount because the number of decimal places varies. Which print statement produces the total cost with two decimals using the modulo operator?",
+      code: "length = 12.5\nprice = 2.99\ncost = length * price\nprint(\"Your total cost is\", cost)",
+      options: ["print(\"Your total cost is \", round(cost))","print(\"Your total cost is {:0.2f}\" % (cost))","print(\"Your total cost is %.2f\" % (cost))","print(\"Your total cost is \", math.floor(cost))"],
+      correct: 2,
+      explanation: "The % operator formats a string: %.2f shows two decimals. {:0.2f} belongs to str.format(), not to %, and round()/floor() do not give two decimals."
+    },
+    {
+      id: "py-339",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "Drag the lines of code in the correct order to: store the actual value of pi in a variable called pi; let the user enter a radius (decimals allowed); store the circle's area in a variable called area; and print the area formatted to two decimal places. Not every line will be used.",
+      dragItems: [
+        { id: "i1", text: "use math" },
+        { id: "i2", text: "area = pi * radius ^ 2" },
+        { id: "i3", text: "print(f\"A circle with a radius of {radius} will have an area of %.2d.\" %area)" },
+        { id: "i4", text: "print(f\"A circle with a radius of {radius} will have an area of %.2f.\" %area)" },
+        { id: "i5", text: "radius = float(input(\"Enter a radius for a circle.\"))" },
+        { id: "i6", text: "area = pi * radius ** 2" },
+        { id: "i7", text: "import math" },
+        { id: "i8", text: "pi = math.pi" },
+        { id: "i9", text: "radius = int(input(\"Enter a radius for a circle.\"))" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Step 1", correctItemId: "i7" },
+        { id: "z2", label: "Step 2", correctItemId: "i8" },
+        { id: "z3", label: "Step 3", correctItemId: "i5" },
+        { id: "z4", label: "Step 4", correctItemId: "i6" },
+        { id: "z5", label: "Step 5", correctItemId: "i4" }
+      ],
+      explanation: "import math gives math.pi; float() allows decimal radii; ** is exponentiation (^ is bitwise XOR); %.2f formats two decimals (%.2d is not valid for floats)."
+    },
+    {
+      id: "py-340",
+      chapter: "input-output",
+      type: "drag_drop",
+      question: "A new developer is learning to display dates in multiple formats. Complete the code to produce the display shown below, leaving open the possibility of time being displayed in the future.\n\nExpected output:\n2023-01-01 03:19:43.412476\nThe current date is 01/01/2023\nThe current weekday is: 6",
+      code: "[1]\ncurrent_date = [2]\n\nprint(current_date)\nprint(\"The current date is\", datetime.datetime.strftime(current_date, \"[3]\"))\n\nprint(\"The current weekday is\", current_date.[4])",
+      dragItems: [
+        { id: "i1", text: "%MM%DD%YYYY" },
+        { id: "i2", text: "weekday" },
+        { id: "i3", text: "import calendar" },
+        { id: "i4", text: "weekday()" },
+        { id: "i5", text: "datetime.datetime.day()" },
+        { id: "i6", text: "import timeSetting" },
+        { id: "i7", text: "datetime.datetime.today()" },
+        { id: "i8", text: "%m/%d/%Y" },
+        { id: "i9", text: "import datetime" },
+        { id: "i10", text: "day()" },
+        { id: "i11", text: "%mm%dd%yyyy" },
+        { id: "i12", text: "datetime.datetime.currentdate()" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i9" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i7" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i4" }
+      ],
+      explanation: "datetime.datetime.today() returns the current date and time. %m/%d/%Y formats as 01/01/2023, and weekday() is a method returning 0 (Monday) to 6 (Sunday)."
+    },
+    {
+      id: "py-341",
+      chapter: "functii",
+      type: "single",
+      question: "The code is used to calculate a subtotal for an order. What is the value of order1?",
+      code: "def calcTotal(taxable, amount, salesTax, shipping):\n    if taxable == \"Yes\":\n        subtotal = amount + (1 * salesTax) + shipping\n    elif shipping == 0:\n        pass\n    else:\n        subtotal = amount + shipping\n    return subtotal\n\norder1 = calcTotal(\"No\", 500, .07, 0)\nprint(\"Your order total is \", order1)",
+      options: ["500.07","An error is raised","535","500"],
+      correct: 1,
+      explanation: "taxable is \"No\" and shipping is 0, so the elif branch runs pass and subtotal is never assigned. return subtotal then raises UnboundLocalError."
+    },
+    {
+      id: "py-342",
+      chapter: "functii",
+      type: "true_false",
+      question: "score1 = 3300",
+      code: "def score_adj(score, rank):\n    new_score = score\n    if score > 3000 and rank > 3:\n        new_score += 300\n    elif score > 2500 and rank > 2:\n        new_score += 250\n    else:\n        new_score += 50\n    return new_score\n\nscore1 = score_adj(3000, 3)\nscore2 = score_adj(2000, 2)\nscore3 = score_adj(5000, 5)\n\nprint(score1, score2, score3)",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "For (3000, 3): score > 3000 is False, so the elif applies (3000 > 2500 and 3 > 2): 3000 + 250 = 3250."
+    },
+    {
+      id: "py-343",
+      chapter: "functii",
+      type: "true_false",
+      question: "score3 = 5300",
+      code: "def score_adj(score, rank):\n    new_score = score\n    if score > 3000 and rank > 3:\n        new_score += 300\n    elif score > 2500 and rank > 2:\n        new_score += 250\n    else:\n        new_score += 50\n    return new_score\n\nscore1 = score_adj(3000, 3)\nscore2 = score_adj(2000, 2)\nscore3 = score_adj(5000, 5)\n\nprint(score1, score2, score3)",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "For (5000, 5): 5000 > 3000 and 5 > 3, so 5000 + 300 = 5300."
+    },
+    {
+      id: "py-344",
+      chapter: "functii",
+      type: "true_false",
+      question: "score2 = 2250",
+      code: "def score_adj(score, rank):\n    new_score = score\n    if score > 3000 and rank > 3:\n        new_score += 300\n    elif score > 2500 and rank > 2:\n        new_score += 250\n    else:\n        new_score += 50\n    return new_score\n\nscore1 = score_adj(3000, 3)\nscore2 = score_adj(2000, 2)\nscore3 = score_adj(5000, 5)\n\nprint(score1, score2, score3)",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "For (2000, 2) neither condition is true, so the else branch adds 50: 2050."
+    },
+    {
+      id: "py-345",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "A game developer is testing random generators. result1 must be a random country from the list, result2 must display the list in a random order, and result3 must display two random countries. Complete the code.",
+      code: "[1]\ncountries = ['USA','Canada','Mexico','Japan','Spain','Kenya']\nresult1 = random.[2]\nresult2 = random.[3]\nresult3 = random.[4]",
+      dragItems: [
+        { id: "i1", text: "sample(countries,2)" },
+        { id: "i2", text: "choice(countries)" },
+        { id: "i3", text: "shuffle(countries)" },
+        { id: "i4", text: "import random" },
+        { id: "i5", text: "import shuffle" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i3" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i1" }
+      ],
+      explanation: "choice() picks one item, shuffle() reorders the list, and sample(list, 2) returns two distinct items. All functions belong to the random module."
+    },
+    {
+      id: "py-346",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "A user gets five chances to guess a whole number from 1 to 10. If the guess is correct, a congratulatory message is shown and the game ends. Complete the code.",
+      code: "[1]\n\nfor i in range(5):\n    guess = int(input(\"Enter a number from 1 to 10. \"))\n    randNum = [2]\n    if guess == randNum:\n        print(\"We matched!\")\n        break\n    else:\n        print(\"We did not match. Try again\")",
+      dragItems: [
+        { id: "i1", text: "randint(1,10)" },
+        { id: "i2", text: "from random import randint" },
+        { id: "i3", text: "from random import random" },
+        { id: "i4", text: "randint(1,11)" },
+        { id: "i5", text: "from random import randrange" },
+        { id: "i6", text: "randrange(1,10)" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i1" }
+      ],
+      explanation: "randint(1, 10) includes both 1 and 10, and it must be imported from random. randint(1, 11) could return 11, and randrange(1, 10) never returns 10."
+    },
+    {
+      id: "py-347",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "A new developer needs to know which built-in module provides each of these methods. Match each method with its module.",
+      dragItems: [
+        { id: "i1", text: "os" },
+        { id: "i2", text: "sys" },
+        { id: "i3", text: "io" },
+        { id: "i4", text: "math" }
+      ],
+      dropZones: [
+        { id: "z1", label: "open()", correctItemId: "i3" },
+        { id: "z2", label: "ceil()", correctItemId: "i4" },
+        { id: "z3", label: "mkdir()", correctItemId: "i1" },
+        { id: "z4", label: "exit()", correctItemId: "i2" }
+      ],
+      explanation: "io opens files, math provides ceil(), os creates directories (os.mkdir) and sys provides sys.exit()."
+    },
+    {
+      id: "py-348",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "You are demonstrating advanced math calculations: c = 3 raised to the second power, d = the square root of a, e = the whole number of the square root of b. Fill in the missing pieces of the code. Not every piece will be used.",
+      code: "import [1]\n\na = 3\nb = 2\nc = math.[2]([3])\nd = math.[4]\ne = math.[5]",
+      dragItems: [
+        { id: "i1", text: "isqrt(a)" },
+        { id: "i2", text: "sqrt(a)" },
+        { id: "i3", text: "math" },
+        { id: "i4", text: "isqrt(b)" },
+        { id: "i5", text: "sq(a)" },
+        { id: "i6", text: "pow" },
+        { id: "i7", text: "isq(a)" },
+        { id: "i8", text: "isq(b)" },
+        { id: "i9", text: "1, 3" },
+        { id: "i10", text: "**" },
+        { id: "i11", text: "sq(b)" },
+        { id: "i12", text: "a, b" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i6" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i12" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i2" },
+        { id: "z5", label: "Blank [5]", correctItemId: "i4" }
+      ],
+      explanation: "math.pow(a, b) raises a to the power b; math.sqrt(a) is the square root; math.isqrt(b) returns the integer part of the square root of b (isqrt(2) = 1)."
+    },
+    {
+      id: "py-349",
+      chapter: "module-librarii",
+      type: "drag_drop",
+      question: "You are generating 10 sets of random numbers. One random number is between 3 and 99 and is a multiple of 3; the other is between 0 and 1. Drag the snippets needed to complete the code.",
+      code: "import random\n\nfor i in range(10):\n    print(random.[1])\n    print(random.[2])",
+      dragItems: [
+        { id: "i1", text: "randrange(3,102,3)" },
+        { id: "i2", text: "randrange(3,99,3)" },
+        { id: "i3", text: "randint()" },
+        { id: "i4", text: "random()" },
+        { id: "i5", text: "randint(3,102,3)" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i1" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" }
+      ],
+      explanation: "randrange(3,102,3) can return 3, 6, ..., 99 (the stop value is excluded). random() returns a float from 0.0 up to (not including) 1.0."
+    },
+    {
+      id: "py-350",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "d will return 33.0.",
+      code: "from math import isnan\n\na = float(\"nan\")\nb = float(33)\nc = isnan(a)\nd = isnan(b)",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "isnan() returns a Boolean, so d is False; b itself is 33.0."
+    },
+    {
+      id: "py-351",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "The code will fail due to a runtime error.",
+      code: "from math import isnan\n\na = float(\"nan\")\nb = float(33)\nc = isnan(a)\nd = isnan(b)",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "float(\"nan\") is valid and isnan() accepts it, so the code runs without errors (it fails only if isnan has not been imported)."
+    },
+    {
+      id: "py-352",
+      chapter: "module-librarii",
+      type: "true_false",
+      question: "c will return True.",
+      code: "from math import isnan\n\na = float(\"nan\")\nb = float(33)\nc = isnan(a)\nd = isnan(b)",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "a is NaN, so isnan(a) is True."
+    },
+    {
+      id: "py-353",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "A developer is building a unit test and needs the built-in module class, a check for running as the main module, and a check that two values are equal. Select the code needed to finish the unit test.",
+      code: "import unittest\na = 3\nb = 6\n\nclass Test_Example_UnitTest(unittest.[1]):\n    def test_equal(self):\n        self.[2](2 + 8, a + b)\n\nif [3] == '__main__':\n    unittest.main()",
+      dragItems: [
+        { id: "i1", text: "assertIn" },
+        { id: "i2", text: "assertEqual" },
+        { id: "i3", text: "TestCase" },
+        { id: "i4", text: "name" },
+        { id: "i5", text: "__name__" },
+        { id: "i6", text: "assertTrue" },
+        { id: "i7", text: "TestAssert" },
+        { id: "i8", text: "_name" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i3" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i5" }
+      ],
+      explanation: "Test classes inherit from unittest.TestCase, assertEqual(first, second) compares two values, and __name__ == '__main__' checks that the file is run directly."
+    },
+    {
+      id: "py-354",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "Which statement tests whether a and b share the same memory space?",
+      code: "def test_memory(self):\n    a = 3\n    b = a\n    # insert assert test here",
+      options: ["self.assertIs(a, b)","self.assertEqual(a, b)","self.assertIn(a, b)","self.assertTrue(a, b)"],
+      correct: 0,
+      explanation: "assertIs(a, b) checks that a and b are the same object (a is b). assertEqual only compares values."
+    },
+    {
+      id: "py-355",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "The code divides two numbers. You want to handle errors gracefully and make sure the last print statement always prints, even if there is an error. Fill in the missing keywords.",
+      code: "[1]\n    x = float(input(\"Enter a number. \"))\n    y = float(input(\"Enter a number to divide by. \"))\n    print(f\"The answer is {x/y}.\")\n[2]\n    print(\"Uh oh. Did you enter something besides a number? Did you try to divide by zero?\")\n[3]\n    print(\"You successfully played the division game.\")\n[4]\n    print(\"Thank you for playing.\")",
+      dragItems: [
+        { id: "i1", text: "try:" },
+        { id: "i2", text: "else:" },
+        { id: "i3", text: "finally:" },
+        { id: "i4", text: "except:" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i1" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i2" },
+        { id: "z4", label: "Blank [4]", correctItemId: "i3" }
+      ],
+      explanation: "try holds the risky code, except handles errors, else runs only if no error occurred, and finally always runs."
+    },
+    {
+      id: "py-356",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "Select the keyword that throws an exception the calling code can catch, and the keyword for a block that runs no matter the outcome of the try portion.",
+      code: "x = float(input(\"Enter a number. \"))\ny = float(input(\"Enter a number to divide by. \"))\n\ntry:\n    print(f\"The answer is {x/y}.\")\nexcept:\n    if y == 0:\n        [1] Exception(\"You cannot divide by zero\")\n[2]:\n    print(\"Thank you for playing.\")",
+      dragItems: [
+        { id: "i1", text: "result" },
+        { id: "i2", text: "throw" },
+        { id: "i3", text: "else" },
+        { id: "i4", text: "finally" },
+        { id: "i5", text: "raise" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i5" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" }
+      ],
+      explanation: "Python raises exceptions with raise (throw does not exist), and finally always executes."
+    },
+    {
+      id: "py-357",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "You are dividing two numbers. The result must display as long as there are no errors; if there are errors, a message must say the user divided by zero or used an invalid number. Fill in the missing keywords.",
+      code: "a = float(input(\"Enter a number. \"))\nb = float(input(\"Enter a number to divide by. \"))\n\n[1]:\n    print(f\"The answer is {a/b}.\")\n[2]:\n    print(\"This did not work. Did you try to divide by zero?\")",
+      dragItems: [
+        { id: "i1", text: "finally" },
+        { id: "i2", text: "catch" },
+        { id: "i3", text: "else" },
+        { id: "i4", text: "except" },
+        { id: "i5", text: "try" },
+        { id: "i6", text: "attempt" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i5" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i4" }
+      ],
+      explanation: "Python uses try/except. attempt and catch do not exist in Python."
+    },
+    {
+      id: "py-358",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "The finally statement will run regardless of which pieces of code above it run.",
+      code: "a = float(input(\"Enter a number. \"))\nb = float(input(\"Enter a number to divide by. \"))\n\ntry:\n    print(f\"The answer is {a/b}.\")\nexcept:\n    print(\"This did not work. Did you try to divide by zero?\")\nelse:\n    print(\"You successfully divided two numbers.\")\nfinally:\n    print(\"Thank you for playing.\")",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "finally always executes, whether or not an exception occurred."
+    },
+    {
+      id: "py-359",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "Both the try and except parts will run if a = 0 and b != 0.",
+      code: "a = float(input(\"Enter a number. \"))\nb = float(input(\"Enter a number to divide by. \"))\n\ntry:\n    print(f\"The answer is {a/b}.\")\nexcept:\n    print(\"This did not work. Did you try to divide by zero?\")\nelse:\n    print(\"You successfully divided two numbers.\")\nfinally:\n    print(\"Thank you for playing.\")",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "0 / b (b != 0) is valid, so no exception occurs and the except block does not run."
+    },
+    {
+      id: "py-360",
+      chapter: "gestionare-erori",
+      type: "true_false",
+      question: "The else part will run if a = 0 and b != 0.",
+      code: "a = float(input(\"Enter a number. \"))\nb = float(input(\"Enter a number to divide by. \"))\n\ntry:\n    print(f\"The answer is {a/b}.\")\nexcept:\n    print(\"This did not work. Did you try to divide by zero?\")\nelse:\n    print(\"You successfully divided two numbers.\")\nfinally:\n    print(\"Thank you for playing.\")",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "No exception occurs (0 divided by a nonzero number is 0.0), so the else block runs."
+    },
+    {
+      id: "py-361",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "A junior programmer writes the following code to store a list and then retrieve an item from the list. What type of error message (if this code generates an error) will it produce?",
+      code: "trees = ['Douglas fir', 'Oak', 'Balsam fir']\nlast_tree = trees[3]\nprint(f'The last tree is {last_tree}.')",
+      options: ["A runtime error.","A logic error.","No error will be generated.","A syntax error."],
+      correct: 0,
+      explanation: "The syntax is valid, but index 3 does not exist (valid indexes are 0 to 2), so an IndexError is raised at runtime."
+    },
+    {
+      id: "py-362",
+      chapter: "gestionare-erori",
+      type: "drag_drop",
+      question: "You are setting up several assert tests for an app. Place the applicable assert test for each unit test. test1 checks whether a calculation is true or false, test2 checks whether an item is within a list of items, and test3 checks whether an object belongs to a class.",
+      code: "def test1(self):\n    self.[1](5 + 3 * 4 == 17)\n\ndef test2(self):\n    a = 'clock'\n    b = ['clock', 'watch', 'phone']\n    self.[2](a, b)\n\ndef test3(self):\n    game = Game()\n    self.[3](game, Game)",
+      dragItems: [
+        { id: "i1", text: "assertInstance" },
+        { id: "i2", text: "assertEqual" },
+        { id: "i3", text: "assertIsInstance" },
+        { id: "i4", text: "assertTrue" },
+        { id: "i5", text: "assertInInstance" },
+        { id: "i6", text: "assertIn" },
+        { id: "i7", text: "assertIs" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i4" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i6" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i3" }
+      ],
+      explanation: "assertTrue checks a condition, assertIn(item, container) checks membership, and assertIsInstance(obj, Class) checks the type. assertInInstance and assertInstance do not exist."
+    },
+    {
+      id: "py-363",
+      chapter: "gestionare-erori",
+      type: "multiple",
+      question: "A junior programmer enters the following code. When trying to run it, errors are generated. Which two fixes are necessary for it to work? (Choose 2.)",
+      code: "height = 5\nwidth = 5\nif height == width\nprint(\"You have a square\")",
+      options: ["The if condition needs to be in parentheses.","The print statement needs to be indented.","A colon needs to be added at the end of the if condition.","The if condition needs to have a single equals sign, not a double equals sign."],
+      correct: [1,2],
+      explanation: "An if statement needs a colon at the end of the condition, and its body must be indented. == is the correct comparison operator."
+    },
+    {
+      id: "py-364",
+      chapter: "gestionare-erori",
+      type: "single",
+      question: "The code is causing an app user to complain that the total loan amount is far lower than anticipated. Choose the line of code that needs to be adjusted to calculate the loan total based on the interest rate being applied to the car loan and the license fee.",
+      code: "carLoan = 20000\nintRate = 1.05\nlicenseFee = 500\ntotalLoan = carLoan + licenseFee * intRate",
+      options: ["totalLoan = carloan - licenseFee * intRate","totalLoan = carLoan + (licenseFee * intRate)","totalLoan = (carLoan + licenseFee) * intRate","totalLoan = carLoan + licenseFee / intRate"],
+      correct: 2,
+      explanation: "Multiplication happens before addition, so the interest rate only applied to the license fee (a logic error). Parentheses make it apply to both amounts: (carLoan + licenseFee) * intRate."
+    },
+    {
+      id: "py-365",
+      chapter: "structura-cod",
+      type: "drag_drop",
+      question: "A developer wants documentation for a function to display when called in a print statement. Fill in the code necessary to generate the documentation.",
+      code: "def area(width, height):\n    [1]Generates the area of a rectangle[2]\n    totalArea = width * height\n    return totalArea\n\nprint([3])",
+      dragItems: [
+        { id: "i1", text: "area.doc" },
+        { id: "i2", text: "'''" },
+        { id: "i3", text: "area(__doc__)" },
+        { id: "i4", text: "///" },
+        { id: "i5", text: "//" },
+        { id: "i6", text: "###" },
+        { id: "i7", text: "#" },
+        { id: "i8", text: "area.__doc__" }
+      ],
+      dropZones: [
+        { id: "z1", label: "Blank [1]", correctItemId: "i2" },
+        { id: "z2", label: "Blank [2]", correctItemId: "i2" },
+        { id: "z3", label: "Blank [3]", correctItemId: "i8" }
+      ],
+      explanation: "A docstring is written between triple quotes as the first statement of the function, and it can be displayed with area.__doc__."
+    },
+    {
+      id: "py-366",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "The proper syntax for pydoc is: python -m pydoc module, where module represents the name of a Python module.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "pydoc is run as a module: python -m pydoc <module>."
+    },
+    {
+      id: "py-367",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "Pydoc is a self-contained executable that can be run from a command-line prompt.",
+      options: ["Adevărat","Fals"],
+      correct: 1,
+      explanation: "pydoc is a Python module (run with python -m pydoc), not a standalone executable program."
+    },
+    {
+      id: "py-368",
+      chapter: "structura-cod",
+      type: "true_false",
+      question: "Pydoc generates documentation on Python modules.",
+      options: ["Adevărat","Fals"],
+      correct: 0,
+      explanation: "pydoc generates documentation from Python modules, classes and functions (using their docstrings)."
     }
   ]
 };
