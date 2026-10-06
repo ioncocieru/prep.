@@ -11,6 +11,7 @@
 <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>try{if(localStorage.getItem("prep-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -44,18 +45,72 @@
       </a>
     </div>
     <div class="login-card">
-      <h2>Autentificare</h2>
-      <p class="muted">Introdu datele contului tău pentru a intra în platformă.</p>
-      <form id="login-form" autocomplete="off">
-        <label for="login-input">Login</label>
-        <input type="text" id="login-input" placeholder="utilizator sau email" autocapitalize="none" required>
-        <label for="password-input">Parolă</label>
-        <input type="password" id="password-input" placeholder="••••••••" required>
-        <button type="submit" id="login-btn" class="btn btn-primary btn-block">Intră în platformă</button>
-        <p id="login-error" class="login-error" hidden>Login sau parolă incorectă.</p>
-      </form>
+      <div class="auth-tabs" id="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab active" data-auth="login" role="tab">Autentificare</button>
+        <button type="button" class="auth-tab" data-auth="register" role="tab">Creare cont</button>
+      </div>
+
+      <div id="auth-login-pane" class="auth-pane">
+        <h2>Autentificare</h2>
+        <p class="muted">Introdu datele contului tău pentru a intra în platformă.</p>
+        <form id="login-form" autocomplete="off">
+          <label for="login-input">Login</label>
+          <input type="text" id="login-input" placeholder="utilizator sau email" autocapitalize="none" required>
+          <label for="password-input">Parolă</label>
+          <input type="password" id="password-input" placeholder="••••••••" required>
+          <button type="submit" id="login-btn" class="btn btn-primary btn-block">Intră în platformă</button>
+          <p id="login-error" class="login-error" hidden>Login sau parolă incorectă.</p>
+          <button type="button" id="login-resend" class="link-btn auth-resend" hidden>Retrimite emailul de confirmare</button>
+          <button type="button" id="forgot-link" class="link-btn auth-forgot">Ai uitat parola?</button>
+        </form>
+      </div>
+
+      <div id="auth-forgot-pane" class="auth-pane" hidden>
+        <h2>Resetare parolă</h2>
+        <p class="muted">Introdu emailul contului și îți trimitem un link pentru a seta o parolă nouă.</p>
+        <form id="forgot-form" autocomplete="off">
+          <label for="forgot-email">Email</label>
+          <input type="email" id="forgot-email" placeholder="adresa@email.com" autocapitalize="none" autocomplete="email" required>
+          <button type="submit" id="forgot-btn" class="btn btn-primary btn-block">Trimite linkul de resetare</button>
+          <p id="forgot-error" class="login-error" hidden></p>
+          <p id="forgot-info" class="login-info" hidden></p>
+          <button type="button" class="link-btn auth-forgot" data-auth-go="login">← Înapoi la autentificare</button>
+        </form>
+      </div>
+
+      <div id="auth-recover-pane" class="auth-pane" hidden>
+        <h2>Setează o parolă nouă</h2>
+        <p class="muted">Alege o parolă nouă pentru contul tău.</p>
+        <form id="recover-form" autocomplete="off">
+          <label for="recover-password">Parolă nouă</label>
+          <input type="password" id="recover-password" placeholder="minim 6 caractere" minlength="6" required>
+          <label for="recover-password2">Repetă parola</label>
+          <input type="password" id="recover-password2" placeholder="••••••••" minlength="6" required>
+          <button type="submit" id="recover-btn" class="btn btn-primary btn-block">Salvează parola</button>
+          <p id="recover-error" class="login-error" hidden></p>
+        </form>
+      </div>
+
+      <div id="auth-register-pane" class="auth-pane" hidden>
+        <h2>Creează un cont</h2>
+        <p class="muted">Îți trimitem un email de confirmare. Contul nou nu include examene: accesul la ele îl primești de la un administrator.</p>
+        <form id="register-form" autocomplete="off">
+          <label for="reg-login">Email</label>
+          <input type="email" id="reg-login" placeholder="adresa@email.com" autocapitalize="none" autocomplete="email" required>
+          <label for="reg-password">Parolă</label>
+          <input type="password" id="reg-password" placeholder="minim 6 caractere" minlength="6" required>
+          <label for="reg-password2">Repetă parola</label>
+          <input type="password" id="reg-password2" placeholder="••••••••" minlength="6" required>
+          <button type="submit" id="register-btn" class="btn btn-primary btn-block">Creează cont</button>
+          <p id="register-error" class="login-error" hidden></p>
+          <p id="register-info" class="login-info" hidden></p>
+          <button type="button" id="register-resend" class="link-btn auth-resend" hidden>Retrimite emailul de confirmare</button>
+        </form>
+      </div>
+
       <div class="register-box">
-        <a class="register-btn" href="https://t.me/thecocieru" target="_blank" rel="noopener">Creare cont Telegram</a>
+        <p>Ai nevoie de acces la examene?</p>
+        <a class="register-btn" href="https://t.me/thecocieru" target="_blank" rel="noopener">Contactează administratorul pe Telegram</a>
       </div>
     </div>
   </div>
@@ -67,6 +122,8 @@
     <div class="dash-hero-top">
       <img src="assets/logo.png" alt="Prep." class="logo-mark">
       <div class="hero-actions">
+        <button id="guide-btn" class="btn btn-ghost btn-ghost-dark" type="button" title="Cum funcționează platforma">Ghid</button>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="Schimbă tema" aria-label="Schimbă tema"><svg class="ic i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
         <button id="profile-btn" class="profile-btn" title="Profilul meu">
           <span class="avatar" id="profile-btn-avatar"></span>
           <span class="profile-btn-text" id="profile-btn-email"></span>
@@ -75,7 +132,7 @@
       </div>
     </div>
     <div class="dash-hero-copy hello">
-      <span class="avatar avatar-lg" id="hello-avatar" title="Profilul meu"></span>
+      <span class="avatar avatar-lg" id="hello-avatar" hidden></span>
       <div>
         <h1 id="welcome-title">Bine ai revenit!</h1>
         <p>Alege examenul la care vrei să te pregătești astăzi.</p>
@@ -145,6 +202,14 @@
       </div>
       <div class="profile-form">
         <label>Email<div class="profile-email" id="profile-email"></div></label>
+        <div class="theme-row">
+          <span class="theme-row-label">Temă</span>
+          <div class="theme-seg" role="group" aria-label="Temă">
+            <button type="button" class="theme-opt" data-theme-set="light"><svg class="ic i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Luminoasă</button>
+            <button type="button" class="theme-opt" data-theme-set="dark"><svg class="ic i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Întunecată</button>
+          </div>
+          <span class="muted small">Se salvează automat în profilul tău.</span>
+        </div>
         <label for="profile-first">Prenume<input type="text" id="profile-first" maxlength="40" placeholder="Prenume"></label>
         <label for="profile-last">Nume<input type="text" id="profile-last" maxlength="40" placeholder="Nume"></label>
         <p class="muted small">Numele și prenumele apar pe certificatele tale.</p>
