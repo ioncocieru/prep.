@@ -903,106 +903,6 @@ input{ font-family: inherit; }
 .guide-actions{ display:flex; justify-content:space-between; gap:10px; margin-top:16px; }
 .guide-actions .btn:disabled{ opacity:.4; cursor:not-allowed; }
 
-/* =========================================================
-   TEMA ÎNTUNECATĂ
-   ========================================================= */
-:root[data-theme="dark"]{
-  color-scheme: dark;
-  --bg:#0A111D; --surface:#111B2C; --border:#24344D;
-  --text:#E7EDF6; --text-muted:#9FB1C9; --text-faint:#6F829D;
-  --navy:#070D18; --navy-2:#0E1829;
-  --shadow-card: 0 1px 2px rgba(0,0,0,.45), 0 10px 28px rgba(0,0,0,.35);
-}
-:root[data-theme="dark"] body{ background: var(--bg); color: var(--text); }
-
-/* butoane / etichete */
-:root[data-theme="dark"] .btn-secondary,
-:root[data-theme="dark"] .btn-icon,
-:root[data-theme="dark"] .pill{ background: var(--surface); color: var(--text); border-color: var(--border); }
-:root[data-theme="dark"] .btn-secondary:hover,
-:root[data-theme="dark"] .btn-icon:hover{ color:#8DB0FF; border-color: var(--blue); }
-:root[data-theme="dark"] .btn-primary:hover{ background:#4A82F2; }
-:root[data-theme="dark"] .btn-primary:disabled{ background:#2B3C5C; color:#7C8FAE; }
-:root[data-theme="dark"] .link-btn{ color:#8DB0FF; }
-
-/* câmpuri */
-:root[data-theme="dark"] input[type=text],
-:root[data-theme="dark"] input[type=password],
-:root[data-theme="dark"] input:not([type]){ background:#0C1524; color: var(--text); border-color: var(--border); }
-:root[data-theme="dark"] .login-card input{ background:#0C1524; }
-:root[data-theme="dark"] .login-card input:focus{ background:#0F1A2C; border-color: var(--blue); }
-:root[data-theme="dark"] .login-error{ background: rgba(229,72,77,.14); color:#FF9A9E; }
-:root[data-theme="dark"] .login-info{ background: rgba(31,169,113,.14); color:#5FDCA8; }
-:root[data-theme="dark"] .auth-tab.active{ box-shadow:0 2px 10px rgba(0,0,0,.4); }
-
-/* setup */
-:root[data-theme="dark"] .chapter-item.checked,
-:root[data-theme="dark"] .mode-option:has(input:checked){ background: rgba(47,111,237,.16); }
-:root[data-theme="dark"] .exam-card-icon{ background: color-mix(in srgb, var(--accent, var(--blue)) 22%, var(--surface)); }
-:root[data-theme="dark"] .exam-card-cta-alt:hover{ background: color-mix(in srgb, var(--accent, var(--blue)) 18%, var(--surface)); }
-:root[data-theme="dark"] .exam-card:hover{ box-shadow: 0 4px 10px rgba(0,0,0,.4), 0 18px 34px rgba(0,0,0,.4); }
-
-/* întrebări */
-:root[data-theme="dark"] .q-type-badge,
-:root[data-theme="dark"] .resource-badge,
-:root[data-theme="dark"] .inline-code{ background: rgba(47,111,237,.20); color:#A9C2FF; }
-:root[data-theme="dark"] .option-item.selected,
-:root[data-theme="dark"] .tf-btn.selected,
-:root[data-theme="dark"] .dnd-target.dragover{ background: rgba(47,111,237,.16); }
-:root[data-theme="dark"] .tf-btn.selected{ color:#A9C2FF; }
-:root[data-theme="dark"] .option-item.correct,
-:root[data-theme="dark"] .tf-btn.correct,
-:root[data-theme="dark"] .dnd-target.correct{ background: rgba(31,169,113,.14); }
-:root[data-theme="dark"] .option-item.incorrect,
-:root[data-theme="dark"] .tf-btn.incorrect,
-:root[data-theme="dark"] .dnd-target.incorrect{ background: rgba(229,72,77,.14); }
-:root[data-theme="dark"] .q-feedback.ok{ background: rgba(31,169,113,.14); color:#5FDCA8; }
-:root[data-theme="dark"] .q-feedback.bad{ background: rgba(229,72,77,.14); color:#FF9A9E; }
-:root[data-theme="dark"] .dnd-chip{ background: rgba(47,111,237,.18); border-color: rgba(120,160,255,.35); color:#B8CDFF; }
-:root[data-theme="dark"] .option-item .opt-mark,
-:root[data-theme="dark"] .option-item.selected .opt-mark{ border-color: var(--border); }
-:root[data-theme="dark"] .option-item.selected .opt-mark{ border-color: var(--blue); }
-:root[data-theme="dark"] .q-image{ border-color: var(--border); }
-
-/* rezultate */
-:root[data-theme="dark"] .score-ring-bg{ stroke:#22324A; }
-:root[data-theme="dark"] .cb-row .cb-bar,
-:root[data-theme="dark"] .cp-bar{ background:#22324A; }
-:root[data-theme="dark"] .review-item.wrong{ border-color: rgba(229,72,77,.5); }
-:root[data-theme="dark"] .review-item.right{ border-color: rgba(31,169,113,.5); }
-
-/* curs */
-:root[data-theme="dark"] .course-chapter summary{ background:#0E1828; }
-:root[data-theme="dark"] .course-item:hover,
-:root[data-theme="dark"] .resource-item:hover{ background:#162337; }
-:root[data-theme="dark"] .course-item.active{ background: rgba(47,111,237,.18); color:#A9C2FF; }
-:root[data-theme="dark"] .course-chapter-label{ color:#8DB0FF; }
-
-/* profil, certificate, ferestre */
-:root[data-theme="dark"] .resume-banner .resume-inner{ background: var(--surface); }
-:root[data-theme="dark"] .modal-panel{ background: var(--surface); color: var(--text); }
-:root[data-theme="dark"] .modal-icon{ background: rgba(47,111,237,.18); color:#8DB0FF; }
-:root[data-theme="dark"] .modal-icon.danger{ background: rgba(229,72,77,.18); color:#FF9A9E; }
-:root[data-theme="dark"] .goto-chip{ background: rgba(47,111,237,.16); color:#A9C2FF; }
-:root[data-theme="dark"] .pcert{ background: var(--surface); }
-:root[data-theme="dark"] .pcert.earned{ background: rgba(240,199,94,.07); border-color: rgba(240,199,94,.45); }
-:root[data-theme="dark"] .pcert-badge,
-:root[data-theme="dark"] .pill-status{ background:#1B2A42; color:#9FB1C9; }
-:root[data-theme="dark"] .pcert.earned .pcert-badge,
-:root[data-theme="dark"] .pcert.earned .pill-status{ background: rgba(240,199,94,.22); color:#F3D27F; }
-:root[data-theme="dark"] .chip-cert,
-:root[data-theme="dark"] .course-cert,
-:root[data-theme="dark"] .cert-banner{ background: rgba(240,199,94,.12); color:#F3D27F; border-color: rgba(240,199,94,.4); }
-:root[data-theme="dark"] .avatar-xl{ border-color:#22324A; }
-:root[data-theme="dark"] .cert-name-edit input{ background:#0C1524; color: var(--text); }
-:root[data-theme="dark"] .noaccess-steps code{ color:#A9C2FF; }
-
-/* certificatul rămâne alb (se printează) */
-:root[data-theme="dark"] .cert-paper{
-  --text:#16202C; --text-muted:#5B6B7F; --text-faint:#93A2B4; --border:#DDE3EC; --bg:#F3F5F8; --surface:#FFFFFF;
-  color:#16202C;
-}
-
 /* ===== v6: confirmare email ===== */
 .auth-resend{ display:block; margin:12px auto 0; }
 .auth-resend:disabled{ opacity:.5; cursor:default; text-decoration:none; }
@@ -1011,3 +911,252 @@ input{ font-family: inherit; }
 /* ===== v7: resetare parolă ===== */
 .auth-forgot{ display:block; margin:14px auto 0; font-size:13.5px; }
 .auth-tabs[hidden]{ display:none; }
+
+/* =========================================================
+   v8 — aspect mai sobru (mai puțin „generat”), mobil refăcut
+   ========================================================= */
+:root{
+  --font-ui: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --bg:#F5F5F2; --surface:#FFFFFF; --border:#E1E0DA;
+  --text:#1B1D20; --text-muted:#5E636A; --text-faint:#9A9EA5;
+  --navy:#18212F; --navy-2:#202B3C;
+  --radius-sm:6px; --radius-md:8px; --radius-lg:10px;
+  --shadow-card:none;
+}
+body{ font-size:15px; line-height:1.5; }
+h1,h2,h3{ letter-spacing:0; font-weight:700; }
+
+/* fără decoruri: puncte, linii de rețea, gradiente, lumini */
+.pattern-dots{ background-image:none; }
+.login-bg-lines{ display:none; }
+.exam-card::before{ display:none; }
+.dash-hero{ padding-bottom:72px; }
+.dash-hero-copy h1{ font-size:28px; }
+
+/* carduri plate, cu bordură, fără „ridicare” la hover */
+.exam-card, .setup-panel, .quiz-card, .login-card, .profile-card, .results-summary,
+.results-breakdown, .results-review, .course-sidebar, .course-player, .course-resources, .pcert{
+  border-radius:10px; box-shadow:none;
+}
+.login-card{ border-radius:12px; padding:30px; }
+.exam-card{ padding:22px; gap:14px; transition: border-color .15s ease; }
+.exam-card:hover{ transform:none; box-shadow:none; border-color: color-mix(in srgb, var(--accent, var(--blue)) 55%, var(--border)); }
+.exam-card-icon{ width:40px; height:40px; border-radius:8px; }
+.exam-card-icon svg{ width:22px; height:22px; }
+.exam-card h3{ font-size:17px; }
+.exam-card p{ font-size:14px; }
+.exam-card-meta{ border-top:0; padding-top:0; gap:0; }
+.exam-card-meta span{ background:none; border:0; border-radius:0; padding:0; font-weight:500; font-size:13px; }
+.exam-card-meta span + span::before{ content:"·"; margin:0 10px; color: var(--text-faint); }
+.exam-card-cta{ border-radius:8px; padding:10px 16px; min-height:42px; }
+.exam-card-cta:hover{ gap:8px; filter:brightness(1.06); }
+.exam-card-cta-alt{ box-shadow: inset 0 0 0 1px var(--accent, var(--blue)); }
+
+/* butoane și etichete mai puțin „pastilă” */
+.btn{ border-radius:8px; }
+.btn-icon{ border-radius:8px; }
+.pill{ border-radius:6px; padding:5px 10px; font-weight:500; }
+.profile-btn{ border-radius:8px; }
+.q-type-badge, .q-chapter-badge{ border-radius:4px; }
+.chapter-item{ border-width:1px; border-radius:8px; }
+.option-item, .tf-btn, .mode-option{ border-width:1px; border-radius:8px; }
+
+/* butoane din meniul de sus */
+.theme-toggle{ border-radius:8px; width:38px; height:38px; }
+.theme-toggle:hover{ transform:none; }
+.guide-btn .gb-short, .btn-ghost-dark .lo-short{ display:none; }
+.guide-btn{ border:1.5px solid rgba(255,255,255,.2); border-radius:8px; padding:8px 14px; }
+
+/* pagina „fără examene”: simplă, aliniată la stânga */
+.noaccess{ text-align:left; border-radius:12px; padding:30px; }
+.noaccess::before{ display:none; }
+.noaccess-icon{ width:46px; height:46px; margin:0 0 16px; border-radius:10px; background: var(--bg); color: var(--blue); border:1px solid var(--border); box-shadow:none; }
+.noaccess-icon svg{ width:24px; height:24px; }
+.noaccess-badge{ display:none; }
+.noaccess h2{ font-size:22px; }
+.noaccess-lead{ margin:0 0 20px; max-width:none; font-size:15px; }
+.noaccess-tg{ background:#2AABEE; box-shadow:none; border-radius:10px; }
+.noaccess-tg:hover{ transform:none; box-shadow:none; filter:brightness(1.06); }
+.noaccess-steps li{ background:transparent; border-radius:8px; }
+.noaccess-steps li > span{ width:26px; height:26px; font-size:13px; background:transparent; color: var(--blue); border:1.5px solid var(--blue); }
+.noaccess-actions{ margin-top:18px; }
+.noaccess-hint{ text-align:left; }
+.auth-tab.active{ box-shadow:none; }
+
+/* ----- ghid interactiv (săgeți către butoane) ----- */
+.tour-shade{ position:fixed; inset:0; z-index:10000; touch-action:none; }
+.tour-shade.dim{ background:rgba(12,13,16,.74); }
+.tour-spot{
+  position:fixed; z-index:10001; border-radius:10px; pointer-events:none;
+  box-shadow:0 0 0 9999px rgba(12,13,16,.74); outline:2px solid #fff; outline-offset:0;
+  transition: left .22s ease, top .22s ease, width .22s ease, height .22s ease;
+}
+.tour-arrow{ position:fixed; z-index:10002; width:40px; height:50px; pointer-events:none; }
+.tour-arrow svg{ width:100%; height:100%; display:block; color:#fff; overflow:visible; }
+.tour-arrow.up{ animation: tourUp 1s ease-in-out infinite; }       /* arată în sus, spre element */
+.tour-arrow.down{ animation: tourDown 1s ease-in-out infinite; }   /* arată în jos, spre element */
+.tour-arrow.down svg{ transform:rotate(180deg); }
+@keyframes tourUp{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(-7px); } }
+@keyframes tourDown{ 0%,100%{ transform:translateY(0); } 50%{ transform:translateY(7px); } }
+.tour-pop{
+  position:fixed; z-index:10003; background: var(--surface); color: var(--text);
+  border-radius:10px; padding:16px 16px 14px; box-shadow:0 12px 32px rgba(0,0,0,.35);
+}
+.tour-pop h3{ font-size:17px; margin:0 0 6px; }
+.tour-pop p{ font-size:14.5px; line-height:1.55; color: var(--text-muted); margin:0 0 6px; }
+.tour-pop p strong{ color: var(--text); }
+.tour-pop ul{ margin:6px 0 4px; padding-left:18px; font-size:14px; line-height:1.55; color: var(--text-muted); }
+.tour-pop li{ margin-bottom:4px; }
+.tour-count{ font-size:12px; color: var(--text-faint); margin-bottom:6px; }
+.tour-foot{ display:flex; align-items:center; justify-content:space-between; gap:8px; margin-top:14px; }
+.tour-foot .btn{ padding:9px 14px; font-size:14px; min-height:40px; }
+.tour-skip{ margin-right:auto; }
+.tour-pop.mid{ left:50%; top:50%; transform:translate(-50%,-50%); width:min(380px, calc(100vw - 24px)); }
+
+/* ----- mobil ----- */
+@media (max-width:600px){
+  body{ font-size:15px; }
+  input, select, textarea{ font-size:16px !important; }          /* fără zoom automat pe iPhone */
+  .btn, .exam-card-cta, .chapter-item{ min-height:44px; }
+  .topbar{ padding:14px 16px; }
+  .dash-hero{ padding:14px 16px 60px; }
+  .dash-hero-top{ margin-bottom:22px; }
+  .logo-mark{ height:22px; }
+  .dash-hero-copy h1{ font-size:23px; line-height:1.25; }
+  .dash-hero-copy p{ font-size:14px; }
+  .hero-actions{ gap:8px; flex-wrap:nowrap; }
+  .theme-toggle, .guide-btn{ width:38px; height:38px; padding:0; display:inline-flex; align-items:center; justify-content:center; }
+  .guide-btn .gb-full{ display:none; }
+  .guide-btn .gb-short{ display:inline; font-weight:700; font-size:16px; }
+  .btn-ghost-dark{ padding:8px 10px; font-size:13px; }
+  .btn-ghost-dark .lo-full{ display:none; }
+  .btn-ghost-dark .lo-short{ display:inline; }
+  .dashboard-grid{ padding:0 16px 28px; gap:12px; margin-top:-40px; }
+  .exam-card{ padding:18px; }
+  .exam-card-actions{ gap:8px; }
+  .exam-card-actions .exam-card-cta{ flex:1; justify-content:center; }
+  .exam-card-meta{ flex-wrap:wrap; }
+  .setup-layout{ padding:0 16px 28px; gap:12px; }
+  .setup-panel{ padding:18px 16px; }
+  .setup-panel-head{ flex-wrap:wrap; gap:8px; }
+  .quiz-body{ padding:14px 14px 24px; }
+  .quiz-card{ padding:18px 16px; }
+  .q-text{ font-size:17px; line-height:1.45; }
+  .q-code{ font-size:12.5px; }
+  .option-item{ padding:12px; }
+  .quiz-nav{ position:sticky; bottom:0; z-index:5; display:flex; flex-direction:column; gap:8px; margin:14px -14px 0; padding:10px 14px 12px; background: var(--bg); border-top:1px solid var(--border); }
+  .quiz-nav-right{ display:flex; gap:8px; width:100%; }
+  .quiz-nav-right .btn{ flex:1; }
+  #quiz-flag-btn{ width:100%; justify-content:center; }
+  .login-wrap{ padding:22px 16px 28px; gap:22px; }
+  .login-brand{ text-align:left; }
+  .logo-mark-lg{ height:36px; margin-bottom:14px; }
+  .brand-sub{ font-size:14px; margin-bottom:0; }
+  .brand-exam-list, .telegram-link{ display:none; }
+  .login-card{ padding:22px 18px; }
+  .results-actions .btn{ width:100%; }
+  .noaccess{ padding:22px 18px; }
+  .noaccess-tg{ padding:12px 14px; }
+  .tour-pop{ padding:14px 14px 12px; }
+}
+
+/* =========================================================
+   TEMA ÎNTUNECATĂ (v8) — gri neutru, fără străluciri
+   ========================================================= */
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --bg:#141517; --surface:#1C1D20; --border:#2D2F34;
+  --text:#E8E9EB; --text-muted:#A1A5AC; --text-faint:#6B7078;
+  --navy:#101112; --navy-2:#17181A;
+  --blue:#4C84EE; --blue-dark:#3F74DB;
+  --shadow-card:none;
+}
+:root[data-theme="dark"] body{ background: var(--bg); color: var(--text); }
+:root[data-theme="dark"] .dash-hero{ border-bottom:1px solid var(--border); }
+
+:root[data-theme="dark"] .btn-secondary,
+:root[data-theme="dark"] .btn-icon,
+:root[data-theme="dark"] .pill{ background: var(--surface); color: var(--text); border-color: var(--border); }
+:root[data-theme="dark"] .btn-secondary:hover,
+:root[data-theme="dark"] .btn-icon:hover{ color:#8FB0F5; border-color: var(--blue); }
+:root[data-theme="dark"] .btn-primary:disabled{ background:#2E3138; color:#757A83; }
+:root[data-theme="dark"] .link-btn{ color:#8FB0F5; }
+
+:root[data-theme="dark"] input[type=text],
+:root[data-theme="dark"] input[type=password],
+:root[data-theme="dark"] input[type=email],
+:root[data-theme="dark"] input:not([type]),
+:root[data-theme="dark"] .login-card input{ background:#141517; color: var(--text); border-color: var(--border); }
+:root[data-theme="dark"] .login-card input:focus{ background:#17181B; border-color: var(--blue); }
+:root[data-theme="dark"] .login-error{ background: rgba(229,72,77,.13); color:#F1999C; }
+:root[data-theme="dark"] .login-info{ background: rgba(46,160,110,.13); color:#6FD1A4; }
+
+:root[data-theme="dark"] .chapter-item.checked,
+:root[data-theme="dark"] .mode-option:has(input:checked),
+:root[data-theme="dark"] .option-item.selected,
+:root[data-theme="dark"] .tf-btn.selected,
+:root[data-theme="dark"] .dnd-target.dragover{ background: rgba(76,132,238,.12); }
+:root[data-theme="dark"] .tf-btn.selected{ color:#A5C0F7; }
+:root[data-theme="dark"] .option-item.correct,
+:root[data-theme="dark"] .tf-btn.correct,
+:root[data-theme="dark"] .dnd-target.correct{ background: rgba(46,160,110,.12); }
+:root[data-theme="dark"] .option-item.incorrect,
+:root[data-theme="dark"] .tf-btn.incorrect,
+:root[data-theme="dark"] .dnd-target.incorrect{ background: rgba(229,72,77,.12); }
+:root[data-theme="dark"] .q-feedback.ok{ background: rgba(46,160,110,.12); color:#6FD1A4; }
+:root[data-theme="dark"] .q-feedback.bad{ background: rgba(229,72,77,.12); color:#F1999C; }
+:root[data-theme="dark"] .q-type-badge,
+:root[data-theme="dark"] .resource-badge,
+:root[data-theme="dark"] .inline-code{ background: rgba(76,132,238,.16); color:#A5C0F7; }
+:root[data-theme="dark"] .dnd-chip{ background:#25282D; border-color:#3A3E45; color:#DCE2EC; }
+:root[data-theme="dark"] .q-image{ border-color: var(--border); }
+:root[data-theme="dark"] .exam-card-icon{ background: color-mix(in srgb, var(--accent, var(--blue)) 18%, var(--surface)); }
+:root[data-theme="dark"] .exam-card-cta-alt:hover{ background: color-mix(in srgb, var(--accent, var(--blue)) 14%, var(--surface)); }
+:root[data-theme="dark"] .exam-card:hover{ border-color: color-mix(in srgb, var(--accent, var(--blue)) 60%, var(--border)); }
+
+:root[data-theme="dark"] .score-ring-bg{ stroke:#2D2F34; }
+:root[data-theme="dark"] .cb-row .cb-bar,
+:root[data-theme="dark"] .cp-bar{ background:#2D2F34; }
+:root[data-theme="dark"] .review-item.wrong{ border-color: rgba(229,72,77,.45); }
+:root[data-theme="dark"] .review-item.right{ border-color: rgba(46,160,110,.45); }
+
+:root[data-theme="dark"] .course-chapter summary{ background:#17181B; }
+:root[data-theme="dark"] .course-item:hover,
+:root[data-theme="dark"] .resource-item:hover{ background:#222428; }
+:root[data-theme="dark"] .course-item.active{ background: rgba(76,132,238,.14); color:#A5C0F7; }
+:root[data-theme="dark"] .course-chapter-label{ color:#8FB0F5; }
+
+:root[data-theme="dark"] .resume-banner .resume-inner{ background: var(--surface); }
+:root[data-theme="dark"] .modal-panel{ background: var(--surface); color: var(--text); }
+:root[data-theme="dark"] .modal-icon{ background: rgba(76,132,238,.16); color:#8FB0F5; }
+:root[data-theme="dark"] .modal-icon.danger{ background: rgba(229,72,77,.16); color:#F1999C; }
+:root[data-theme="dark"] .goto-chip{ background: rgba(76,132,238,.14); color:#A5C0F7; }
+:root[data-theme="dark"] .pcert{ background: var(--surface); }
+:root[data-theme="dark"] .pcert.earned{ background: rgba(224,184,80,.07); border-color: rgba(224,184,80,.4); }
+:root[data-theme="dark"] .pcert-badge,
+:root[data-theme="dark"] .pill-status{ background:#25282D; color:#A1A5AC; }
+:root[data-theme="dark"] .pcert.earned .pcert-badge,
+:root[data-theme="dark"] .pcert.earned .pill-status{ background: rgba(224,184,80,.18); color:#E8CB82; }
+:root[data-theme="dark"] .chip-cert,
+:root[data-theme="dark"] .course-cert,
+:root[data-theme="dark"] .cert-banner{ background: rgba(224,184,80,.1); color:#E8CB82; border-color: rgba(224,184,80,.35); }
+:root[data-theme="dark"] .avatar-xl{ border-color:#2D2F34; }
+:root[data-theme="dark"] .cert-name-edit input{ background:#141517; color: var(--text); }
+:root[data-theme="dark"] .noaccess-steps code{ color:#A5C0F7; }
+:root[data-theme="dark"] .guide-btn{ border-color: rgba(255,255,255,.18); }
+:root[data-theme="dark"] .tour-pop{ box-shadow:0 12px 32px rgba(0,0,0,.6); border:1px solid var(--border); }
+
+/* certificatul rămâne alb (se printează) */
+:root[data-theme="dark"] .cert-paper{
+  --text:#16202C; --text-muted:#5B6B7F; --text-faint:#93A2B4; --border:#DDE3EC; --bg:#F3F5F8; --surface:#FFFFFF;
+  color:#16202C;
+}
+
+/* retușuri după test pe mobil */
+.dnd-chip{ border-radius:8px; }
+@media (max-width:600px){
+  .profile-btn{ border:0; background:none; padding:0; }
+  .avatar{ border-width:1.5px; }
+}
+
+.auth-resend[hidden]{ display:none; }

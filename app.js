@@ -124,100 +124,147 @@ async function setTheme(t) {
    GHID de utilizare (apare o singură dată, la primul acces la examene
    pentru conturile create prin „Creare cont”; se poate redeschide din „Ghid”)
    --------------------------------------------------------------------- */
-const GUIDE_STEPS = [
-  {
-    icon: '<path d="M12 3l2.4 5 5.6.8-4 3.9.9 5.5L12 15.6 7.1 18.2 8 12.7 4 8.8 9.6 8z"/>',
-    title: "Bun venit pe Prep.",
-    body: `<p>Aici te pregătești pentru examenele <strong>IT Specialist by Certiport</strong>. Ghidul de mai jos îți arată, pe scurt, cum funcționează platforma.</p>
-      <div class="guide-tip"><strong>Ordinea recomandată</strong>
-        <ol><li>Mai întâi <strong>vizionează toate videoclipurile</strong> din curs.</li>
-        <li>Abia apoi <strong>rezolvă întrebările</strong>, ca să le înțelegi, nu să le memorezi.</li></ol></div>`
-  },
-  {
-    icon: '<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M10 9.5v5l4.5-2.5z"/>',
-    title: "1. Cursul video",
-    body: `<p>Pe cardul fiecărui examen apasă <strong>Curs</strong>.</p>
-      <ul><li>În dreapta ai lista capitolelor și a videoclipurilor; ele se redau în ordine.</li>
-      <li>Folosește <strong>Anterior / Următorul</strong> și marchează fiecare video cu <strong>Marchează vizionat</strong>.</li>
-      <li>Sub video găsești, când există, <strong>resurse de descărcat</strong>.</li></ul>
-      <p class="guide-note">Când ai marcat <strong>toate</strong> videoclipurile ca vizionate, primești certificatul de curs (îl găsești în Profil).</p>`
-  },
-  {
-    icon: '<circle cx="12" cy="12" r="9"/><path d="M9.5 9.2a2.7 2.7 0 1 1 3.6 2.6c-.7.3-1.1.8-1.1 1.5M12 16.8v.1"/>',
-    title: "2. Întrebările",
-    body: `<p>Apasă <strong>Întrebări</strong> pe cardul examenului, apoi alegi:</p>
-      <ul><li><strong>Capitolele</strong> pe care vrei să le exersezi;</li>
-      <li><strong>Câte întrebări</strong> vrei în test;</li>
-      <li><strong>Modul</strong>: <em>Exercițiu</em> (vezi imediat răspunsul și explicația) sau <em>Examen</em> (ca la Certiport: fără feedback până la final, cu cronometru).</li></ul>
-      <p class="guide-note">Poți marca o întrebare pentru revizuire și te poți întoarce la ea înainte de a finaliza.</p>`
-  },
-  {
-    icon: '<path d="M4 7h16M4 12h10M4 17h6"/>',
-    title: "Tipuri de întrebări",
-    body: `<ul><li><strong>Un răspuns</strong> sau <strong>Adevărat / Fals</strong>: alegi varianta corectă.</li>
-      <li><strong>Răspunsuri multiple</strong>: bifezi exact atâtea variante câte cere întrebarea.</li>
-      <li><strong>Drag &amp; drop</strong>: trage elementul în casetă, sau atinge elementul și apoi caseta. Click pe un element plasat îl scoate. Unele elemente pot fi folosite de mai multe ori.</li>
-      <li><strong>Întrebări cu imagine</strong>: click pe imagine o mărește.</li></ul>`
-  },
-  {
-    icon: '<path d="M5 20V10M12 20V4M19 20v-7"/>',
-    title: "Rezultate și progres",
-    body: `<p>La final vezi scorul total, scorul <strong>pe capitole</strong> și o recapitulare cu explicații.</p>
-      <ul><li><strong>Reia doar greșelile</strong> îți dă un test nou doar cu întrebările greșite.</li>
-      <li>Dacă ai sub <strong>70%</strong>, revino la videoclipurile capitolelor slabe și repetă testul.</li>
-      <li>Progresul se salvează în cont. Certificatul de întrebări îl primești după ce ai răspuns <strong>cel puțin o dată la fiecare întrebare</strong> din examen; certificatele se văd în <strong>Profil</strong>.</li></ul>`
-  },
-  {
-    icon: '<circle cx="12" cy="8" r="3.5"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/>',
-    title: "Profil și temă",
-    body: `<ul><li>Din meniul de sus poți comuta <strong>tema luminoasă / întunecată</strong> (iconița cu soare sau lună). Alegerea se salvează în contul tău.</li>
-      <li>În <strong>Profil</strong> îți setezi numele (apare pe certificate) și poza.</li>
-      <li>Butonul <strong>Ghid</strong> din meniu redeschide acest ghid oricând.</li></ul>
-      <p class="guide-note">Mult succes la pregătire!</p>`
+/* Ghid interactiv: evidențiază butoanele reale și le arată cu o săgeată. */
+function tourSteps() {
+  const key = EXAM_ORDER.find(k => allowedExams.includes(k));
+  const st = [];
+  st.push({
+    title: "Cum folosești Prep.",
+    html: `<p>Un tur scurt: vei vedea pe rând butoanele pe care le folosești.</p>
+      <p><strong>Ordinea recomandată:</strong> mai întâi vizionezi toate videoclipurile din curs, abia apoi rezolvi întrebările.</p>`
+  });
+  if (key) {
+    st.push({ screen: "dash", target: ".exam-card-cta-alt", title: "1. Începe cu cursul",
+      html: `<p>Apasă <strong>Curs</strong> pe cardul examenului. Videoclipurile sunt grupate pe capitole și se redau în ordine.</p>
+             <p>Marchează fiecare video ca vizionat; după ce le-ai parcurs pe toate, primești certificatul de curs.</p>` });
+    st.push({ screen: "dash", target: ".exam-card-cta[data-exam]", title: "2. După curs, întrebările",
+      html: `<p>Apasă <strong>Întrebări</strong> ca să pornești un test.</p>
+             <p>Nu începe cu ele: se înțeleg mult mai ușor după ce ai văzut cursul.</p>` });
   }
-];
+  st.push({ screen: "dash", target: "#theme-toggle", title: "Tema",
+    html: `<p>Cu acest buton treci între tema luminoasă și cea întunecată. Alegerea se salvează în contul tău.</p>` });
+  st.push({ screen: "dash", target: "#profile-btn", title: "Profilul tău",
+    html: `<p>Aici îți setezi numele (apare pe certificate) și poza, și îți vezi progresul și certificatele.</p>` });
+  if (key) {
+    st.push({ screen: "setup", target: "#chapter-list .chapter-item", title: "Alege capitolele",
+      html: `<p>Bifează capitolele pe care vrei să le exersezi: pe toate sau doar pe cele la care ești mai slab.</p>` });
+    st.push({ screen: "setup", target: "#question-count-range", title: "Câte întrebări",
+      html: `<p>Mută cursorul ca să alegi câte întrebări are testul.</p>` });
+    st.push({ screen: "setup", target: ".mode-toggle", title: "Modul de studiu",
+      html: `<ul><li><strong>Exercițiu</strong>: vezi imediat dacă ai răspuns corect, cu explicație.</li>
+             <li><strong>Examen</strong>: ca la Certiport, fără răspunsuri până la final și cu cronometru.</li></ul>` });
+    st.push({ screen: "setup", target: "#start-quiz-btn", title: "Pornești testul",
+      html: `<p>Apasă <strong>Începe testul</strong>. Poți marca o întrebare pentru revizuire și te poți întoarce la ea înainte de final.</p>` });
+  }
+  st.push({
+    title: "Tipuri de întrebări",
+    html: `<ul><li><strong>Un răspuns</strong> sau <strong>Adevărat / Fals</strong>: alegi varianta corectă.</li>
+      <li><strong>Răspunsuri multiple</strong>: bifezi exact câte variante cere întrebarea.</li>
+      <li><strong>Drag &amp; drop</strong>: trage elementul în casetă, sau atinge elementul și apoi caseta. Click pe un element plasat îl scoate.</li>
+      <li><strong>Imagini</strong>: apasă pe imagine ca să o mărești.</li></ul>`
+  });
+  st.push({
+    title: "După test",
+    html: `<ul><li>Vezi scorul total, scorul pe capitole și explicația fiecărui răspuns.</li>
+      <li><strong>Reia doar greșelile</strong> îți dă un test nou doar cu întrebările greșite.</li>
+      <li>Sub 70%? Reia videoclipurile capitolelor slabe și repetă testul.</li>
+      <li>Certificatul de întrebări îl primești după ce ai răspuns cel puțin o dată la fiecare întrebare din examen.</li></ul>
+      <p>Succes la pregătire!</p>`
+  });
+  return st;
+}
 
-function showGuide(firstTime) {
-  if (document.querySelector(".guide-overlay")) return;
-  let step = 0;
-  const ov = document.createElement("div");
-  ov.className = "modal-overlay guide-overlay";
-  document.body.appendChild(ov);
+function startTour(firstTime) {
+  if (document.querySelector(".tour-pop")) return;
+  const steps = tourSteps();
+  const key = EXAM_ORDER.find(k => allowedExams.includes(k));
+  let i = 0, dir = 1;
 
-  const close = () => {
-    document.removeEventListener("keydown", onKey);
-    ov.remove();
-    if (firstTime) markGuideSeen();
-  };
-  const onKey = (e) => { if (e.key === "Escape") close(); };
-  document.addEventListener("keydown", onKey);
+  const shade = document.createElement("div"); shade.className = "tour-shade dim";
+  const spot = document.createElement("div"); spot.className = "tour-spot"; spot.style.display = "none";
+  const arrow = document.createElement("div"); arrow.className = "tour-arrow"; arrow.style.display = "none";
+  arrow.innerHTML = '<svg viewBox="0 0 40 50" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 47C17 36 23 24 20 8"/><path d="M9 20C13 15 17 10 20 6C23 11 28 15 32 19"/></svg>';
+  const pop = document.createElement("div"); pop.className = "tour-pop"; pop.setAttribute("role", "dialog"); pop.setAttribute("aria-modal", "true");
+  document.body.append(shade, spot, arrow, pop);
+
+  let current = null;
+  function place() {
+    if (!current) return;
+    const { st, el } = current;
+    if (!el) {                                       // pas fără țintă: card centrat
+      spot.style.display = "none"; arrow.style.display = "none";
+      shade.classList.add("dim"); pop.classList.add("mid");
+      pop.style.left = pop.style.top = pop.style.width = "";
+      return;
+    }
+    shade.classList.remove("dim"); pop.classList.remove("mid");
+    const r = el.getBoundingClientRect(), pad = 6, vw = innerWidth, vh = innerHeight;
+    Object.assign(spot.style, { display: "block", left: (r.left - pad) + "px", top: (r.top - pad) + "px",
+      width: (r.width + pad * 2) + "px", height: (r.height + pad * 2) + "px" });
+    const pw = Math.min(340, vw - 24);
+    pop.style.width = pw + "px";
+    const ph = pop.offsetHeight, gap = 58;
+    const below = vh - r.bottom - pad, above = r.top - pad;
+    const placeBelow = below >= ph + gap + 10 || below >= above;
+    let top = placeBelow ? r.bottom + pad + gap : r.top - pad - gap - ph;
+    top = Math.max(12, Math.min(top, vh - ph - 12));
+    const left = Math.max(12, Math.min(r.left + r.width / 2 - pw / 2, vw - pw - 12));
+    pop.style.left = left + "px"; pop.style.top = top + "px";
+    arrow.className = "tour-arrow " + (placeBelow ? "up" : "down");
+    arrow.style.display = "block";
+    arrow.style.left = Math.max(8, Math.min(r.left + r.width / 2 - 20, vw - 48)) + "px";
+    arrow.style.top = (placeBelow ? r.bottom + pad + 4 : r.top - pad - 4 - 50) + "px";
+  }
 
   function draw() {
-    const s = GUIDE_STEPS[step];
-    const last = step === GUIDE_STEPS.length - 1;
-    ov.innerHTML = `
-      <div class="modal-panel guide-panel" role="dialog" aria-modal="true" aria-label="Ghid de utilizare">
-        <div class="guide-top">
-          <span class="guide-count">Pasul ${step + 1} din ${GUIDE_STEPS.length}</span>
-          <button type="button" class="link-btn" data-skip>${last ? "Închide" : "Sari peste"}</button>
-        </div>
-        <div class="guide-icon"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true">${s.icon}</svg></div>
-        <h3>${s.title}</h3>
-        <div class="guide-body">${s.body}</div>
-        <div class="guide-dots">${GUIDE_STEPS.map((_, i) => `<i class="${i === step ? "on" : ""}"></i>`).join("")}</div>
-        <div class="guide-actions">
-          <button type="button" class="btn btn-secondary" data-prev ${step === 0 ? "disabled" : ""}>Înapoi</button>
-          <button type="button" class="btn btn-primary" data-next>${last ? "Am înțeles, începem" : "Următorul"}</button>
-        </div>
+    if (i < 0) i = 0;
+    if (i >= steps.length) { finish(); return; }
+    const st = steps[i];
+    if (st.screen === "setup") { if (!$("#screen-setup").classList.contains("active")) openSetup(key); }
+    else if (st.screen === "dash") { if (!$("#screen-dashboard").classList.contains("active")) showScreen("screen-dashboard"); }
+    const el = st.target ? document.querySelector(st.target) : null;
+    if (st.target && !el) { i += dir; draw(); return; }          // ținta nu există: sare peste pas
+    current = { st, el };
+    const last = i === steps.length - 1;
+    pop.innerHTML = `
+      <div class="tour-count">${i + 1} / ${steps.length}</div>
+      <h3>${st.title}</h3>${st.html}
+      <div class="tour-foot">
+        <button type="button" class="link-btn tour-skip" data-skip>${last ? "" : "Sari peste"}</button>
+        ${i > 0 ? '<button type="button" class="btn btn-secondary" data-prev>Înapoi</button>' : ""}
+        <button type="button" class="btn btn-primary" data-next>${last ? "Gata" : "Înainte"}</button>
       </div>`;
+    if (el) el.scrollIntoView({ block: "center" });
+    requestAnimationFrame(place);
   }
-  ov.addEventListener("click", (e) => {
-    if (e.target.closest("[data-skip]")) close();
-    else if (e.target.closest("[data-prev]")) { if (step > 0) { step--; draw(); } }
-    else if (e.target.closest("[data-next]")) { if (step < GUIDE_STEPS.length - 1) { step++; draw(); } else close(); }
+
+  function finish() {
+    window.removeEventListener("resize", place);
+    window.removeEventListener("scroll", place, true);
+    document.removeEventListener("keydown", onKey);
+    shade.remove(); spot.remove(); arrow.remove(); pop.remove();
+    showScreen("screen-dashboard");
+    if (firstTime) markGuideSeen();
+  }
+  const next = () => { dir = 1; i++; draw(); };
+  const prev = () => { dir = -1; i--; draw(); };
+  const onKey = (e) => {
+    if (e.key === "Escape") finish();
+    else if (e.key === "ArrowRight") next();
+    else if (e.key === "ArrowLeft" && i > 0) prev();
+  };
+  pop.addEventListener("click", (e) => {
+    if (e.target.closest("[data-next]")) next();
+    else if (e.target.closest("[data-prev]")) prev();
+    else if (e.target.closest("[data-skip]")) finish();
   });
+  window.addEventListener("resize", place);
+  window.addEventListener("scroll", place, true);
+  document.addEventListener("keydown", onKey);
   draw();
 }
+
+function showGuide(firstTime) { startTour(firstTime); }
 
 function guideLocalKey() { return "prep-guide-seen:" + (currentUserId || "anon"); }
 function guideSeenLocally() { try { return localStorage.getItem(guideLocalKey()) === "1"; } catch (e) { return false; } }
@@ -554,6 +601,12 @@ function renderNoAccess(grid) {
   });
 }
 
+function roCount(n, one, many) {   // 1 întrebare · 5 întrebări · 24 de întrebări
+  if (n === 1) return `1 ${one}`;
+  const m = n % 100;
+  return (n !== 0 && (m === 0 || m >= 20)) ? `${n} de ${many}` : `${n} ${many}`;
+}
+
 function renderDashboard() {
   const grid = $("#exam-grid");
   grid.innerHTML = "";
@@ -584,8 +637,8 @@ function renderDashboard() {
       <h3>${exam.name}</h3>
       <p>${exam.description}</p>
       <div class="exam-card-meta">
-        <span>${chapterCount} capitole</span>
-        <span>${total} întrebări</span>
+        <span>${roCount(chapterCount, "capitol", "capitole")}</span>
+        <span>${roCount(total, "întrebare", "întrebări")}</span>
       </div>
       <div class="exam-card-actions">
         <button class="exam-card-cta" data-exam="${key}">Întrebări ${ARROW_ICON}</button>
@@ -732,7 +785,7 @@ function openSetup(examKey) {
 
   $("#setup-exam-title").textContent = exam.name;
   $("#setup-exam-desc").textContent = exam.description;
-  $("#setup-question-total").textContent = `${exam.QUESTIONS.length} întrebări`;
+  $("#setup-question-total").textContent = roCount(exam.QUESTIONS.length, "întrebare", "întrebări");
 
   // implicit: toate capitolele selectate
   state.selectedChapters = new Set(exam.CHAPTERS.map(c => c.id));
