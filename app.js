@@ -299,12 +299,15 @@ function escapeAttr(str) {
 
 /* HTML pentru imaginea unei întrebări (dacă are câmpul "image") */
 function imageHtml(q, small = false) {
-  if (!q.image) return "";
-  const src = escapeAttr(q.image);
-  return `<div class="q-image-wrap ${small ? "small" : ""}">
+  const list = Array.isArray(q.images) && q.images.length ? q.images : (q.image ? [q.image] : []);
+  if (!list.length) return "";
+  return list.map(p => {
+    const src = escapeAttr(p);
+    return `<div class="q-image-wrap ${small ? "small" : ""}">
     <img class="q-image" src="${src}" alt="Imagine pentru întrebare" loading="lazy"
          onerror="this.outerHTML='<div class=&quot;q-image-missing&quot;>Imaginea nu a putut fi încărcată: ${src}</div>'">
   </div>`;
+  }).join("");
 }
 
 /* click pe imagine = mărire pe tot ecranul */
