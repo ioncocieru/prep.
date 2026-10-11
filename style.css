@@ -927,29 +927,14 @@ body{ font-size:15px; line-height:1.5; }
 h1,h2,h3{ letter-spacing:0; font-weight:700; }
 
 /* fără decoruri: puncte, linii de rețea, gradiente, lumini */
-.pattern-dots{ background-image:none; }
-.login-bg-lines{ display:none; }
-.exam-card::before{ display:none; }
 .dash-hero{ padding-bottom:72px; }
 .dash-hero-copy h1{ font-size:28px; }
 
 /* carduri plate, cu bordură, fără „ridicare” la hover */
-.exam-card, .setup-panel, .quiz-card, .login-card, .profile-card, .results-summary,
+.setup-panel, .quiz-card, .profile-card, .results-summary,
 .results-breakdown, .results-review, .course-sidebar, .course-player, .course-resources, .pcert{
   border-radius:10px; box-shadow:none;
 }
-.login-card{ border-radius:12px; padding:30px; }
-.exam-card{ padding:22px; gap:14px; transition: border-color .15s ease; }
-.exam-card:hover{ transform:none; box-shadow:none; border-color: color-mix(in srgb, var(--accent, var(--blue)) 55%, var(--border)); }
-.exam-card-icon{ width:40px; height:40px; border-radius:8px; }
-.exam-card-icon svg{ width:22px; height:22px; }
-.exam-card h3{ font-size:17px; }
-.exam-card p{ font-size:14px; }
-.exam-card-meta{ border-top:0; padding-top:0; gap:0; }
-.exam-card-meta span{ background:none; border:0; border-radius:0; padding:0; font-weight:500; font-size:13px; }
-.exam-card-meta span + span::before{ content:"·"; margin:0 10px; color: var(--text-faint); }
-.exam-card-cta{ border-radius:8px; padding:10px 16px; min-height:42px; }
-.exam-card-cta:hover{ gap:8px; filter:brightness(1.06); }
 .exam-card-cta-alt{ box-shadow: inset 0 0 0 1px var(--accent, var(--blue)); }
 
 /* butoane și etichete mai puțin „pastilă” */
@@ -1032,7 +1017,7 @@ h1,h2,h3{ letter-spacing:0; font-weight:700; }
   .btn-ghost-dark .lo-full{ display:none; }
   .btn-ghost-dark .lo-short{ display:inline; }
   .dashboard-grid{ padding:0 16px 28px; gap:12px; margin-top:-40px; }
-  .exam-card{ padding:18px; }
+  .exam-card{ padding:22px 18px 20px; }
   .exam-card-actions{ gap:8px; }
   .exam-card-actions .exam-card-cta{ flex:1; justify-content:center; }
   .exam-card-meta{ flex-wrap:wrap; }
@@ -1048,12 +1033,9 @@ h1,h2,h3{ letter-spacing:0; font-weight:700; }
   .quiz-nav-right{ display:flex; gap:8px; width:100%; }
   .quiz-nav-right .btn{ flex:1; }
   #quiz-flag-btn{ width:100%; justify-content:center; }
-  .login-wrap{ padding:22px 16px 28px; gap:22px; }
-  .login-brand{ text-align:left; }
-  .logo-mark-lg{ height:36px; margin-bottom:14px; }
-  .brand-sub{ font-size:14px; margin-bottom:0; }
-  .brand-exam-list, .telegram-link{ display:none; }
-  .login-card{ padding:22px 18px; }
+  .login-wrap{ padding:28px 16px 32px; gap:24px; }
+  .login-brand h1{ font-size:28px; }
+  .login-card{ padding:24px 20px; }
   .results-actions .btn{ width:100%; }
   .noaccess{ padding:22px 18px; }
   .noaccess-tg{ padding:12px 14px; }
