@@ -533,7 +533,44 @@ sb.auth.onAuthStateChange((event) => {
 sb.auth.getSession().then(({ data }) => {
   if (recoveryMode) { showRecoverForm(); return; }
   if (data.session) enterApp();
+  else if (location.hash === "#login") { showScreen("screen-login"); switchAuth("login"); }
 });
+
+/* păreri (reviews.js) + apariție la derulare */
+(function initLanding() {
+  const R = window.PREP_REVIEWS || {};
+  const vids = Array.isArray(R.videos) ? R.videos : [];
+  const quotes = Array.isArray(R.quotes) ? R.quotes : [];
+  const sec = document.getElementById("lp-reviews");
+  const esc = (s) => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+  if (sec && (vids.length || quotes.length)) {
+    sec.hidden = false;
+    const nav = document.getElementById("lp-nav-reviews"); if (nav) nav.hidden = false;
+    const vbox = document.getElementById("lp-vids");
+    vbox.innerHTML = vids.map(v => `
+      <div class="lp-vid">
+        <div class="lp-vid-circle"><video src="${esc(v.src)}" muted loop playsinline preload="metadata"></video><span class="snd">♪</span></div>
+        <b>${esc(v.name)}</b><span>${esc(v.note || "")}</span>
+      </div>`).join("");
+    vbox.querySelectorAll(".lp-vid-circle").forEach(c => {
+      const vid = c.querySelector("video"), snd = c.querySelector(".snd");
+      vid.play().catch(() => {});
+      c.addEventListener("click", () => {
+        const on = vid.muted;                        // primul click: pornește cu sunet de la început
+        vbox.querySelectorAll("video").forEach(o => { if (o !== vid) { o.muted = true; o.play().catch(() => {}); } });
+        vid.muted = !on; if (on) vid.currentTime = 0; vid.play().catch(() => {});
+        snd.textContent = on ? "🔊" : "♪";
+      });
+    });
+    document.getElementById("lp-quotes").innerHTML = quotes.map(q => `
+      <blockquote class="lp-quote"><p>${esc(q.text)}</p><cite><b>${esc(q.name)}</b>${q.note ? " · " + esc(q.note) : ""}</cite></blockquote>`).join("");
+  }
+  const items = document.querySelectorAll("#screen-landing .lp-h2, #screen-landing .lp-panel, #screen-landing .lp-step, #screen-landing .lp-arr, #screen-landing .lp-price-box, #screen-landing .lp-faq, #screen-landing .lp-vid, #screen-landing .lp-quote, #screen-landing .lp-duo, #screen-landing .lp-duo-copy");
+  if (!("IntersectionObserver" in window)) return;
+  const io = new IntersectionObserver((es) => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } }), { threshold: .12 });
+  items.forEach(el => { el.classList.add("rv"); io.observe(el); });
+})();
+
 
 /* =====================================================================
    4) DASHBOARD — alegerea examenului
@@ -1534,3 +1571,44 @@ applyTheme(getLocalTheme() || "light");
 $("#theme-toggle").addEventListener("click", () => setTheme(currentTheme() === "dark" ? "light" : "dark"));
 $all("[data-theme-set]").forEach(b => b.addEventListener("click", () => setTheme(b.dataset.themeSet)));
 $("#guide-btn").addEventListener("click", () => showGuide(false));
+
+/* demo din telefonul de pe prima pagină: degetul apasă exact pe răspunsuri */
+(function initDemo() {
+  const scr = document.getElementById("lp-demo");
+  if (!scr) return;
+  const finger = document.getElementById("d-finger"), next = document.getElementById("d-next"), prog = document.getElementById("d-prog-i");
+  const panes = Array.from(scr.querySelectorAll(".d-pane"));
+  const still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wait = (ms) => new Promise(r => setTimeout(r, ms));
+  const visible = () => document.getElementById("screen-landing").classList.contains("active") && !document.hidden;
+  const rel = (el) => { let x = 0, y = 0, n = el; while (n && n !== scr) { x += n.offsetLeft; y += n.offsetTop; n = n.offsetParent; } return { x, y, w: el.offsetWidth, h: el.offsetHeight }; };
+  const moveTo = async (el, ms = 800, fx = .72, fy = .55) => {
+    const p = rel(el);
+    finger.style.transition = `transform ${ms}ms cubic-bezier(.4,.1,.2,1), opacity .3s`;
+    finger.style.transform = `translate(${p.x + p.w * fx - 17}px, ${p.y + p.h * fy - 17}px)`;
+    await wait(ms + 80);
+  };
+  const press = async () => { finger.classList.add("press"); await wait(260); finger.classList.remove("press"); };
+  const set = (p) => { panes.forEach((el, i) => { el.style.transition = "none"; el.style.transform = `translateX(${i === p ? 0 : 110}%)`; el.classList.remove("done"); el.querySelectorAll(".d-opt").forEach(o => o.classList.remove("ok", "bad")); }); next.classList.remove("show"); };
+  const slide = async (from, to) => { panes[from].style.transition = panes[to].style.transition = "transform .55s cubic-bezier(.4,.1,.2,1)"; panes[from].style.transform = "translateX(-110%)"; panes[to].style.transform = "translateX(0)"; await wait(650); };
+  const answer = async (pane, wrongFirst) => {
+    const opts = Array.from(pane.querySelectorAll(".d-opt")), good = opts.find(o => o.dataset.ans === "yes"), bad = opts.find(o => o.dataset.ans === "no");
+    if (wrongFirst) { await moveTo(bad); await press(); bad.classList.add("bad"); await wait(700); bad.classList.remove("bad"); }
+    await moveTo(good, wrongFirst ? 600 : 900); await press(); good.classList.add("ok"); pane.classList.add("done");
+  };
+  if (still) { panes[0].style.transform = "none"; panes[1].style.transform = "translateX(110%)"; panes[0].classList.add("done"); panes[0].querySelectorAll(".d-opt")[1].classList.add("ok"); finger.style.display = "none"; return; }
+  (async function loop() {
+    for (;;) {
+      if (!visible()) { await wait(500); continue; }
+      set(0); prog.style.width = "20%"; finger.style.opacity = "0";
+      finger.style.transition = "none"; finger.style.transform = `translate(${scr.offsetWidth - 70}px, ${scr.offsetHeight - 40}px)`;
+      await wait(900); finger.style.opacity = "1";
+      await answer(panes[0], false); prog.style.width = "50%"; await wait(1000);
+      next.classList.add("show"); await wait(250); await moveTo(next, 700, .5, .5); await press();
+      await slide(0, 1); next.classList.remove("show"); await wait(400);
+      await answer(panes[1], true); prog.style.width = "80%"; await wait(1300);
+      next.classList.add("show"); await wait(250); await moveTo(next, 700, .5, .5); await press();
+      finger.style.opacity = "0"; prog.style.width = "100%"; await wait(900);
+    }
+  })();
+})();
