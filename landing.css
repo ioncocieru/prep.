@@ -192,6 +192,13 @@
 .lx-prices .pr{ font-size:52px; font-weight:700; letter-spacing:-.04em; line-height:1; margin:14px 0 14px !important; }
 .lx-prices .pr s{ font-size:17px; font-weight:400; color:var(--fnt); letter-spacing:0; margin-left:12px; }
 .lx-prices .ds{ color:var(--mut); font-size:15px; }
+/* Prețurile și echivalentele în lei de pe prima pagină. */
+.lx-prices .pr{ display:flex; align-items:baseline; flex-wrap:wrap; gap:8px 12px; }
+.lx-prices .price-current{ white-space:nowrap; }
+.lx-prices .price-currency{ font-size:20px; font-weight:500; letter-spacing:0; }
+.lx-prices .pr s{ margin-left:0; white-space:nowrap; color:var(--mut); }
+.lx-prices .price-equivalent{ font-size:12px; line-height:1.4; color:var(--mut); margin:-6px 0 14px !important; }
+
 .lx-pay{ display:flex; align-items:center; gap:20px; margin-top:24px; flex-wrap:wrap; }
 .lx-pay p{ color:var(--mut); }
 
