@@ -1,4 +1,4 @@
-/* ITS PREP — question bank. Existing IDs preserved. */
+/* ITS PREP — complete question bank; original statements kept individually. */
 window.EXAM_DATA = window.EXAM_DATA || {};
 window.EXAM_DATA.deviceConfig = {
   "id": "deviceConfig",
@@ -777,7 +777,7 @@ window.EXAM_DATA.deviceConfig = {
       "chapter": "aplicatii-periferice",
       "type": "drag_drop",
       "question": "Using drag and drop, match each connection type in the image with its name.",
-      "image": "assets/device1.png",
+      "image": "assets/device-connectors/connector-set.svg",
       "dragItems": [
         {
           "id": "i1",
@@ -827,14 +827,15 @@ window.EXAM_DATA.deviceConfig = {
           "correctItemId": "i2"
         }
       ],
-      "explanation": "Mapping in the original image: A Audio, B Ethernet, C HDMI, D USB Type A, E USB Type C. USB-C is reversible; its shape alone does not guarantee a particular data rate or video support. Original image was not included in the supplied files, so this mapping still requires visual confirmation."
+      "explanation": "Mapping in the original image: A Audio, B Ethernet, C HDMI, D USB Type A, E USB Type C. USB-C is reversible; its shape alone does not guarantee a particular data rate or video support. Original image was not included in the supplied files, so this mapping still requires visual confirmation.",
+      "imageAlt": "Five redrawn connector faces labelled A through E."
     },
     {
       "id": "dcm-051",
       "chapter": "aplicatii-periferice",
       "type": "drag_drop",
       "question": "Using drag and drop, match each connection type in the image with the peripheral device it typically attaches.",
-      "image": "assets/device2.png",
+      "image": "assets/device-connectors/connector-set.svg",
       "dragItems": [
         {
           "id": "i1",
@@ -884,7 +885,8 @@ window.EXAM_DATA.deviceConfig = {
           "correctItemId": "i2"
         }
       ],
-      "explanation": "AUDIO connects a headset, ETHERNET connects a device to a network, HDMI connects a TV, USB connects printers, cameras and storage, and USB TYPE C is typical on smartphones."
+      "explanation": "AUDIO connects a headset, ETHERNET connects a device to a network, HDMI connects a TV, USB connects printers, cameras and storage, and USB TYPE C is typical on smartphones.",
+      "imageAlt": "Reference connector faces: A audio, B Ethernet, C HDMI, D USB Type A, E USB Type C."
     },
     {
       "id": "dcm-052",
@@ -1276,20 +1278,6 @@ window.EXAM_DATA.deviceConfig = {
       "explanation": "Files moved within the same partition keep their explicit permissions. Nothing is inherited because no new copy is created."
     },
     {
-      "id": "dcm-073",
-      "chapter": "acces-date",
-      "type": "single",
-      "question": "In which action with files and folders are permissions retained as those files or folders are moved or copied to a new destination? Assume NTFS source and destination and a normal File Explorer operation without an explicit ACL-preservation tool.",
-      "options": [
-        "Files and folders are moved to a new partition",
-        "Files and folders are moved within the same partition",
-        "Files and folders are copied to a new partition",
-        "Files and folders are copied within the same partition"
-      ],
-      "correct": 1,
-      "explanation": "Permissions are retained only when files or folders are moved within the same partition. Copies are new files and inherit permissions from the parent folder."
-    },
-    {
       "id": "dcm-074",
       "chapter": "acces-date",
       "type": "single",
@@ -1457,18 +1445,21 @@ window.EXAM_DATA.deviceConfig = {
       "id": "dcm-081",
       "chapter": "acces-date",
       "type": "multiple",
-      "question": "Which specific NTFS permissions are considered basic permissions? (Choose 2.)",
+      "question": "Which listed NTFS permissions are basic permissions? (Choose 3.)",
       "options": [
         "Write attributes",
-        "Modify",
         "Take ownership",
-        "Read"
+        "Read",
+        "Read attributes",
+        "Full control",
+        "Modify"
       ],
       "correct": [
-        1,
-        3
+        2,
+        4,
+        5
       ],
-      "explanation": "Basic NTFS permissions are Full Control, Modify, Read & Execute, Read and Write. Read attributes, Write attributes and Take ownership are advanced permissions."
+      "explanation": "Read, Full control, and Modify are basic NTFS permission sets. Write attributes, Read attributes, and Take ownership are individual advanced permissions, although some are included within basic permission sets."
     },
     {
       "id": "dcm-082",
@@ -3881,17 +3872,50 @@ window.EXAM_DATA.deviceConfig = {
     },
     {
       "id": "dcm-228",
-      "chapter": "acces-date",
-      "type": "single",
-      "question": "Which Microsoft offering is a suite of productivity applications and cloud services?",
-      "options": [
-        "OneNote",
-        "Windows 365",
-        "Microsoft 365",
-        "SharePoint"
+      "chapter": "aplicatii-periferice",
+      "type": "drag_drop",
+      "question": "Match each Microsoft service to its description.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Microsoft 365"
+        },
+        {
+          "id": "i2",
+          "text": "OneNote"
+        },
+        {
+          "id": "i3",
+          "text": "SharePoint"
+        },
+        {
+          "id": "i4",
+          "text": "Windows 365"
+        }
       ],
-      "correct": 2,
-      "explanation": "Microsoft 365 include aplicații și servicii de productivitate. Windows 365 oferă Cloud PC; OneNote și SharePoint sunt produse individuale."
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A suite of productivity applications and cloud services",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "A digital notebook organized into notebooks, sections, and pages",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z3",
+          "label": "Sites and document libraries for collaboration across an organization",
+          "correctItemId": "i3"
+        },
+        {
+          "id": "z4",
+          "label": "A Cloud PC service that streams a Windows desktop to supported devices",
+          "correctItemId": "i4"
+        }
+      ],
+      "explanation": "Microsoft 365 provides productivity apps and services. OneNote organizes notes like a tabbed notebook. SharePoint hosts collaborative sites and document libraries. Windows 365 provides a hosted Windows Cloud PC accessible from supported clients or a web browser."
     },
     {
       "id": "dcm-230",
@@ -3945,9 +3969,9 @@ window.EXAM_DATA.deviceConfig = {
       "id": "dcm-235",
       "chapter": "aplicatii-periferice",
       "type": "single",
-      "question": "Identify the connector shown in the photograph.",
-      "image": "assets/device-connectors/port-01.jpeg",
-      "imageAlt": "Fotografie a conectorului de identificat",
+      "question": "Identify the connector shown in the diagram.",
+      "image": "assets/device-connectors/port-01.svg",
+      "imageAlt": "Technical front-view diagram of a connector to identify.",
       "options": [
         "VGA (DE-15)",
         "HDMI Type A",
@@ -3955,15 +3979,15 @@ window.EXAM_DATA.deviceConfig = {
         "USB Type A"
       ],
       "correct": 0,
-      "explanation": "The connector has three rows of five pins and screw posts, characteristic of VGA (DE-15). VGA carries analog video, not audio."
+      "explanation": "The connector has three rows of five contacts and side screw fittings, characteristic of VGA (DE-15). VGA carries analog video, not audio."
     },
     {
       "id": "dcm-236",
       "chapter": "aplicatii-periferice",
       "type": "single",
-      "question": "Identify the connector shown in the photograph.",
-      "image": "assets/device-connectors/port-02.jpeg",
-      "imageAlt": "Fotografie a conectorului de identificat",
+      "question": "Identify the connector shown in the diagram.",
+      "image": "assets/device-connectors/port-02.svg",
+      "imageAlt": "Technical front-view diagram of a connector to identify.",
       "options": [
         "VGA (DE-15)",
         "HDMI Type A",
@@ -3971,15 +3995,15 @@ window.EXAM_DATA.deviceConfig = {
         "USB Type A"
       ],
       "correct": 1,
-      "explanation": "The pictured Type A HDMI plug has the characteristic symmetrical trapezoidal outline. HDMI carries digital video and audio."
+      "explanation": "The illustrated Type A HDMI connector has the characteristic symmetrical trapezoidal outline. HDMI carries digital video and audio."
     },
     {
       "id": "dcm-237",
       "chapter": "aplicatii-periferice",
       "type": "single",
-      "question": "Identify the connector shown in the photograph.",
-      "image": "assets/device-connectors/port-03.jpeg",
-      "imageAlt": "Fotografie a conectorului de identificat",
+      "question": "Identify the connector shown in the diagram.",
+      "image": "assets/device-connectors/port-03.svg",
+      "imageAlt": "Technical front-view diagram of a connector to identify.",
       "options": [
         "VGA (DE-15)",
         "HDMI Type A",
@@ -3987,15 +4011,15 @@ window.EXAM_DATA.deviceConfig = {
         "USB Type A"
       ],
       "correct": 2,
-      "explanation": "The full-size DisplayPort plug has a largely rectangular outline with one beveled corner. DisplayPort carries digital video and audio."
+      "explanation": "The full-size DisplayPort connector has a largely rectangular outline with one beveled corner. DisplayPort carries digital video and audio."
     },
     {
       "id": "dcm-238",
       "chapter": "aplicatii-periferice",
       "type": "single",
-      "question": "Identify the connector shown in the photograph.",
-      "image": "assets/device-connectors/port-04.jpeg",
-      "imageAlt": "Fotografie a conectorului de identificat",
+      "question": "Identify the connector shown in the diagram.",
+      "image": "assets/device-connectors/port-04.svg",
+      "imageAlt": "Technical front-view diagram of a connector to identify.",
       "options": [
         "VGA (DE-15)",
         "HDMI Type A",
@@ -4003,7 +4027,983 @@ window.EXAM_DATA.deviceConfig = {
         "USB Type A"
       ],
       "correct": 3,
-      "explanation": "The rectangular USB Type A plug is typically used for peripherals and storage; supported data rates and power depend on the USB implementation."
+      "explanation": "The rectangular USB Type A connector is typically used for peripherals and storage; supported data rates and power depend on the USB implementation."
+    },
+    {
+      "chapter": "securitate-dispozitiv",
+      "type": "drag_drop",
+      "question": "Match each malware type to its definition.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Logic bomb"
+        },
+        {
+          "id": "i2",
+          "text": "Ransomware"
+        },
+        {
+          "id": "i3",
+          "text": "Trojan horse"
+        },
+        {
+          "id": "i4",
+          "text": "Worm"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Self-replicating malware that can spread between systems without attaching itself to a host file",
+          "correctItemId": "i4"
+        },
+        {
+          "id": "z2",
+          "label": "Makes data inaccessible and demands payment or another condition for recovery",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z3",
+          "label": "Malicious software disguised as a legitimate or useful program",
+          "correctItemId": "i3"
+        },
+        {
+          "id": "z4",
+          "label": "Malicious code activated by a specified condition or trigger",
+          "correctItemId": "i1"
+        }
+      ],
+      "explanation": "A worm self-replicates; ransomware demands a ransom, often after encrypting files; a Trojan masquerades as legitimate software; and a logic bomb activates when a predefined condition is met. A virus, unlike a worm, attaches to a host file or program.",
+      "id": "dcm-239"
+    },
+    {
+      "id": "dcm-240",
+      "chapter": "acces-date",
+      "type": "drag_drop",
+      "question": "A Windows file server named FS1 shares D:\\Projects\\Training as Training. The exhibit shows the permissions effective for your account. Assume no additional group grants or Deny entries. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "You can open a subfolder through \\\\FS1\\Training.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "You can create a subfolder through \\\\FS1\\Training.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z3",
+          "label": "You can create a subfolder in D:\\Projects\\Training during a Remote Desktop session on FS1.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Over SMB, both share and NTFS permissions apply, so Read share permissions do not allow folder creation. During Remote Desktop access to a local path, share permissions do not apply, but NTFS Read & Execute still does not grant Write/Create folders.",
+      "image": "assets/device-connectors/training-permissions.svg",
+      "imageAlt": "Training folder permissions: NTFS Read & Execute, List folder contents, and Read allowed; share Read allowed; no Write or Change grant."
+    },
+    {
+      "id": "dcm-241",
+      "chapter": "securitate-dispozitiv",
+      "type": "drag_drop",
+      "question": "Evaluate these statements about Active Directory Domain Services. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A domain user can use the same domain identity to authenticate to authorized resources across the domain.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "Active Directory is the Windows feature that indexes and searches every file on your local computer.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z3",
+          "label": "Every domain user can assign their own administrative rights.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Active Directory centralizes identities and access management. Windows Search handles local file indexing. Administrative rights are assigned by authorized administrators and policy, not freely chosen by every user."
+    },
+    {
+      "chapter": "securitate-dispozitiv",
+      "type": "single",
+      "question": "Microsoft Defender Antivirus quarantines an application. After investigation, an authorized administrator verifies that it is safe and that the detection is a false positive. What should the administrator do to recover the application?",
+      "options": [
+        "Delete the application permanently",
+        "Disable all antivirus protection permanently",
+        "Restore the verified file from quarantine in Protection history",
+        "Change the desktop theme"
+      ],
+      "correct": 2,
+      "explanation": "After validating the file and following organizational policy, an administrator can restore a false-positive item from Protection history. Do not restore an item merely because its publisher claims it is safe, and do not disable antivirus globally.",
+      "id": "dcm-242"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "A legacy printer is connected through a USB-to-serial adapter. You need to adjust baud rate, data bits, stop bits, and parity. Which Device Manager category contains the serial port settings?",
+      "options": [
+        "Print queues",
+        "Ports (COM & LPT)",
+        "Display adapters",
+        "Universal Serial Bus controllers"
+      ],
+      "correct": 1,
+      "explanation": "Serial communication settings are configured on the appropriate COM port under Ports (COM & LPT), typically through Properties > Port Settings. Print queues manage print jobs, not serial framing parameters.",
+      "id": "dcm-243",
+      "image": "assets/device-connectors/device-manager-serial.svg",
+      "imageAlt": "A redrawn Device Manager tree with several device categories, including Ports (COM & LPT)."
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "A Windows 10 user wants to share a small file directly with a nearby Windows device over supported wireless connections. Which System setting should the user configure?",
+      "options": [
+        "Nearby sharing",
+        "Display",
+        "Projecting to this PC",
+        "Remote Desktop"
+      ],
+      "correct": 0,
+      "explanation": "Nearby sharing supports sharing files and links between nearby compatible Windows devices using Bluetooth and/or Wi-Fi, depending on the Windows version and configuration. Projecting to this PC shares a display, and Remote Desktop controls a remote session.",
+      "id": "dcm-244"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "The company Wi-Fi SSID is visible, but no employees can connect. Client Wi-Fi is enabled. After confirming that the problem affects the whole wireless network, which listed troubleshooting action is most appropriate?",
+      "options": [
+        "Check every employee’s Ethernet cable",
+        "Run ipconfig /renew on one client only",
+        "Check and, if authorized, restart the wireless access point or router",
+        "Replace every laptop keyboard"
+      ],
+      "correct": 2,
+      "explanation": "When many clients are affected, investigate shared infrastructure such as the access point, authentication service, and router. An authorized restart may resolve a failed access point; first check status and preserve relevant logs. One client’s DHCP renewal will not repair a network-wide wireless fault.",
+      "id": "dcm-245"
+    },
+    {
+      "chapter": "acces-date",
+      "type": "single",
+      "question": "You are formatting a 4 GB USB drive for the widest practical compatibility with legacy devices, game systems, and non-Windows computers. Which file system should you choose?",
+      "options": [
+        "exFAT",
+        "FAT16",
+        "NTFS",
+        "FAT32"
+      ],
+      "correct": 3,
+      "explanation": "FAT32 has broad legacy-device support and suits a small removable drive. Its maximum individual file size is 4 GiB minus one byte. exFAT supports much larger files but is not supported by every older device.",
+      "id": "dcm-246"
+    },
+    {
+      "chapter": "instalare-config",
+      "type": "multiple",
+      "question": "A blank 3 TB SSD will be used in a modern Windows 11 device. You need access to the full capacity and a resilient Windows file system. Which partition style and file system should you select? (Choose 2.)",
+      "options": [
+        "GPT partition style",
+        "FAT32 file system",
+        "exFAT file system",
+        "NTFS file system",
+        "MBR partition style"
+      ],
+      "correct": [
+        0,
+        3
+      ],
+      "explanation": "GPT supports disks larger than the approximately 2 TiB addressable limit of typical MBR disks with 512-byte sectors and maintains redundant partition metadata. NTFS supports Windows permissions and file-system journaling. These features improve resilience but do not replace backups.",
+      "id": "dcm-247"
+    },
+    {
+      "id": "dcm-248",
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Evaluate these statements about Windows 10 update settings. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Optional updates can be viewed from Windows Update; the exact link or Advanced options location varies by Windows version.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "For a removable update, the uninstall option can be accessed through Update history and the related uninstall-updates interface.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z3",
+          "label": "Pending required updates can install only when active hours have been configured.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Optional-update navigation varies by release. Update history provides a path to uninstall supported updates, although not every update can be removed. Active hours primarily help prevent disruptive automatic restarts; they are not a prerequisite for installing required updates."
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "drag_drop",
+      "question": "Match each connector to the most appropriate description.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "USB Type-C"
+        },
+        {
+          "id": "i2",
+          "text": "VGA"
+        },
+        {
+          "id": "i3",
+          "text": "DisplayPort"
+        },
+        {
+          "id": "i4",
+          "text": "HDMI"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A reversible connector that can carry power and data; supported features depend on the implementation",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "An analog video connector common on legacy monitors and computers",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z3",
+          "label": "A digital display interface commonly used on PC monitors and capable of multi-stream transport on supported systems",
+          "correctItemId": "i3"
+        },
+        {
+          "id": "z4",
+          "label": "A digital audio/video interface widely used by televisions, game consoles, computers, and projectors",
+          "correctItemId": "i4"
+        }
+      ],
+      "explanation": "USB-C describes a connector shape, not a guaranteed speed or video capability. VGA carries analog video. DisplayPort can support multiple displays through MST when the source and display chain support it. HDMI is widely used for digital audio/video on consumer equipment.",
+      "id": "dcm-249"
+    },
+    {
+      "id": "dcm-250",
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Evaluate these statements about installing and rolling back device drivers. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "If Windows cannot find an updated driver, no newer compatible driver can exist on the manufacturer’s website.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z2",
+          "label": "When carrying out a clean reinstallation of a corrupted driver, removing the affected device/driver and restarting as required can be appropriate before installing the official replacement.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z3",
+          "label": "The Roll Back Driver button lets you choose any historical version of a driver, even if that version is not stored on the computer.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Windows driver search does not cover every vendor release. A clean driver reinstall may involve uninstalling the device or driver package, restarting as instructed, and installing a compatible official package. Roll Back Driver normally restores the previously retained driver, not any arbitrary historical version."
+    },
+    {
+      "id": "dcm-251",
+      "chapter": "aplicatii-periferice",
+      "type": "drag_drop",
+      "question": "Evaluate these statements about graphics hardware. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A graphics processor renders graphics for output to a display.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "VGA, DVI, HDMI, and DisplayPort are display-output connection standards.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z3",
+          "label": "Integrated graphics always has its own dedicated video memory, separate from system RAM.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z4",
+          "label": "Adding a discrete graphics card guarantees a higher CPU clock speed.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Graphics processors render display output. VGA, DVI, HDMI, and DisplayPort are display connection standards. Integrated graphics commonly shares system memory. A discrete GPU can accelerate supported graphics workloads, but it does not guarantee any increase in CPU clock speed."
+    },
+    {
+      "id": "dcm-252",
+      "chapter": "aplicatii-periferice",
+      "type": "drag_drop",
+      "question": "On a standard Windows 10 installation, without third-party shell customization, decide whether each desktop-environment item can be configured through supported settings. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Replace the Windows logo on the Start button with an arbitrary custom image.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z2",
+          "label": "Move an unlocked taskbar to a different edge of the screen.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z3",
+          "label": "Change display resolution and orientation to supported values.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z4",
+          "label": "Choose which supported folders appear on Start.",
+          "correctItemId": "yes"
+        }
+      ],
+      "explanation": "Windows 10 supports moving an unlocked taskbar, changing supported display modes, and selecting certain folders shown on Start. Built-in settings do not provide an arbitrary Start-button logo replacement. Windows 11 taskbar behavior differs, so the Windows version matters."
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "A print service is stopped on a Windows computer. In Task Manager, where can you locate the service and issue a Start command when authorized?",
+      "options": [
+        "Processes tab > End task",
+        "Startup apps tab > Disable",
+        "Performance tab > Open CPU graph",
+        "Services tab > right-click the service > Start"
+      ],
+      "correct": 3,
+      "explanation": "Task Manager’s Services tab can display services and expose Start, Stop, and Restart commands when permitted. A stopped Print Spooler service can prevent printing. Ending an application process is not the same as starting a Windows service.",
+      "id": "dcm-253"
+    },
+    {
+      "chapter": "securitate-dispozitiv",
+      "type": "single",
+      "question": "On Windows 11, which Settings category provides the route to Windows Security and Microsoft Defender Antivirus settings?",
+      "options": [
+        "System",
+        "Network & internet",
+        "Privacy & security",
+        "Windows Update"
+      ],
+      "correct": 2,
+      "explanation": "In Windows 11, open Settings > Privacy & security > Windows Security > Virus & threat protection. Defender Antivirus settings are managed there, subject to organizational policy and the presence of another antivirus provider. Windows Update is not the category for directly configuring antivirus protection.",
+      "id": "dcm-254",
+      "image": "assets/device-connectors/windows-settings.svg",
+      "imageAlt": "Redrawn Windows 11 Settings sidebar showing System, Network & internet, Accessibility, Privacy & security, and Windows Update."
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Match each switch type to its characteristic forwarding function.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Layer 2 switch"
+        },
+        {
+          "id": "i2",
+          "text": "Layer 3 switch"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Forwards Ethernet frames using destination MAC addresses",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "Can route packets between IP subnets, in addition to switching frames",
+          "correctItemId": "i2"
+        }
+      ],
+      "explanation": "A Layer 2 switch uses MAC addresses for Ethernet forwarding. A Layer 3 switch also provides IP routing, such as routing between VLANs, subject to its capabilities and configuration.",
+      "id": "dcm-255"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which protocol prevents Layer 2 switching loops by managing redundant Ethernet paths?",
+      "options": [
+        "DHCP",
+        "Spanning Tree Protocol (STP)",
+        "NAT",
+        "RDP"
+      ],
+      "correct": 1,
+      "explanation": "STP and its variants build a loop-free Layer 2 topology by placing redundant paths into non-forwarding states as needed. DHCP assigns IP configuration, NAT translates addresses, and RDP provides remote desktop access.",
+      "id": "dcm-256"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "multiple",
+      "question": "Which statements describe normal operation of a modern Ethernet switch? (Choose 2.)",
+      "options": [
+        "A switch forwards every received frame to every port in all circumstances",
+        "A switch uses a MAC address table to select a port for a known destination",
+        "A full-duplex switched link can transmit and receive simultaneously",
+        "All switch ports belong to one shared collision domain"
+      ],
+      "correct": [
+        1,
+        2
+      ],
+      "explanation": "A switch learns source MAC addresses and uses its MAC table to forward known unicast traffic. Modern full-duplex links transmit and receive simultaneously. Unknown unicast and broadcast traffic may be flooded within the relevant VLAN, but not every frame is sent everywhere.",
+      "id": "dcm-257"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "multiple",
+      "question": "Compared with a hub, which TWO advantages does an Ethernet switch provide? (Choose 2.)",
+      "options": [
+        "It creates a separate collision domain for each port",
+        "It forwards all Ethernet frames based only on the destination IP address",
+        "It intelligently forwards known unicast frames using MAC addresses",
+        "It operates only in half-duplex mode"
+      ],
+      "correct": [
+        0,
+        2
+      ],
+      "explanation": "A hub repeats traffic across one shared collision domain. A switch separates collision domains and selectively forwards known unicast traffic using destination MAC addresses. Layer 2 frame forwarding is not based on destination IP addresses.",
+      "id": "dcm-258"
+    },
+    {
+      "id": "dcm-259",
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Evaluate these switch-forwarding statements. Assume ordinary Layer 2 switching within one VLAN, with no special filtering configuration. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A known unicast frame is forwarded using the switch’s MAC address table.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "An unknown unicast frame is flooded to other eligible forwarding ports in the same VLAN, except the incoming port.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z3",
+          "label": "Broadcast frames are forwarded only to other switches through trunk ports.",
+          "correctItemId": "no"
+        }
+      ],
+      "explanation": "Known unicast forwarding uses the MAC address table. Unknown unicast and broadcast traffic is normally flooded to eligible ports in the same VLAN other than the incoming port. Broadcasts can reach access ports as well as eligible trunk ports; VLAN boundaries limit the broadcast domain."
+    },
+    {
+      "id": "dcm-260",
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Evaluate these comparisons of network devices. Drag Yes or No to each statement. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "yes",
+          "text": "Yes"
+        },
+        {
+          "id": "no",
+          "text": "No"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "A Layer 3 switch can perform IP routing, whereas an ordinary Layer 2 switch does not.",
+          "correctItemId": "yes"
+        },
+        {
+          "id": "z2",
+          "label": "A hub creates a separate collision domain for every port.",
+          "correctItemId": "no"
+        },
+        {
+          "id": "z3",
+          "label": "A managed switch exposes configuration options that an unmanaged switch normally does not.",
+          "correctItemId": "yes"
+        }
+      ],
+      "explanation": "Layer 3 switching adds routing capabilities. A hub shares one collision domain rather than separating each port. Managed switches commonly support configuration and monitoring features such as VLANs, port security, and management interfaces."
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "A technician must connect computers within a LAN and needs remote configuration, monitoring, and switched per-port forwarding. Which device best fits these requirements?",
+      "options": [
+        "Hub",
+        "Unmanaged switch",
+        "Router without a LAN switch",
+        "Managed switch"
+      ],
+      "correct": 3,
+      "explanation": "A managed switch combines Ethernet switching with configurable management and monitoring functions. An unmanaged switch provides switching but lacks the same management controls; a hub repeats traffic over shared media.",
+      "id": "dcm-261"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which network device primarily forwards IP packets between different networks and uses a routing table to choose the next hop?",
+      "options": [
+        "Layer 2 switch",
+        "Hub",
+        "Router",
+        "Repeater"
+      ],
+      "correct": 2,
+      "explanation": "A router uses IP routing information to forward packets between networks. It is commonly used to connect a LAN to a WAN. A Layer 2 switch forwards frames within a Layer 2 domain, while hubs and repeaters do not make IP routing decisions.",
+      "id": "dcm-262"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which option is an example of a wide-area wireless network access technology?",
+      "options": [
+        "VLAN",
+        "Wireless LAN",
+        "Cellular 3G, 4G, or 5G",
+        "Perimeter network"
+      ],
+      "correct": 2,
+      "explanation": "Cellular networks provide wireless coverage across broad geographic areas. A WLAN is a local wireless network; a VLAN is logical LAN segmentation; a perimeter network is a security architecture rather than a cellular access technology.",
+      "id": "dcm-263"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "What is a primary benefit of dynamic routing compared with static routing?",
+      "options": [
+        "It automatically assigns IP addresses to all clients",
+        "It allows routers to update routing information as network conditions change",
+        "It automatically splits every LAN into smaller broadcast domains",
+        "It always requires less design and configuration in every network"
+      ],
+      "correct": 1,
+      "explanation": "Dynamic routing protocols exchange reachability information and can adapt routes after topology changes. Static routes are explicitly configured. Routing protocols do not replace DHCP, and their design can introduce additional complexity.",
+      "id": "dcm-264"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which router feature prioritizes selected traffic, such as voice or streaming video, during congestion?",
+      "options": [
+        "Network Address Translation (NAT)",
+        "Port forwarding",
+        "Quality of Service (QoS)",
+        "A default route"
+      ],
+      "correct": 2,
+      "explanation": "QoS classifies and prioritizes traffic to help manage delay, jitter, and loss under contention. NAT translates addresses, port forwarding redirects inbound connections, and a default route is a fallback forwarding path.",
+      "id": "dcm-265"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "How is an ordinary static route added to a router’s routing table?",
+      "options": [
+        "An administrator or management system explicitly configures the route",
+        "OSPF always creates it automatically",
+        "A directly connected switch sends a command that always creates it",
+        "The router learns it automatically from every neighboring device"
+      ],
+      "correct": 0,
+      "explanation": "A static route is explicitly configured by an administrator or a management system. Routes learned through a dynamic routing protocol are dynamic routes; directly connected routes are derived from interface configuration.",
+      "id": "dcm-266"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which route is used when no more-specific matching route exists for a packet’s destination?",
+      "options": [
+        "A dynamic route of any prefix length",
+        "A default route",
+        "An unrelated directly connected route",
+        "A port-forwarding rule"
+      ],
+      "correct": 1,
+      "explanation": "A default route, such as 0.0.0.0/0 for IPv4, is the least-specific fallback. A more-specific matching prefix takes precedence. Port forwarding does not replace the routing table’s destination-prefix selection.",
+      "id": "dcm-267"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "What does a typical inbound port-forwarding rule on a home or small-office router do?",
+      "options": [
+        "Assigns IP addresses to every client",
+        "Prioritizes voice traffic",
+        "Maps traffic arriving at a specified external port to a designated internal host and port",
+        "Prevents Layer 2 switching loops"
+      ],
+      "correct": 2,
+      "explanation": "Port forwarding commonly uses destination NAT to send an inbound connection on a selected external port to a specified internal address and port. The service must also be listening and allowed by the firewall. It is not a substitute for access controls.",
+      "id": "dcm-268"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "A copper Ethernet cable must run near machinery that produces substantial electromagnetic interference. Which listed cable includes shielding to help reduce that interference?",
+      "options": [
+        "UTP Cat5e",
+        "UTP Cat6",
+        "STP Cat5e",
+        "UTP Cat3"
+      ],
+      "correct": 2,
+      "explanation": "STP uses conductive shielding to reduce electromagnetic interference when it is installed and grounded correctly. A higher unshielded category does not inherently add shielding. For especially severe interference, fiber may be a better medium.",
+      "id": "dcm-269"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "A network connection must span 8 kilometers. Which listed medium is designed for the longest optical transmission distances?",
+      "options": [
+        "UTP Cat6",
+        "Single-mode fiber-optic cable",
+        "STP Cat5e",
+        "Multimode fiber-optic cable"
+      ],
+      "correct": 1,
+      "explanation": "Single-mode fiber with suitable optics supports kilometer-scale links. Copper Ethernet channels are normally limited to much shorter distances, commonly 100 meters. Actual supported fiber distance depends on the transceivers, wavelength, and link budget.",
+      "id": "dcm-270"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "Without Auto MDI-X, which traditional twisted-pair cable configuration connects a computer’s MDI Ethernet port to a switch’s MDI-X access port?",
+      "options": [
+        "Crossover",
+        "Straight-through",
+        "Rollover console cable",
+        "Coaxial cable"
+      ],
+      "correct": 1,
+      "explanation": "A traditional computer-to-switch link uses a straight-through cable because the MDI and MDI-X pin assignments complement each other. Auto MDI-X on modern hardware can often accommodate either straight-through or crossover cabling.",
+      "id": "dcm-271"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "Two older Ethernet switches have ordinary MDI-X ports and no Auto MDI-X support. Which cable configuration traditionally connects them directly?",
+      "options": [
+        "Straight-through",
+        "Crossover",
+        "USB charging cable",
+        "Rollover console cable"
+      ],
+      "correct": 1,
+      "explanation": "A crossover cable swaps transmit and receive pairs for a direct legacy connection between like port types, such as MDI-X to MDI-X. A traditional router MDI port connected to a switch MDI-X port normally uses straight-through wiring. Modern Auto MDI-X hardware often handles either cable.",
+      "id": "dcm-272"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "single",
+      "question": "What term describes interference caused by a signal on one wire pair coupling into an adjacent pair within the same cable?",
+      "options": [
+        "Electromagnetic interference from a nearby motor only",
+        "Radio-frequency interference from a distant transmitter only",
+        "Crosstalk",
+        "Signal interception"
+      ],
+      "correct": 2,
+      "explanation": "Crosstalk is unwanted coupling between nearby circuits or wire pairs. Twisting pairs, maintaining pair geometry, and using suitable cable and termination practices help reduce it. It differs from deliberate signal interception.",
+      "id": "dcm-273"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "A switch port connects an ordinary end-user computer and carries untagged traffic for one configured data VLAN. What is this port mode normally called?",
+      "options": [
+        "Access port",
+        "Trunk port",
+        "Default-route port",
+        "WAN port"
+      ],
+      "correct": 0,
+      "explanation": "An access port normally places an endpoint’s untagged traffic into one assigned VLAN. A trunk carries traffic for multiple VLANs, commonly using tags. Special cases, such as a voice VLAN, do not change the basic distinction.",
+      "id": "dcm-274"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Match each characteristic to a hub or an Ethernet switch. Items may be reused.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Hub"
+        },
+        {
+          "id": "i2",
+          "text": "Switch"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Repeats signals across one shared collision domain",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "Operates using half-duplex shared Ethernet behavior",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z3",
+          "label": "Separates collision domains by port",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z4",
+          "label": "Uses a MAC address table to forward known unicast frames",
+          "correctItemId": "i2"
+        }
+      ],
+      "explanation": "A hub repeats signals over shared half-duplex media. A switch learns MAC addresses and separates collision domains; full-duplex switched Ethernet avoids collisions on properly configured point-to-point links.",
+      "id": "dcm-275"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "drag_drop",
+      "question": "Match each routing concept to its description.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Static route"
+        },
+        {
+          "id": "i2",
+          "text": "Dynamic route"
+        },
+        {
+          "id": "i3",
+          "text": "Default route"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Explicitly configured by an administrator or management system",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "Learned through a routing protocol",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z3",
+          "label": "A catch-all route used when no more-specific route matches",
+          "correctItemId": "i3"
+        }
+      ],
+      "explanation": "Static versus dynamic describes how a route is obtained. Default describes the least-specific prefix used as a fallback, so a default route itself can be configured statically or learned dynamically.",
+      "id": "dcm-276"
+    },
+    {
+      "chapter": "aplicatii-periferice",
+      "type": "drag_drop",
+      "question": "Match each cable medium to its principal interference characteristic.",
+      "dragItems": [
+        {
+          "id": "i1",
+          "text": "Fiber optic"
+        },
+        {
+          "id": "i2",
+          "text": "Shielded twisted pair (STP)"
+        },
+        {
+          "id": "i3",
+          "text": "Unshielded twisted pair (UTP)"
+        }
+      ],
+      "dropZones": [
+        {
+          "id": "z1",
+          "label": "Carries light and is not affected by electromagnetic interference in the data signal",
+          "correctItemId": "i1"
+        },
+        {
+          "id": "z2",
+          "label": "Uses conductive shielding to help reduce electromagnetic interference",
+          "correctItemId": "i2"
+        },
+        {
+          "id": "z3",
+          "label": "Has no conductive shielding and relies in part on pair twisting to reduce interference",
+          "correctItemId": "i3"
+        }
+      ],
+      "explanation": "Fiber transmits light rather than electrical signals and is immune to EMI in its signal path. STP adds conductive shielding, while UTP relies on balanced signaling and twisted pairs. Correct installation and termination remain important.",
+      "id": "dcm-277"
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "A USB printer stopped working after another printer was installed and removed. In Device Manager, the Printers category is not visible. Which action can reveal non-present or hidden device entries for further investigation?",
+      "options": [
+        "View > Show hidden devices",
+        "Action > Add legacy hardware, without investigation",
+        "Disable Windows Update permanently",
+        "Replace all printers because Windows supports only one"
+      ],
+      "correct": 0,
+      "explanation": "Device Manager’s View > Show hidden devices can reveal hidden or non-present device entries. A missing category alone does not prove a printer conflict, a failed device, or lack of multi-printer support. Also inspect Print queues, drivers, connections, and the Print Spooler as appropriate.",
+      "id": "dcm-278",
+      "image": "assets/device-connectors/device-manager-hidden.svg",
+      "imageAlt": "A simplified Device Manager tree without a visible Printers category."
+    },
+    {
+      "chapter": "management-depanare",
+      "type": "single",
+      "question": "Which task can a conversational assistant such as Microsoft Copilot perform by providing guidance, without directly changing hardware or system settings?",
+      "options": [
+        "Physically move files from a flash drive to a hard drive without access to the device",
+        "Directly replace the network adapter driver without permissions or a management tool",
+        "Generate a list of troubleshooting steps for a printer problem",
+        "Automatically change the default browser on every computer without authorization"
+      ],
+      "correct": 2,
+      "explanation": "A conversational assistant can explain concepts and generate troubleshooting guidance. Reading advice is different from authorizing a tool to perform actions. Driver changes, file operations, and default-application changes require appropriate device access, supported tools, and permissions.",
+      "id": "dcm-279"
+    },
+    {
+      "id": "dcm-280",
+      "chapter": "acces-date",
+      "type": "true_false",
+      "question": "Persistent Windows Registry settings normally survive a system restart.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 0,
+      "explanation": "The Registry stores persistent configuration data on disk. An ordinary restart does not erase those settings."
+    },
+    {
+      "id": "dcm-281",
+      "chapter": "securitate-dispozitiv",
+      "type": "true_false",
+      "question": "If Windows Hello facial recognition fails, Windows automatically signs in using a saved password without asking the user.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 1,
+      "explanation": "Failed facial recognition does not bypass authentication. The user must use an allowed fallback, such as a PIN or password, subject to device policy."
+    },
+    {
+      "id": "dcm-282",
+      "chapter": "management-depanare",
+      "type": "true_false",
+      "question": "Restarting a computer clears the previous runtime contents of ordinary system RAM.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 0,
+      "explanation": "Ordinary RAM is volatile. A normal restart discards the previous runtime memory state and initializes a new operating-system session."
+    },
+    {
+      "id": "dcm-283",
+      "chapter": "management-depanare",
+      "type": "true_false",
+      "question": "Opening an application generally loads its active code and working data into RAM.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 0,
+      "explanation": "An application uses RAM for active code and working data. Executable files and other persistent resources remain on storage; not every part of a large application must be loaded at once."
+    },
+    {
+      "id": "dcm-284",
+      "chapter": "management-depanare",
+      "type": "true_false",
+      "question": "Reading data from ordinary system RAM is generally slower than reading it from a hard disk drive.",
+      "options": [
+        "True",
+        "False"
+      ],
+      "correct": 1,
+      "explanation": "RAM normally offers much lower access latency and higher bandwidth than a mechanical hard disk drive. The statement reverses their typical performance relationship."
     }
   ]
 };
