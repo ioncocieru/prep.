@@ -1,26 +1,34 @@
-/* =====================================================================
-   BANCA DE ÎNTREBĂRI — IT SPECIALIST: DATABASES
-   267 întrebări. Imaginile se află în assets/databasesimg/
-   ===================================================================== */
-
+/* ITS PREP — question bank. Existing IDs preserved. */
 window.EXAM_DATA = window.EXAM_DATA || {};
-
 window.EXAM_DATA.databases = {
-  id: "databases",
-  name: "Databases",
-  shortLabel: "DB",
-  accent: "#17A398",
-  description: "Proiectarea și interogarea bazelor de date relaționale: DDL, DML, extragere și depanare de date.",
-
-  CHAPTERS: [
-    { id: "proiectare",      name: "Proiectarea bazelor de date" },
-    { id: "ddl-obiecte",     name: "Administrarea obiectelor (DDL)" },
-    { id: "extragere-date",  name: "Extragerea datelor (SELECT)" },
-    { id: "manipulare-date", name: "Manipularea datelor (DML)" },
-    { id: "depanare",        name: "Depanare și optimizare" }
+  "id": "databases",
+  "name": "Databases",
+  "shortLabel": "DB",
+  "accent": "#17A398",
+  "description": "Proiectarea și interogarea bazelor de date relaționale: DDL, DML, extragere și depanare de date.",
+  "CHAPTERS": [
+    {
+      "id": "proiectare",
+      "name": "Proiectarea bazelor de date"
+    },
+    {
+      "id": "ddl-obiecte",
+      "name": "Administrarea obiectelor (DDL)"
+    },
+    {
+      "id": "extragere-date",
+      "name": "Extragerea datelor (SELECT)"
+    },
+    {
+      "id": "manipulare-date",
+      "name": "Manipularea datelor (DML)"
+    },
+    {
+      "id": "depanare",
+      "name": "Depanare și optimizare"
+    }
   ],
-
-  QUESTIONS: [
+  "QUESTIONS": [
     {
       "id": "db-001",
       "chapter": "proiectare",
@@ -73,7 +81,7 @@ window.EXAM_DATA.databases = {
       "id": "db-003",
       "chapter": "proiectare",
       "type": "single",
-      "question": "This question requires that you evaluate the underlined text to determine if it is correct. A row holds information for a single record in a table. Instructions: Review the underlined text. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
+      "question": "Evaluate the following statement. A row holds information for a single record in a table. Instructions: Review the statement. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
       "options": [
         "No change is needed",
         "Column",
@@ -81,13 +89,13 @@ window.EXAM_DATA.databases = {
         "View"
       ],
       "correct": 0,
-      "explanation": "O vedere (VIEW) este un tabel virtual definit printr-o interogare SELECT. De regulă afișează datele curente din tabelele de bază. Traducere: Evaluați afirmația: Un rând conține informațiile pentru o singură înregistrare dintr-un tabel. Dacă afirmația este corectă, alegeți „No change is needed\"; altfel alegeți varianta care o corectează."
+      "explanation": "A row represents one record; the statement is correct, so no change is needed."
     },
     {
       "id": "db-004",
       "chapter": "proiectare",
       "type": "single",
-      "question": "This question requires that you evaluate the underlined text to determine if it is correct. In a database table, each column represents a unique record. Instructions: Review the underlined text. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
+      "question": "Evaluate the following statement. In a database table, each column represents a unique record. Instructions: Review the statement. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
       "options": [
         "No change is needed",
         "Table",
@@ -95,7 +103,7 @@ window.EXAM_DATA.databases = {
         "Row"
       ],
       "correct": 3,
-      "explanation": "O vedere (VIEW) este un tabel virtual definit printr-o interogare SELECT. De regulă afișează datele curente din tabelele de bază. Traducere: Evaluați afirmația: Într-un tabel, fiecare coloană reprezintă o înregistrare unică. Dacă afirmația este incorectă, alegeți termenul care o corectează."
+      "explanation": "A row represents a record. A column represents an attribute, not an entire unique record."
     },
     {
       "id": "db-005",
@@ -162,7 +170,7 @@ window.EXAM_DATA.databases = {
       "id": "db-007",
       "chapter": "proiectare",
       "type": "drag_drop",
-      "question": "You are structuring a table in a relational database. Instructions: For each of the following statement, select Yes if the statement is true. Otherwise, select No.",
+      "question": "You are structuring a table in a relational database. Instructions: For each of the following statement, select Yes if the statement is true. Otherwise, select No. Use the relational model (a relation is a set of tuples), not an unconstrained SQL table that can contain duplicate rows.",
       "dragItems": [
         {
           "id": "a",
@@ -204,7 +212,7 @@ window.EXAM_DATA.databases = {
         "three items and 100 cells."
       ],
       "correct": 1,
-      "explanation": "Răspuns corect: 100 rows and three columns.. Traducere: Trebuie să stocați prenumele, numele și StudentID pentru 100 de elevi. Cum va fi organizată informația într-un tabel?"
+      "explanation": "Răspuns corect: 100 rows and three columns. Traducere: Trebuie să stocați prenumele, numele și StudentID pentru 100 de elevi. Cum va fi organizată informația într-un tabel?"
     },
     {
       "id": "db-009",
@@ -255,7 +263,7 @@ window.EXAM_DATA.databases = {
       "id": "db-012",
       "chapter": "proiectare",
       "type": "single",
-      "question": "You need to store whole numbers ranging from 1 to 100. This number range will never change. Which data type should you choose?",
+      "question": "In SQL Server, choose the smallest listed integer type that can store all whole numbers from 1 through 100. This range will not change.",
       "options": [
         "Bit",
         "Tinyint",
@@ -263,7 +271,7 @@ window.EXAM_DATA.databases = {
         "Integer"
       ],
       "correct": 1,
-      "explanation": "TINYINT este potrivit pentru valori întregi mici și folosește mai puțin spațiu decât tipurile întregi mai mari. Traducere: Trebuie să stocați numere întregi de la 1 la 100, iar intervalul nu se va modifica. Ce tip de date trebuie ales?"
+      "explanation": "SQL Server TINYINT stores integers from 0 through 255. It can store the stated range using one byte."
     },
     {
       "id": "db-013",
@@ -325,7 +333,7 @@ window.EXAM_DATA.databases = {
       "id": "db-017",
       "chapter": "proiectare",
       "type": "single",
-      "question": "Product names vary in length and may contain characters from multiple languages. Which data type is the best fit?",
+      "question": "Product names vary in length and may contain characters from multiple languages. Which data type is the best fit? Assume the SQL Server data types taught in this item; NVARCHAR is the explicit Unicode choice.",
       "options": [
         "CHAR",
         "VARCHAR",
@@ -347,7 +355,7 @@ window.EXAM_DATA.databases = {
         "SMALLINT"
       ],
       "correct": 0,
-      "explanation": "COUNT calculează numărul de rânduri/valori care îndeplinesc condiția interogării. Traducere: Coloana AccountNumber va conține întotdeauna o literă și patru cifre. Ce tip de date este potrivit?"
+      "explanation": "AccountNumber is a fixed-length five-character identifier containing a letter. CHAR(5) stores it as text; arithmetic integer types cannot store its letter."
     },
     {
       "id": "db-019",
@@ -474,7 +482,7 @@ window.EXAM_DATA.databases = {
       "id": "db-023",
       "chapter": "proiectare",
       "type": "single",
-      "question": "Which constraint ensures a unique value in the ID column for each customer?",
+      "question": "Which constraint designates the table’s primary non-NULL row identifier?",
       "options": [
         "PRIMARY KEY",
         "FOREIGN KEY",
@@ -496,7 +504,7 @@ window.EXAM_DATA.databases = {
         "Default key"
       ],
       "correct": 0,
-      "explanation": "Cheia primară identifică în mod unic fiecare rând și nu trebuie să conțină valori duplicate sau NULL. Traducere: Trebuie să vă asigurați că o coloană sau o combinație de coloane identifică în mod unic fiecare rând al unui tabel. Ce constrângere trebuie definită?"
+      "explanation": "Răspunsul corect: Primary key."
     },
     {
       "id": "db-025",
@@ -515,7 +523,7 @@ window.EXAM_DATA.databases = {
         0,
         1
       ],
-      "explanation": "Cheia primară identifică în mod unic fiecare rând și nu trebuie să conțină valori duplicate sau NULL. Traducere: Tabelele Chapter și Language sunt legate prin ChapterLanguage. Ce două coloane trebuie selectate pentru a forma cheia primară compusă din ChapterLanguage?"
+      "explanation": "ChapterId and LanguageId together identify a row of the ChapterLanguage junction table; they also reference the parent tables."
     },
     {
       "id": "db-026",
@@ -535,7 +543,7 @@ window.EXAM_DATA.databases = {
       "dropZones": [
         {
           "id": "z1",
-          "label": "A Foreign Key enforces referential integrity by ensuring only valid data is stored",
+          "label": "An enforced foreign key requires non-NULL referencing values to match a referenced candidate key",
           "correctItemId": "a"
         },
         {
@@ -545,16 +553,16 @@ window.EXAM_DATA.databases = {
         },
         {
           "id": "z3",
-          "label": "A foreign key in one table points to a primary key in another table",
+          "label": "A foreign key may reference a primary key or a suitable unique key, including in the same table",
           "correctItemId": "a"
         },
         {
           "id": "z4",
-          "label": "A NULL value in a foreign key means it has no relations to other tables",
+          "label": "A NULL single-column foreign key does not require a matching parent row",
           "correctItemId": "a"
         }
       ],
-      "explanation": "Răspuns corect: Yes / No / Yes / Yes. Traducere: Pentru fiecare afirmație despre FOREIGN KEY, selectați Yes dacă este adevărată și No dacă este falsă."
+      "explanation": "Yes / No / Yes / Yes. A table may have multiple foreign keys. References can target an eligible unique key and can be self-referential; a NULL single-column reference does not require a parent match."
     },
     {
       "id": "db-027",
@@ -602,7 +610,7 @@ window.EXAM_DATA.databases = {
         "Clustered index"
       ],
       "correct": 2,
-      "explanation": "Cheia externă leagă tabelul copil de o cheie unică/primară din tabelul părinte și ajută la menținerea integrității referențiale. Traducere: Tabelele Salesperson și Sales trebuie legate astfel încât fiecare vânzare să aibă un agent de vânzări valid. Ce obiect trebuie adăugat în tabelul Sales?"
+      "explanation": "Răspunsul corect: Foreign key."
     },
     {
       "id": "db-029",
@@ -710,7 +718,7 @@ window.EXAM_DATA.databases = {
       "id": "db-032",
       "chapter": "proiectare",
       "type": "single",
-      "question": "Among the following, which sets limits or rules placed on a file or a column to ensure that the data is considered valid for a database?",
+      "question": "Among the following, which sets limits or rules placed on a table or a column to ensure that the data is considered valid for a database?",
       "options": [
         "checker",
         "validator",
@@ -724,7 +732,7 @@ window.EXAM_DATA.databases = {
       "id": "db-033",
       "chapter": "proiectare",
       "type": "drag_drop",
-      "question": "Match each scenario to the correct relationship type.",
+      "question": "Match each scenario to the correct relationship type. Assume each employee has exactly one recorded passport and each passport belongs to exactly one employee.",
       "dragItems": [
         {
           "id": "a",
@@ -838,7 +846,7 @@ window.EXAM_DATA.databases = {
       "id": "db-037",
       "chapter": "proiectare",
       "type": "single",
-      "question": "You have a table that contains the following data. Which database term is used to describe the relationship between ProductID and ProductCategory?",
+      "question": "Assume the business rule says each ProductID determines exactly one ProductCategory. What term describes this dependency?",
       "image": "assets/databasesimg/q085_1.png",
       "options": [
         "Cohort",
@@ -848,7 +856,7 @@ window.EXAM_DATA.databases = {
         "Compositional"
       ],
       "correct": 3,
-      "explanation": "O funcție returnează o valoare sau un tabel și poate fi folosită în expresii/interogări conform tipului ei. Traducere: Ce termen descrie relația dintre ProductID și ProductCategory atunci când fiecărui ProductID îi corespunde o singură categorie?"
+      "explanation": "ProductCategory is functionally dependent on ProductID: equal ProductID values must have equal ProductCategory values. A sample table alone cannot establish a rule for all future rows."
     },
     {
       "id": "db-038",
@@ -903,7 +911,7 @@ window.EXAM_DATA.databases = {
       "id": "db-041",
       "chapter": "proiectare",
       "type": "single",
-      "question": "John, a Database Administrator at Bluewell Inc., manages a table with a composite key. A non-key attribute depends on the entire composite key. Which of the following normal forms is represented in the scenario?",
+      "question": "A table is in 1NF. Every non-prime attribute depends on each whole candidate key, with no partial dependency on part of a composite key. Which additional normal form is guaranteed, without assuming absence of transitive dependencies?",
       "options": [
         "4 NF",
         "2 NF",
@@ -926,7 +934,7 @@ window.EXAM_DATA.databases = {
         "There is no violation."
       ],
       "correct": 1,
-      "explanation": "O funcție returnează o valoare sau un tabel și poate fi folosită în expresii/interogări conform tipului ei. Traducere: Analizați dependențele funcționale pentru a vedea dacă există o dependență parțială față de cheia compusă (AuthorID, TitleID)."
+      "explanation": "LiteraryAgent depends on AuthorID alone, which is only part of the composite key (AuthorID, TitleID). This partial dependency violates 2NF."
     },
     {
       "id": "db-043",
@@ -984,7 +992,7 @@ window.EXAM_DATA.databases = {
         "Improve query performance."
       ],
       "correct": 3,
-      "explanation": "Normalizarea reduce redundanța și anomaliile. 1NF elimină grupurile repetitive și cere valori atomice; formele următoare elimină dependențe parțiale și tranzitive. Traducere: În ce scop se realizează denormalizarea unei baze de date?"
+      "explanation": "Denormalization deliberately introduces controlled redundancy, often to reduce joins and improve selected query performance. It can increase storage and update-maintenance costs."
     },
     {
       "id": "db-047",
@@ -1006,10 +1014,10 @@ window.EXAM_DATA.databases = {
       "type": "single",
       "question": "Which statement creates a composite key?",
       "options": [
-        "CREATE TABLE Order (OrderID INTEGER PRIMARY KEY, OrderItemID INTEGER PRIMARY KEY)",
-        "CREATE TABLE Order (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY OrderID, PRIMARY KEY OrderItemID)",
-        "CREATE TABLE Order (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY)",
-        "CREATE TABLE Order (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY (OrderID, OrderItemID))"
+        "CREATE TABLE Orders (OrderID INTEGER PRIMARY KEY, OrderItemID INTEGER PRIMARY KEY)",
+        "CREATE TABLE Orders (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY OrderID, PRIMARY KEY OrderItemID)",
+        "CREATE TABLE Orders (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY)",
+        "CREATE TABLE Orders (OrderID INTEGER, OrderItemID INTEGER, PRIMARY KEY (OrderID, OrderItemID))"
       ],
       "correct": 3,
       "explanation": "O cheie primară compusă este definită printr-o singură constrângere PRIMARY KEY care enumeră ambele coloane între paranteze. Traducere: Care instrucțiune creează o cheie compusă?"
@@ -1084,7 +1092,7 @@ window.EXAM_DATA.databases = {
       "id": "db-052",
       "chapter": "proiectare",
       "type": "single",
-      "question": "Which role gives read-only access to all tables in a database?",
+      "question": "Which SQL Server fixed database role grants SELECT access to all user tables and views, without itself granting write access?",
       "options": [
         "db_datawriter",
         "db_owner",
@@ -1092,7 +1100,7 @@ window.EXAM_DATA.databases = {
         "db_datareader"
       ],
       "correct": 3,
-      "explanation": "Un rol grupează permisiuni care pot fi atribuite utilizatorilor, simplificând administrarea accesului. Traducere: Ce rol SQL Server oferă acces numai pentru citire la toate tabelele unei baze?"
+      "explanation": "db_datareader grants read access to user tables and views. Other roles or explicit grants/denials can affect a user’s effective permissions."
     },
     {
       "id": "db-053",
@@ -1127,7 +1135,7 @@ window.EXAM_DATA.databases = {
       "id": "db-055",
       "chapter": "proiectare",
       "type": "single",
-      "question": "This question requires that you evaluate the underlined text to determine if it is correct. Use the ALLOW SELECT command to give a user permission to read the data in a table. Instructions: Review the underlined text. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
+      "question": "Evaluate the following statement. Use the ALLOW SELECT command to give a user permission to read the data in a table. Instructions: Review the statement. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
       "options": [
         "No change is needed",
         "GRANT SELECT",
@@ -1135,7 +1143,7 @@ window.EXAM_DATA.databases = {
         "PERMIT READ"
       ],
       "correct": 1,
-      "explanation": "O vedere (VIEW) este un tabel virtual definit printr-o interogare SELECT. De regulă afișează datele curente din tabelele de bază. Traducere: Verificați dacă expresia „ALLOW SELECT\" este corectă pentru acordarea permisiunii de citire; dacă nu, alegeți varianta corectă."
+      "explanation": "GRANT SELECT grants read permission. ALLOW SELECT is not the corresponding SQL permission command."
     },
     {
       "id": "db-056",
@@ -1256,7 +1264,7 @@ window.EXAM_DATA.databases = {
       "id": "db-062",
       "chapter": "proiectare",
       "type": "single",
-      "question": "You have a database that contains 10 terabytes of data. You need to back up the database every two hours. Which type of backup should you use?",
+      "question": "In a backup system that supports incremental backups, a full backup already exists. Only a small fraction of a 10 TB database changes every two hours. Which listed backup type saves changes since the previous backup, avoiding repeated full copies?",
       "options": [
         "archive",
         "incremental",
@@ -1264,13 +1272,13 @@ window.EXAM_DATA.databases = {
         "full"
       ],
       "correct": 1,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: O bază de date de 10 TB trebuie salvată la fiecare două ore. Ce tip de backup reduce volumul față de un full backup repetat?"
+      "explanation": "An incremental backup saves changes since the previous backup. Database-specific strategies differ: SQL Server normally combines full/differential backups with transaction-log backups rather than a backup command called incremental."
     },
     {
       "id": "db-063",
       "chapter": "proiectare",
       "type": "single",
-      "question": "At 3:00 P.M. (15:00 hours), you create a backup of your database. At 4:00 P.M. (16:00 hours), you create a table named Customer and import data into the table. At 5:00 P.M. (17:00 hours), your server fails. You run a script to apply only the 3:00 P.M. backup to your database. What is the result of the script?",
+      "question": "At 3:00 P.M. (15:00 hours), you create a backup of your database. At 4:00 P.M. (16:00 hours), you create a table named Customer and import data into the table. At 5:00 P.M. (17:00 hours), your server fails. You run a script to apply only the 3:00 P.M. backup to your database. What is the result of the script? Assume you restore only the 15:00 backup; no later differential or log backups are applied.",
       "options": [
         "The Customer table no longer exists.",
         "The Customer table is unaffected.",
@@ -1278,7 +1286,7 @@ window.EXAM_DATA.databases = {
         "The script fails."
       ],
       "correct": 0,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Aveți un backup de la ora 15:00, iar tabelul Customer este creat la 16:00. Serverul cade la 17:00 și restaurați numai backupul de la 15:00. Ce se întâmplă cu Customer?"
+      "explanation": "Customer was created at 16:00, after the 15:00 backup. Restoring only that earlier backup returns the earlier database state, so the newly created Customer table is absent."
     },
     {
       "id": "db-064",
@@ -1292,7 +1300,7 @@ window.EXAM_DATA.databases = {
         "It saves the most recent changes made in a specific time window."
       ],
       "correct": 1,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Care afirmație descrie corect un Full Backup?"
+      "explanation": "A full backup contains the database data needed to restore that backup point, together with the log information required by the database engine for consistency."
     },
     {
       "id": "db-065",
@@ -1306,7 +1314,7 @@ window.EXAM_DATA.databases = {
         "It only backs up the transaction log changes."
       ],
       "correct": 2,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Care afirmație descrie corect un Differential Backup?"
+      "explanation": "A differential backup records changes since the last applicable full backup; restoration normally needs that full backup plus the chosen differential."
     },
     {
       "id": "db-066",
@@ -1320,7 +1328,7 @@ window.EXAM_DATA.databases = {
         "It always performs a complete copy of the database."
       ],
       "correct": 0,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Care afirmație descrie corect un Incremental Backup?"
+      "explanation": "An incremental backup records changes since the previous backup. Restoring normally requires the base full backup and the subsequent incremental chain."
     },
     {
       "id": "db-067",
@@ -1334,7 +1342,7 @@ window.EXAM_DATA.databases = {
         "To compress full backups into smaller files"
       ],
       "correct": 2,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Care este scopul unui transaction log backup în SQL Server?"
+      "explanation": "SQL Server transaction-log backups support recovery through the log chain, including point-in-time recovery when the recovery model and backup chain permit it."
     },
     {
       "id": "db-068",
@@ -1379,7 +1387,7 @@ window.EXAM_DATA.databases = {
       "id": "db-069",
       "chapter": "proiectare",
       "type": "drag_drop",
-      "question": "Compare the simple recovery model with the full recovery model.",
+      "question": "Compare SQL Server Simple recovery with Full recovery when both have the same data-backup schedule and Full also has frequent successful transaction-log backups.",
       "image": "assets/databasesimg/q210_1.jpeg",
       "dragItems": [
         {
@@ -1509,7 +1517,7 @@ window.EXAM_DATA.databases = {
         "Domino delete"
       ],
       "correct": 1,
-      "explanation": "DELETE elimină rânduri. Clauza WHERE stabilește care rânduri sunt șterse; fără WHERE sunt șterse toate rândurile, dar tabelul rămâne. Traducere: Ștergerea unui rând părinte determină ștergerea automată a rândurilor copil corespunzătoare. Cum se numește acest comportament?"
+      "explanation": "With ON DELETE CASCADE on the child foreign key, deleting a parent Order row also deletes the corresponding OrderItem child rows."
     },
     {
       "id": "db-075",
@@ -1524,7 +1532,7 @@ window.EXAM_DATA.databases = {
         "ModelEngine"
       ],
       "correct": 3,
-      "explanation": "Cheia externă leagă tabelul copil de o cheie unică/primară din tabelul părinte și ajută la menținerea integrității referențiale. Traducere: Integritatea referențială este activă, dar cascade delete nu. Din ce tabel trebuie să începeți ștergerea pentru a elimina corect un automobil și datele dependente?"
+      "explanation": "Răspunsul corect: ModelEngine."
     },
     {
       "id": "db-076",
@@ -1569,7 +1577,7 @@ window.EXAM_DATA.databases = {
         "User permissions"
       ],
       "correct": 1,
-      "explanation": "Backup-ul creează o copie utilizabilă pentru recuperarea datelor. Tipul de backup determină ce schimbări sunt salvate și de la ce punct. Traducere: Ce protejează Transparent Data Encryption (TDE)?"
+      "explanation": "Transparent Data Encryption encrypts database and log files at rest; backups of a TDE database are also encrypted. It does not by itself hide query results from authorized users."
     },
     {
       "id": "db-079",
@@ -1589,7 +1597,7 @@ window.EXAM_DATA.databases = {
       "id": "db-080",
       "chapter": "proiectare",
       "type": "single",
-      "question": "Applying Always Encrypted to the IDNP column. What is the effect on the server?",
+      "question": "For classic SQL Server Always Encrypted without secure enclaves, with column keys held outside the server, what is the effect of encrypting the IDNP column?",
       "options": [
         "The server can sort by the ID in plaintext",
         "The server never sees plaintext; some operations are limited",
@@ -1597,7 +1605,7 @@ window.EXAM_DATA.databases = {
         "Keys are no longer needed"
       ],
       "correct": 1,
-      "explanation": "Criptarea transformă datele într-o formă protejată. Metoda se alege în funcție de ce trebuie protejat: fișiere, backupuri, coloane sau date procesate la client. Traducere: Ce efect are aplicarea Always Encrypted asupra coloanei IDNP din perspectiva serverului?"
+      "explanation": "With classic Always Encrypted and keys held by the client, protected column plaintext is encrypted/decrypted at the client, not exposed to the server. Supported operations depend on encryption type; secure-enclave configurations are a separate case."
     },
     {
       "id": "db-081",
@@ -1709,7 +1717,7 @@ window.EXAM_DATA.databases = {
         "Automate transaction management"
       ],
       "correct": 2,
-      "explanation": "COUNT calculează numărul de rânduri/valori care îndeplinesc condiția interogării. Traducere: Un audit log urmărește autentificări, modificări de date și schimbări de schemă. Care este scopul principal al acestui jurnal?"
+      "explanation": "Auditing records activity so actions can be attributed and investigated. Its primary purpose here is accountability and security, not counting application rows."
     },
     {
       "id": "db-089",
@@ -1921,7 +1929,7 @@ window.EXAM_DATA.databases = {
         "CLEAR DATABASE testDB"
       ],
       "correct": 1,
-      "explanation": "DELETE elimină rânduri. Clauza WHERE stabilește care rânduri sunt șterse; fără WHERE sunt șterse toate rândurile, dar tabelul rămâne. Traducere: Ce instrucțiune SQL șterge baza de date numită testDB?"
+      "explanation": "DROP DATABASE testDB removes the database. DELETE FROM removes table rows and is not the command for dropping a database."
     },
     {
       "id": "db-102",
@@ -1941,7 +1949,7 @@ window.EXAM_DATA.databases = {
       "id": "db-103",
       "chapter": "ddl-obiecte",
       "type": "single",
-      "question": "You ate creating a database object named Student to store the following data: Which syntax should you use to create the object?",
+      "question": "You are creating a database object named Student to store the following data: Which syntax should you use to create the object?",
       "options": [
         "CREATE TABLE Student ( ID INT, Name VARCHAR(100), Age INT )",
         "CREATE ( TABLE Student ID INT, Name VARCHAR(100), Age INT )",
@@ -1949,13 +1957,13 @@ window.EXAM_DATA.databases = {
         "CREATE TABLE ID INT, Name VARCHAR(100), Age INT )"
       ],
       "correct": 0,
-      "explanation": "VARCHAR stochează șiruri cu lungime variabilă, astfel încât este eficient când lungimea textului diferă de la un rând la altul. Traducere: Trebuie să creați obiectul Student pentru a stoca datele indicate. Ce sintaxă CREATE TABLE este corectă?"
+      "explanation": "CREATE TABLE Student defines the table and its three columns: ID INT, Name VARCHAR(100), and Age INT."
     },
     {
       "id": "db-104",
       "chapter": "ddl-obiecte",
       "type": "drag_drop",
-      "question": "Complete the CREATE TABLE definition for the Volunteer table.",
+      "question": "Complete the legacy SQL Server CREATE TABLE definition. Choose the listed primary-key integer, nullable date, and legacy binary IMAGE type for Photo.",
       "image": "assets/databasesimg/q101_1.jpeg",
       "dragItems": [
         {
@@ -2000,7 +2008,7 @@ window.EXAM_DATA.databases = {
           "correctItemId": "f"
         }
       ],
-      "explanation": "Id trebuie să identifice unic voluntarul; data nașterii folosește DATE, iar în scenariul SQL Server din sursă fotografia este stocată cu IMAGE. Traducere: Completați definiția CREATE TABLE pentru tabelul Volunteer."
+      "explanation": "INT NOT NULL PRIMARY KEY identifies a row; DATE stores a birth date. IMAGE is a legacy binary type; use VARBINARY(MAX) for new SQL Server designs."
     },
     {
       "id": "db-105",
@@ -2057,7 +2065,7 @@ window.EXAM_DATA.databases = {
         "To limit the number of records in the table"
       ],
       "correct": 1,
-      "explanation": "Cheia primară identifică în mod unic fiecare rând și nu trebuie să conțină valori duplicate sau NULL. Traducere: De ce se utilizează funcția AUTO INCREMENT într-un tabel?"
+      "explanation": "Răspunsul corect: To automatically create a unique primary key value for each new record."
     },
     {
       "id": "db-109",
@@ -2071,7 +2079,7 @@ window.EXAM_DATA.databases = {
         "Foreign Key field"
       ],
       "correct": 2,
-      "explanation": "Cheia primară identifică în mod unic fiecare rând și nu trebuie să conțină valori duplicate sau NULL. Traducere: Ce tip de câmp utilizează cel mai frecvent AUTO INCREMENT?"
+      "explanation": "Răspunsul corect: Primary Key field."
     },
     {
       "id": "db-110",
@@ -2080,12 +2088,12 @@ window.EXAM_DATA.databases = {
       "question": "What is the purpose of a FOREIGN KEY in a database?",
       "options": [
         "To uniquely identify each record in a table",
-        "To point to a PRIMARY KEY in another table",
+        "To enforce references to an eligible primary or unique key",
         "To allow duplicate values in a column",
         "To store NULL values in a table"
       ],
       "correct": 1,
-      "explanation": "Cheia primară identifică în mod unic fiecare rând și nu trebuie să conțină valori duplicate sau NULL. Traducere: Care este scopul unei chei externe (FOREIGN KEY)?"
+      "explanation": "A foreign key enforces referential integrity against a primary or eligible unique key. It may reference the same table; the referencing values need not be unique."
     },
     {
       "id": "db-111",
@@ -2119,7 +2127,7 @@ window.EXAM_DATA.databases = {
       "id": "db-113",
       "chapter": "ddl-obiecte",
       "type": "single",
-      "question": "Which ANSI-style DDL statement renames the column OldName to NewName in the Customer table?",
+      "question": "In PostgreSQL, which DDL statement renames column OldName to NewName in Customer?",
       "options": [
         "ALTER TABLE Customer RENAME COLUMN OldName TO NewName;",
         "UPDATE Customer SET OldName = NewName;",
@@ -2127,7 +2135,7 @@ window.EXAM_DATA.databases = {
         "INSERT COLUMN NewName;"
       ],
       "correct": 0,
-      "explanation": "Redenumirea unei coloane este o modificare de structură, deci se utilizează ALTER TABLE ... RENAME COLUMN. Traducere: Ce instrucțiune DDL, în stil ANSI, redenumește coloana OldName în NewName în tabelul Customer?"
+      "explanation": "PostgreSQL supports ALTER TABLE Customer RENAME COLUMN OldName TO NewName. SQL Server commonly uses sp_rename instead; syntax is dialect-dependent."
     },
     {
       "id": "db-114",
@@ -2363,7 +2371,7 @@ window.EXAM_DATA.databases = {
       "id": "db-127",
       "chapter": "ddl-obiecte",
       "type": "drag_drop",
-      "question": "Identify whether each index characteristic describes a clustered or a non-clustered index.",
+      "question": "Identify whether each index characteristic describes a clustered or a non-clustered index. Use the introductory SQL Server clustered-index model; physical page layout does not guarantee SELECT result order.",
       "dragItems": [
         {
           "id": "a",
@@ -2392,7 +2400,7 @@ window.EXAM_DATA.databases = {
       "id": "db-128",
       "chapter": "ddl-obiecte",
       "type": "single",
-      "question": "Which type of index determines the physical order of table rows according to the indexed key?",
+      "question": "Which type of index determines the physical order of table rows according to the indexed key? Use the introductory SQL Server index model. ORDER BY is still required to guarantee query result order.",
       "options": [
         "non-sequential",
         "sequential",
@@ -2407,7 +2415,7 @@ window.EXAM_DATA.databases = {
       "chapter": "ddl-obiecte",
       "type": "single",
       "question": "You have a table product that contains one million row. You need to search for product information using the following query What will make this type of search more efficient?",
-      "code": "SELECT ProductName, Price FROM Product WHERE Category = ' Science Books'",
+      "code": "SELECT ProductName, Price FROM Product WHERE Category = 'Science Books'",
       "options": [
         "A clustered index on the ProductName column",
         "A clusterd index on the Price column",
@@ -2415,7 +2423,7 @@ window.EXAM_DATA.databases = {
         "A non-clustered on the Price column"
       ],
       "correct": 2,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Analizați interogarea și alegeți soluția care face căutarea mai eficientă. Indiciu: filtrați după coloana Category."
+      "explanation": "A nonclustered index on Category can help the equality predicate locate matching rows without scanning the entire table. The optimizer still chooses a plan based on selectivity and other costs."
     },
     {
       "id": "db-130",
@@ -2483,7 +2491,7 @@ window.EXAM_DATA.databases = {
       "id": "db-133",
       "chapter": "ddl-obiecte",
       "type": "single",
-      "question": "This question requires that you evaluate the underlined text to determine if it is correct. A view can be used to ensure referential integrity. Instructions: Review the underlined text. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
+      "question": "Evaluate the following statement. A view can be used to ensure referential integrity. Instructions: Review the statement. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
       "options": [
         "No change is needed.",
         "Save an extra copy of data stored in a separate table.",
@@ -2491,7 +2499,7 @@ window.EXAM_DATA.databases = {
         "Save historical data before deleting it from the base table."
       ],
       "correct": 2,
-      "explanation": "Cheia externă leagă tabelul copil de o cheie unică/primară din tabelul părinte și ajută la menținerea integrității referențiale. Traducere: Verificați afirmația despre scopul unui view și alegeți varianta care o face corectă."
+      "explanation": "A view can expose selected rows or columns. Referential integrity is enforced by appropriate constraints such as foreign keys, not merely by a regular view."
     },
     {
       "id": "db-134",
@@ -2519,7 +2527,7 @@ window.EXAM_DATA.databases = {
         "Archived"
       ],
       "correct": 0,
-      "explanation": "DELETE elimină rânduri. Clauza WHERE stabilește care rânduri sunt șterse; fără WHERE sunt șterse toate rândurile, dar tabelul rămâne. Traducere: Un view afișează numai produsele Furniture. După ștergerea acelor produse din tabelul Product, ce va returna view-ul?"
+      "explanation": "A regular view evaluates its definition against current underlying data. After all Furniture rows are deleted, a view restricted to Furniture returns no rows."
     },
     {
       "id": "db-136",
@@ -2677,7 +2685,7 @@ window.EXAM_DATA.databases = {
         "ALTER VIEW view_name"
       ],
       "correct": 2,
-      "explanation": "O vedere (VIEW) este un tabel virtual definit printr-o interogare SELECT. De regulă afișează datele curente din tabelele de bază. Traducere: Care este sintaxa corectă pentru ștergerea unui view?"
+      "explanation": "DROP VIEW view_name removes the view definition; it does not delete the underlying table data."
     },
     {
       "id": "db-142",
@@ -2705,7 +2713,7 @@ window.EXAM_DATA.databases = {
         "DROP VIEW EmployeeView"
       ],
       "correct": 3,
-      "explanation": "O vedere (VIEW) este un tabel virtual definit printr-o interogare SELECT. De regulă afișează datele curente din tabelele de bază. Traducere: Trebuie să eliminați view-ul EmployeeView. Ce instrucțiune utilizați?"
+      "explanation": "DROP VIEW EmployeeView removes that view definition, not its underlying tables."
     },
     {
       "id": "db-144",
@@ -2789,7 +2797,7 @@ window.EXAM_DATA.databases = {
         "View"
       ],
       "correct": 1,
-      "explanation": "O funcție returnează o valoare sau un tabel și poate fi folosită în expresii/interogări conform tipului ei. Traducere: Cum se numește un grup de comenzi care returnează o valoare?"
+      "explanation": "Răspunsul corect: Function."
     },
     {
       "id": "db-150",
@@ -2803,7 +2811,7 @@ window.EXAM_DATA.databases = {
         "Cannot accept parameters."
       ],
       "correct": 1,
-      "explanation": "O procedură stocată păstrează instrucțiuni SQL reutilizabile și se execută explicit; poate primi parametri și poate modifica date. Traducere: Care este o diferență dintre o funcție și o procedură stocată?"
+      "explanation": "A SQL Server function returns a scalar value or a table. A stored procedure executes a routine and can use output parameters or result sets; the objects have different calling rules."
     },
     {
       "id": "db-151",
@@ -2984,7 +2992,7 @@ window.EXAM_DATA.databases = {
       "id": "db-158",
       "chapter": "ddl-obiecte",
       "type": "single",
-      "question": "An OrderDetails table must reject quantities lower than 1. Which column definition correctly enforces the rule?",
+      "question": "An OrderDetails table must reject non-NULL quantities lower than 1. Which column definition enforces this condition? NULL remains allowed unless NOT NULL is added.",
       "options": [
         "Qty INT CONSTRAINT (Qty >= 1)",
         "Qty INT UNIQUE (Qty >= 1)",
@@ -3169,7 +3177,7 @@ window.EXAM_DATA.databases = {
       "id": "db-167",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "A stored procedure contains the following query The stored procedure return all null values. You verify that there is data in the person table What is likely the cause of the problem",
+      "question": "A stored procedure contains the following query The stored procedure return all null values. You verify that there is data in the person table What is likely the cause of the problem Assume SQL Server with CONCAT_NULL_YIELDS_NULL enabled.",
       "code": "SELECT 'Greetings' + Prefix + ' ' + FirstName FROM Person;",
       "options": [
         "You must specify the NULLIF keyword in the query",
@@ -3178,13 +3186,13 @@ window.EXAM_DATA.databases = {
         "You must specify the join keyword in the select statement"
       ],
       "correct": 2,
-      "explanation": "O procedură stocată păstrează instrucțiuni SQL reutilizabile și se execută explicit; poate primi parametri și poate modifica date. Traducere: O procedură stocată concatenează Prefix și FirstName, dar rezultatul este NULL pentru toate rândurile. Care este cauza probabilă?"
+      "explanation": "In SQL Server with CONCAT_NULL_YIELDS_NULL enabled, concatenating a string with NULL using + produces NULL. NULL Prefix or FirstName values therefore explain the NULL results."
     },
     {
       "id": "db-168",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "This question requires that you evaluate the underlined text to determine if it is correct. Use the FROM keyword in a SELECT statement to return rows that meet a specific condition. Instructions: Review the underlined text. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
+      "question": "Evaluate the following statement. Use the FROM keyword in a SELECT statement to return rows that meet a specific condition. Instructions: Review the statement. If it makes the statement correct, select \"No change is needed.\" If the statement is incorrect, select the answer choice that makes the statement correct",
       "options": [
         "No change is needed",
         "ORDER BY",
@@ -3192,7 +3200,7 @@ window.EXAM_DATA.databases = {
         "WHERE"
       ],
       "correct": 3,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Ce cuvânt-cheie din SELECT se utilizează pentru a returna doar rândurile care îndeplinesc o anumită condiție?"
+      "explanation": "Răspunsul corect: WHERE."
     },
     {
       "id": "db-169",
@@ -3329,7 +3337,7 @@ window.EXAM_DATA.databases = {
       "id": "db-178",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "Which query returns a result set of orders placed after January 2017 in all states except California (CA)?",
+      "question": "Which query returns orders with Order_Date strictly greater than January 1, 2017, and a non-NULL state other than California (CA)?",
       "options": [
         "SELECT * FROM Orders WHERE Order_Date > '2017-01-01' AND Ship_State <> 'CA';",
         "SELECT * FROM Orders WHERE Order_Date > '2017-01-01' OR Ship_State <> 'CA';",
@@ -3474,7 +3482,7 @@ window.EXAM_DATA.databases = {
       "id": "db-182",
       "chapter": "extragere-date",
       "type": "drag_drop",
-      "question": "Complete the query to display flights that arrive at LGA later today, with the most recent arrival first.",
+      "question": "Assume the source table contains only today’s flights. Complete the query to show LGA arrivals after the current time, with the latest arrival first.",
       "image": "assets/databasesimg/q056_1.png",
       "dragItems": [
         {
@@ -3535,7 +3543,7 @@ window.EXAM_DATA.databases = {
           "correctItemId": "i"
         }
       ],
-      "explanation": "Sunt necesare ambele condiții, deci AND; zborul trebuie să fie după momentul curent (> GETDATE()), iar DESC pune sosirile cele mai târzii primele. Traducere: Completați interogarea pentru a afișa zborurile care sosesc la LGA mai târziu astăzi, cu cea mai recentă oră de sosire prima."
+      "explanation": "AND combines airport and time conditions; > GETDATE() selects future arrivals; ORDER BY ArrivalTime DESC sorts latest first. If other dates exist in the table, an additional upper date boundary is needed for “today”."
     },
     {
       "id": "db-183",
@@ -3692,13 +3700,13 @@ window.EXAM_DATA.databases = {
         "4"
       ],
       "correct": 2,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Tabelul Product conține datele afișate. Ce valoare returnează COUNT(*) pentru rândurile cu Quantity > 18?"
+      "explanation": "Răspunsul corect: 3."
     },
     {
       "id": "db-191",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "The ItemsOnOrder table contains the following data. You need to create a query that display the total number of orders, the average line item total, the highest line item total, and the grand total of all items ordered. LineItemTotal represents the line item total. Which query should you use?",
+      "question": "The ItemsOnOrder table contains the following data. You need to create a query that display the total number of orders, the average line item total, the highest line item total, and the grand total of all items ordered. LineItemTotal represents the line item total. Which query should you use? Assume ID is non-NULL for every order row.",
       "image": "assets/databasesimg/q065_1.png",
       "options": [
         "SELECT COUNT(ID), AVG(LineItemTotal), MAX(LineItemTotal), SUM(LineItemTotal) FROM ItemsOnOrder HAVING ItemNumber, Quantity, UnitPrice",
@@ -3707,7 +3715,7 @@ window.EXAM_DATA.databases = {
         "SELECT COUNT(ID), AVG(LineItemTotal), MAX(LineItemTotal), SUM(LineItemTotal) FROM ItemsOnOrder"
       ],
       "correct": 3,
-      "explanation": "COUNT(ID) numără rândurile, AVG calculează media, MAX valoarea maximă, iar SUM totalul. Nu este necesar GROUP BY dacă raportul trebuie să întoarcă un singur rând agregat. Traducere: Tabelul ItemsOnOrder este prezentat mai jos. Ce interogare afișează numărul de comenzi, media LineItemTotal, valoarea maximă și suma totală?"
+      "explanation": "Assuming ID is non-NULL for every order row, COUNT(ID) gives the order count. AVG, MAX, and SUM compute the average, highest, and total LineItemTotal; NULL inputs are ignored by these aggregates."
     },
     {
       "id": "db-192",
@@ -3763,7 +3771,7 @@ window.EXAM_DATA.databases = {
       "id": "db-193",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "Which query returns the total sales amount per product? (Assume table Sales with columns: ProductName, Amount)",
+      "question": "Which clause groups rows by ProductName so SUM(Amount) can calculate total sales for each product?",
       "options": [
         "GROUP BY",
         "ORDER BY",
@@ -3799,7 +3807,7 @@ window.EXAM_DATA.databases = {
         "SELECT Country, OrderId FROM Orders WHERE Count(OrderId) < 50; GROUP BY Country"
       ],
       "correct": 2,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Ce instrucțiune returnează fiecare Country și numărul de comenzi din acel country numai atunci când numărul este mai mic de 50?"
+      "explanation": "GROUP BY Country forms the country groups. HAVING COUNT(OrderId) < 50 filters those groups after aggregation; COUNT(OrderId) counts non-NULL order identifiers."
     },
     {
       "id": "db-196",
@@ -3864,7 +3872,7 @@ window.EXAM_DATA.databases = {
       "id": "db-200",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "You have two tables named Cars and Color as defined below. The two tables are related by ColorId. You run the following SQL statement: select: SELECT * FROM Cars LEFT OUTER JOIN Colors ON Cars.ColorID = Colors. ColorID How many rows does the SQL statement return?",
+      "question": "You have two tables named Cars and Colors as defined below. The two tables are related by ColorId. You run the following SQL statement: SELECT * FROM Cars LEFT OUTER JOIN Colors ON Cars.ColorID = Colors. ColorID How many rows does the SQL statement return?",
       "code": "SELECT *\nFROM Cars\nLEFT OUTER JOIN Colors\n  ON Cars.ColorID = Colors.ColorID;",
       "image": "assets/databasesimg/q074_1.jpeg",
       "options": [
@@ -4013,7 +4021,7 @@ window.EXAM_DATA.databases = {
         "Returns departments with more than one manager"
       ],
       "correct": 0,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Analizați subinterogarea cu = ANY și stabiliți ce valori vor fi returnate."
+      "explanation": "Răspunsul corect: Returns the names of departments that have at least one employee with the job title 'Manager'."
     },
     {
       "id": "db-209",
@@ -4028,7 +4036,7 @@ window.EXAM_DATA.databases = {
         "Employees with the same salary as everyone in department 5"
       ],
       "correct": 1,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Ce returnează interogarea care selectează angajații cu Salary mai mare decât ALL valorile returnate pentru DepartmentID = 5?"
+      "explanation": "Răspunsul corect: Employees whose salary is higher than all employees in department 5."
     },
     {
       "id": "db-210",
@@ -4077,7 +4085,7 @@ window.EXAM_DATA.databases = {
       "id": "db-213",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "Customers has 300 rows and PotentialCustomers has 10 rows. Exactly 2 complete rows are identical between the two result sets. How many rows does UNION return?",
+      "question": "Customers has 300 rows and PotentialCustomers has 10 rows. Exactly 2 complete rows are identical between the two result sets. How many rows does UNION return? Assume each input result set has no duplicate rows within itself.",
       "options": [
         "308",
         "310",
@@ -4191,7 +4199,7 @@ window.EXAM_DATA.databases = {
       "id": "db-217",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "Which expression concatenates FirstName and LastName with a space using the ANSI-style CONCAT function?",
+      "question": "In SQL Server, which expression concatenates FirstName and LastName with a space using CONCAT?",
       "options": [
         "CONCAT(FirstName, ' ', LastName)",
         "FirstName CONCAT LastName",
@@ -4199,7 +4207,7 @@ window.EXAM_DATA.databases = {
         "MERGE(FirstName, LastName)"
       ],
       "correct": 0,
-      "explanation": "CONCAT poate primi mai multe argumente și le unește într-un singur șir. Traducere: Ce expresie concatenează FirstName și LastName cu un spațiu folosind funcția CONCAT?"
+      "explanation": "SQL Server CONCAT accepts multiple arguments. Function arity varies across SQL dialects, so this item specifies SQL Server."
     },
     {
       "id": "db-218",
@@ -4262,7 +4270,7 @@ window.EXAM_DATA.databases = {
       "id": "db-222",
       "chapter": "extragere-date",
       "type": "single",
-      "question": "You need completed orders only, and orders whose OrderType is 'pre-order' must be excluded. Which WHERE condition is correct?",
+      "question": "In this application, a completed order is defined as one whose OrderDate is not NULL. Return completed orders with a non-NULL OrderType other than pre-order. Which WHERE condition is correct?",
       "options": [
         "WHERE OrderDate IS EMPTY AND NOT OrderType = 'pre-order'",
         "WHERE OrderDate IS NOT NULL AND OrderType <> 'pre-order'",
@@ -4270,7 +4278,7 @@ window.EXAM_DATA.databases = {
         "WHERE OrderDate IS NOT NULL AND OrderType = 'pre-order'"
       ],
       "correct": 1,
-      "explanation": "OrderDate trebuie să fie NOT NULL, iar tipul comenzii trebuie să fie diferit de 'pre-order'. Traducere: Trebuie afișate numai comenzile finalizate, iar comenzile cu OrderType = 'pre-order' trebuie excluse. Care condiție WHERE este corectă?"
+      "explanation": "Under the stated business rule, a non-NULL OrderDate identifies a completed order. AND also requires a non-NULL OrderType different from pre-order."
     },
     {
       "id": "db-223",
@@ -4517,7 +4525,7 @@ window.EXAM_DATA.databases = {
         "INSERT INTO Employee (EmployeeName) VALUES ('Jack Smith');"
       ],
       "correct": 3,
-      "explanation": "INSERT este o comandă DML care adaugă rânduri. ALTER/CREATE sunt DDL, iar SELECT este folosit pentru preluarea datelor. Traducere: Care dintre următoarele este o instrucțiune Data Manipulation Language (DML)?"
+      "explanation": "INSERT modifies table data and is DML. CREATE and ALTER define schema objects and are DDL; classification conventions for SELECT vary, but INSERT is unambiguously the listed data-modification statement."
     },
     {
       "id": "db-235",
@@ -4533,7 +4541,7 @@ window.EXAM_DATA.databases = {
         "a syntax error"
       ],
       "correct": 1,
-      "explanation": "CREATE TABLE definește un tabel nou, coloanele sale, tipurile de date și eventualele constrângeri. Traducere: Analizați definiția și datele tabelului Road. Ce se întâmplă la executarea instrucțiunii INSERT prezentate?"
+      "explanation": "INSERT INTO Road VALUES (1234, 36) adds a row supplying values in the declared column order: RoadID, then Distance."
     },
     {
       "id": "db-236",
@@ -4548,7 +4556,7 @@ window.EXAM_DATA.databases = {
         "INSERT INTO Product (ProductID, Name) VALUES (12345, 'Plate')"
       ],
       "correct": 3,
-      "explanation": "VARCHAR stochează șiruri cu lungime variabilă, astfel încât este eficient când lungimea textului diferă de la un rând la altul. Traducere: Tabelul Product are coloanele ProductID și Name. Ce INSERT adaugă corect produsul Plate cu ID 12345?"
+      "explanation": "INSERT INTO Product (ProductID, Name) VALUES (12345, 'Plate') explicitly assigns the integer identifier and the quoted text name."
     },
     {
       "id": "db-237",
@@ -4672,7 +4680,7 @@ window.EXAM_DATA.databases = {
       "id": "db-245",
       "chapter": "manipulare-date",
       "type": "single",
-      "question": "You have a table of products with fields for ProductID, Name, and Price. You need to write an UPDATE statement that sets the value in the InStock field to Yes for a specific ProductID. Which clause should you use in your update statement?",
+      "question": "You have a table of products with fields for ProductID, Name, Price, and InStock. You need to write an UPDATE statement that sets the value in the InStock field to Yes for a specific ProductID. Which clause should you use in your update statement?",
       "options": [
         "THAT",
         "WHERE",
@@ -4694,7 +4702,7 @@ window.EXAM_DATA.databases = {
         "The query will fail with an error"
       ],
       "correct": 2,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Ce se întâmplă dacă omiteți clauza WHERE într-o instrucțiune UPDATE?"
+      "explanation": "Without WHERE, UPDATE targets every row in the table. It does not add rows or remove the table definition; constraints or triggers can still affect success."
     },
     {
       "id": "db-247",
@@ -4881,22 +4889,22 @@ window.EXAM_DATA.databases = {
         "DELETE FROM Employee WHERE Phone = NULLABLE"
       ],
       "correct": 0,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Ce instrucțiune șterge angajații pentru care numărul de telefon nu este introdus?"
+      "explanation": "DELETE FROM Employee WHERE Phone IS NULL removes rows whose Phone is NULL. Use IS NULL, not = NULL, to test SQL NULL."
     },
     {
       "id": "db-257",
       "chapter": "manipulare-date",
       "type": "single",
-      "question": "A database contains two tables named Customer and Order. You execute the following statement What is the result?",
-      "code": "DELETE FROM Order WHERE CustomerID = 209",
+      "question": "A database contains Customer and Orders. Assume no delete triggers or blocking constraints. What is the result of this statement?",
+      "code": "DELETE FROM Orders WHERE CustomerID = 209;",
       "options": [
-        "The first order for CustomerID 209 is deleted from the Order table.",
-        "All orders for CustomerID 209 are deleted from the Order table, and CustomerID 209 is deleted from the Customer table.",
-        "All orders for CustomerID 209 are deleted from the Order table.",
+        "The first order for CustomerID 209 is deleted from the Orders table.",
+        "All orders for CustomerID 209 are deleted from the Orders table, and CustomerID 209 is deleted from the Customer table.",
+        "All orders for CustomerID 209 are deleted from the Orders table.",
         "CustomerID 209 is deleted from the Customer table."
       ],
       "correct": 2,
-      "explanation": "WHERE filtrează rândurile înainte ca rezultatul să fie returnat sau agregat. Traducere: Executați DELETE FROM Order WHERE CustomerID = 209. Care este rezultatul?"
+      "explanation": "All Orders rows whose CustomerID is 209 are deleted. This statement does not delete the Customer row."
     },
     {
       "id": "db-258",

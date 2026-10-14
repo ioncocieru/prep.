@@ -1,7 +1,7 @@
 /* =====================================================================
    ITS PREP — app.js
    Aplicație de pregătire pentru examenele Certiport IT Specialist.
-   Totul rulează local, în browser — nu se trimit date către niciun server.
+   Interfața testului rulează în browser; autentificarea și accesul folosesc Supabase.
 
    MODIFICĂRI FAȚĂ DE VERSIUNEA ANTERIOARĂ:
    - Întrebările pot avea câmpul  image: "assets/device1.png"  (afișat sub textul
@@ -56,6 +56,7 @@ function showScreen(id) {
     const vid = $("#course-video"); if (vid) vid.pause();
     const fr = $("#course-frame"); if (fr) fr.src = "about:blank";
   }
+  updateQuizSummary();
   window.scrollTo({ top: 0, behavior: "instant" in window ? "instant" : "auto" });
 }
 
@@ -304,8 +305,7 @@ function imageHtml(q, small = false) {
   return list.map(p => {
     const src = escapeAttr(p);
     return `<div class="q-image-wrap ${small ? "small" : ""}">
-    <img class="q-image" src="${src}" alt="Imagine pentru întrebare" loading="lazy"
-         onerror="this.outerHTML='<div class=&quot;q-image-missing&quot;>Imaginea nu a putut fi încărcată: ${src}</div>'">
+    <img class="q-image" src="${src}" alt="${escapeAttr(q.imageAlt || "Imagine pentru întrebare")}" loading="lazy">
   </div>`;
   }).join("");
 }
@@ -313,6 +313,7 @@ function imageHtml(q, small = false) {
 /* click pe imagine = mărire pe tot ecranul */
 function attachImageZoom(root) {
   $all(".q-image", root).forEach(img => {
+    img.addEventListener("error", () => { const msg = document.createElement("div"); msg.className = "q-image-missing"; msg.textContent = "Imaginea nu a putut fi încărcată: " + img.getAttribute("src"); img.replaceWith(msg); });
     img.addEventListener("click", () => {
       const ov = document.createElement("div");
       ov.className = "q-image-zoom";
@@ -1009,6 +1010,7 @@ function renderQuizQuestion() {
   card.innerHTML = html;
   attachImageZoom(card);
   attachQuestionHandlers(q, locked);
+  updateQuizSummary();
 }
 
 function escapeHtml(str) {
@@ -1313,7 +1315,8 @@ function attachDndDragHandlers(q, locked) {
 
   // scoate elementul plasat înapoi în pool, la click pe el
   $all(".dnd-target-slot .dnd-chip").forEach(chip => {
-    chip.addEventListener("click", () => {
+    chip.addEventListener("click", (e) => {
+      e.stopPropagation();
       const zoneEl = chip.closest(".dnd-target");
       const zoneId = zoneEl.dataset.zone;
       state.dndState[q.id][zoneId] = null;
@@ -1343,7 +1346,9 @@ function attachDndDragHandlers(q, locked) {
 }
 
 function placeDndItem(q, itemId, zoneId) {
-  const zones = state.dndState[q.id];
+  if (state.lockedQuestions[q.id] || !q.dragItems.some(i => i.id === itemId) || !q.dropZones.some(z => z.id === zoneId)) return;
+  const zones = state.dndState[q.id] || (state.dndState[q.id] = {});
+  state.dndPicked = null;
   // un element obișnuit poate sta într-o singură casetă; unul reutilizabil poate sta în mai multe
   if (!isReusableItem(q, itemId)) {
     Object.keys(zones).forEach(z => { if (zones[z] === itemId) zones[z] = null; });
@@ -1389,12 +1394,14 @@ function isAnswered(q) {
    ===================================================================== */
 $("#quiz-next-btn").addEventListener("click", () => {
   if (state.currentIndex < state.quizQuestions.length - 1) {
+    state.dndPicked = null;
     state.currentIndex++;
     renderQuizQuestion();
   }
 });
 $("#quiz-prev-btn").addEventListener("click", () => {
   if (state.currentIndex > 0) {
+    state.dndPicked = null;
     state.currentIndex--;
     renderQuizQuestion();
   }
@@ -1611,4 +1618,98 @@ $("#guide-btn").addEventListener("click", () => showGuide(false));
       finger.style.opacity = "0"; prog.style.width = "100%"; await wait(900);
     }
   })();
+})();
+/* Compact question navigator: no additional HTML/CSS files required. */
+function quizAnswerStatus(q) {
+  if (q.type === 'drag_drop') {
+    const zones = state.dndState[q.id] || {};
+    const filled = q.dropZones.filter(z => q.dragItems.some(i => i.id === zones[z.id])).length;
+    return filled === q.dropZones.length ? 'complete' : filled ? 'partial' : 'empty';
+  }
+  const ans = state.userAnswers[q.id];
+  if (q.type === 'multiple') return Array.isArray(ans) && ans.length ? (ans.length === q.correct.length ? 'complete' : 'partial') : 'empty';
+  return Number.isInteger(ans) && ans >= 0 && ans < q.options.length ? 'complete' : 'empty';
+}
+function setQuizSummaryOpen(open, returnFocus = false) {
+  const panel = document.getElementById('quiz-summary-panel');
+  const btn = document.getElementById('quiz-summary-toggle');
+  if (!panel || !btn) return;
+  panel.hidden = !open;
+  btn.setAttribute('aria-expanded', String(open));
+  if (open) {
+    updateQuizSummary();
+    panel.querySelector('[aria-current="step"]')?.focus();
+  } else if (returnFocus) btn.focus();
+}
+function updateQuizSummary() {
+  const dock = document.getElementById('quiz-summary-dock');
+  if (!dock) return;
+  const active = document.getElementById('screen-quiz')?.classList.contains('active') && state.quizQuestions.length > 0;
+  dock.hidden = !active;
+  if (!active) { setQuizSummaryOpen(false); return; }
+  const total = state.quizQuestions.length;
+  document.getElementById('quiz-summary-toggle').textContent = `Summary · ${state.currentIndex + 1}/${total}`;
+  const panel = document.getElementById('quiz-summary-panel');
+  if (panel.hidden) return;
+  const grid = document.getElementById('quiz-summary-grid');
+  const focusedIndex = grid.contains(document.activeElement) ? document.activeElement.dataset.questionIndex : null;
+  const counts = {complete:0, partial:0, empty:0};
+  const labels = {complete:'Completată', partial:'Parțială', empty:'Necompletată'};
+  grid.innerHTML = state.quizQuestions.map((q,i) => {
+    const status = quizAnswerStatus(q); counts[status]++;
+    const current = i === state.currentIndex, flag = !!state.flagged[q.id];
+    return `<button type="button" class="qs-number qs-${status}${flag ? ' qs-flagged' : ''}" data-question-index="${i}"${current ? ' aria-current="step"' : ''} aria-label="Întrebarea ${i+1}: ${labels[status]}${flag ? ', marcată pentru revizuire' : ''}${current ? ', curentă' : ''}"><span>${i+1}</span><small>${flag ? 'R ' : ''}${status === 'complete' ? '✓' : status === 'partial' ? '◐' : '—'}</small></button>`;
+  }).join('');
+  document.getElementById('quiz-summary-position').textContent = `Întrebarea ${state.currentIndex+1} din ${total}`;
+  document.getElementById('quiz-summary-stats').textContent = `${counts.complete} completate · ${counts.partial} parțiale · ${counts.empty} necompletate`;
+  if (focusedIndex != null) grid.querySelector(`[data-question-index="${focusedIndex}"]`)?.focus();
+}
+(function initQuizSummary() {
+  const style = document.createElement('style');
+  style.textContent = `
+    #quiz-summary-dock { position:fixed; right:20px; bottom:20px; z-index:900; font:16px/1.5 system-ui,sans-serif; color:#2c2c2b; }
+    #quiz-summary-dock[hidden], #quiz-summary-panel[hidden] { display:none!important; }
+    #quiz-summary-dock button { font:inherit; cursor:pointer; min-height:44px; }
+    #quiz-summary-dock button:focus-visible { outline:3px solid #2783de; outline-offset:3px; }
+    #quiz-summary-toggle { padding:10px 16px; border:1px solid #2466ad; border-radius:10px; background:#2466ad; color:white; box-shadow:0 4px 12px #0002; }
+    #quiz-summary-panel { position:absolute; right:0; bottom:60px; width:min(360px,calc(100vw - 32px)); max-height:calc(100dvh - 112px); overflow:auto; box-sizing:border-box; padding:16px; background:#fff; border:1px solid #7d7a75; border-radius:12px; box-shadow:0 4px 12px #0002; }
+    .qs-head { display:flex; align-items:center; justify-content:space-between; gap:12px; }
+    #quiz-summary-close { background:transparent; border:1px solid #7d7a75; border-radius:8px; width:44px; flex-shrink:0; color:inherit; }
+    #quiz-summary-stats,.qs-legend { margin:12px 0; font-size:14px; color:#555; }
+    #quiz-summary-grid { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px; max-height:min(320px,42dvh); overflow-y:auto; padding:4px; }
+    .qs-number { display:flex; flex-direction:column; align-items:center; justify-content:center; border:1px solid #7d7a75; border-radius:8px; background:#f9f8f7; color:#2c2c2b; padding:4px; }
+    .qs-number small { font-size:14px; line-height:1.2; }
+    .qs-complete { background:#e8f1ec; border-color:#397b55; }
+    .qs-partial { background:#fbebde; border-color:#976033; }
+    .qs-number[aria-current] { border:3px solid #2466ad; font-weight:700; }
+    .qs-legend { margin-bottom:0; }
+    [data-theme="dark"] #quiz-summary-dock { color:#fff; }
+    [data-theme="dark"] #quiz-summary-panel { background:#202020; border-color:#888; }
+    [data-theme="dark"] .qs-number { background:#303030; color:#fff; border-color:#999; }
+    [data-theme="dark"] .qs-complete { background:#264634; border-color:#72bc8f; }
+    [data-theme="dark"] .qs-partial { background:#4f3627; border-color:#de9255; }
+    [data-theme="dark"] .qs-number[aria-current] { border-color:#5e9fe8; }
+    [data-theme="dark"] #quiz-summary-stats,[data-theme="dark"] .qs-legend { color:#ddd; }
+    #screen-quiz { padding-bottom:88px; }
+    @media(max-width:480px) { #quiz-summary-dock { right:16px; bottom:16px; } }
+  `;
+  document.head.appendChild(style);
+  const dock = document.createElement('aside'); dock.id = 'quiz-summary-dock'; dock.hidden = true;
+  dock.setAttribute('aria-label','Navigare între întrebări');
+  dock.innerHTML = `<section id="quiz-summary-panel" aria-label="Summary — întrebările testului" hidden><div class="qs-head"><strong id="quiz-summary-position"></strong><button type="button" id="quiz-summary-close" aria-label="Închide Summary">×</button></div><p id="quiz-summary-stats"></p><nav id="quiz-summary-grid" aria-label="Alege întrebarea"></nav><p class="qs-legend">✓ Completată · ◐ Parțială · — Necompletată<br>R = Marcată · contur albastru = curentă</p></section><button type="button" id="quiz-summary-toggle" aria-controls="quiz-summary-panel" aria-expanded="false">Summary</button>`;
+  document.body.appendChild(dock);
+  document.getElementById('quiz-summary-toggle').addEventListener('click', () => setQuizSummaryOpen(document.getElementById('quiz-summary-panel').hidden));
+  document.getElementById('quiz-summary-close').addEventListener('click', () => setQuizSummaryOpen(false,true));
+  document.getElementById('quiz-summary-grid').addEventListener('click', e => {
+    const btn = e.target.closest('[data-question-index]'); if (!btn) return;
+    const index = Number(btn.dataset.questionIndex);
+    if (!Number.isInteger(index) || index < 0 || index >= state.quizQuestions.length) return;
+    state.currentIndex = index; state.dndPicked = null;
+    renderQuizQuestion();
+    if (window.saveSession) window.saveSession();
+    setQuizSummaryOpen(false,true);
+  });
+  document.addEventListener('keydown', e => { if(e.key === 'Escape' && !document.getElementById('quiz-summary-panel').hidden) setQuizSummaryOpen(false,true); });
+  document.addEventListener('click', e => { if(!dock.contains(e.target)) setQuizSummaryOpen(false); });
+  updateQuizSummary();
 })();

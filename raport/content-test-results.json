@@ -1,0 +1,119 @@
+{
+  "scope": "Selected corrected Python examples and portable SQL examples on explicit test fixtures; not a complete execution of every exercise or SQL Server verification.",
+  "tests": [
+    {
+      "question": "py-151",
+      "case": [
+        "20",
+        "2025"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-180",
+      "case": [],
+      "passed": true
+    },
+    {
+      "question": "py-323",
+      "case": [],
+      "passed": true
+    },
+    {
+      "question": "py-333",
+      "case": [
+        "4",
+        "5"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-334",
+      "case": [
+        "Hello"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-345",
+      "case": [],
+      "passed": true
+    },
+    {
+      "question": "py-346",
+      "case": [
+        "1",
+        "1",
+        "1",
+        "1",
+        "1"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-357",
+      "case": [
+        "invalid"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-357",
+      "case": [
+        "1",
+        "0"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-357",
+      "case": [
+        "8",
+        "2"
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-112",
+      "case": [
+        -8,
+        3
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-112",
+      "case": [
+        16,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "question": "py-112",
+      "case": [
+        -4,
+        2
+      ],
+      "passed": true
+    },
+    {
+      "question": "db-048",
+      "case": "composite primary key allows distinct pairs and rejects duplicate pair",
+      "passed": true
+    },
+    {
+      "question": "db-174",
+      "case": "sales/location grouping on test data",
+      "passed": true
+    },
+    {
+      "question": "py-073",
+      "passed": true
+    },
+    {
+      "question": "py-297",
+      "passed": true
+    }
+  ]
+}

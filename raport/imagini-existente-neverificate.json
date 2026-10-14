@@ -1,0 +1,212 @@
+[
+  {
+    "bank": "deviceConfig",
+    "id": "dcm-050",
+    "asset": "assets/device1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "deviceConfig",
+    "id": "dcm-051",
+    "asset": "assets/device2.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-021",
+    "asset": "assets/databasesimg/q021_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-031",
+    "asset": "assets/databasesimg/q031_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-036",
+    "asset": "assets/databasesimg/q084_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-037",
+    "asset": "assets/databasesimg/q085_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-038",
+    "asset": "assets/databasesimg/q086_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-038",
+    "asset": "assets/databasesimg/q086_2.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-044",
+    "asset": "assets/databasesimg/q092_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-045",
+    "asset": "assets/databasesimg/q093_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-050",
+    "asset": "assets/databasesimg/q190_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-069",
+    "asset": "assets/databasesimg/q210_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-075",
+    "asset": "assets/databasesimg/q217_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-104",
+    "asset": "assets/databasesimg/q101_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-130",
+    "asset": "assets/databasesimg/q163_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-138",
+    "asset": "assets/databasesimg/q172_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-139",
+    "asset": "assets/databasesimg/q173_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-170",
+    "asset": "assets/databasesimg/q044_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-172",
+    "asset": "assets/databasesimg/q046_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-173",
+    "asset": "assets/databasesimg/q047_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-177",
+    "asset": "assets/databasesimg/q051_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-181",
+    "asset": "assets/databasesimg/q055_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-182",
+    "asset": "assets/databasesimg/q056_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-184",
+    "asset": "assets/databasesimg/q058_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-187",
+    "asset": "assets/databasesimg/q061_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-190",
+    "asset": "assets/databasesimg/q064_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-191",
+    "asset": "assets/databasesimg/q065_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-199",
+    "asset": "assets/databasesimg/q073_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-200",
+    "asset": "assets/databasesimg/q074_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-235",
+    "asset": "assets/databasesimg/q130_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-238",
+    "asset": "assets/databasesimg/q133_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-239",
+    "asset": "assets/databasesimg/q134_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-248",
+    "asset": "assets/databasesimg/q143_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-250",
+    "asset": "assets/databasesimg/q145_1.png",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  },
+  {
+    "bank": "databases",
+    "id": "db-251",
+    "asset": "assets/databasesimg/q146_1.jpeg",
+    "status": "Referenced in original bank, not supplied for this review; preserve existing site asset."
+  }
+]
