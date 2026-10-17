@@ -1,0 +1,22 @@
+{
+  "historical": true,
+  "superseded_by": "raport-import/",
+  "original_report": {
+    "rendered": 1178,
+    "viewportTests": [
+      "1280x900",
+      "390x844"
+    ],
+    "summary": [
+      "jump",
+      "answers preserved",
+      "partial/complete statuses",
+      "flag",
+      "Escape",
+      "hidden outside quiz",
+      "no horizontal overflow",
+      "light/dark"
+    ],
+    "pageErrors": []
+  }
+}

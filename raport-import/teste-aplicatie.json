@@ -1,0 +1,108 @@
+{
+  "scope": "Local real Chromium UI with isolated mocked Supabase; no live user/project data accessed",
+  "all_questions": {
+    "pass": 2722,
+    "fail": [],
+    "types": {
+      "true_false": 164,
+      "multiple": 201,
+      "dropdown": 714,
+      "single": 1399,
+      "drag_drop": 244
+    }
+  },
+  "exam_result_reviews": [
+    {
+      "exam": "python",
+      "questions": 761,
+      "correct": "761",
+      "percent": "100%",
+      "reviewRows": 761
+    },
+    {
+      "exam": "databases",
+      "questions": 304,
+      "correct": "304",
+      "percent": "100%",
+      "reviewRows": 304
+    },
+    {
+      "exam": "deviceConfig",
+      "questions": 728,
+      "correct": "728",
+      "percent": "100%",
+      "reviewRows": 728
+    },
+    {
+      "exam": "networking",
+      "questions": 625,
+      "correct": "625",
+      "percent": "100%",
+      "reviewRows": 625
+    },
+    {
+      "exam": "html5",
+      "questions": 304,
+      "correct": "304",
+      "percent": "100%",
+      "reviewRows": 304
+    }
+  ],
+  "resume_images_mobile": {
+    "restored": [
+      "i1",
+      "i1"
+    ],
+    "expected": [
+      "i1",
+      "i1"
+    ],
+    "mobile": {
+      "width": 393,
+      "scrollWidth": 393,
+      "dropdowns": 2,
+      "locked": true,
+      "dock": {
+        "x": 235.796875,
+        "y": 923.59375,
+        "width": 143.203125,
+        "height": 46,
+        "top": 923.59375,
+        "right": 379,
+        "bottom": 969.59375,
+        "left": 235.796875
+      },
+      "actions": {
+        "x": 0,
+        "y": 912.59375,
+        "width": 393,
+        "height": 173,
+        "top": 912.59375,
+        "right": 393,
+        "bottom": 1085.59375,
+        "left": 0
+      }
+    },
+    "images": {
+      "tested": 78,
+      "missing": []
+    },
+    "auth": "Local mock only; live Supabase not tested"
+  },
+  "content_validation": {
+    "sourceAppearances": 2065,
+    "mapped": 2065,
+    "mappingStatuses": {
+      "added": 1275,
+      "existing": 656,
+      "duplicate": 134
+    },
+    "originalBaselineIDsPreserved": true,
+    "newRecordsInThisPass": 1110,
+    "pythonExplicitCodeCompiled": 48,
+    "pythonCodeErrors": [],
+    "nativePDFImageHashesVerified": 112
+  },
+  "uncaught_browser_errors": [],
+  "live_supabase_tested": false
+}

@@ -1,0 +1,3 @@
+Acoperire completă: toate cele 2.065 de apariții din sursă sunt asociate cu o întrebare integrată.
+Întrebările repetate pot indica aceeași întrebare. Vezi mapare-intrebari.csv și rezumat.json.
+Acoperirea și testele funcționale nu reprezintă certificarea oficială a cheilor de către Certiport.

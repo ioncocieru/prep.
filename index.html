@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Prep.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+<link rel="icon" type="image/png" sizes="256x256" href="assets/favicon.png">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<script>try{if(localStorage.getItem("prep-theme")==="dark")document.documentElement.setAttribute("data-theme","dark");}catch(e){}</script>
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="landing.css">
+</head>
+<body>
+
+<!-- ============ ECRAN 0: PREZENTARE (vizitatori neautentificați) ============ -->
+<section id="screen-landing" class="screen screen-landing active">
+  <header class="lx-nav">
+    <div class="lx-nav-in">
+      <a href="#" class="lx-brand" data-scroll="lx-top">Prep<span>.</span></a>
+      <nav class="lx-links" aria-label="Secțiuni">
+        <a href="#" data-scroll="lx-exams">Examene</a>
+        <a href="#" data-scroll="lx-journey">Cum înveți</a>
+        <a href="#" data-scroll="lx-start">Cum începi</a>
+        <a href="#" data-scroll="lp-reviews" id="lp-nav-reviews" hidden>Păreri</a>
+        <a href="#" data-scroll="lx-price">Prețuri</a>
+        <a href="#" data-scroll="lx-faq">Întrebări</a>
+      </nav>
+      <div class="lx-nav-cta">
+        <button type="button" class="lx-text-btn" data-go-login="login">Intră în cont</button>
+        <button type="button" class="lx-btn lx-btn-sm" data-go-login="register">Creează cont</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <div class="lx-hero" id="lx-top">
+    <div class="lx-hero-txt">
+      <p class="lx-small lx-r">Pentru examenele IT Specialist by Certiport</p>
+      <h1 class="lx-r">Cursul, întrebările și <mark>simulările</mark> de care ai nevoie pentru examen.</h1>
+      <p class="lx-lead lx-r">Python, Databases, Networking și Device Configuration. Te uiți la lecții, exersezi cu explicații, faci simulări cu timp, apoi mergi la centrul de testare.</p>
+      <div class="lx-cta lx-r">
+        <button type="button" class="lx-btn" data-go-login="register">Creează cont</button>
+        <button type="button" class="lx-text-btn lx-arrow" data-go-login="login">Am deja cont</button>
+      </div>
+      <p class="lx-note lx-r">Contul e gratuit. Accesul la examene îl activezi pe Telegram.</p>
+    </div>
+
+    <div class="lx-hero-vis lx-r" aria-hidden="true">
+      <div class="lx-app">
+        <div class="lx-app-top">
+          <span class="back">←</span>
+          <div class="pg"><i style="width:35%"></i></div>
+          <span class="tm">07 / 20</span>
+        </div>
+        <div class="lx-app-body">
+          <div class="lx-meta"><span>Python</span><span>Funcții</span></div>
+          <p class="lx-q">Ce afișează codul de mai jos?</p>
+<pre class="lx-code"><span class="k">def</span> media(note):
+    <span class="k">return</span> sum(note) / len(note)
+
+print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n">10</span>]))</pre>
+          <div class="lx-opt">9</div>
+          <div class="lx-opt ok">9.0</div>
+          <div class="lx-opt">27</div>
+          <div class="lx-expl"><b>Corect.</b> Operatorul <code>/</code> întoarce mereu un <code>float</code>, chiar dacă împărțirea e exactă.</div>
+        </div>
+      </div>
+      <div class="lx-annot a1">
+        <svg viewBox="0 0 90 60"><path d="M86 50 C 62 54, 34 48, 22 30 C 17 22, 15 15, 14 7"/><path d="M5 17 C 9 13, 12 9, 14 6 C 17 10, 20 13, 24 16"/></svg>
+        <span>explicație la<br>fiecare răspuns</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 01 EXAMENE -->
+  <section class="lx-sec" id="lx-exams">
+    <div class="lx-label lx-r"><span>01</span>Examene</div>
+    <div class="lx-body">
+      <h2 class="lx-r">Patru examene. Fiecare cu curs video, întrebări pe capitole și mod examen.</h2>
+      <div class="lx-table lx-r">
+        <div class="row"><b>Python</b><p>Tipuri de date, structuri de control, funcții, fișiere, erori, module.</p></div>
+        <div class="row"><b>Databases</b><p>Proiectare, chei și relații, SQL, interogări, modificarea datelor.</p></div>
+        <div class="row"><b>Networking</b><p>Modelul OSI și TCP/IP, adresare IP, echipamente, depanare.</p></div>
+        <div class="row"><b>Device Configuration and Management</b><p>Configurarea sistemului de operare, dispozitive, securitate, mentenanță.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 CUM ÎNVEȚI (derulare cu ecran fix) -->
+  <section class="lx-sec lx-journey" id="lx-journey">
+    <div class="lx-label lx-r"><span>02</span>Cum înveți</div>
+    <div class="lx-body">
+      <h2 class="lx-r">Mergi pas cu pas, de la prima lecție până în sala de examen.</h2>
+
+      <div class="lx-jgrid">
+        <div class="lx-jsteps">
+          <div class="lx-rail" aria-hidden="true"><i id="lx-rail-fill"></i></div>
+          <article class="lx-jstep" data-step="0">
+            <span class="n">1</span>
+            <h3>Te uiți la lecții</h3>
+            <p>Cursul e împărțit pe capitole, exact ca în programa examenului. Ce ai văzut se bifează, iar data viitoare continui de unde ai rămas.</p>
+          </article>
+          <article class="lx-jstep" data-step="1">
+            <span class="n">2</span>
+            <h3>Exersezi cu explicații</h3>
+            <p>Alegi capitolele și câte întrebări vrei. După fiecare răspuns vezi dacă e corect și de ce. Ai și întrebări cu mai multe răspunsuri, adevărat/fals și drag and drop.</p>
+          </article>
+          <article class="lx-jstep" data-step="2">
+            <span class="n">3</span>
+            <h3>Faci simulări cu timp</h3>
+            <p>În modul examen nu vezi răspunsurile până la final. Ai cronometru și poți marca întrebările la care vrei să revii, la fel ca la Certiport.</p>
+          </article>
+          <article class="lx-jstep" data-step="3">
+            <span class="n">4</span>
+            <h3>Vezi unde mai greșești</h3>
+            <p>La final primești scorul pe fiecare capitol și toate întrebările cu răspunsul corect. Poți relua doar greșelile.</p>
+          </article>
+          <article class="lx-jstep" data-step="4">
+            <span class="n">5</span>
+            <h3>Susții examenul la centru</h3>
+            <p>Când scorurile din simulări sunt bune, te programezi la un centru de testare autorizat Certiport. Examenul se dă pe calculator, iar certificarea o primești de la Certiport.</p>
+          </article>
+        </div>
+
+        <div class="lx-jstage" aria-hidden="true">
+          <div class="lx-frame">
+            <div class="lx-scr active" data-step="0">
+              <div class="lx-s-head"><b>Databases</b><span>Curs · capitolul 4</span></div>
+              <div class="lx-video">
+<pre><span class="k">SELECT</span> clasa, AVG(nota)
+<span class="k">FROM</span> elevi
+<span class="k">WHERE</span> nota &gt;= <span class="n">5</span>
+<span class="k">GROUP BY</span> clasa;</pre>
+                <span class="pl"></span><div class="bar"><i style="width:56%"></i></div>
+              </div>
+              <ul class="lx-vl">
+                <li class="d">4.1 SELECT<em>văzut</em></li>
+                <li class="d">4.2 Filtrare cu WHERE<em>văzut</em></li>
+                <li class="c">4.3 GROUP BY<em>6:12</em></li>
+                <li>4.4 Funcții de agregare<em>8:40</em></li>
+              </ul>
+            </div>
+            <div class="lx-scr" data-step="1">
+              <div class="lx-s-head"><b>Databases</b><span>Exercițiu · 7 din 20</span></div>
+              <p class="lx-q">Ce clauză filtrează rândurile înainte să fie grupate?</p>
+              <div class="lx-opt">HAVING</div>
+              <div class="lx-opt ok">WHERE</div>
+              <div class="lx-opt">ORDER BY</div>
+              <div class="lx-opt">GROUP BY</div>
+              <div class="lx-expl"><b>Corect.</b> WHERE lucrează pe rânduri, înainte de GROUP BY. HAVING filtrează grupurile, după.</div>
+            </div>
+            <div class="lx-scr" data-step="2">
+              <div class="lx-s-head"><b>Networking</b><span class="clock">38:12</span></div>
+              <div class="lx-ex">
+                <div>
+                  <p class="lx-q">Care este masca implicită pentru o adresă IPv4 de clasă C?</p>
+                  <div class="lx-opt sel">255.255.255.0</div>
+                  <div class="lx-opt">255.255.0.0</div>
+                  <div class="lx-opt">255.0.0.0</div>
+                  <p class="lx-flag">Marcată pentru revizuire</p>
+                </div>
+                <div class="lx-nums">
+                  <i class="a">1</i><i class="a">2</i><i class="a">3</i><i class="f">4</i><i class="a">5</i>
+                  <i class="a">6</i><i class="a">7</i><i class="a">8</i><i class="f">9</i><i class="a">10</i>
+                  <i class="a">11</i><i class="c">12</i><i>13</i><i>14</i><i>15</i>
+                  <i>16</i><i>17</i><i>18</i><i>19</i><i>20</i>
+                </div>
+              </div>
+            </div>
+            <div class="lx-scr" data-step="3">
+              <div class="lx-s-head"><b>Networking</b><span>Rezultat simulare</span></div>
+              <div class="lx-score"><b>86%</b><span>26 corecte · 4 greșite · 32:40</span></div>
+              <div class="lx-bars">
+                <div><span>OSI și TCP/IP</span><i><u style="width:100%"></u></i><em>100%</em></div>
+                <div><span>Adresare IP</span><i><u style="width:88%"></u></i><em>88%</em></div>
+                <div><span>Echipamente</span><i><u style="width:80%"></u></i><em>80%</em></div>
+                <div><span>Depanare</span><i><u class="w" style="width:67%"></u></i><em>67%</em></div>
+              </div>
+              <div class="lx-retry">Reia doar greșelile (4)</div>
+            </div>
+            <div class="lx-scr lx-ticket" data-step="4">
+              <div class="tk">
+                <div class="tk-l">
+                  <small>Examen oficial</small>
+                  <b>IT Specialist</b>
+                  <span>Centru de testare autorizat Certiport</span>
+                  <dl>
+                    <div><dt>Unde</dt><dd>la centru, pe calculator</dd></div>
+                    <div><dt>Ce iei</dt><dd>actul de identitate</dd></div>
+                    <div><dt>Rezultat</dt><dd>scorul, la final</dd></div>
+                  </dl>
+                </div>
+                <div class="tk-r"><span>Prep.</span><em>pregătit</em></div>
+              </div>
+            </div>
+          </div>
+          <p class="lx-cap" id="lx-cap">Cursul video</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 CUM ÎNCEPI -->
+  <section class="lx-sec" id="lx-start">
+    <div class="lx-label lx-r"><span>03</span>Cum începi</div>
+    <div class="lx-body">
+      <h2 class="lx-r">Patru pași, câteva minute.</h2>
+
+      <ol class="lx-onb">
+        <li class="lx-r">
+          <div class="t"><span class="n">1</span><h3>Creezi contul</h3><p>Pe pagina de înregistrare scrii emailul și o parolă de cel puțin 6 caractere.</p></div>
+          <div class="v">
+            <div class="m-form">
+              <b>Creează un cont</b>
+              <label>Email</label><div class="in">numele.tau@gmail.com</div>
+              <label>Parolă</label><div class="in">••••••••</div>
+              <div class="bt">Creează cont</div>
+            </div>
+          </div>
+        </li>
+        <li class="lx-r">
+          <div class="t"><span class="n">2</span><h3>Confirmi emailul</h3><p>Primești un email de la Prep. Îl deschizi și apeși pe link. Dacă nu e în Inbox, caută în Spam sau Promoții. De pe pagina de login îl poți retrimite.</p></div>
+          <div class="v">
+            <div class="m-mail">
+              <div class="mtop"><span>Inbox</span><span>1 necitit</span></div>
+              <div class="mrow on"><b>Prep.</b><span>Confirmă adresa de email</span><em>acum</em></div>
+              <div class="mrow"><b>Google</b><span>Alertă de securitate</span><em>09:14</em></div>
+              <div class="mread">
+                <p class="from"><b>Prep.</b> &lt;noreply@…&gt;</p>
+                <p class="sub">Confirmă adresa de email</p>
+                <p>Apasă pe butonul de mai jos ca să îți activezi contul.</p>
+                <span class="mb">Confirmă emailul</span>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="lx-r">
+          <div class="t"><span class="n">3</span><h3>Intri în cont</h3><p>Vezi toate cele patru examene. La început sunt blocate, iar după activare se deschid.</p></div>
+          <div class="v">
+            <div class="m-dash">
+              <b>Alege examenul</b>
+              <div class="g">
+                <div class="on">Python<em>activ</em></div>
+                <div class="on">Databases<em>activ</em></div>
+                <div>Networking<em>blocat</em></div>
+                <div>Device Config.<em>blocat</em></div>
+              </div>
+            </div>
+          </div>
+        </li>
+        <li class="lx-r">
+          <div class="t"><span class="n">4</span><h3>Îmi scrii pe Telegram</h3><p>Îmi trimiți emailul contului și examenele pe care le vrei. După plată, îți activez accesul.</p></div>
+          <div class="v">
+            <div class="m-chat">
+              <p class="me">Salut! Aș vrea Python și Databases. Contul: numele.tau@gmail.com</p>
+              <p class="you">Salut! Gata, le-am activat. Spor!</p>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- PĂRERI (apare doar dacă reviews.js are elemente) -->
+  <section class="lx-sec" id="lp-reviews" hidden>
+    <div class="lx-label"><span>—</span>Păreri</div>
+    <div class="lx-body">
+      <h2>Ce spun cei care au învățat aici.</h2>
+      <div class="lp-vids" id="lp-vids"></div>
+      <div class="lp-quotes" id="lp-quotes"></div>
+    </div>
+  </section>
+
+  <!-- 04 PREȚURI -->
+  <section class="lx-sec" id="lx-price">
+    <div class="lx-label lx-r"><span>04</span>Prețuri</div>
+    <div class="lx-body">
+      <h2 class="lx-r">Plătești doar pentru examenele de care ai nevoie.</h2>
+      <div class="lx-prices lx-r">
+        <div class="p">
+          <p class="nm">Un examen</p>
+          <p class="pr"><span class="price-current">19.99 <span class="price-currency">EUR</span></span><s>30 EUR</s></p>
+          <p class="price-equivalent">echivalent cu 400 lei moldovenești</p>
+          <p class="ds">Oricare dintre cele patru. Curs video, întrebări cu explicații, mod examen, scor pe capitole.</p>
+        </div>
+        <div class="p rec">
+          <p class="nm">Toate cele 4 examene <span>recomandat</span></p>
+          <p class="pr"><span class="price-current">49.99 <span class="price-currency">EUR</span></span><s>100 EUR</s></p>
+          <p class="price-equivalent">echivalent cu 1000 lei moldovenești</p>
+          <p class="ds">Python, Databases, Networking și Device Configuration and Management, în același cont.</p>
+        </div>
+      </div>
+      <div class="lx-pay lx-r">
+        <p>Pentru acces îmi scrii pe Telegram.</p>
+        <a class="lx-btn" href="https://t.me/thecocieru" target="_blank" rel="noopener">Scrie-mi: @thecocieru</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 ÎNTREBĂRI -->
+  <section class="lx-sec" id="lx-faq">
+    <div class="lx-label lx-r"><span>05</span>Întrebări</div>
+    <div class="lx-body lx-faq lx-r">
+      <details><summary>Ce primesc după ce îmi creez contul?</summary><p>Un cont gol, fără examene. După ce intri, îmi scrii pe Telegram și îți activez examenele alese.</p></details>
+      <details><summary>Cu ce încep?</summary><p>Cu videourile, de la primul capitol. Apoi treci la întrebări în modul exercițiu, iar la final faci simulări în modul examen.</p></details>
+      <details><summary>Certificatul de pe Prep. e cel oficial?</summary><p>Nu. Cel oficial îl dă Certiport, după examenul susținut la un centru de testare autorizat. Pe Prep. primești un certificat că ai terminat pregătirea.</p></details>
+      <details><summary>Nu primesc emailul de confirmare.</summary><p>Verifică în Spam și Promoții. Pe pagina de login îl poți retrimite.</p></details>
+      <details><summary>Am uitat parola.</summary><p>Pe pagina de login apeși „Ai uitat parola?” și primești pe email un link de resetare.</p></details>
+      <details><summary>Prep. are legătură cu Certiport?</summary><p>Nu. Prep. e o platformă independentă de pregătire.</p></details>
+    </div>
+  </section>
+
+  <footer class="lx-foot">
+    <div class="lx-foot-cta lx-r">
+      <h2>Gata să începi?</h2>
+      <div class="lx-cta">
+        <button type="button" class="lx-btn" data-go-login="register">Creează cont</button>
+        <button type="button" class="lx-text-btn lx-arrow" data-go-login="login">Intră în cont</button>
+      </div>
+    </div>
+    <div class="lx-foot-bot">
+      <span class="lx-brand">Prep<span>.</span></span>
+      <a href="https://t.me/prepmd" target="_blank" rel="noopener">Comunitatea pe Telegram</a>
+      <a href="https://t.me/thecocieru" target="_blank" rel="noopener">Contact</a>
+      <p>Certiport și IT Specialist sunt mărci ale deținătorilor lor. Prep. nu este afiliat cu Certiport.</p>
+    </div>
+  </footer>
+</section>
+
+<script>
+/* butoanele paginii de prezentare: funcționează independent de restul scripturilor */
+(function () {
+  function show(id) {
+    var s = document.querySelectorAll(".screen");
+    for (var i = 0; i < s.length; i++) s[i].classList.remove("active");
+    var t = document.getElementById(id); if (t) t.classList.add("active");
+    window.scrollTo(0, 0);
+  }
+  document.addEventListener("click", function (e) {
+    var t = e.target; if (!t || !t.closest) return;
+    var a = t.closest("[data-go-login]");
+    if (a) {
+      e.preventDefault(); show("screen-login");
+      var mode = a.getAttribute("data-go-login") === "register" ? "register" : "login", n = 0;
+      (function go() { if (typeof window.switchAuth === "function") window.switchAuth(mode); else if (n++ < 30) setTimeout(go, 100); })();
+      return;
+    }
+    var b = t.closest("[data-go-landing]");
+    if (b) { e.preventDefault(); show("screen-landing"); return; }
+    var c = t.closest("[data-scroll]");
+    if (c) {
+      e.preventDefault();
+      var el = document.getElementById(c.getAttribute("data-scroll"));
+      if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.pageYOffset - 72, behavior: "smooth" });
+    }
+  });
+})();
+</script>
+
+<!-- ============ ECRAN 1: LOGIN ============ -->
+<section id="screen-login" class="screen screen-login">
+  <svg class="login-bg-lines" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M -50 120 L 420 320 L 300 700 L 900 560" />
+    <path d="M 1050 80 L 650 260 L 780 620 L 200 780" />
+    <path d="M -80 850 L 350 620 L 620 900" />
+    <path d="M 1080 950 L 720 700 L 950 380" />
+    <circle cx="420" cy="320" r="4"/><circle cx="300" cy="700" r="4"/><circle cx="900" cy="560" r="4"/>
+    <circle cx="650" cy="260" r="4"/><circle cx="780" cy="620" r="4"/><circle cx="200" cy="780" r="4"/>
+    <circle cx="350" cy="620" r="4"/><circle cx="720" cy="700" r="4"/><circle cx="950" cy="380" r="4"/>
+  </svg>
+  <div class="login-wrap">
+    <div class="login-brand">
+      <img src="assets/logo.png" alt="Prep." class="logo-mark logo-mark-lg">
+      <p class="brand-sub">Platformă de pregătire pentru certificările <br>IT Specialist by Certiport</p>
+      <ul class="brand-exam-list">
+        <li><span class="tag tag-python"></span>Python</li>
+        <li><span class="tag tag-db"></span>Databases</li>
+        <li><span class="tag tag-dcm"></span>Device Configuration and Management</li>
+        <li><span class="tag tag-net"></span>Networking</li>
+      </ul>
+      <a class="telegram-link" href="https://t.me/prepmd" target="_blank" rel="noopener">
+        <span class="telegram-icon">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 3.5 2.7 10.9c-1.2.5-1.2 1.2-.2 1.5l4.8 1.5 1.9 5.8c.2.6.4.8.9.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.7l3-14.1c.3-1.2-.4-1.7-1.2-1.2Zm-12 11.4-1.6-.5 9.5-6-7.9 6.5Zm1 1.1 1.2 3.7.9-2.7c1.9-1.6 3.4-2.9 4.5-3.9l-6.6 2.9Z"/></svg>
+        </span>
+        <span>Comunitatea Prep. pe Telegram</span>
+      </a>
+    </div>
+    <div class="login-card">
+      <button type="button" class="lp-back" data-go-landing>← Despre Prep</button>
+      <div class="auth-tabs" id="auth-tabs" role="tablist">
+        <button type="button" class="auth-tab active" data-auth="login" role="tab">Autentificare</button>
+        <button type="button" class="auth-tab" data-auth="register" role="tab">Creare cont</button>
+      </div>
+
+      <div id="auth-login-pane" class="auth-pane">
+        <h2>Autentificare</h2>
+        <p class="muted">Introdu datele contului tău pentru a intra în platformă.</p>
+        <form id="login-form" autocomplete="off">
+          <label for="login-input">Login</label>
+          <input type="text" id="login-input" placeholder="utilizator sau email" autocapitalize="none" required>
+          <label for="password-input">Parolă</label>
+          <input type="password" id="password-input" placeholder="••••••••" required>
+          <button type="submit" id="login-btn" class="btn btn-primary btn-block">Intră în platformă</button>
+          <p id="login-error" class="login-error" hidden>Login sau parolă incorectă.</p>
+          <button type="button" id="login-resend" class="link-btn auth-resend" hidden>Retrimite emailul de confirmare</button>
+          <button type="button" id="forgot-link" class="link-btn auth-forgot">Ai uitat parola?</button>
+        </form>
+      </div>
+
+      <div id="auth-forgot-pane" class="auth-pane" hidden>
+        <h2>Resetare parolă</h2>
+        <p class="muted">Introdu emailul contului și îți trimitem un link pentru a seta o parolă nouă.</p>
+        <form id="forgot-form" autocomplete="off">
+          <label for="forgot-email">Email</label>
+          <input type="email" id="forgot-email" placeholder="adresa@email.com" autocapitalize="none" autocomplete="email" required>
+          <button type="submit" id="forgot-btn" class="btn btn-primary btn-block">Trimite linkul de resetare</button>
+          <p id="forgot-error" class="login-error" hidden></p>
+          <p id="forgot-info" class="login-info" hidden></p>
+          <button type="button" class="link-btn auth-forgot" data-auth-go="login">← Înapoi la autentificare</button>
+        </form>
+      </div>
+
+      <div id="auth-recover-pane" class="auth-pane" hidden>
+        <h2>Setează o parolă nouă</h2>
+        <p class="muted">Alege o parolă nouă pentru contul tău.</p>
+        <form id="recover-form" autocomplete="off">
+          <label for="recover-password">Parolă nouă</label>
+          <input type="password" id="recover-password" placeholder="minim 6 caractere" minlength="6" required>
+          <label for="recover-password2">Repetă parola</label>
+          <input type="password" id="recover-password2" placeholder="••••••••" minlength="6" required>
+          <button type="submit" id="recover-btn" class="btn btn-primary btn-block">Salvează parola</button>
+          <p id="recover-error" class="login-error" hidden></p>
+        </form>
+      </div>
+
+      <div id="auth-register-pane" class="auth-pane" hidden>
+        <h2>Creează un cont</h2>
+        <p class="muted">Îți trimitem un email de confirmare. Contul nou nu include examene: accesul la ele îl primești de la un administrator.</p>
+        <form id="register-form" autocomplete="off">
+          <label for="reg-login">Email</label>
+          <input type="email" id="reg-login" placeholder="adresa@email.com" autocapitalize="none" autocomplete="email" required>
+          <label for="reg-password">Parolă</label>
+          <input type="password" id="reg-password" placeholder="minim 6 caractere" minlength="6" required>
+          <label for="reg-password2">Repetă parola</label>
+          <input type="password" id="reg-password2" placeholder="••••••••" minlength="6" required>
+          <button type="submit" id="register-btn" class="btn btn-primary btn-block">Creează cont</button>
+          <p id="register-error" class="login-error" hidden></p>
+          <p id="register-info" class="login-info" hidden></p>
+          <button type="button" id="register-resend" class="link-btn auth-resend" hidden>Retrimite emailul de confirmare</button>
+        </form>
+      </div>
+
+      <div class="register-box">
+        <p>Ai nevoie de acces la examene?</p>
+        <a class="register-btn" href="https://t.me/thecocieru" target="_blank" rel="noopener">Contactează administratorul pe Telegram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ECRAN 2: DASHBOARD (alegere examen) ============ -->
+<section id="screen-dashboard" class="screen">
+  <header class="dash-hero pattern-dots">
+    <div class="dash-hero-top">
+      <img src="assets/logo.png" alt="Prep." class="logo-mark">
+      <div class="hero-actions">
+        <button id="guide-btn" class="btn btn-ghost btn-ghost-dark guide-btn" type="button" title="Ghid: cum funcționează platforma" aria-label="Ghid"><span class="gb-full">Ghid</span><span class="gb-short" aria-hidden="true">?</span></button>
+        <button id="theme-toggle" class="theme-toggle" type="button" title="Schimbă tema" aria-label="Schimbă tema"><svg class="ic i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="ic i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+        <button id="profile-btn" class="profile-btn" title="Profilul meu">
+          <span class="avatar" id="profile-btn-avatar"></span>
+          <span class="profile-btn-text" id="profile-btn-email"></span>
+        </button>
+        <button id="logout-btn" class="btn btn-ghost btn-ghost-dark"><span class="lo-full">Ieși din cont</span><span class="lo-short">Ieși</span></button>
+      </div>
+    </div>
+    <div class="dash-hero-copy hello">
+      <span class="avatar avatar-lg" id="hello-avatar" hidden></span>
+      <div>
+        <h1 id="welcome-title">Bine ai revenit!</h1>
+        <p>Alege examenul la care vrei să te pregătești astăzi.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="dashboard-grid" id="exam-grid"></main>
+</section>
+
+<!-- ============ ECRAN: CURS (video) ============ -->
+<section id="screen-course" class="screen">
+  <header class="topbar">
+    <div class="topbar-title">
+      <button class="btn btn-icon back-btn" data-target="screen-dashboard" title="Înapoi">←</button>
+      <div>
+        <span class="wordmark-sm">Prep<span class="dot">.</span></span>
+        <h1 id="course-title">Curs</h1>
+        <p class="muted" id="course-desc"></p>
+      </div>
+    </div>
+    <span class="pill" id="course-count"></span>
+  </header>
+  <main class="course-layout">
+    <div class="course-main">
+      <div class="course-player">
+        <video id="course-video" controls controlsList="nodownload" playsinline preload="metadata"></video>
+        <iframe id="course-frame" hidden allow="accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen referrerpolicy="strict-origin-when-cross-origin"></iframe>
+        <div class="course-info">
+          <div>
+            <div class="course-chapter-label" id="course-chapter-label"></div>
+            <h2 id="course-video-title">Alege un video din listă</h2>
+          </div>
+          <div class="course-nav">
+            <button id="course-watched-btn" class="btn btn-ghost">Marchează vizionat</button>
+            <button id="course-prev-btn" class="btn btn-secondary">← Anterior</button>
+            <button id="course-next-btn" class="btn btn-primary">Următorul →</button>
+          </div>
+        </div>
+      </div>
+      <div class="course-resources" id="course-resources" hidden>
+        <h3>Resurse de descărcat</h3>
+        <div id="course-resource-list"></div>
+      </div>
+    </div>
+    <aside class="course-sidebar" id="course-list"></aside>
+  </main>
+</section>
+
+<!-- ============ ECRAN: PROFIL ============ -->
+<section id="screen-profile" class="screen">
+  <header class="topbar">
+    <div class="topbar-title">
+      <button class="btn btn-icon back-btn" data-target="screen-dashboard" title="Înapoi">←</button>
+      <div><span class="wordmark-sm">Prep<span class="dot">.</span></span><h1>Profilul meu</h1></div>
+    </div>
+  </header>
+  <main class="profile-layout">
+    <div class="profile-card">
+      <div class="profile-photo">
+        <span class="avatar avatar-xl" id="profile-avatar"></span>
+        <div class="profile-photo-actions">
+          <button class="btn btn-secondary" id="avatar-pick-btn">Alege o poză</button>
+          <button class="link-btn" id="avatar-remove-btn" hidden>Șterge poza</button>
+          <input type="file" id="avatar-input" accept="image/*" hidden>
+        </div>
+      </div>
+      <div class="profile-form">
+        <label>Email<div class="profile-email" id="profile-email"></div></label>
+        <div class="theme-row">
+          <span class="theme-row-label">Temă</span>
+          <div class="theme-seg" role="group" aria-label="Temă">
+            <button type="button" class="theme-opt" data-theme-set="light"><svg class="ic i-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg> Luminoasă</button>
+            <button type="button" class="theme-opt" data-theme-set="dark"><svg class="ic i-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg> Întunecată</button>
+          </div>
+          <span class="muted small">Se salvează automat în profilul tău.</span>
+        </div>
+        <label for="profile-first">Prenume<input type="text" id="profile-first" maxlength="40" placeholder="Prenume"></label>
+        <label for="profile-last">Nume<input type="text" id="profile-last" maxlength="40" placeholder="Nume"></label>
+        <p class="muted small">Numele și prenumele apar pe certificatele tale.</p>
+        <button class="btn btn-primary" id="profile-save-btn">Salvează</button>
+        <span class="profile-saved" id="profile-saved" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Salvat</span>
+      </div>
+    </div>
+    <div class="profile-card profile-certs-card">
+      <h2>Certificatele mele</h2>
+      <div id="profile-certs"></div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ ECRAN: CERTIFICAT ============ -->
+<section id="screen-cert" class="screen">
+  <div class="cert-toolbar">
+    <button class="btn btn-icon back-btn" data-target="screen-dashboard" title="Înapoi">←</button>
+    <button id="cert-edit-profile" class="btn btn-ghost"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4L19 9l-4-4L4 16v4zM13.5 6.5l4 4"/></svg> Editează numele în Profil</button>
+    <button id="cert-print-btn" class="btn btn-primary">Descarcă / Printează PDF</button>
+  </div>
+  <div class="cert-wrap"><div class="cert-paper" id="cert-paper"></div></div>
+</section>
+
+<!-- ============ ECRAN 3: SETUP TEST (capitole + nr. întrebări) ============ -->
+<section id="screen-setup" class="screen">
+  <header class="topbar">
+    <div class="topbar-title">
+      <button class="btn btn-icon back-btn" data-target="screen-dashboard" title="Înapoi">←</button>
+      <div>
+        <span class="wordmark-sm">Prep<span class="dot">.</span></span>
+        <h1 id="setup-exam-title">Setup test</h1>
+        <p class="muted" id="setup-exam-desc"></p>
+      </div>
+    </div>
+    <span class="pill" id="setup-question-total"></span>
+  </header>
+
+  <main class="setup-layout">
+    <div class="setup-panel">
+      <div class="setup-panel-head">
+        <h2>1. Alege capitolele</h2>
+        <div class="chapter-actions">
+          <button class="link-btn" id="chapters-select-all">Selectează tot</button>
+          <span class="sep">·</span>
+          <button class="link-btn" id="chapters-select-none">Deselectează tot</button>
+        </div>
+      </div>
+      <div id="chapter-list" class="chapter-list"></div>
+    </div>
+
+    <div class="setup-panel setup-panel-side">
+      <h2>2. Câte întrebări?</h2>
+      <div class="count-control">
+        <input type="range" id="question-count-range" min="5" max="60" step="1" value="20">
+        <div class="count-readout"><span id="question-count-value">20</span> întrebări</div>
+      </div>
+      <p class="muted small" id="count-hint"></p>
+
+      <h2 class="mt">3. Mod de studiu</h2>
+      <div class="mode-toggle">
+        <label class="mode-option">
+          <input type="radio" name="quiz-mode" value="practice" checked>
+          <div>
+            <strong>Mod exercițiu</strong>
+            <span>Vezi imediat dacă răspunsul e corect, cu explicație</span>
+          </div>
+        </label>
+        <label class="mode-option">
+          <input type="radio" name="quiz-mode" value="exam">
+          <div>
+            <strong>Mod examen</strong>
+            <span>Ca la Certiport: fără feedback până la final, cu timp</span>
+          </div>
+        </label>
+      </div>
+
+      <button id="start-quiz-btn" class="btn btn-primary btn-block btn-lg mt">Începe testul</button>
+      <p class="muted small center" id="setup-warning" hidden>Selectează cel puțin un capitol cu întrebări disponibile.</p>
+    </div>
+  </main>
+</section>
+
+<!-- ============ ECRAN 4: QUIZ ============ -->
+<section id="screen-quiz" class="screen">
+  <header class="quiz-header">
+    <button class="btn btn-icon" id="quiz-exit-btn" title="Ieși din test">←</button>
+    <div class="quiz-progress-wrap">
+      <div class="quiz-progress-bar"><div id="quiz-progress-fill" class="quiz-progress-fill"></div></div>
+      <span id="quiz-progress-label" class="quiz-progress-label"></span>
+    </div>
+    <div class="quiz-timer" id="quiz-timer">00:00</div>
+  </header>
+
+  <main class="quiz-body">
+    <div class="quiz-card" id="quiz-card">
+      <!-- populat dinamic de app.js -->
+    </div>
+
+    <div class="quiz-nav">
+      <button id="quiz-flag-btn" class="btn btn-ghost"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4m0 0h11l-2 4 2 4H5"/></svg> Marchează pentru revizuire</button>
+      <div class="quiz-nav-right">
+        <button id="quiz-prev-btn" class="btn btn-secondary">Înapoi</button>
+        <button id="quiz-next-btn" class="btn btn-primary">Următoarea</button>
+        <button id="quiz-finish-btn" class="btn btn-primary" hidden>Finalizează testul</button>
+      </div>
+    </div>
+  </main>
+</section>
+
+<!-- ============ ECRAN 5: REZULTATE ============ -->
+<section id="screen-results" class="screen">
+  <main class="results-layout">
+    <div class="results-summary">
+      <div class="score-ring-wrap">
+        <svg viewBox="0 0 140 140" class="score-ring">
+          <circle cx="70" cy="70" r="62" class="score-ring-bg"></circle>
+          <circle cx="70" cy="70" r="62" class="score-ring-fill" id="score-ring-fill"></circle>
+        </svg>
+        <div class="score-ring-label">
+          <span id="score-percent">0%</span>
+          <span id="score-pass-label" class="score-pass-label"></span>
+        </div>
+      </div>
+      <div class="results-meta">
+        <h1 id="results-title">Rezultate test</h1>
+        <p class="muted" id="results-sub"></p>
+        <div class="results-stats">
+          <div><strong id="stat-correct">0</strong><span>corecte</span></div>
+          <div><strong id="stat-incorrect">0</strong><span>greșite</span></div>
+          <div><strong id="stat-time">0:00</strong><span>timp</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-breakdown">
+      <h2>Scor pe capitole</h2>
+      <div id="chapter-breakdown" class="chapter-breakdown"></div>
+    </div>
+
+    <div class="results-review">
+      <h2>Recapitulare întrebări</h2>
+      <div id="review-list" class="review-list"></div>
+    </div>
+
+    <div class="results-actions">
+      <button id="retry-incorrect-btn" class="btn btn-secondary">Reia doar greșelile</button>
+      <button id="retry-same-btn" class="btn btn-secondary">Repetă acest test</button>
+      <button id="new-exam-btn" class="btn btn-primary">Alege alt examen</button>
+    </div>
+  </main>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="data/python.js"></script>
+<script src="data/databases.js"></script>
+<script src="data/device-config.js"></script>
+<script src="data/networking.js"></script>
+<script src="data/html5.js"></script>
+<script src="data/courses.js"></script>
+<script src="reviews.js"></script>
+<script src="app.js"></script>
+<script src="progress.js"></script>
+<script src="landing.js"></script>
+</body>
+</html>

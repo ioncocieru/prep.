@@ -1,0 +1,25 @@
+{
+  "historical": true,
+  "superseded_by": "raport-import/",
+  "original_report": {
+    "app.js": "1273cb1f93a69d11cf0b410ce1967a83ed7fa1fb12f4627c7d844be30ada291d",
+    "device-config.js": "bb87b2fc18aed1b907475091e35a9080a0279847a97f977c3bf41c23439491ac",
+    "networking.js": "7737c15444d55dd87c0772030ecb2c836dd7f7394e61e5c8147213d9cd0fad1e",
+    "python.js": "bc285c8df05bf6596eca77e9e4939f97ef74430de6c4341da6eac70a529375a7",
+    "databases.js": "32a7821975bf139163fbadd4d2ba4ee83f482591b73a62346b0a9cbefd6929c3",
+    "RAPORT.md": "631a96263d5285a851653f0958a42dc5eca3550fada86e5962012719d4361ba2",
+    "README.md": "3a15ff4aa542acb1dde1fcf462b23ea0d39c12e25f9096145fa752c6e6e8c8ee",
+    "assets/device-connectors/port-01.jpeg": "495b3e30ebce580e616f333e9139a028e16ba880e11958ef241e765fb0db3347",
+    "assets/device-connectors/port-02.jpeg": "0597eea1dff3caa05bffd6bd7cf0e4e9d7a48ce4a86177388f558c75fc57f6d6",
+    "assets/device-connectors/port-03.jpeg": "21a56c3e6d70903d81bc74371e23466fbc3eebafc7351d8e2c1ed98a978fa799",
+    "assets/device-connectors/port-04.jpeg": "1f1525f33b4dc8a953611488c37b21e8144cb89efd9a90ada15e7fd16b834101",
+    "raport/modificari.json": "86d21618f0d1c05e66322d68563a8bb250f7ffc9371d17001fce8a76f493b370",
+    "raport/imagini-existente-neverificate.json": "81d42accd3fa13f659e2f49220c1d8509786742311786d46843c96593ece8dec",
+    "raport/request-map.json": "4adfa7f434c62011f127ea52af5ebdd1003e612ee3a98e1cb8464d9a4f161169",
+    "raport/validation.json": "61ef155528760426c70f1a187a165604005d44ca845774959393cca14cdb9ffb",
+    "raport/ui-test-results.json": "82ebfb4e7f4c4140407ecf08b269f0661b07d22dfe2de077b5d002da59fd3b76",
+    "raport/content-test-results.json": "6f81d92dd8d4a8892a70ab86de2b055903624087b272404dc5c4b2a7223cc09c",
+    "raport/summary-desktop.png": "3a7a466654d1815d83530dcbdd6bc5053f06e676fcc941045d16943c2e699c85",
+    "raport/summary-mobile.png": "51f243b8ec1aca3084e0daaea970997f35879b49f072c9999c8b6f9da4be546e"
+  }
+}
