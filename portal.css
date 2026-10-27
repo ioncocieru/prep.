@@ -29,3 +29,5 @@
 [data-theme=dark] .pp-brand-copy>p:not(.pp-eyebrow),[data-theme=dark] .pp-brand-header .pp-eyebrow{color:var(--text-muted,#A1A5AC)}
 [data-theme=dark] .pp-dialog::backdrop{background:#0009}
 [data-theme=dark] .pp-test-card{border-color:var(--border,#2D2F34)}
+
+.pp-phone-cell{min-width:130px}.pp-phone-value{white-space:nowrap;font-size:13px;font-variant-numeric:tabular-nums}

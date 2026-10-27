@@ -1365,3 +1365,33 @@ h1,h2,h3{ letter-spacing:0; font-weight:700; }
 @media(max-width:600px) {
   body #quiz-summary-dock { position:relative; inset:auto; align-self:flex-end; margin:0; }
 }
+
+/* Contact phone fields follow the existing authentication theme. */
+.login-card input[type=tel]{display:block;width:100%;box-sizing:border-box;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font:inherit;background:var(--surface);color:var(--text);margin-bottom:12px;min-height:46px}
+.auth-phone-help{display:block;color:var(--text-muted);font-size:12px;line-height:1.6;margin:0 0 16px}
+:root[data-theme=dark] .login-card input[type=tel]{background:var(--bg);color:var(--text);border-color:var(--border)}
+.tag-html5{background:#ef6a2d}
+/* Native modal keeps the real dashboard visible, but inert, behind the contact form. */
+#screen-phone.phone-modal{padding:0;border:1px solid var(--border);border-radius:22px;width:min(460px,calc(100% - 32px));max-width:none;max-height:calc(100dvh - 32px);margin:auto;background:var(--surface);color:var(--text);box-shadow:0 24px 90px #0005;overflow-y:auto;overscroll-behavior:contain}
+#screen-phone::backdrop{background:rgba(10,14,20,.58);backdrop-filter:blur(5px)}
+#screen-phone .phone-modal-card{width:100%;max-width:none;margin:0;padding:32px;box-sizing:border-box;background:var(--surface);border:0;border-radius:0;box-shadow:none}
+#screen-phone .phone-modal-heading{display:flex;align-items:center;justify-content:space-between;margin-bottom:30px}
+#screen-phone .login-logo{background:var(--navy,#172231);border-radius:10px;padding:10px 13px;width:max-content;margin:0}
+#screen-phone .login-logo .logo-mark{display:block;width:76px;height:auto}
+#screen-phone .phone-contact-icon{display:grid;place-items:center;width:44px;height:44px;border-radius:14px;background:rgba(47,111,237,.1);color:var(--blue)}
+#screen-phone .phone-contact-icon svg{width:24px;height:24px}
+#screen-phone .phone-eyebrow{display:block;margin-bottom:10px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--text-muted)}
+#screen-phone h1{font-size:27px;line-height:1.2;margin:0 0 12px;letter-spacing:-.5px}
+#screen-phone .phone-modal-card>p{color:var(--text-muted);line-height:1.6;margin:0 0 26px}
+#screen-phone #phone-save{display:flex;justify-content:center;gap:16px;align-items:center;margin-top:18px;min-height:48px}
+#phone-signout{display:block;margin:20px auto 0;color:var(--text-muted);font-size:13px}
+@media(max-width:480px){#screen-phone .phone-modal-card{padding:26px 22px}#screen-phone h1{font-size:25px}}
+
+/* The account phone uses auth metadata, shared with the guarded Admin view. */
+.profile-contact{margin-top:14px;padding-top:24px;border-top:1px solid var(--border);display:flex;flex-direction:column;align-items:flex-start;gap:16px}
+.profile-contact-heading{display:flex;gap:12px;align-items:center}.profile-contact-icon{display:grid;place-items:center;flex-shrink:0;width:42px;height:42px;border-radius:12px;background:rgba(47,111,237,.1);color:var(--blue)}
+.profile-contact-heading h3{font-size:16px;margin:0 0 4px}.profile-contact-heading p{font-size:13px;color:var(--text-muted);margin:0;line-height:1.5}
+#profile-contact-phone{font-size:22px;letter-spacing:.02em;overflow-wrap:anywhere}#profile-contact-change{white-space:normal;text-align:center;max-width:100%}
+.profile-contact-status{font-size:13px;color:var(--text-muted);line-height:1.5;margin:0}
+#screen-phone #phone-cancel:not([hidden]){display:block;margin-top:10px}
+#screen-phone [hidden]{display:none!important}
