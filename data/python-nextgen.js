@@ -5,7 +5,7 @@ window.EXAM_DATA.pythonNextGen = {
   "name": "Python Next Generation",
   "description": "Python cu întrebări și laburi interactive. Alege teoria, practica sau simularea combinată.",
   "accent": "#2f6fed",
-  "beta": true,
+  "hasLabs": true,
   "CHAPTERS": [
     {
       "id": "moldova-scenarios",
