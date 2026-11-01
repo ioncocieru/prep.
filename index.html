@@ -15,9 +15,12 @@
 <link rel="stylesheet" href="assets/vendor/codemirror/codemirror.css">
 <link rel="stylesheet" href="assets/vendor/codemirror/show-hint.css">
 <link rel="stylesheet" href="assets/vendor/codemirror/dialog.css">
-<link rel="stylesheet" href="style.css?v=prep-nextgen-v5-20261101">
-<link rel="stylesheet" href="portal.css?v=prep-nextgen-v5-20261101">
+<link rel="stylesheet" href="style.css?v=prep-profile-final-20261101">
+<link rel="stylesheet" href="portal.css?v=prep-profile-final-20261101">
 <link rel="stylesheet" href="landing.css">
+<link rel="stylesheet" href="device-lessons.css?v=professional-4">
+<link rel="stylesheet" href="dashboard-desktop.css?v=integral-3">
+<link rel="stylesheet" href="site-contact.css?v=prep-contact-1">
 </head>
 <body>
 
@@ -46,7 +49,7 @@
     <div class="lx-hero-txt">
       <p class="lx-small lx-r">Pentru examenele IT Specialist by Certiport</p>
       <h1 class="lx-r">Cursul, întrebările și <mark>simulările</mark> de care ai nevoie pentru examen.</h1>
-      <p class="lx-lead lx-r">Python, Python Next Generation (Beta), Databases, Networking, Device Configuration și HTML5 Application Development. Te uiți la lecții, exersezi cu explicații, faci simulări cu timp, apoi mergi la centrul de testare.</p>
+      <p class="lx-lead lx-r">Python, Python Next Generation, Databases, Networking, Device Configuration și HTML5 Application Development. Te uiți la lecții, exersezi cu explicații, faci simulări cu timp, apoi mergi la centrul de testare.</p>
       <div class="lx-cta lx-r">
         <button type="button" class="lx-btn" data-go-login="register">Creează cont</button>
         <button type="button" class="lx-text-btn lx-arrow" data-go-login="login">Am deja cont</button>
@@ -88,7 +91,7 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
       <h2 class="lx-r">Cinci examene. Întrebări pe capitole, explicații și mod examen. Cursuri video la examenele disponibile.</h2>
       <div class="lx-table lx-r">
         <div class="row"><b>Python</b><p>Tipuri de date, structuri de control, funcții, fișiere, erori, module.</p></div>
-        <div class="row"><b>Python Next Generation <span class="ng-beta">Beta</span></b><p>137 de întrebări și 21 de laburi cu Python executabil. Simulare combinată sau practică separată.</p></div>
+        <div class="row"><b>Python Next Generation</b><p>137 de întrebări și 21 de laburi cu Python executabil. Simulare combinată sau practică separată.</p></div>
         <div class="row"><b>Databases</b><p>Proiectare, chei și relații, SQL, interogări, modificarea datelor.</p></div>
         <div class="row"><b>Networking</b><p>Modelul OSI și TCP/IP, adresare IP, echipamente, depanare.</p></div>
         <div class="row"><b>Device Configuration and Management</b><p>Configurarea sistemului de operare, dispozitive, securitate, mentenanță.</p></div>
@@ -298,7 +301,7 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
           <p class="nm">Toate cele 6 examene <span>recomandat</span></p>
           <p class="pr"><span class="price-current">49.99 <span class="price-currency">EUR</span></span><s>100 EUR</s></p>
           <p class="price-equivalent">echivalent cu 1000 lei moldovenești</p>
-          <p class="ds">Python, Python Next Generation (Beta), Databases, Networking, Device Configuration and Management și HTML5 Application Development, în același cont.</p>
+          <p class="ds">Python, Python Next Generation, Databases, Networking, Device Configuration and Management și HTML5 Application Development, în același cont.</p>
         </div>
       </div>
       <div class="lx-pay lx-r">
@@ -385,7 +388,7 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
       <p class="brand-sub">Platformă de pregătire pentru certificările <br>IT Specialist by Certiport</p>
       <ul class="brand-exam-list">
         <li><span class="tag tag-python"></span>Python</li>
-        <li><span class="tag tag-python"></span>Python Next Generation <span class="ng-beta">Beta</span></li>
+        <li><span class="tag tag-python"></span>Python Next Generation</li>
         <li><span class="tag tag-db"></span>Databases</li>
         <li><span class="tag tag-dcm"></span>Device Configuration and Management</li>
         <li><span class="tag tag-net"></span>Networking</li>
@@ -450,6 +453,10 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
         <h2>Creează un cont</h2>
         <p class="muted">Îți trimitem un email de confirmare. Contul nou nu include examene: accesul la ele îl primești de la un administrator.</p>
         <form id="register-form" autocomplete="off">
+          <label for="reg-last">Nume</label>
+          <input type="text" id="reg-last" placeholder="Numele de familie" autocomplete="family-name" maxlength="40" required>
+          <label for="reg-first">Prenume</label>
+          <input type="text" id="reg-first" placeholder="Prenumele tău" autocomplete="given-name" maxlength="40" required>
           <label for="reg-login">Email</label>
           <input type="email" id="reg-login" placeholder="adresa@email.com" autocapitalize="none" autocomplete="email" required>
           <label for="reg-phone">Număr de telefon</label>
@@ -479,9 +486,13 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
     <div class="phone-modal-heading"><div class="login-logo"><img src="assets/logo.png" alt="Prep." class="logo-mark"></div>
       <span class="phone-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="m21 3-7.2 18-3.9-7.8L2 9.3 21 3Z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/><path d="m9.9 13.2 5.2-5.1" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span></div>
     <span class="phone-eyebrow">Rămânem în contact</span>
-    <h1 id="phone-title">Numărul tău de Telegram</h1>
-    <p id="contact-phone-help">Introdu numărul de telefon asociat contului tău Telegram, pentru contact.</p>
+    <h1 id="phone-title">Completează profilul</h1>
+    <p id="contact-phone-help">Confirmă numele, prenumele și numărul de telefon asociat contului tău Telegram. Datele se salvează în contul tău.</p>
     <form id="phone-form">
+      <label for="contact-last">Nume</label>
+      <input type="text" id="contact-last" autocomplete="family-name" placeholder="Numele de familie" maxlength="40" required>
+      <label for="contact-first">Prenume</label>
+      <input type="text" id="contact-first" autocomplete="given-name" placeholder="Prenumele tău" maxlength="40" required>
       <label for="contact-phone">Număr de telefon</label>
       <input type="tel" id="contact-phone" autocomplete="tel" inputmode="tel" maxlength="32" placeholder="069 123 456" required aria-describedby="contact-phone-help">
       <p id="phone-error" class="login-error" role="alert" hidden></p>
@@ -588,8 +599,8 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
           </div>
           <span class="muted small">Se salvează automat în profilul tău.</span>
         </div>
-        <label for="profile-first">Prenume<input type="text" id="profile-first" maxlength="40" placeholder="Prenume"></label>
-        <label for="profile-last">Nume<input type="text" id="profile-last" maxlength="40" placeholder="Nume"></label>
+        <label for="profile-last">Nume<input type="text" id="profile-last" maxlength="40" placeholder="Nume" autocomplete="family-name" required></label>
+        <label for="profile-first">Prenume<input type="text" id="profile-first" maxlength="40" placeholder="Prenume" autocomplete="given-name" required></label>
         <p class="muted small">Numele și prenumele apar pe certificatele tale.</p>
         <button class="btn btn-primary" id="profile-save-btn">Salvează</button>
         <span class="profile-saved" id="profile-saved" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg> Salvat</span>
@@ -757,7 +768,7 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
 <script src="data/device-config.js?v=contact-20261025"></script>
 <script src="data/networking.js?v=contact-20261025"></script>
 <script src="data/html5.js?v=contact-20261025"></script>
-<script src="data/python-nextgen.js?v=prep-nextgen-v5-20261101"></script>
+<script src="data/python-nextgen.js?v=prep-profile-final-20261101"></script>
 <script src="data/courses.js"></script>
 <script src="reviews.js"></script>
 <script src="assets/vendor/codemirror/codemirror.js"></script>
@@ -769,11 +780,13 @@ print(media([<span class="n">8</span>, <span class="n">9</span>, <span class="n"
 <script src="assets/vendor/codemirror/searchcursor.js"></script>
 <script src="assets/vendor/codemirror/search.js"></script>
 <script src="assets/vendor/codemirror/show-hint.js"></script>
-<script src="app.js?v=prep-nextgen-v5-20261101"></script>
-<script src="nextgen.js?v=prep-nextgen-v5-20261101"></script>
-<script src="progress.js?v=prep-nextgen-v5-20261101"></script>
+<script src="app.js?v=prep-profile-final-20261101"></script>
+<script src="nextgen.js?v=prep-profile-final-20261101"></script>
+<script src="progress.js?v=prep-profile-final-20261101"></script>
 <script src="assets/vendor/chart.umd.js"></script>
-<script src="portal.js?v=prep-nextgen-v5-20261101"></script>
+<script src="portal.js?v=prep-profile-final-20261101"></script>
 <script src="landing.js"></script>
+<script src="device-lessons.js?v=professional-4"></script>
+<script src="site-contact.js?v=prep-contact-1"></script>
 </body>
 </html>

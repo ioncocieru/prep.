@@ -153,7 +153,7 @@ window.nextGenTourSteps=function(){
   showScreen('screen-quiz');renderQuizQuestion();document.getElementById('quiz-timer').textContent='DEMO';
  };
  return [
- {prepare:dash,target:'[data-exam="pythonNextGen"]',title:'Python Next Generation · Beta',html:'<p>Ai acces la acest examen. De aici deschizi <strong>137 de întrebări și 21 de laburi Python</strong>. Poți învăța teoria separat sau poți scrie cod.</p>'},
+ {prepare:dash,target:'[data-exam="pythonNextGen"]',title:'Python Next Generation',html:'<p>Ai acces la acest examen. De aici deschizi <strong>137 de întrebări și 21 de laburi Python</strong>. Poți învăța teoria separat sau poți scrie cod.</p>'},
  {prepare:setup,target:'#ng-kind label:has([value="combined"])',title:'Simularea completă',html:'<p>Alege <strong>Întrebări + laburi</strong> pentru ambele secțiuni. Întrebările valorează până la 700 de puncte, laburile până la 300. Ai nevoie de minimum 700 din 1000.</p>'},
  {prepare:setup,target:'#ng-kind label:has([value="questions"])',title:'Doar întrebări',html:'<p>Aici exersezi cele 137 de întrebări fără editorul de cod. Secțiunea este normalizată la <strong>1000 de puncte</strong>.</p>'},
  {prepare:setup,target:'#ng-kind label:has([value="labs"])',title:'Doar laburi',html:'<p>Alege această variantă când vrei să scrii și să testezi Python. Cele 21 de laburi însumează <strong>1000 de puncte</strong> în acest mod.</p>'},

@@ -68,6 +68,7 @@
         } else P.exams[r.exam_key] = merge(P.exams[r.exam_key], r.data);
       });
     } catch (e) {}
+    if (hasConfirmedName(u)) { P.profile.first = u.user_metadata.first_name; P.profile.last = u.user_metadata.last_name; saveLocal(); }
     P.ready = true;
   }
 
@@ -76,7 +77,7 @@
     const n = (P.email || "").split("@")[0];
     return n ? n.charAt(0).toUpperCase() + n.slice(1) : "Cursant";
   }
-  const fullName = () => ((P.profile.first || "") + " " + (P.profile.last || "")).trim() || defaultName();
+  const fullName = () => ((P.profile.last || "") + " " + (P.profile.first || "")).trim() || defaultName();
   function paintAvatar(el) {
     if (!el) return;
     const a = P.profile.avatar;
@@ -84,7 +85,7 @@
     el.textContent = "";
   }
   function updateHeader() {
-    $("#profile-btn-email").textContent = P.email;
+    $("#profile-btn-email").textContent = currentUserName || fullName();
     $("#welcome-title").textContent = "Bine ai revenit, " + fullName();
     ["#profile-btn-avatar", "#hello-avatar", "#profile-avatar"].forEach(s => paintAvatar($(s)));
   }
@@ -105,24 +106,34 @@
       r.onerror = reject; r.readAsDataURL(file);
     });
   }
-  function saveProfile() {
-    P.profile.first = $("#profile-first").value.trim();
-    P.profile.last = $("#profile-last").value.trim();
-    P.profile.updated = Date.now();
-    saveLocal(); touch("_profile");
-    updateHeader();
+  async function saveProfile() {
+    const first=normalizeProfileName($("#profile-first").value), last=normalizeProfileName($("#profile-last").value);
+    if (!validProfileName(first) || !validProfileName(last)) throw new Error("Completează numele și prenumele (maximum 40 de caractere fiecare).");
+    const {data,error}=await sb.auth.updateUser({data:accountNameData(first,last)});
+    if(error) throw error;
+    P.profile.first=first; P.profile.last=last; P.profile.updated=Date.now();
+    saveLocal(); touch("_profile"); paintAccountName(data.user); updateHeader();
   }
-  $("#profile-save-btn").addEventListener("click", () => {
-    saveProfile();
-    const m = $("#profile-saved"); m.hidden = false; setTimeout(() => { m.hidden = true; }, 2500);
+  window.addEventListener("prep-profile-updated", e=>{
+    const u=e.detail?.user;
+    if (!u || u.id!==P.uid || !hasConfirmedName(u)) return;
+    P.profile.first=u.user_metadata.first_name; P.profile.last=u.user_metadata.last_name; P.profile.updated=Date.now();
+    saveLocal(); touch("_profile"); updateHeader();
+    $("#profile-first").value=P.profile.first; $("#profile-last").value=P.profile.last;
+  });
+  $("#profile-save-btn").addEventListener("click", async () => {
+    const b=$("#profile-save-btn"), m=$("#profile-saved"); b.disabled=true;
+    try { await saveProfile(); m.textContent="Profilul a fost salvat."; m.hidden=false; }
+    catch(e) { m.textContent=e.message || "Profilul nu a putut fi salvat. Încearcă din nou."; m.hidden=false; }
+    finally { b.disabled=false; }
   });
   $("#avatar-pick-btn").addEventListener("click", () => $("#avatar-input").click());
   $("#avatar-input").addEventListener("change", async (e) => {
     const f = e.target.files && e.target.files[0]; if (!f) return;
-    try { P.profile.avatar = await resizeImage(f); saveProfile(); } catch (er) { alert("Nu am putut citi imaginea."); }
+    try { P.profile.avatar = await resizeImage(f); await saveProfile(); } catch (er) { alert("Nu am putut citi imaginea."); }
     e.target.value = "";
   });
-  $("#avatar-remove-btn").addEventListener("click", () => { P.profile.avatar = ""; saveProfile(); });
+  $("#avatar-remove-btn").addEventListener("click", async () => { P.profile.avatar = ""; try { await saveProfile(); } catch(e) { alert(e.message); } });
 
   /* ---------- statistici ---------- */
   function qStats(k) {

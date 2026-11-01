@@ -103,6 +103,7 @@ function typeLabel(type) {
 const THEME_KEY = "prep-theme";
 let currentUserEmail = "";
 let currentUserId = "";
+let currentUserName = "";
 
 function getLocalTheme() { try { return localStorage.getItem(THEME_KEY); } catch (e) { return null; } }
 function currentTheme() { return document.documentElement.getAttribute("data-theme") === "dark" ? "dark" : "light"; }
@@ -473,18 +474,33 @@ function normalizeContactPhone(raw) {
   const n = String(raw || "").trim().replace(/[\s().-]/g, "");
   return /^\+?\d{7,15}$/.test(n) && /[1-9]/.test(n) ? n : "";
 }
+function normalizeProfileName(raw) { return String(raw || "").trim().replace(/\s+/g, " "); }
+function validProfileName(raw) { const n = normalizeProfileName(raw); return n.length >= 1 && n.length <= 40 && /^[\p{L}\p{M}][\p{L}\p{M} .’'\-]*$/u.test(n); }
+function hasConfirmedName(user) { const m = user?.user_metadata || {}; return m.name_details_version === 1 && validProfileName(m.first_name) && validProfileName(m.last_name); }
+function accountNameData(first, last) { return {first_name:first, last_name:last, full_name:last + " " + first, name_details_version:1}; }
+function paintAccountName(user) {
+  const m=user?.user_metadata || {};
+  currentUserName = hasConfirmedName(user) ? m.last_name + " " + m.first_name : "";
+  const name=currentUserName || (user?.email || "").split("@")[0];
+  $("#welcome-title").textContent=name ? "Bine ai revenit, " + name : "Bine ai revenit!";
+  $("#profile-btn-email").textContent=currentUserName || user?.email || "Contul meu";
+  document.querySelectorAll('.pp-account-name').forEach(el=>el.textContent=currentUserName || user?.email || "Contul meu");
+}
 function hasContactPhone(user) { return !!normalizeContactPhone(user?.user_metadata?.contact_phone); }
 function openContactPrompt(user, editing = false) {
   const dialog = $("#screen-phone");
   dialog.dataset.mode = editing ? "edit" : "required";
-  $("#phone-title").textContent = editing ? "Schimbă numărul de telefon" : "Numărul tău de Telegram";
+  $("#phone-title").textContent = editing ? "Actualizează profilul" : "Confirmă datele tale";
+  const m=user.user_metadata || {};
+  $("#contact-last").value = m.last_name || "";
+  $("#contact-first").value = m.first_name || "";
   $("#phone-cancel").hidden = !editing;
   $("#phone-signout").hidden = editing;
   $("#contact-phone").value = user.user_metadata?.contact_phone || "";
   $("#phone-error").hidden = true;
   dialog.classList.add("active");
   if (!dialog.open) dialog.showModal();
-  $("#contact-phone").focus({preventScroll: true});
+  $(editing ? "#contact-phone" : "#contact-last").focus({preventScroll: true});
 }
 function closeContactEditor() {
   const dialog = $("#screen-phone");
@@ -524,21 +540,25 @@ $("#phone-form").addEventListener("submit", async e => {
   e.preventDefault();
   const btn = $("#phone-save"), err = $("#phone-error");
   const phone = normalizeContactPhone($("#contact-phone").value);
+  const first = normalizeProfileName($("#contact-first").value), last = normalizeProfileName($("#contact-last").value);
   err.hidden = true;
+  if (!validProfileName(last) || !validProfileName(first)) { err.textContent = "Introdu numele și prenumele folosind litere (maximum 40 de caractere fiecare)."; err.hidden = false; return; }
   if (!phone) { err.textContent = "Introdu un număr de telefon valid, de exemplu 069 123 456."; err.hidden = false; return; }
   btn.disabled = true; $("#phone-cancel").disabled = true;
   try {
-    const {error} = await sb.auth.updateUser({data: {contact_phone: phone}});
+    const {data, error} = await sb.auth.updateUser({data: {contact_phone: phone, ...accountNameData(first, last)}});
     if (error) throw error;
+    paintAccountName(data.user);
+    window.dispatchEvent(new CustomEvent("prep-profile-updated", {detail:{user:data.user}}));
     if ($("#screen-phone").dataset.mode === "edit") {
       closeContactEditor();
       await refreshProfileContact();
       const status = $("#profile-contact-status");
-      if (status.hidden) { status.textContent = "Numărul de telefon a fost actualizat."; status.hidden = false; }
+      if (status.hidden) { status.textContent = "Datele profilului au fost actualizate."; status.hidden = false; }
     } else {
       await enterApp();
     }
-  } catch (error) { err.textContent = "Numărul nu a putut fi salvat. Încearcă din nou. " + (error.message || ""); err.hidden = false; }
+  } catch (error) { err.textContent = "Datele nu au putut fi salvate. Încearcă din nou. " + (error.message || ""); err.hidden = false; }
   finally { btn.disabled = false; $("#phone-cancel").disabled = false; }
 });
 $("#phone-signout").addEventListener("click", async () => { await sb.auth.signOut(); allowedExams = []; showScreen("screen-login"); });
@@ -549,6 +569,8 @@ $("#register-form").addEventListener("submit", async (e) => {
   const fail = (m) => { err.textContent = m; err.hidden = false; };
   err.hidden = true; info.hidden = true; $("#register-resend").hidden = true;
 
+  const first = normalizeProfileName($("#reg-first").value), last = normalizeProfileName($("#reg-last").value);
+  if (!validProfileName(last) || !validProfileName(first)) return fail("Introdu numele și prenumele folosind litere (maximum 40 de caractere fiecare).");
   const email = $("#reg-login").value.trim().toLowerCase();
   const phone = normalizeContactPhone($("#reg-phone").value);
   const p1 = $("#reg-password").value, p2 = $("#reg-password2").value;
@@ -561,7 +583,7 @@ $("#register-form").addEventListener("submit", async (e) => {
   const { data, error } = await sb.auth.signUp({
     email,
     password: p1,
-    options: { data: { self_registered: true, contact_phone: phone }, emailRedirectTo: location.origin + location.pathname }
+    options: { data: { self_registered: true, contact_phone: phone, ...accountNameData(first, last) }, emailRedirectTo: location.origin + location.pathname }
   });
   btn.disabled = false;
 
@@ -594,7 +616,7 @@ async function enterApp() {
   const contactSession = await sb.auth.getSession();
   const contactUser = contactSession.data?.session?.user;
   if (!contactUser) { showScreen("screen-login"); return; }
-  const needsContactPhone = !hasContactPhone(contactUser);
+  const needsContactPhone = !hasContactPhone(contactUser) || !hasConfirmedName(contactUser);
   const { data, error } = await sb.from("user_exams").select("exam_key");
   if (error) {
     alert("Nu am putut încărca accesul: " + error.message);
@@ -609,9 +631,7 @@ async function enterApp() {
   currentUserEmail = email;
   currentUserId = sess.session?.user?.id || "";
   if (meta.theme) applyTheme(meta.theme);     // tema salvată în profil
-  let name = email.split("@")[0];
-  name = name.charAt(0).toUpperCase() + name.slice(1);
-  $("#welcome-title").textContent = name ? `Bine ai revenit, ${name}` : "Bine ai revenit!";
+  paintAccountName(sess.session?.user);
 
   renderDashboard();
   showScreen("screen-dashboard");
@@ -730,7 +750,7 @@ function renderNoAccess(grid) {
         <li><span>1</span><div><strong>Trimite-i login-ul contului</strong>
           <small>${login ? `Login-ul tău: <code>${escapeHtml(login)}</code>` : "Scrie-i login-ul cu care te-ai înregistrat."}</small></div></li>
         <li><span>2</span><div><strong>Spune-i la ce examene vrei acces</strong>
-          <small>Python, Databases, Device Configuration and Management, Networking, HTML5 Application Development sau Python Next Generation (Beta).</small></div></li>
+          <small>Python, Databases, Device Configuration and Management, Networking, HTML5 Application Development sau Python Next Generation.</small></div></li>
         <li><span>3</span><div><strong>Apasă „Verifică accesul”</strong>
           <small>După ce primești confirmarea, examenele apar aici.</small></div></li>
       </ol>
@@ -781,15 +801,15 @@ function renderDashboard() {
       <div class="exam-card-head">
         <div class="exam-card-icon">${EXAM_ICONS[key] || ""}</div>
       </div>
-      <h3>${exam.name} ${exam.beta ? '<span class="ng-beta">Beta</span>' : ""}</h3>
+      <h3>${exam.name} </h3>
       <p>${exam.description}</p>
       <div class="exam-card-meta">
         <span>${roCount(chapterCount, "capitol", "capitole")}</span>
-        <span>${exam.beta ? `${exam.QUESTIONS.filter(q=>q.type!=="lab").length} întrebări · ${exam.QUESTIONS.filter(q=>q.type==="lab").length} laburi` : roCount(total, "întrebare", "întrebări")}</span>
+        <span>${exam.hasLabs ? `${exam.QUESTIONS.filter(q=>q.type!=="lab").length} întrebări · ${exam.QUESTIONS.filter(q=>q.type==="lab").length} laburi` : roCount(total, "întrebare", "întrebări")}</span>
       </div>
       <div class="exam-card-actions">
-        <button class="exam-card-cta" data-exam="${key}">${exam.beta ? "Întrebări și laburi" : "Întrebări"} ${ARROW_ICON}</button>
-        ${exam.beta ? "" : `<button class="exam-card-cta exam-card-cta-alt" data-course="${key}">Curs ${PLAY_ICON}</button>`}
+        <button class="exam-card-cta" data-exam="${key}">${exam.hasLabs ? "Întrebări și laburi" : "Întrebări"} ${ARROW_ICON}</button>
+        ${exam.hasLabs ? "" : `<button class="exam-card-cta exam-card-cta-alt" data-course="${key}">Curs ${PLAY_ICON}</button>`}
       </div>
     `;
     card.querySelector("[data-exam]").addEventListener("click", () => openSetup(key));
