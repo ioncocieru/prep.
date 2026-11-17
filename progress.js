@@ -25,7 +25,7 @@
     clearTimeout(syncTimer);
     syncTimer = setTimeout(flush, 2500);
   }
-  function persist(k) { ex(k).updated = Date.now(); saveLocal(); touch(k); }
+  function persist(k) { ex(k).updated = Date.now(); saveLocal(); touch(k); window.dispatchEvent(new Event("prep-progress")); }
   async function flush() {
     if (!P.uid) return;
     const keys = Array.from(dirty); dirty.clear();
@@ -500,6 +500,7 @@
       if (isAnswered(q)) p.questions[q.id] = right ? 1 : 0;
       if (right) ok++;
     });
+    window.PrepGoal?.add(qs.filter(q => isAnswered(q)).length);
     window.PrepPortal?.recordTest({p_id: state.attemptId, p_exam_key: k, p_mode: state.quizMode, p_total: qs.length, p_correct: ok, p_seconds: state.elapsedSeconds, p_completed_at: new Date().toISOString(), p_points: state.attemptScore.points, p_components: state.attemptScore.components});
     p.tests++; p.seconds += state.elapsedSeconds;
     p.bestPoints = Math.max(p.bestPoints || (p.best || 0)*10, state.attemptScore.points);
@@ -508,6 +509,33 @@
     const added = checkCerts(k);
     persist(k);
     if (added.includes("questions")) toast("Felicitări! Ai obținut un certificat nou. Îl găsești în Profil.");
+  };
+
+  /* statistici pentru mesajele automate (messages.js) */
+  window.PrepStats = { get() {
+    if (!P.ready) return null;
+    const out = {};
+    allowedExams.filter(k => getExam(k)).forEach(k => {
+      const q = qStats(k), c = cStats(k), p = ex(k);
+      out[k] = { name: getExam(k).name, q: { total: q.total, answered: q.answered, done: q.done },
+                 c: { total: c.total, watched: c.watched, done: c.done }, tests: p.tests || 0,
+                 bestPoints: p.bestPoints ?? ((p.best || 0) * 10) };
+    });
+    return out;
+  } };
+
+  /* obiectiv zilnic + plan (goal.js): salvate în profil, deci pe orice dispozitiv */
+  const todayKey = () => new Intl.DateTimeFormat("sv-SE", { timeZone: "Europe/Chisinau" }).format(new Date());
+  const dailyNow = () => { const d = P.profile.daily; return d && d.date === todayKey() ? (d.count || 0) : 0; };
+  window.PrepGoal = {
+    today: todayKey,
+    get() { return P.ready ? { goal: P.profile.goal || null, count: dailyNow(), date: todayKey() } : null; },
+    set(goal) { P.profile.goal = goal || null; P.profile.updated = Date.now(); saveLocal(); touch("_profile"); window.dispatchEvent(new Event("prep-progress")); },
+    add(n) {
+      if (!P.ready || !(n > 0)) return;
+      P.profile.daily = { date: todayKey(), count: dailyNow() + n };
+      P.profile.updated = Date.now(); saveLocal(); touch("_profile");
+    }
   };
 
   window.prepRefreshProgress = () => {
@@ -521,8 +549,8 @@
   const _dash = renderDashboard;
   renderDashboard = function () {
     _dash();
-    if (P.ready) decorateDashboard();
-    else init().then(decorateDashboard);
+    if (P.ready) { decorateDashboard(); window.dispatchEvent(new Event("prep-progress")); }
+    else init().then(() => { decorateDashboard(); window.dispatchEvent(new Event("prep-progress")); });
   };
   $("#logout-btn").addEventListener("click", () => {
     flush();
@@ -531,5 +559,5 @@
   });
   // A cached Supabase session may render the dashboard before this script loads.
   // Initialize progress in that case as well, so native select changes persist per user.
-  if ($("#screen-dashboard")?.classList.contains("active")) init().then(decorateDashboard);
+  if ($("#screen-dashboard")?.classList.contains("active")) init().then(() => { decorateDashboard(); window.dispatchEvent(new Event("prep-progress")); });
 })();
